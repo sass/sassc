@@ -1,4 +1,4 @@
-SRC_DIR = src
+SRC_DIR = libsass
 BIN_DIR = bin
 BUILD_DIR = build
 CPP_FILES = \

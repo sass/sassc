@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "src/sass_interface.h"
+#include "libsass/sass_interface.h"
 
 int main(int argc, char** argv)
 {	
