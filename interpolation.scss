@@ -20,23 +20,52 @@ div {
   bloo: bloo;
 }
 
-= bar() {
-  barbar: barboo;
-}
 
 div {
-  + foo();
   a: a;
   b: b;
   @include foo();
   c: c;
-  + foo();
   d: d;
-  + bar;
 }
 
 div {
   color: blah blah;
   *color: blah bloo;
   _color: foo boo;
+}
+
+foo > {
+  bar1 { blah: blah; }
+  bar2 { bloo: bloo; }
+  + {
+    hux {
+      blee: blee;
+    }
+  }
+}
+
+foo {
+  a: a;
+  bar {
+    b: b;
+  }
+  + {
+    hux {
+      c: c;
+    }
+    mumble {
+      d: d;
+    }
+  }
+}
+
+div > {
+  > > blah > { a: a; }
+  > + blah ~ > { b: b; }
+  blee {
+    + bloo { c: c; };
+    ~ bloo { d: d; };
+    e: e;
+  }
 }
