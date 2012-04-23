@@ -37,6 +37,17 @@ submodules.
 
 	git submodules init
 	git submodules update
+	
+Then run make:
+  make
+
+OR
+
+  make sassc
+  
+The executable will be in the bin folder. To run it, simply try something like
+
+  ./bin/sassc [input file]
 
 Contribution Agreement
 ----------------------
