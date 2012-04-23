@@ -1,0 +1,164 @@
+#mvShippingFees {
+#myShippingFeePopupContainer > div {
+  max-width: 100%;
+}
+.mvCloseBtn {
+  margin-top: 0 !important;
+}
+.popupBranding > div {
+  max-width: 100%;
+}
+#shippingFeesContent, #myShippingFeePopupContainer {
+    background-color: #FFF;
+    text-align: left;
+    max-width: 100%;
+    margin: 0;
+    
+.shippingFeesBox {
+    margin: 10px;
+    .titles {
+      font-weight:bold;
+    }
+    h3, h2 {
+      font-weight:bold;
+      padding-top:10px;
+    }
+}
+
+table:not(.myShippingFeePopupCalculatedFees) {
+  width: auto;
+}
+
+.decoration {
+    border-top: 1px solid #cccccc;
+}
+
+h1 {
+    color: #CC0000;
+    font-family: 'Myriad Pro',Arial,Sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    text-transform: lowercase;
+    font-weight:bold;
+}
+
+h2 {
+    color: #CC0000;
+    font-family: 'Myriad Pro',Arial,Sans-serif;
+    margin: 24px 0 8px 0;
+    text-transform: uppercase;
+}
+
+h2.totalShipping {
+    background-color: #f1f1f1;
+    padding: 4px 0px 4px 10px;
+    margin-right: 10px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+h2.totalShipping span.totalShippingValue {
+    font-weight: bold;
+    display: inline-block;
+    float: right; 
+    padding-right: 10px;
+    color: #000;
+}
+
+h2.totalShipping span.freeShipping {
+    color: #C00;
+}
+
+h2.totalShipping span.totalShippingText {
+    float: left;
+    font-weight:bold;
+}
+
+h2 .seeMore {
+    text-transform: lowercase;
+}
+
+.backToTop {
+    display: block;
+    float: right;
+    text-align: right;
+}
+
+tr.alternateColor {
+    background-color: #e4e4e4;
+}
+
+.textHeader {
+    font-weight: bold;
+    text-align: left;
+}
+
+.myRatesTable td {
+    border: none;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size:12px;
+}
+
+
+.myRatesTable {
+    border: 1px solid #999;
+    width: 100%;
+}
+
+.freeShipping {
+    color: #CC0000;
+    font-weight: bold;
+}
+
+h3.titles {
+    display: block;
+    margin-bottom: 4px;
+}
+
+#closeButtonContainer {
+    margin: 15px 8px 0 8px;
+    text-align: right;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+}
+
+#closeButtonContainer .closeButtonLink {
+    line-height: 12px;
+    color: #666666;
+}
+
+#closeButtonContainer .closeButtonImage {
+    margin-bottom: 5px;
+    border-width: 0px;
+}
+
+.merchandiseItems {
+    border: 1px solid #CCC;
+    width: 100%;
+    font-size:12px;
+}
+
+.merchandiseItems td {
+    border: 0px;
+    padding: 0px;
+}
+
+.merchandiseItems td.price {
+    border-left: 1px solid #CCC;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+ .merchandiseItems tr.merchandiseTotal {
+    font-weight: bold;
+}
+
+.merchandiseItems tr.shippingAndSurchargesSubtotal {
+    font-weight: bold;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ccc;
+}
+}
+}

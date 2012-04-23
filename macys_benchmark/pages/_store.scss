@@ -1,0 +1,193 @@
+.mw_store {
+  br, #localNavigationContainer {
+    display: none; }
+  
+  #bd {
+    background: #fff; }
+  
+  .locatorForm > div {
+    padding: 5px 0; }
+  
+  #locatorForm> div.bg_quaternary {
+    padding: 10px 10px 0 120px; }
+  
+  .mvStoreTitle {
+    color: #E70000;
+    font-size: 15px;
+    padding-bottom: 10px; }
+  
+  .locatorForm input {
+    padding: 5px; }
+  
+  .generalError {
+    padding: 10px 0;
+    color: #E70000;
+    line-height: 130%; }
+  
+  /* Find a store event */
+  
+  .mvEventContainer br {
+    display: none; }
+  
+  .locatorForm {
+    padding-top: 10px;
+    border: none !important; }
+  
+  .formLabel {
+    width: 60px;
+    display: inline-block;
+    padding-right: 5px; }
+  
+  .mvFindEventContent .bg_quaternary {
+    width: 65px;
+    padding-top: 10px; }
+  
+  .mvEventContainer select[name="State"] {
+    margin: 10px 0; }
+  
+  .formLabel > .errorText > img {
+    padding-right: 5px;
+    display: inline-block;
+    margin-top: -2px; }
+  
+  strong {
+    display: block;
+    text-align: left; }
+  
+  .mvEventContainer .bg_light_gray {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+    margin: 5px 0;
+    display: block; }
+  
+  .tertiary {
+    display: block;
+    font-weight: bold; }
+  
+  #macysGlobalLayout {
+    padding: 10px;
+    line-height: 150%; }
+  
+  .mvStoreEvents a.standard {
+    display: block; }
+  
+  strong > a {
+    display: inline-block;
+    padding-bottom: 5px; }
+  
+  .buttonSubmitBorders {
+    -webkit-border-radius: 6px;
+    padding: 0px !important; }
+  
+  form[name="myForm"] {
+    > div > div {
+      padding: 5px 0; }
+    input[type="text"] {
+      padding: 5px;
+      display: block;
+      margin-top: 5px; }
+    select {
+      margin-top: 5px;
+      display: block; } }
+  
+  &#mvStoreBody .mvStoreNavWrapper {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid black; }
+  
+  .mvTitle {
+    > .mvStorePageTitle {
+      display: inline-block;
+      padding-top: 6px; }
+    > .mvPageMenu {
+      padding-top: 14px; } }
+  
+  .mvStoreEventFirstBox {
+    border-top: 1px dotted #444;
+    margin-top: 10px; }
+  
+  .mvBackEventList {
+    display: block;
+    text-align: right;
+    padding-top: 10px; }
+  
+  .mvStoreEvents {
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #999; }
+  
+  .mvStoreLabel, form[name="locatorForm"] .formLabel {
+    display: inline-block;
+    width: 80px; }
+  
+  select[name="State"] {
+    margin-top: 10px; }
+  
+  /*-------------- Store hours --------------*/
+  
+  &#mvStoreHoursBody {
+  .popupContainer {
+    margin-top: 30px; }
+  
+  .mvStoreHoursTable > div {
+    padding: 10px;
+    overflow: hidden;
+    font-size: 15px;
+    color: #3A3A39;
+    > span {
+      display: block;
+      text-align:left !important;
+      line-height:150%; } }
+  
+  .mvStoreTimeRow {
+    background: #eee; }
+  
+    .popupContent {
+      border-top: none; }
+    .popupContainer .tertiary {
+      padding-bottom: 10px; } 
+    }
+  
+  /*-------------Macy's event marketing----------------*/
+  
+  .MACYS_eventsSubHeader {
+    font-weight: bold;
+    br {
+      display: block; } }
+  
+  .h2Link {
+    text-decoration: underline; }
+  
+  /*------------AboutSubPages--------------*/
+  
+  .mvAboutSubPages {
+    strong {
+      display: inline-block; }
+    br {
+      display: inline; }
+    h2 {
+      color: #e70000;
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 5px; }
+    ul {
+      list-style-type: disc;
+      margin-left: 20px; }
+    a {
+      text-decoration: underline;
+      color: #3A3A39; } }
+  
+  #macysGlobalLayout.mvAboutSubPages {
+    padding-top: 5px; }
+  
+  /*--------current location-------*/
+  
+  #geo_button {
+    //background: url(http://moovweb-gage.s3.amazonaws.com/yupu/macy2/macysBtns/currentlocation.png) no-repeat;
+    background: url(../../images/css/currentlocation.png) no-repeat;
+    height: 31px;
+    width: 160px;
+    margin: 10px auto; }
+
+}

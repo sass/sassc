@@ -1,0 +1,189 @@
+.mw_store_locator {
+  #moovweb_map_box.loading {
+    background-color: white;
+    -webkit-border-radius: 10px;
+    //background-image: url(http://moovweb-gage.s3.amazonaws.com/craigslist/loader.gif);
+    background-image: url(../../images/css/loader.gif);
+    background-position: center center;
+    background-repeat: no-repeat; }
+  
+  #localNavigationContainer, #depthpathContainer, #macysGlobalBanner, .moovweb_button {
+    display: none; }
+  
+  #bd {
+    background: #fff; }
+  
+  /*----------Page bar btn-----------*/
+  
+  .mvCurrentBtn {
+    background: #fff;
+    -webkit-box-shadow: inset 1px 1px 2px 0px #999; }
+  
+  /* store list */
+  
+  .mvStoreServiceItem {
+    padding: 5x 0; }
+  
+  .mvStoreServiceTitle {
+    font-weight: bold;
+    font-size: 12px;
+    padding-top: 10px; }
+  
+  .mvStoreServiceWrapper > div {
+    padding: 5px 0; }
+  
+  .mvStoreName {
+    > strong {
+      font-size: 15px; }
+    > span {
+      color: #666; } }
+  
+  .mvStoreListDE {
+    margin: 10px 0 5px 0;
+    color: #E70000; }
+  
+  
+  a.mvStoreServiceItem {
+    display: block; }
+  
+  /* hide empty element */
+  
+  .mw_address {
+    font-size: 14px;
+    display: block;
+    line-height: 130%;
+    padding: 5px 25px 0 0; }
+  
+  .store_table.mw_map_description {
+    padding: 15px 10px 15px 30px;
+    //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/start_icon.png) 10px 15px no-repeat;
+    background: url(../../images/css/start_icon.png) 10px 15px no-repeat;
+    border-top: 1px solid #999;
+    -webkit-box-shadow: inset 0px -3px 4px #e5e5e5;
+    a {
+      text-decoration: underline;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px; } 
+      }
+  
+  .mvMoreStoreHours {
+    padding: 5px 0; }
+  
+  .mvStorePhone {
+    padding: 10px 0;
+    font-weight: bold;
+    color: #e70000; }
+  
+  /*-------------map btn-------------*/
+  
+  #moovweb_map_hide, #moovweb_map_show {
+    float: right;
+    border: 1px solid #999;
+    overflow: hidden;
+    padding: 8px;
+    text-shadow: white 1px 1px 1px;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #333;
+    font-size: 11px; }
+  
+  #moovweb_map_hide {
+    border-left: none;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px; }
+  
+  #moovweb_map_show {
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px; }
+  
+  #moovweb_map_button_container {
+    overflow: hidden;
+    padding: 3px 10px; }
+  
+  .mvTitle > .mvSoreTitle {
+    display: inline-block;
+    padding-top: 6px;
+    font-size: 15px;
+    text-transform: capitalize; }
+  
+  /* Map buttons and UI */
+  
+  #moovweb_map_desc .mw_map_description.show_descriptions, #mvMapDesc.show_descriptions .mw_map_description, #moovweb_map_desc, #mw_map_details > #moovweb_map_container {
+    display: block !important; }
+  
+ 
+  
+  /* Uranium map / tabs */
+  
+  [data-ur-tabs-component='content'] {
+    visibility: hidden;
+    position: absolute;
+  }
+  
+  [data-ur-tabs-component='content'][data-ur-state='enabled'] {
+    visibility: visible;
+    position: relative;
+  }
+  
+  #mvMapBox[data-ur-tabs-component='content'][data-ur-state='enabled'] {
+  
+  }
+  
+  
+  #mvMapBox, #moovweb_map_box {
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+  }
+  
+  .moovweb_dynamic_map {
+    display: block !important;
+    height: 100%;
+    width: 100%;
+  }
+  
+  
+  /* Map Tab styles */
+  
+  [data-ur-tabs-component='content'] {
+      position: absolute;
+      visibility: hidden;
+  }
+  
+  [data-ur-tabs-component='content'][data-ur-state='enabled'] {
+      position: relative;
+      visibility: visible;
+  }
+  
+  
+  [data-ur-tabs-component='content'][data-ur-state='disabled'] [data-ur-map-component='description'][data-ur-state='enabled'] {
+    display: block;
+    position: relative;
+    visibility: visible;
+  }
+  
+  [data-ur-tabs-component='content'][data-ur-state='disabled'] [data-ur-map-component='description'][data-ur-state='disabled'] {
+    position: absolute;
+  }
+  
+  [data-ur-tabs-component='content'][data-ur-state='enabled'] [data-ur-map-component='description'] {
+    display: block !important;
+  }
+  
+  /* Show descriptions when they're highlighted */
+  
+  
+  [data-ur-tabs-component='content'][data-ur-tab-id='2'][data-ur-state='disabled'] {
+    position: relative;  
+  }
+  
+  *[data-ur-map-component='description'] {
+    display: none;
+  }
+  
+  *[data-ur-map-component='description'][data-ur-state='enabled'] {
+    display: block;
+  }
+}

@@ -1,0 +1,414 @@
+  /*------------_macys_signin.scss--------------*/
+  /* these styles need to be here on Android 2.1 because they insert stylesheets with js (doesn't work on 2.1)
+   * instead of inserting link tags or style tags
+   * these styles are required for the 'forgot password' popup to work
+   */
+  // widget-stack.css
+  //.yui3-widget-stacked .yui3-widget-shim{opacity:0;filter:alpha(opacity=0);position:absolute;border:none;top:0;left:0;padding:0;margin:0;z-index:-1;width:100%;height:100%;_width:0;_height:0;}
+  // widget.css
+  .yui3-widget-hidden{display:none}.yui3-widget-content{overflow:hidden}.yui3-widget-content-expanded{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;height:100%}.yui3-widget-tmp-forcesize{overflow:hidden!important}
+  // overlay.css
+  .yui3-overlay{position:absolute;}.yui3-overlay-hidden{visibility:hidden;}.yui3-widget-tmp-forcesize .yui3-overlay-content{overflow:hidden!important;}
+  /* end Android 2.1 styles */
+
+  .mw_forgot_password {
+    // hide everything except password popup
+    > div:not(#doc3) {
+      display: none;
+    }
+    #doc3 {
+     #hd, #ft {
+       display: none;
+     }
+     #bd {
+       #globalContentContainer {
+         #createProfileContainer {
+           display: none;
+         }
+       }
+     }
+   }
+  }
+  .mw_signin {
+    #LockContainer {
+      #mw_acc_lock_header {
+        color: #cc0000;
+        font-size: 18px;
+      }
+      #Lockheader, #accountData {
+        margin:10px;
+        > div {
+          margin-top: 10px;
+        }
+      }
+    }
+    #verifyEmailBtn {
+      text-decoration:underline;
+      color: #3A3A39;
+    }
+    #verifyEmail {
+      display:none;
+    }
+    .mvErrorMeg > br {
+      display: block;
+    }
+  .mvShadowBox > p img, .mvSigninHide, br, #errorTrackingPixel {
+    display: none; }
+  
+  #profileContainer .mvShadowBottom  a {
+    display: block;
+    padding: 5px 0px;
+    color: #3A3A39;
+    text-decoration: underline;
+    }
+  .forgotPwd { font-weight:bold;}
+  
+  #vSeperator { 
+    padding:20px 10px 0 10px;
+    font-weight:bold;
+    }
+  .mvTextFieldWrapper {
+    padding: 5px 0px;
+    text-align: left;
+    overflow: hidden; }
+  /*11E*/
+  #signInVB{ 
+    label{ 
+      display:block;
+      margin:5px 0;
+      font-weight:bold;
+      }
+    .buttonSubmitBorders {
+    margin: 10px 0; }
+    .guestSignInSubmit{
+      input{
+        display:block;
+        margin-bottom:10px;
+        
+      }
+    }
+  }
+  /*11F*/
+  #signInForm{ 
+    label{ 
+      display:block;
+      margin:5px 0;
+      font-weight:bold;
+      }
+    .buttonSubmitBorders {
+    margin: 10px 0; }
+    .guestSignInSubmit{
+      input{
+        display:block;
+        margin-bottom:10px;
+        
+      }
+    }
+  }
+ /* 
+ .yui3-overlay{position:absolute;}.yui3-overlay-hidden{visibility:hidden;}.yui3-widget-tmp-forcesize .yui3-overlay-content{overflow:hidden!important;}
+ */
+  /*End 11F*/
+  
+  #createProfileSubmit { padding:10px 0;}
+  #registryLink img{ margin:-5px 5px 0 0;}
+  form[name="password"] br {
+    display: block; }
+  
+  /*---------forgot password--------*/
+  
+  #registryLink a {
+    color: #3A3A39;
+    text-decoration: underline;
+  }
+  .generalStatusMessage {
+    margin:10px;
+    padding:10px;
+    border:1px solid #e70000;
+    color:#e70000;
+  }
+
+  /*------------------checkout sign in---------------*/
+  
+  #mvCheckOutBody {
+    .formLabel {
+      display: block;
+      padding: 5px 0;
+      font-weight: bold; }
+    #signInVB > div input {
+      &[type="text"], &[type="password"] {
+        width: 200px !important; } }
+    .mvSigninForm a {
+      display: block;
+      padding-top: 10px; }
+    #createProfileContainer {
+      a {
+        color: #3A3A39;
+        text-decoration: underline; }   
+    }
+    #signin2 {
+      font-size: 16px;
+      font-weight: bold; }
+    #signin2 .generalError {
+      font-weight: normal;
+      border: 1px solid #E70000;
+      color: #E70000;
+      margin: 10px;
+      padding: 10px; }
+    input[alt="Sign In"] {
+      margin-top: 10px; } }
+  
+  input[alt="CHECKOUT"] {
+    margin-top: 10px; }
+  
+  #mvCheckOutBody {
+    input[value="EXPRESS_CHECKOUT_BUTTON"], .buttonSubmitBorders {
+      margin-top: 10px; }
+    #signInVB .buttonSubmitBorders {
+      margin: 10px 0px 0px 0px; } }
+    }
+   
+    .yui3-overlay-content {
+      display:block !important;
+      position: relative !important;
+    }
+    .yui3-overlay {
+      overflow: hidden;
+      background-color: RGBA(255, 255, 255, 0.8);
+      top: 0px !important;
+      height:1000px !important;
+      width:100% !important;
+    }
+    .yui3-overlay > div{
+      top: 100px !important;
+      overflow: hidden;
+      -webkit-border-radius: 5px;
+      -webkit-box-shadow: #555 0px 0px 6px;
+      background: #F1F1F1;
+      height: auto !important;
+      margin: 0 4%;
+      width: 90% !important;
+      -webkit-border-radius: 5px;
+      -webkit-box-shadow: #555 0px 0px 6px;
+      background: #F1F1F1;
+      
+      .yui3-widget-hd {
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FCFCFC), color-stop(100%, #CECECE));
+        -webkit-border-radius: 5px 5px 0 0;
+        border-bottom: 1px solid #CCC;
+        #btn {
+          float: right;
+          margin: 10px;
+          #cancelBtn {
+            background: url(../../../images/css/close_btn.png) no-repeat;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      .yui3-widget-bd {
+        -webkit-border-radius: 5px;
+        height: auto !important;
+      }
+      #fpOverlay {
+        background-color: white;
+        p {
+          padding: 10px 10px 0px 10px;
+        }
+        .generalError {
+          background: url(../../images/css/icon_error.gif) no-repeat;
+          display:inline-block;
+          background-repeat: no-repeat;
+          background-position: 5px 6px;
+          border: 1px solid red;
+          margin: 10px;
+          padding: 5px 10px 5px 20px;
+          font-weight: bold;
+          color:#e70000;
+        }
+        /*---------x-failed attempts layer-----------*/
+        #securityQADiv {
+          font-size: 14px;
+          p {
+            padding: 10px 10px 0 10px;
+          }
+          #securityQAForm {
+            ul {
+              li {
+                padding: 10px 10px 0 10px;
+                &.fieldMargin30 {
+                  overflow: hidden;
+                  background: #F1F1F1;
+                  text-align: center;
+                  padding-bottom: 10px;
+                  margin-top: 10px;
+                  border-top: 1px solid #C2C2C2;
+                  -webkit-box-shadow: #E5E5E5 0px -3p
+                }
+                label {
+                  display: inline;
+                  &#emailLabel {
+                    font-weight: bold;
+                    .optional {
+                      font-weight: normal;
+                      padding-left: 5px;
+                      #secureEmailID {
+                        display: inline;
+                      }
+                    }
+                  }
+                }
+                #question {
+                  font-weight: bold;
+                }
+                #verifysecurityBtn {
+                  @include red_button
+                }
+              }
+            }
+          }
+        }
+      }
+      .mvHeader, h1 {
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FCFCFC), color-stop(100%, #CECECE));
+        -webkit-border-radius: 5px 5px 0 0;
+        border-bottom: 1px solid #CCC;
+      }
+      .mvRedText {
+        color: #D11A1A;
+        font-size: 18px;
+        padding: 6px 0 8px 12px;
+      }
+      #captchaDiv {
+        ul {
+          #emailID {
+            display: inline;
+            font-weight: normal;
+          }
+          #Captchapart {
+            margin: 10px 0;
+          }
+          #captchaImg {
+            vertical-align: middle;
+            margin: 0 2px .25em 0;
+            float: left;
+          }
+          #refreshbtn {
+            margin-top: 22px;
+            padding-left: 7px;
+          }
+          li {
+            padding: 0 10px;
+            label{
+              text-align: left;
+              font-weight: bold;
+              display: inline-block;
+              padding: 5px 0;
+            }
+          }
+          .captcha_bottom {
+            overflow: hidden;
+            background: #F1F1F1;
+            text-align: center;
+            margin-top:10px;
+            #verifyCaptchaBtn {
+              display: block;
+              text-align: center;
+              margin: 10px auto;
+              overflow: hidden;
+              @include red_button;
+            }
+          }
+          .fieldMargin30 {
+            padding: 0 !important;
+          }
+        }
+      }
+      #confirmDiv {
+        #confirmEmail {
+          padding: 10px 10px 0px 10px;
+        }
+        p {
+          display: inline-block;
+          padding: 0;
+        }
+        .fieldMargin10 {
+          padding: 10px;
+          overflow: hidden;
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(95%, white), color-stop(99%, #F1F0F0), color-stop(100%, #DEDEDE));
+          border-bottom: 1px solid #C2C2C2;
+          -webkit-box-shadow: #E5E5E5 0px -3p;
+        }
+        #confirmEid {
+          text-align: left;
+          font-weight: bold;
+          display: inline-block;
+        }
+        .confirm_bottom {
+          overflow: hidden;
+          background: #F1F1F1;
+          text-align: center;
+          #closeBtn {
+            display: block;
+            text-align: center;
+            margin: 10px auto;
+            overflow: hidden;
+            @include gray_button;
+          }
+        }
+      }
+      #overlaySubmitDiv {
+        padding:10px;
+        overflow: hidden;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(95%, white), color-stop(99%, #F1F0F0), color-stop(100%, #DEDEDE));
+        border-bottom: 1px solid #C2C2C2;
+        -webkit-box-shadow: #E5E5E5 0px -3p;
+        > label {
+          text-align: left;
+          font-weight: bold;
+          display: block;
+          padding: 5px 0;
+        }
+      }
+      #overlaySubmitbtnDiv, .fieldMargin30 {
+        overflow: hidden;
+        background: #F1F1F1;
+        text-align: center;
+        #verifySubmitBtn, #verifysecurityBtn, #verifyResetPasswordBtn, #verifySecurityQASubmit {
+          display: block;
+          text-align: center;
+          margin: 10px auto;
+          overflow: hidden;
+          @include red_button;
+        }
+      }
+      #securityQADiv {
+        p { 
+          padding: 10px;  
+        }
+      }
+      
+      #securityQAForm, #resetPasswordDiv ,#securityqnaDiv{
+        fieldset {
+          width: 100%;
+        }
+        ul {
+          li#fieldMargin10 {
+            padding: 0px 0px 0px 10px;
+          }
+          li:not(#fieldMargin30), li:not(#fieldMargin10) {
+            padding: 0px 10px 10px 10px;
+          }
+          div#question {
+            text-align: left;
+            font-weight: bold;
+            display: inline-block;
+            padding: 5px 0;
+          }
+
+          span#helpString {
+            display: block; 
+          }
+        }
+      }
+    }

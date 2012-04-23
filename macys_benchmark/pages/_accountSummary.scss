@@ -1,0 +1,788 @@
+.accountSummary {
+  #localContentContainer {
+    .generalError {
+      background: white url(../../images/css/alter_red.png) no-repeat 5px 10px;
+      line-height: 170%;
+      padding: 5px 5px 5px 23px;
+      border: 1px dotted #DDD;
+      margin: 10px;
+      display: block;
+      color:#e70000;     
+    }
+  a {
+     text-decoration:underline;
+      color: #3A3A39;
+  }
+}
+  p.note {
+    font-size: 12px;
+    padding: 5px;
+    span { font-weight: bold; }
+  }
+  div.fullwidthCoulumn {
+    h3.quick {
+      font-weight: bold;
+      padding: 7px 5px 0;
+    }
+    ul#call-to-action li {
+      padding: 0 5px 10px;
+      h4 {
+        color: rgb(223,54,39);
+        font-size: 17px;
+        padding: 5px 0;
+      }
+      p {
+        font-size: 11px;
+      }
+      a.primaryBtnL {
+        @include red_button();
+        font-weight: bold;
+        margin: 5px 0;
+      }
+    }
+  }
+  .headingBar {
+    padding: 10px 5px 5px;
+  }
+  ul#options li, div.contentPadding {
+    padding: 5px;
+    p {
+      margin: 0;
+    }
+    h6 {
+      padding: 3px 0;
+      font-weight: bold;
+      font-size: 15px;
+    }
+    &.two {
+      background: #eee;
+    }
+    em {
+      margin-top: 10px;
+      display: block;
+      font-style: normal;
+      font-weight: bold;
+    }
+    p span {
+      font-weight: bold;
+    }
+  }
+  ul#privacyLinks {
+    padding: 0 5px;
+    li {
+      em {
+        font-style: normal;
+        font-weight: bold;
+      }
+      padding: 3px 0;
+      display:block;
+    }
+  }
+  ul#paymentSteps {
+    padding: 10px;
+    li {
+      display: inline;
+      list-style-type: none;
+      font-size: 16px;
+      font-weight: normal;
+      color: #CCC;
+      font-family: arial, verdana, lucida, san-serif;
+    }
+    li.selected {
+      color: #C00;
+    }
+  }
+  .cardHeader {
+    @include grey_card_header();
+    sup {
+      font-size: 10px;
+    }
+  }
+  .paymentContent, .paymentOptions {
+    padding: 10px 10px 0;
+    form {
+      display: inline-block;
+    }
+    p.large {
+      padding-top: 12px;
+      span {
+        font-weight: bold;
+      }
+    }
+    fieldset {
+      padding: 10px 0;
+      div.rows {
+        font-weight: bold;
+        padding: 4px 0;
+        label {
+          display: inline-block;
+          width: 140px;
+        }
+        .normal {
+          font-weight: normal;
+        }
+      }
+    }
+    button {
+      padding: 0;
+      text-decoration: underline;
+      background: transparent;
+      border: none;
+      font-size: 13px;
+      width: auto !important;
+    }
+    .confirmationInfo h5 span {
+      color: red;
+    }
+    fieldset {
+      h5 {
+        font-weight: bold;
+        padding-bottom: 5px;
+      }
+      .radioRow {
+        line-height: 22px;
+        label {
+          display: inline-block;
+          width: 200px;
+          font-size: 13px;
+        }
+        div {
+          display: inline-block;
+          text-align: right;
+          input {
+            width: 50px;
+            padding: 0;
+          }
+          &.amount {
+            width: 80px;
+          }
+          &.amountError {
+            width: 22px;
+          }
+        }
+      }
+      .mCheckingClone {
+        display: none;
+      }
+    }
+  }
+  .btnContainer {
+    margin: 10px 5px 50px;
+    #submitBtn, #continueBtn {
+      @include red_button();
+      float: right;
+      margin: 10px 30px;
+    }
+  }
+  .yui3-widget-bd {
+    div.ovlContent {
+      h4 {
+        font-weight: bold;
+      }
+      span.bold {
+        font-weight: bold;
+      }
+      p {
+        font-size: 12px;
+        padding-bottom: 10px;
+      }
+      div.paymentsContainer {
+        font-size: 10px;
+      }
+      button.secondaryBtnS {
+        @include gray_button();
+        margin: 5px;
+        float: right;
+      }
+      table.payments {
+        thead {
+          background-color: #CCC;
+          text-transform: capitalize;
+          font-weight: bold;
+        }
+        tr {
+          td {
+            border-bottom-style: dotted;
+            border-bottom-width: 1px;
+            border-color: #999;
+          }        
+          td:nth-of-type(4) {
+            font-weight: bold;
+            font-size: 12px;
+          }
+          button.secondaryBtnS{
+             padding: 6px 10px;
+          }
+        }
+      }
+    }
+  }
+  .yui3-overlay {
+    
+    .yui3-widget-hd {
+      height:27px;
+      .closeIcon {
+        float: right;
+        margin: 5px;
+        background: url(../../images/css/close_btn.png) no-repeat;
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .yui3-widget-bd {
+      margin: 10px;
+      div#bubbleContent {
+        a.download {
+          display:none;
+        }
+        p.viewStatementText {
+          font-size: 12px;
+        }
+        p.viewStatementText:nth-of-type(2) {
+          display:none;
+        }
+      }
+      div#vsList {
+        padding: 10px 0;
+        button.secondaryBtnL {
+          @include gray_button();
+          margin: 5px;
+        }
+      }
+    }
+  }
+  p.payment {
+    margin: 0 10px;
+  }
+  a.whyLink {
+    margin: 10px 0 10px 10px;
+  }
+  div.cardContainer {
+    div.accountLeft {
+      margin: 10px;
+    }
+ 
+    div.accountsContent {
+      div.accountBalance {
+       
+       > div.right {
+          width: inherit !important;
+          padding-bottom:10px;
+        >   div.hdrColumn {
+              clear: both;
+              margin-top:10px;
+              padding-top:10px;
+              border-top:1px dashed #ddd;
+            }
+          div.btnContainer {
+            margin: 0px;
+          }
+          button.buttonLink {
+            margin: 5px 0;            
+            background: transparent;
+            border: 0px;
+            text-decoration: underline;
+            font-size:15px;
+            display:block;
+          }
+          button.primaryBtnL {
+            @include red_button();
+            font-weight: bold;
+            margin: 5px 0 !important;
+          }
+          div.hdrColumn {
+            font-weight:bold;
+            span > a {
+              font-weight:normal;
+            }
+            button.linkSubmit {
+              @include gray_button();
+              margin: 10px 0;
+              font-weight: bold;
+            }      
+          }
+        }
+      }
+      span {
+        clear:right;
+      }
+      span.emphasize {
+        font-weight: bold;
+        display:block;
+      }
+    }
+  }
+  div#bubblePointer {
+    left: inherit !important;
+  }
+  div.recentActivityExpand {
+    height: 0px;
+    padding-top: 10px;
+    /*height:auto !important;*/
+    div.recentActivityDiv {
+      padding:0;
+      > p, > div {
+        padding:10px;
+      }
+      > h5 {
+        padding: 10px;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7e7e7e), color-stop(65%, #7e7e7e), color-stop(100%, #5e5e5e));
+        background-color: #5E5E5E;
+        font-size: 17px;
+        text-transform: capitalize;
+        color: #fff;
+        display: block;
+        text-align: left;
+        border-top: 1px solid #ddd;
+        line-height: 100%;
+        -webkit-border-radius:5px 5px 0 0;
+        
+      }
+      div.recentActivityData {
+        h6 {
+          font-size:16px;
+          margin-left:0px;
+        }
+        h6.notransMessage {
+          background-color: #E5E5E5;
+          color: black;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 12px;
+          font-weight: bold;
+          height: 20px;
+          padding: 4px 0 0 15px;
+          text-align: left;
+          text-transform: uppercase;
+        }
+        p {
+          font-size:12px;
+        }
+        table.transactions {
+          thead {
+            font-weight: bold;
+            background-color: #E5E5E5;
+            height: 20px;
+            text-transform: uppercase;
+          }
+          font-size:11px;
+        }
+      }
+      > input.hideActivity {
+        @include gray_button();
+        margin: 5px;
+        float: right;
+      }
+    }
+    img.recentActivityPoint {
+      display:none !important;
+    }
+    
+  }
+
+  a.mv_req_agreement {
+    margin: 5px;
+  }
+  div#localContentContainer {
+    h6 {
+      margin: 5px;
+    }
+    ul#privacyLinks {
+      margin-top:10px;
+    }
+  }
+}
+
+
+.accountSummary {
+  #localContentContainer {
+    .generalError {
+      background: white url(../../images/css/alter_red.png) no-repeat 5px 10px;
+      line-height: 170%;
+      padding: 5px 5px 5px 23px;
+      border: 1px dotted #DDD;
+      margin: 10px;
+      display: block;
+      color:#e70000;     
+    }
+  a {
+     text-decoration:underline;
+      color: #3A3A39;
+  }
+}
+  p.note {
+    font-size: 12px;
+    padding: 5px;
+    span { font-weight: bold; }
+  }
+  div.fullwidthCoulumn {
+    h3.quick {
+      font-weight: bold;
+      padding: 7px 5px 0;
+    }
+    ul#call-to-action li {
+      padding: 0 5px 10px;
+      h4 {
+        color: rgb(223,54,39);
+        font-size: 17px;
+        padding: 5px 0;
+      }
+      p {
+        font-size: 11px;
+      }
+      a.primaryBtnL {
+        @include red_button();
+        font-weight: bold;
+        margin: 5px 0;
+      }
+    }
+  }
+  .headingBar {
+    padding: 10px 5px 5px;
+  }
+  ul#options li, div.contentPadding {
+    padding: 5px;
+    p {
+      margin: 0;
+    }
+    h6 {
+      padding: 3px 0;
+      font-weight: bold;
+      font-size: 15px;
+    }
+    &.two {
+      background: #eee;
+    }
+    em {
+      margin-top: 10px;
+      display: block;
+      font-style: normal;
+      font-weight: bold;
+    }
+    p span {
+      font-weight: bold;
+    }
+  }
+  ul#privacyLinks {
+    padding: 0 5px;
+    li {
+      em {
+        font-style: normal;
+        font-weight: bold;
+      }
+      padding: 3px 0;
+      display:block;
+    }
+  }
+  ul#paymentSteps {
+    padding: 10px;
+    li {
+      display: inline;
+      list-style-type: none;
+      font-size: 16px;
+      font-weight: normal;
+      color: #CCC;
+      font-family: arial, verdana, lucida, san-serif;
+    }
+    li.selected {
+      color: #C00;
+    }
+  }
+  .cardHeader {
+    @include grey_card_header();
+    sup {
+      font-size: 10px;
+    }
+  }
+  .paymentContent, .paymentOptions {
+    padding: 10px 10px 0;
+    form {
+      display: inline-block;
+    }
+    p.large {
+      padding-top: 12px;
+      span {
+        font-weight: bold;
+      }
+    }
+    fieldset {
+      padding: 10px 0;
+      div.rows {
+        font-weight: bold;
+        padding: 4px 0;
+        label {
+          display: inline-block;
+          width: 140px;
+        }
+        .normal {
+          font-weight: normal;
+        }
+      }
+    }
+    button {
+      padding: 0;
+      text-decoration: underline;
+      background: transparent;
+      border: none;
+      font-size: 13px;
+      width: auto !important;
+    }
+    .confirmationInfo h5 span {
+      color: red;
+    }
+    fieldset {
+      h5 {
+        font-weight: bold;
+        padding-bottom: 5px;
+      }
+      .radioRow {
+        line-height: 22px;
+        label {
+          display: inline-block;
+          width: 200px;
+          font-size: 13px;
+        }
+        div {
+          display: inline-block;
+          text-align: right;
+          input {
+            width: 50px;
+            padding: 0;
+          }
+          &.amount {
+            width: 80px;
+          }
+          &.amountError {
+            width: 22px;
+          }
+        }
+      }
+      .mCheckingClone {
+        display: none;
+      }
+    }
+  }
+  .btnContainer {
+    margin: 10px 5px 50px;
+    #submitBtn, #continueBtn {
+      @include red_button();
+      float: right;
+      margin: 10px 30px;
+    }
+  }
+  .yui3-widget-bd {
+    div.ovlContent {
+      h4 {
+        font-weight: bold;
+      }
+      span.bold {
+        font-weight: bold;
+      }
+      p {
+        font-size: 12px;
+        padding-bottom: 10px;
+      }
+      div.paymentsContainer {
+        font-size: 10px;
+      }
+      button.secondaryBtnS {
+        @include gray_button();
+        margin: 5px;
+        float: right;
+      }
+      table.payments {
+        thead {
+          background-color: #CCC;
+          text-transform: capitalize;
+          font-weight: bold;
+        }
+        tr {
+          td {
+            border-bottom-style: dotted;
+            border-bottom-width: 1px;
+            border-color: #999;
+          }        
+          td:nth-of-type(4) {
+            font-weight: bold;
+            font-size: 12px;
+          }
+          button.secondaryBtnS{
+             padding: 6px 10px;
+          }
+        }
+      }
+    }
+  }
+  .yui3-overlay {
+    
+    .yui3-widget-hd {
+      height:27px;
+      .closeIcon {
+        float: right;
+        margin: 5px;
+        background: url(../../images/css/close_btn.png) no-repeat;
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .yui3-widget-bd {
+      margin: 10px;
+      div#bubbleContent {
+        a.download {
+          display:none;
+        }
+        p.viewStatementText {
+          font-size: 12px;
+        }
+        p.viewStatementText:nth-of-type(2) {
+          display:none;
+        }
+      }
+      div#vsList {
+        padding: 10px 0;
+        button.secondaryBtnL {
+          @include gray_button();
+          margin: 5px;
+        }
+      }
+    }
+  }
+  p.payment {
+    margin: 0 10px;
+  }
+  a.whyLink {
+    margin: 10px 0 10px 10px;
+  }
+  div.cardContainer {
+    div.accountLeft {
+      margin: 10px;
+    }
+ 
+    div.accountsContent {
+      div.accountBalance {
+       
+       > div.right {
+          width: inherit !important;
+          padding-bottom:10px;
+        >   div.hdrColumn {
+              clear: both;
+              margin-top:10px;
+              padding-top:10px;
+              border-top:1px dashed #ddd;
+            }
+          div.btnContainer {
+            margin: 0px;
+          }
+          button.buttonLink {
+            margin: 5px 0;            
+            background: transparent;
+            border: 0px;
+            text-decoration: underline;
+            font-size:15px;
+            display:block;
+          }
+          button.primaryBtnL {
+            @include red_button();
+            font-weight: bold;
+            margin: 5px 0 !important;
+          }
+          div.hdrColumn {
+            font-weight:bold;
+            span > a {
+              font-weight:normal;
+            }
+            button.linkSubmit {
+              @include gray_button();
+              margin: 10px 0;
+              font-weight: bold;
+            }      
+          }
+        }
+      }
+      span {
+        clear:right;
+      }
+      span.emphasize {
+        font-weight: bold;
+        display:block;
+      }
+    }
+  }
+  div#bubblePointer {
+    left: inherit !important;
+  }
+  div.recentActivityExpand {
+    height: 0px;
+    padding-top: 10px;
+    /*height:auto !important;*/
+    div.recentActivityDiv {
+      padding:0;
+      > p, > div {
+        padding:10px;
+      }
+      > h5 {
+        padding: 10px;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7e7e7e), color-stop(65%, #7e7e7e), color-stop(100%, #5e5e5e));
+        background-color: #5E5E5E;
+        font-size: 17px;
+        text-transform: capitalize;
+        color: #fff;
+        display: block;
+        text-align: left;
+        border-top: 1px solid #ddd;
+        line-height: 100%;
+        -webkit-border-radius:5px 5px 0 0;
+        
+      }
+      div.recentActivityData {
+        h6 {
+          font-size:16px;
+          margin-left:0px;
+        }
+        h6.notransMessage {
+          background-color: #E5E5E5;
+          color: black;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 12px;
+          font-weight: bold;
+          height: 20px;
+          padding: 4px 0 0 15px;
+          text-align: left;
+          text-transform: uppercase;
+        }
+        p {
+          font-size:12px;
+        }
+        table.transactions {
+          thead {
+            font-weight: bold;
+            background-color: #E5E5E5;
+            height: 20px;
+            text-transform: uppercase;
+          }
+          font-size:11px;
+        }
+      }
+      > input.hideActivity {
+        @include gray_button();
+        margin: 5px;
+        float: right;
+      }
+    }
+    img.recentActivityPoint {
+      display:none !important;
+    }
+    
+  }
+
+  a.mv_req_agreement {
+    margin: 5px;
+  }
+  div#localContentContainer {
+    h6 {
+      margin: 5px;
+    }
+    ul#privacyLinks {
+      margin-top:10px;
+    }
+  }
+}

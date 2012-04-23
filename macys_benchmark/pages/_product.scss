@@ -1,0 +1,2935 @@
+#mw_product {
+  .coachProductSalePrice {
+    color: #d27689;
+    margin-left: 8px;
+  }
+  #errImg, #errMsg {
+    display: inline-block;
+  }
+  #errImg img {
+    display: none;
+  }
+  /* need this or else div#lockPanel_mask won't be inserted */
+  .yui-panel-container {
+    visibility: hidden;
+    position: absolute;
+  }
+  #errorMsgPanel_c, #errorMsgPanel {
+    background: white;
+    max-width: 320px;
+    left: 0 !important;
+  }
+ #brandPanelHeaderCloseBtn > img {
+    max-width: 100%;
+  }
+#BVSubmissionParameters, #BVCustomerID {
+  display: none;
+  /* question for sean*/ }
+
+#productLargelayer_c, #macysGlobalLayout > br, br.standard, #productDetailSection > br, #errorTrackingPixel, #bag_buttons br, #loading, #_yuiResizeMonitor {
+  display: none; }
+
+.depthpathContainer > img, .BVRRProductBookmarkingLabel {
+  display: none;
+  /* hide contiune shopping btn on top of the page*/ }
+
+.yui-panel-container {
+  position: absolute; }
+
+#surchargeMsg {
+  font-size: 16px;
+  line-height: 18px;
+  display: block;
+  padding: 5px; }
+
+/*---------breadcrumbs--------*/
+
+.depthpathContainer {
+  > div {
+    overflow: hidden;
+    /*padding: 6px;*/
+    border-bottom: 1px solid #999;
+    -webkit-box-shadow: inset 0px -3px 4px #e5e5e5;
+    margin-bottom: 1px;
+    padding: 8px 10px 8px 30px;
+    font-size: 17px;
+    color: #555; }
+  //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/arrow_left.png) left no-repeat;
+  background: url(../../images/css/arrow_left.png) left no-repeat;
+  border-bottom: 2px solid #555; }
+
+.breadCrumbs {
+  display: none; }
+
+/*--------- product top info------------*/
+
+.mvTopProductInfo {
+  padding: 5px 10px;
+  font-size: 20px;
+  line-height: 130%; }
+
+/*---------image section----------*/
+
+.productImageSection {
+  -webkit-box-shadow: inset 0px -3px 4px #e5e5e5;
+  overflow: hidden;
+  border-bottom: 1px solid #999;
+  padding-bottom: 10px;
+  text-align: center;
+  > img {
+    border: 1px solid #999; } }
+
+/*---------single image product-------------*/
+
+/*----------gallery------------*/
+
+.mvProductImgWrapper .moreView {
+  position: relative;
+  display: inline-block; }
+
+.mvGalleryBtns {
+  position: absolute;
+  top: 45%;
+  width: 100%;
+  z-index: 5; }
+
+.mvGalleryPrevBtn, .mvGalleryNextBtn {
+  border: 1px solid #ccc;
+  display: block;
+  width: 30px;
+  height: 41px;
+  position: relative;
+  opacity: .9;
+  z-index: 5; }
+
+.mvGalleryPrevBtn {
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/big_left_arrow.png) 50% no-repeat;
+  background: white url(../../images/css/big_left_arrow.png) 50% no-repeat;
+  float: left; }
+
+.mvGalleryNextBtn {
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/big_right_arrow.png) 50% no-repeat;
+  background: white url(../../images/css/big_right_arrow.png) 50% no-repeat;
+  float: right; }
+
+.mvProductImg {
+  position: relative;
+  display: inline-block;
+  img {
+    border: 1px solid #ccc; } }
+
+.mvZoom {
+  border: 1px solid #555;
+  position: absolute;
+  z-index: 10; }
+
+/*------ Uranium Styles: Zoom Preview ------*/
+
+[data-ur-zoom-preview-component='container'] {
+  overflow: hidden;
+  position: relative; }
+
+[data-ur-zoom-preview-component='zoom_image'] {
+  position: absolute;
+  z-index: 20;
+  top: 0px;
+  left: 0px;
+  height: auto !important;
+  width: auto !important; }
+
+[data-ur-zoom-preview-component='button'] {
+  z-index: 19;
+  width: 50px;
+  height: 62px;
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/zoom.png) 50% no-repeat;
+  background: white url(../../images/css/zoom.png) 50% no-repeat;
+  position: absolute;
+  left: 2px;
+  bottom: 2px;
+  background-color: #FFF;
+  &.loading {
+    //background: white url(http://dl.dropbox.com/u/3940085/moovweb/clients/macys-contract/images/loading.gif) 50% no-repeat;
+    background: white url(../../images/css/loading.gif) 50% no-repeat;
+    &.loaded {
+      border: 1px solid black;
+      height: 62px;
+      width: auto; } } }
+
+/*.mw_zoom_button.loaded {*/
+
+/*------------swatch-------------*/
+
+.swatchClickable, .largeSwatch {
+  float: left;
+  overflow: hidden; }
+
+#mvSwatchCarousel .largeSwatch {
+  img {
+    width: 40px;
+    height: 40px;
+    margin: 1px;
+    border: 2px solid #999; }
+  img.active {
+    border: 1px solid #222;
+    padding: 2px;
+    margin: 0; } }
+
+.swatches > div > div {
+  overflow: hidden; }
+
+.mvColorControl {
+  overflow: hidden;
+  width: 290px;
+  margin: auto; }
+
+#mvColorText > span {
+  font-weight: bold; }
+
+.mvSwatchesBtns .mvDarkBtn {
+  margin-left: 10px;
+  display: inline-block;
+  letter-spacing: 0px;
+  padding: 4px 6px 5px 6px; }
+
+.mvColorControl .total_count {
+  float: left;
+  padding-top: 12px; }
+
+.mvSwatchesBtns {
+  float: right; }
+
+.mvSwatchesWrapper .swatches {
+  display: inline-block; }
+
+#mvColorText {
+  margin: 0px auto;
+  overflow: hidden;
+  text-align: left;
+  width: 290px; }
+
+/*---- Uranium Styles: Carousel -------*/
+
+#mvSwatchCarousel, *[data-ur-set='carousel'] {
+    text-align: center;
+    position: relative;
+}
+
+*[data-ur-carousel-component='view_container'] {
+    overflow-y: hidden;
+    height: 355px;
+    overflow-x:hidden;
+    width: 290px;
+    margin: 0px auto;
+}
+#moreViews *[data-ur-carousel-component='view_container'] { border:1px solid #999;}
+*[data-ur-carousel-component="button"][data-ur-state="disabled"] {
+  opacity: .3;
+}
+
+*[data-ur-carousel-component="item"] {
+    text-align: center;
+    display: inline-block;
+    float: left;
+    width: 290px;
+}
+
+
+*[data-ur-carousel-component="item"] > img{
+    margin: 0px auto;
+
+}
+
+
+
+/* swatch carousel */
+
+*[data-ur-carousel-component='view_container'].mvSwatchesWrapper {
+  height: 60px;
+}
+
+.mvSwatchesWrapper {
+  width: 290px;
+  margin: 0px auto;
+  overflow: hidden;
+  text-align:left;
+}
+
+*[data-ur-carousel-component='view_container'].mvSwatchesWrapper *[data-ur-carousel-component="item"] {
+    text-align: center;
+    display: inline-block;
+    float: left;
+    width: auto;
+}
+
+.productImageSection .largeSwatch > div {
+  display: none;
+}
+.mvSwatchesWrapper .swatch, .mvSwatchesWrapper .swatchClickable { 
+	padding: 8px 3px;
+	display: inline-block;
+	float: left;
+
+	}
+
+/*------------product options--------------*/
+
+#masterTable {
+  clear: both; }
+
+.mvSizeContainer, .mvColorContainer, .mvQuantityContainer, .mvTypeContainer {
+  float: left;
+  display: inline-block;
+  min-height: 60px;
+  overflow: hidden;
+  font-size: 16px;
+  margin: 10px 25px 0 0; }
+
+.mvSizeContainer a {
+  display: block;
+  padding-top: 10px;
+  text-decoration: underline; }
+
+.mvColorContainer {
+  select, > div {
+    max-width: 160px;
+    clear: both; } }
+
+.mvProOptionLinks {
+  clear: both;
+  overflow: hidden;
+  a {
+    display: inline-block;
+    padding: 10px 20px 0 0;
+    text-decoration: underline;
+    color: #555;
+    font-size: 18px; } }
+
+.mvProOptionLabel {
+  padding: 0 5px 5px 0;
+  float: left; }
+
+#order_detail .mvProOptionWrap {
+  overflow: hidden;
+  clear: both;
+  padding: 5px 15px 10px 15px; }
+
+#masterTable .show {
+  padding: 0 10px 10px 15px;
+  clear: both; }
+
+.mvProOptionWrap select {
+  display: block;
+  clear: both; }
+
+/*-----------product btns and price------------*/
+
+#bag_buttons {
+  margin: 5px 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #efefef), color-stop(70%, #e3e3e3), color-stop(100%, #dbd9d9));
+  -webkit-border-radius: 5px;
+  .standard_prod_pricing_group {
+    > span {
+      display: block;
+      padding-bottom: 5px;
+      font-size: 18px; }
+    .productDetailSale {
+      color: #e70000; } } }
+
+#priceFooter {
+  overflow: hidden;
+  clear: both;
+  text-align: left;
+  a {
+    text-decoration: underline;
+    color: #3A3A39; } }
+
+input {
+  &[value="ADDTOBAG_BUTTON"], &[value="UPDATEBAG_BUTTON"], &[value="ADDANOTHERTOBAG_BUTTON"] {
+    clear: both;
+    display: block; } }
+
+.sa-main {
+  float: left;
+  margin-right: 8px; }
+
+#bag_buttons {
+  input, img {
+    margin-bottom: 8px; } }
+
+.standard_prod_pricing_group {
+  text-align: left; }
+
+/*------------product info-------------*/
+
+#productAttributeDropdown > .productDetailLong, .productCenterSection > .productDetailLong, #productDetailSection > .productDetailLong {
+  padding: 5px 10px 20px 10px;
+  clear: both;
+  overflow: hidden;
+  line-height: 130%; }
+
+.productDetailLong {
+  .mvProductDetailLongText {
+    > .mvPlus {
+      color: #666;
+      float: none;
+      font-size: 14px;
+      display: inline-block;
+      padding-left: 5px;
+      text-decoration: underline; }
+    >.mvPlus.moovweb_open {
+      display: none; } }
+  a {
+    color: #555;
+    text-decoration: underline; } }
+
+.mvProductDetailsTitle + div.productDetailLong > ul.prodInfoList .mvMinus {
+  text-decoration: underline;
+  display: block;
+  color: #666;
+  font-size: 14px; }
+
+.mvProductDetailLongText {
+  overflow: hidden;
+  display: block; }
+
+.mvProductDetailsTitle {
+  padding: 0 10px;
+  font-size: 15px;
+  display: block; }
+
+.mvTopProductInfo .standard_prod_pricing_group {
+  color: #e70000; }
+
+.prod_alt_control {
+  padding: 0 10px 10px 10px;
+  a {
+    color: #666;
+    font-size: 16px;
+    font-weight: bold; } }
+
+.prod_alt_control_link {
+  //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/email.jpg) left no-repeat;
+  background: url(../../images/css/email.jpg) left no-repeat;
+  padding: 10px 10px 10px 40px;
+  display: block; }
+
+.mvProductDetailsTitle, .productDetailLong, #alt_controls {
+  margin: 0 5px; }
+
+/* error message */
+
+#genErrMsgDiv > div {
+  display: inline-block;
+  color: #e70000; }
+
+#errImg {
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macys/alter_red.png) no-repeat 13px 0px;
+  background: white url(../../images/css/alter_red.png) no-repeat 13px 0px;
+  width: 28px;
+  height: 14px;
+  vertical-align: top; }
+
+#errMsg {
+  width: 80%; }
+
+#genErrMsgDiv {
+  padding-bottom: 10px; }
+
+#errMsgDiv {
+  display: none; }
+
+/*-------- Reviews---------*/
+
+#BVCustomerRatings {
+  text-align: right;
+  .BVRRRootElement {
+    overflow: hidden;
+    padding: 0 10px 10px 10px; } }
+
+#BVCustomerRatings {
+  .BVRRRatingSummaryRatings {
+    float: left; }
+  .BVRRSocialBookmarkingLinks {
+    img {
+      width: 23px;
+      height: 23px; }
+    display: inline-block;
+    padding: 0; }
+  .BVDI_SBFacebookLikeButtonContainer {
+    display: inline-block;
+    padding: 0; } 
+    }
+    
+//style for facebook link btn
+//#BVCustomerRatings .BVDI_SBFacebookLikeButtonContainer {
+//  width: 80px;
+//  vertical-align: middle; }
+
+.BVRRRatingNormalImage, .BVRRRatingNormalOutOf {
+  display: inline-block; }
+
+.BVRRContentReview {
+  background: #efefef;
+  padding: 10px;
+  margin: 10px 5px; }
+
+.BVRRSocialBookmarkingLinks {
+  padding: 10px 0; }
+
+.BVRRHidden, .BVDI_PS.BVDI_PSPopin, .BVRRUserNicknameReadReviewsContainer, .BVRRRatingSummaryLinks, .BVRRUserNicknameContainer > .BVRRUserLocationContainer, .BVDI_PSSpacer, #BVRRDisplayContentTitleID, .BVRRRatingsHistogramButtonScript > img {
+  display: none; }
+
+.BVRRHistogramBarRow {
+  overflow: hidden;
+  padding: 5px 0; }
+
+.BVRRHistogramBar {
+  webkit-box-shadow: rgba(0, 0, 0, 0.496) -1px 1px 2px inset, rgba(250, 250, 250, 0.496) -1px -1px 4px inset;
+  background: -webkit-gradient(linear, 0% 0%, 0% 23%, from(#aaaaaa), to(#eeeeee));
+  border: 1px inset #ccc;
+  display: inline-block;
+  height: 14px;
+  margin: 0px 5px;
+  width: 200px; }
+
+.BVRRHistogramFullBar {
+  background: #e70000 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f71848), to(#a00c01));
+  height: 14px; }
+
+.BVRRHistogramBarRow > span {
+  font-size: 11px;
+  display: inline-block; }
+
+.BVRRHistStarLabel {
+  width: 40px; }
+
+.BVRRRatingSummaryCount {
+  display: none; }
+
+#BVCustomerRatings {
+  .BVRRRatingSummaryRatings > .BVRRRatingsHistogramButton, .BVRRSecondaryRatingsContainer, .BVRRBuyAgainContainer, .BVRRCustomPromotion, .BVRRRatingNormalOutOf, .BVRRLabel.BVRRRatingNormalLabel {
+    display: none; } }
+
+.BVRRRatingSlider > div {
+  display: inline-block;
+  font-size: 11px; }
+
+.yui-panel-container {
+  position: absolute;
+  //visibility: hidden;
+  z-index: 101;
+  top: 0; }
+
+.yui-hidden, .hidden {
+  display: none; }
+
+.mvShinnyBlackBar {
+  background: black -webkit-gradient(linear, 0% 0%, 0% 100%, from(#45484d), to(black));
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #222;
+  color: white;
+  padding: 10px;
+  text-shadow: black 0px -1px 0px;
+  font-size: 15px; }
+
+#BVRRDisplayContentLinkWriteID {
+  overflow: hidden;
+  a {
+    display: inline-block;
+    -webkit-border-radius: 4px;
+    padding: 5px;
+    color: white;
+    text-align: center;
+    line-height: 100%;
+    float: right;
+    text-transform: lowercase;
+    font-weight: bold;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e30404), color-stop(60%, #9f0100), color-stop(100%, #733132)); } }
+
+#BVRRDisplayContentHeaderID {
+  overflow: hidden; }
+
+.BVRRNickname, .BVRRValue {
+  font-weight: bold; }
+
+.BVRRNickname {
+  padding-left: 10px;
+  display: inline-block; }
+
+.BVRRRatingNormalImage {
+  display: inline-block; }
+
+.BVRRRatingNormalOutOf {
+  display: inline-block;
+  padding-top: 2px; }
+
+.BVRRReviewRatingsContainer {
+  padding-bottom: 10px; }
+
+.BVRRReviewDisplayStyle3Main {
+  background: #fff;
+  padding: 10px;
+  margin-top: 10px; }
+
+.BVRRUserLocationContainer, .BVRRContextDataContainer > div {
+  padding: 3px 0; }
+
+.BVRRReviewDetailsContainer {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc; }
+
+.BVRRReviewDate {
+  font-size: 11px;
+  font-weight: normal;
+  color: #666666;
+  padding: 5px 0 10px 0;
+  display: block; }
+
+.BVRRReviewFeedbackLinksContainer {
+  font-weight: bold;
+  padding-top: 10px; }
+
+.BVRRReviewBookmarkingLabel {
+  font-weight: bold;
+  padding: 10px 0 5px 0; }
+
+.BVRRPagerArrows, .BVRRPageLink > a, .BVRRSelectedPageNumber {
+  display: inline-block;
+  padding: 10px; }
+
+.BVRRProductBookmarkingLabel {
+  font-weight: bold;
+  padding-bottom: 5px; }
+
+.BVRRReviewFeedbackLinkActive {
+  padding: 0 10px; }
+
+#BVRRDisplayContentSortID select {
+  width: 150px;
+  display: inline-block; }
+
+#BVRRDisplayContentHeaderID {
+  padding: 10px 5px;
+  overflow: hidden; }
+
+.BVRRSocialBookmarkingSharingLink {
+  display: inline-block;
+  padding-left: 10px; }
+
+.BVRRSocialBookmarkingSharingLinkMySpace, #BVCustomerRatings .BVRRRatingSummaryNoReviews {
+  display: none; }
+
+.BVRRReviewFeedbackLinkInappropriate a {
+  color: #3A3A39;
+  text-decoration: underline;
+  font-weight: normal;
+  display: block;
+  padding-top: 10px; }
+
+.BVRRTop1ContributorGraphic, .BVRRTop10ContributorGraphic, .BVRRTop25ContributorGraphic, .BVRRTop50ContributorGraphic, .BVRRTop100ContributorGraphic, .BVRRTop250ContributorGraphic, .BVRRTop500ContributorGraphic, .BVRRTop1000ContributorGraphic {
+  background-position: 0 0; }
+
+.BVRRReviewBadgeGraphic {
+  height: 23px;
+  margin: 10px 0;
+  width: 142px; }
+
+.BVRRTop1ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_1_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/1.gif) no-repeat; }
+
+.BVRRTop10ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_10_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/10.gif) no-repeat; }
+
+.BVRRTop25ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_25_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/25.gif) no-repeat; }
+
+.BVRRTop50ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_50_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/50.gif) no-repeat; }
+
+.BVRRTop100ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_100_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/100.gif) no-repeat; }
+
+.BVRRTop250ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_250_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/250.gif) no-repeat; }
+
+.BVRRTop500ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_500_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/500.gif) no-repeat; }
+
+.BVRRTop1000ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_1000_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/1000.gif) no-repeat; }
+
+.BVRRReviewDisplayStyle3Main {
+  .BVRRTop1ContributorBadge, .BVRRTop10ContributorBadge, .BVRRTop25ContributorBadge, .BVRRTop50ContributorBadge, .BVRRTop100ContributorBadge, .BVRRTop250ContributorBadge, .BVRRTop500ContributorBadge, .BVRRTop1000ContributorBadge {
+    display: none; }
+  .BVRRFeaturedGraphic {
+    //background: url(http://reviews-cdn.macys.com/macys/include/featured-icon.gif) no-repeat; } }
+    background: url(../../images/css/contributor/featured.gif) no-repeat; } }
+
+.BVRRReviewPhotoSection, .BVRRPhotoSection {
+  display: none; }
+
+/*---------------hide facebook like comments--------------*/
+
+.fb_edge_comment_widget {
+  display: none !important; }
+
+/* add bag popup*/
+
+.divCart_header {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fcfcfc), color-stop(100%, #cecece));
+  -webkit-border-radius: 5px 5px 0 0;
+  border-bottom: 1px solid #ccc; }
+
+.divCart_itemHeader {
+  margin-left: 10px;
+  color: #E70000;
+  font-weight: bold;
+  padding: 12px 0 8px 20px; }
+
+#innerlayer .divCart_itemHeader {
+  //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/redBag_icon.png) 0px 50% no-repeat; }
+  background: url(../../images/css/redBag_icon.png) 0px 50% no-repeat; }
+
+.divCart_itemHeader .atb_linked {
+  text-decoration: underline; }
+
+.outer {
+  background-color: white;
+  display: none;
+  left: 0px;
+  opacity: 0.8;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 1001; }
+
+#innerlayer {
+  height: auto;
+  position: absolute;
+  top: 50px;
+  z-index: 1012;
+  margin: 0 4%;
+  width: 90%;
+  -webkit-border-radius: 5px;
+  -webkit-box-shadow: #555 0px 0px 6px;
+  background: #f1f1f1; }
+
+.topshadow {
+  line-height: 160%; }
+
+.atb_con_img_td {
+  float: left;
+  width: 80px;
+  display: block;
+  padding-bottom: 10px; }
+
+.atb_con_price_td {
+  max-width: 180px; }
+
+.mvItemTotal {
+  clear: both;
+  overflow: hidden;
+  padding-top: 5px;
+  border-top: 1px dotted #ddd; }
+
+.atb_con_img_div {
+  float: left;
+  img {
+    width: 89px;
+    border: 1px solid #DDD;
+    margin: 10px; } }
+
+.divCart_item {
+  overflow: hidden;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(95%, white), color-stop(99%, #f1f0f0), color-stop(100%, #dedede));
+  border-bottom: 1px solid #c2c2c2; }
+
+#innerlayer .divCart_itemInfo {
+  float: left;
+  width: 60%;
+  padding: 10px 5px 10px 0; }
+
+.atb_item_text {
+  font-weight: bold; }
+
+#contentWrap .divCart_bottom {
+  padding: 10px; }
+
+.divCart_bottom.leftCol {
+  overflow: hidden; }
+
+.atb_sub {
+  display: block;
+  padding-top: 5px;
+  font-weight: bold; }
+
+.divCart_button {
+  padding-bottom: 10px;
+  overflow: hidden;
+  a {
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+    overflow: hidden; }
+  img {
+    float: none !important; } }
+
+.savedPrice {
+  padding: 5px 0;
+  color: #e70000;
+  font-weight: bold; }
+
+#innerlayer {
+  .unitPriceColorLabel, .promoDiscount, .promoPrice {
+    color: #e70000; } }
+
+#innerlayer {
+ .unitPriceColorLabel {
+    display: block; }
+  .promoPrice {
+    font-weight: bold; } }
+   
+/*-------------------add registry to bag-------------------*/
+
+#addToRegistryModal_c {
+  left: 0 !important;
+  width: 100%; 
+  #registryClaim_c {
+    left:0 !important;
+  }
+  #registryClaimForm{
+    padding: 10px;
+    background: white;
+    -webkit-border-radius:5px;
+    -webkit-box-shadow: #555 0px 0px 6px;
+    margin:0 5px;
+    .registryClaimHeader {
+      margin-bottom: 10px;
+      text-align: right;
+    }
+    .registryClaimHeader1 {
+      color:#e70000;
+      font-weight:bold;
+      padding-bottom:5px;
+      font-size:17px;
+    }
+    .registryClaimButtons {
+      margin-top:10px;
+      font-size:12px;
+      input {
+        -webkit-appearance: none;
+        background: #EF0000;
+        border-bottom-left-radius: 5px 5px;
+        border-bottom-right-radius: 5px 5px;
+        border: none;
+        border-top-left-radius: 5px 5px;
+        border-top-right-radius: 5px 5px;
+        color: white;
+        margin: 5px 0px 10px 0;
+        padding: 5px;
+      }
+    }
+  }
+  }
+
+#addToRegistryModal {
+  height: auto;
+  top: 50px;
+  z-index: 1012;
+  margin: 0 4%;
+  width: 90% !important;
+  -webkit-border-radius: 5px;
+  -webkit-box-shadow: #555 0px 0px 6px;
+  background: #f1f1f1;
+  overflow: hidden; }
+
+#addToRegistryModal {
+  .divCart_itemHeader {
+    //background: url(http://moovweb-gage.s3.amazonaws.com/yupu/macy2/giftIcon.png) 0px 50% no-repeat; }
+    background: url(../../images/css/giftIcon.png) 0px 50% no-repeat; }
+  .divCart_itemInfo {
+    float: left;
+    width: 60% !important;
+    padding: 10px 5px 10px 0; } }
+
+#loading_mask.mask {
+  background-color: white;
+  left: 0px;
+  opacity: 0.8;
+  position: absolute;
+   }
+
+#addToRegistryModal .registryDivButton input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 16px;
+  width: 200px; }
+
+.divCart_itemInfo {
+  dt, dd {
+    display: inline; } }
+
+/*-------------close bag popup btn---------------*/
+
+.divCart_close > a {
+  float: right;
+  color: #e70000;
+  //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/close_btn.png) no-repeat;
+  background: url(../../images/css/close_btn.png) no-repeat;
+  width: 20px;
+  height: 20px;
+  margin: 8px; }
+
+/*---------- GWP ----------*/
+
+#gwpMessage {
+  padding: 0 10px;
+  a {
+    color: #3A3A39;
+    text-decoration: underline; } }
+
+.divCart_info_GWP_bold {
+  color: #e70000;
+  font-weight: bold; }
+
+/* hide video page */
+
+.pdpAd {
+  display: none; }
+
+/*---------product info accordian--------*/
+
+.mvReviewBar, .mvProductDetailWrapper .pdpTabLabel {
+  text-transform: capitalize;
+  display: block;
+  overflow: hidden;
+  font-size: 17px;
+  line-height: 35px;
+  padding: 0 10px;
+  -webkit-box-shadow: #cccccc 0px -3px 5px inset;
+  background: #EFEFEF; }
+
+.mvReviewBar {
+  border-top: 1px solid #999; }
+
+.moovweb_open.mvReviewBar {
+  border-bottom: 1px solid #ccc; }
+
+.mvProductDetailWrapper {
+  .moovweb_open .pdpTabLabel {
+    border-bottom: 1px solid #ccc; }
+  a {
+    background: none;
+    padding: 0px;
+    display: inline;
+    text-decoration: underline; }
+  border-top: 1px solid #999;
+  overflow: hidden; }
+
+#bizaar_rating, .mvProductDetailWrapper .tabContent {
+  -webkit-box-shadow: inset 0px -3px 4px #e5e5e5;
+  overflow: hidden; }
+
+.prodInfoList {
+  padding: 10px 10px 10px 30px;
+  line-height: 150%; }
+
+#pdpInfoTab2_content br {
+  display: none; }
+
+.tabsPanel {
+  border-bottom: 1px solid #999; }
+
+/*-------------bonus and special offers --------------*/
+
+.mvOfferItemsWrapper {
+  overflow: hidden;
+  padding: 10px;
+  border-top: 1px solid #999;
+  -webkit-box-shadow: inset 0px -3px 5px #cccccc;
+  b {
+    color: #e70000;
+    display: block;
+    padding-bottom: 5px; } }
+
+.tabContent > div > div.mvOfferItemsWrapper:first-child {
+  border-top: none; }
+
+.mvOfferItemsWrapper .productThumb.productThumbBorder {
+  float: left; }
+
+.mvOfferDesc {
+  float: left;
+  a {
+    display: block;
+    text-decoration: none; }
+  .standard {
+    color: #444; } }
+
+.mvOffeDesc a.productThumbBonusDesc {
+  text-decoration: none; }
+
+.mvOfferDesc {
+  width: 70%; }
+
+.mvOfferItemsWrapper .productThumb.productThumbBorder {
+  width: 75px;
+  img {
+    border: 1px solid #ccc; } }
+
+/*------------Offer product page color popup------------*/
+
+.mvOfferSwatch {
+  display: inline-block;
+  padding: 10px;
+  text-align: center; }
+
+/*-----------------master page start now------------------*/
+
+#masterTableContainer .mvDarkGrayBar {
+  padding: 10px; }
+
+.mvMasterItemWrapper {
+  border-bottom: 1px solid #999;
+  > :last-child {
+    -webkit-box-shadow: inset 0px -3px 4px #e5e5e5;
+    overflow: hidden;
+    display: block; }
+  > div {
+    overflow: hidden;
+    padding: 5px 10px; } }
+
+.mvMasterItemImg {
+  img {
+    border: 1px solid #ccc;
+    width: 67px;
+    &[src*="spacer.gif"] {
+      display: none; } }
+  .swatchBoxContainer .largeSwatch > div {
+    display: none; }
+  width: 77px;
+  text-align: left;
+  float: left; }
+
+#masterTable .mvMasterItemSelector {
+  position: relative;
+  -webkit-box-shadow: inset 0px -3px 4px #e5e5e5;
+  overflow: hidden;
+  padding: 10px;
+  &.moovweb_open {
+    -webkit-box-shadow: none;
+    .largeSwatch {
+      float: none; } } }
+
+.mvMasterItemSelector a {
+  color: #444; }
+
+#masterTable .mvMasterItemSelector.moovweb_open .masterPdpMemberPrice {
+  font-size: 15px; }
+
+.mvMasterItemSelector.moovweb_open {
+  h2.productThumbDesc {
+    font-size: 17px; }
+  .mvMasterItemImg {
+    display: block;
+    text-align: center;
+    float: none;
+    width: auto; }
+  .mvMasterNamePrice {
+    display: block;
+    padding-top: 10px;
+    width: 80%; }
+  .mvMasterItemImg img {
+    width: 290px; } }
+
+.mvMasterNamePrice {
+  float: left;
+  width: 65%;
+  display: inline-block; }
+
+.masterPdpMemberPrice > span {
+  display: block;
+  line-height: 160%; }
+
+.productDetailSale {
+  color: #e70000;
+  font-weight: bold; }
+
+.mvMasterBagBtns#ADDTO_BUTTON {
+  display: inline-block; }
+
+.mvMasterMoreInfoContent {
+  background: #efefef;
+  padding: 10px;
+  .prodInfoList {
+    padding: 0px 10px 0px 30px; } }
+
+.mvMasterMoreInfo {
+  //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/arrow_down_fillgray.png) no-repeat right 50%;
+  background: url(../../images/css/arrow_down_fillgray.png) no-repeat right 50%;
+  display: inline-block;
+  padding-right: 20px;
+  font-size: 16px;
+  &.moovweb_open {
+    margin-bottom: 10px;
+    //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/arrow_up_fillgray.png) no-repeat right 50%; } }
+    background: url(../../images/css/arrow_up_fillgray.png) no-repeat right 50%; } }
+
+.mmCollapsed, .mmExpanded {
+  line-height: 130%; }
+
+.mmCollapsed a, .mmExpanded a {
+  text-decoration: underline;
+  color: #3A3A39; }
+
+.mvMasterCloseInfo img {
+  margin-top: -1px; }
+
+.findItInStore .mvDarkBtn {
+  margin: 5px 0 0 0; }
+
+.mvMasterItemWrapper .swatch-box {
+  > div {
+    float: left;
+    padding-right: 10px;
+    text-align: center;
+    min-height:100px;
+     }
+  .largeSwatch {
+    img {
+      margin-bottom: 3px;
+      width: 50px; }
+    width: 50px;
+    font-size: 12px;
+    margin-bottom: 5px;
+    word-wrap: break-word; } }
+
+.mvMasterItemImg {
+  > .swatchBoxContainer {
+    display: block !important; }
+  .largeSwatch {
+    display: none; } }
+
+#MACYS_OverlayTransparentLayer {
+  z-index: 36 !important; }
+#masterTableContainer .inactiveTabContent .mvMasterTable, #masterTableContainer .tabContent.activeTabContent.mvMasterDefault .mvMasterTable {
+   display:none;
+  }
+#masterTableContainer .activeTabContent .mvDarkGrayBar .mvMinus, #masterTableContainer .tabContent.activeTabContent.mvMasterDefault .mvDarkGrayBar .mvPlus { display:block;}
+#masterTableContainer .activeTabContent .mvDarkGrayBar .mvPlus, #masterTableContainer .tabContent.activeTabContent.mvMasterDefault .mvDarkGrayBar .mvMinus{ display:none;}
+
+/*---------------- product not available ------------*/
+
+#pna {
+  display: none; }
+
+.mvNoProduct {
+  .productCenterSection {
+    display: none; }
+  div.mvNoProductContent {
+    padding: 10px 10px 0 10px; }
+  br {
+    display: none; }
+  div.standard {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #e70000; }
+  a {
+    display: block;
+    padding-bottom: 5px;
+    text-decoration: underline; } }
+
+h1.mvNoProductContent {
+  padding-top: 10px; }
+
+.mvNoProduct {
+  .mvErrorText {
+    padding-top: 10px; }
+  .errorText {
+    display: inline !important;
+    br {
+      display: none; } } }
+
+/*------------coach product-------------*/
+
+.coachfooter {
+  height: 45px;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+  img {
+    width: 100px; }
+  > span {
+    padding: 10px;
+    display: inline-block;
+    float: right; } }
+
+#zoomHrefImage {
+  text-align: center;
+  display: block;
+  > img {
+    border: 1px solid #ccc; } }
+
+.coachproductname {
+  line-height: 160%;
+  padding: 5px 10px;
+  margin-top: 1px;
+  border-top: 2px solid #555;
+  font-size: 16px;
+  h1 {
+    font-weight: bold; } }
+
+#zoomHrefButton {
+  display: none; }
+
+#catalog_pdp_swatches {
+  overflow: hidden;
+  padding: 10px 0; }
+
+.coachmaincontent {
+  padding-top: 5px;
+  div.swatch {
+    overflow: hidden;
+    height: 20px;
+    width: 45px;
+    margin-right: 6px; }
+  .swatchContainer {
+    float: left; }
+  div.swatch img {
+    height: 40px !important;
+    margin: -11px 0 0 -2px;
+    width: 40px !important; }
+  #coach_productImage_border {
+    background: #F6EFE7;
+    padding: 15px;
+    margin: 10px; }
+  .prodInfoList {
+    background: #fff;
+    margin: 0;
+    padding: 10px 0px 0px 20px; } }
+
+.mvCoachInfo {
+  background: #fff;
+  padding: 10px;
+  margin: 10px 0 0 0; }
+
+.mvProductAttribute {
+  overflow: hidden;
+  .productAttribute {
+    float: left;
+    margin-right: 20px; } }
+
+.mvCoachPrice {
+  font-size: 17px;
+  font-weight: bold;
+  padding: 5px 0;
+  overflow: hidden; }
+
+.mvProductAttribute .productAttribute .label {
+  padding-bottom: 5px; }
+
+#bag_buttons_alt_controls input {
+  display: block;
+  margin-bottom: 10px; }
+
+/*---------gift card----------*/
+
+.mvGiftCardForm {
+  .standard {
+    display: block;
+    padding-top: 5px; }
+  input[type="text"], #myPdpGiftMessage input {
+    padding: 5px;
+    margin: 5px;
+    display: block; }
+  form > #bag_buttons {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background: none;
+    -webkit-border-radius: 0px; } }
+    
+#vgc_themed_card {
+  text-align: center; }
+
+/*---------find in store--------*/
+
+#storeav-oy {
+  position: absolute !important;
+  z-index: 100 !important;
+  background: #fff;
+  margin: 0 2%;
+  width: 93% !important;
+  -webkit-box-shadow: #555 0px 0px 6px;
+  -webkit-border-radius: 5px; }
+
+#storeav-oy .ovr-hdr.cfx {
+  border-bottom: 1px solid #999;
+  overflow: hidden;
+  padding: 25px 10px 10px 10px;
+  position: relative; }
+
+#closeFindItInStoreOverlayDiv {
+  position: absolute;
+  right: 10px;
+  top: 5px; }
+
+#prod-data > img {
+  margin: 5px;
+  float: left;
+  border: 1px solid #ddd; }
+
+#prod-ul {
+  display: inline-block;
+  width: 70%;
+  padding: 10px 0; }
+
+.barcode-trk, .print-btn {
+  display: none; }
+
+#ftr-txt-prt {
+  white-space: pre-wrap; }
+
+#locatorForm {
+  padding: 10px 6px;
+  background: #efefef; }
+
+.ovr-bd-out {
+  padding: 10px 5px 5px; }
+
+.label-zip, .label-city, .label-state {
+  width: 50px;
+  display: inline-block; }
+
+#f1City, #f1Zip {
+  width: 70%;
+  padding: 3px 5px; }
+
+#f1State {
+  width: 75%; }
+
+.ovr-infrmb > div, .ovr-infrma {
+  overflow: hidden;
+  padding: 5px 0; }
+
+.ovr-infrmc {
+  overflow: hidden;
+  padding: 5px 0;
+  width: 85%;
+  text-align: center; }
+
+#storeav-oy {
+  .submit-btn.button {
+    display: block;
+    margin: 5px 10px;
+    font-size: 17px;
+    padding: 8px; }
+  .rslt-loc {
+    background: white;
+    margin: 5px 0px;
+    padding: 10px; }
+  .error-msg.cfx {
+    //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macys/alter_red.png) no-repeat 0px 0px;
+    background: url(../../images/css/alter_red.png) no-repeat 0px 0px;
+    display: block;
+    padding-left: 18px;
+    margin: 10px 0;
+    color: #e70000; }
+  h2#stp-ttl {
+    font-weight: bold;
+    a {
+      font-weight: normal;
+      display: block;
+      text-decoration: underline;
+      color: #3A3A39; } } }
+
+#see-prevstrs {
+  display: inline-block;
+  text-decoration: underline;
+  color: #3A3A39; }
+
+#see-nxtstrs {
+  display: inline-block;
+  text-decoration: underline;
+  color: #3A3A39;
+  float: right; }
+
+#cont-frm2 {
+  clear: both;
+  margin-top: 10px; }
+
+.map-n-dir {
+  display: none; }
+
+.mask {
+  position: absolute; }
+
+.mvErrorText .errorText, #localContentContainer > .error-msg {
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macys/alter_red.png) no-repeat 10px 0px;
+  background: white url(../../images/css/alter_red.png) no-repeat 10px 0px;
+  display: block;
+  padding-left: 28px;
+  width: 80% !important; }
+.mvGiftCardForm .mvErrorText .errorText {
+  background:none;
+  padding-left:0;
+  color: #3A3A39;
+  font-weight:bold; 
+}
+#ftr-txt-prt > div {
+  font-weight: bold; }
+
+#storeav-oy {
+  .dp-a {
+    font-weight: bold;
+    color: #e70000;
+    padding-bottom: 10px; }
+ .ovr-bd-in {
+    overflow: hidden; }
+ .d-a > p {
+    padding-top: 5px; }
+  .d-c {
+    color: #e70000; }
+  .d-a > p > b {
+    display: block; }
+  .d-b {
+    font-weight: bold;
+    padding: 10px 0; } }
+
+#localContentContainer > .error-msg {
+  margin: 0 0 10px 4px;
+  color: #e70000; }
+
+#storeav-oy {
+  .submit-btn.button.mvRedBtn.hidden, .error-msg.cfx.hidden {
+    display: none; } }
+
+#err-sp {
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macys/alter_red.png) no-repeat;
+  background: white url(../../images/css/alter_red.png) no-repeat;
+  height: 14px;
+  width: 14px;
+  float: left; }
+
+
+&.mvWarrantyBody {
+  .popupContent.popupContentIni {
+    border-top: none; }
+  .standard > p {
+    padding-bottom: 10px; } }
+
+
+.mvCallTime {
+  display: inline-block;
+  margin: 0 10px 15px 10px;
+}
+
+.mvCallBtnWrapper, .mvCallTime {
+  float: left;
+}
+
+
+.mvVendorContentWidget {
+  margin-top: 10px !important;
+  .Collapsed {
+    display: none; }
+  p > a {
+    display: inline-block;
+    padding: 5px 5px 0 0; } }
+
+#vendorContentWidget > p:first-of-type {
+  font-weight: bold; }
+
+.mvVendorContentWidget .Expanded {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
+}
+
+iframe {
+  display: none !important;
+}
+/*.giftOfferDescription:contains("undefined") {
+  
+  display: none;
+}*/
+
+#mw_product {
+  .coachProductSalePrice {
+    color: #d27689;
+    margin-left: 8px;
+  }
+  #errImg, #errMsg {
+    display: inline-block;
+  }
+  #errImg img {
+    display: none;
+  }
+  /* need this or else div#lockPanel_mask won't be inserted */
+  .yui-panel-container {
+    visibility: hidden;
+    position: absolute;
+  }
+  #errorMsgPanel_c, #errorMsgPanel {
+    background: white;
+    max-width: 320px;
+    left: 0 !important;
+  }
+ #brandPanelHeaderCloseBtn > img {
+    max-width: 100%;
+  }
+#BVSubmissionParameters, #BVCustomerID {
+  display: none;
+  /* question for sean*/ }
+
+#productLargelayer_c, #macysGlobalLayout > br, br.standard, #productDetailSection > br, #errorTrackingPixel, #bag_buttons br, #loading, #_yuiResizeMonitor {
+  display: none; }
+
+.depthpathContainer > img, .BVRRProductBookmarkingLabel {
+  display: none;
+  /* hide contiune shopping btn on top of the page*/ }
+
+.yui-panel-container {
+  position: absolute; }
+
+#surchargeMsg {
+  font-size: 16px;
+  line-height: 18px;
+  display: block;
+  padding: 5px; }
+
+/*---------breadcrumbs--------*/
+
+.depthpathContainer {
+  > div {
+    overflow: hidden;
+    /*padding: 6px;*/
+    border-bottom: 1px solid #999;
+    -webkit-box-shadow: inset 0px -3px 4px #e5e5e5;
+    margin-bottom: 1px;
+    padding: 8px 10px 8px 30px;
+    font-size: 17px;
+    color: #555; }
+  //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/arrow_left.png) left no-repeat;
+  background: url(../../images/css/arrow_left.png) left no-repeat;
+  border-bottom: 2px solid #555; }
+
+.breadCrumbs {
+  display: none; }
+
+/*--------- product top info------------*/
+
+.mvTopProductInfo {
+  padding: 5px 10px;
+  font-size: 20px;
+  line-height: 130%; }
+
+/*---------image section----------*/
+
+.productImageSection {
+  -webkit-box-shadow: inset 0px -3px 4px #e5e5e5;
+  overflow: hidden;
+  border-bottom: 1px solid #999;
+  padding-bottom: 10px;
+  text-align: center;
+  > img {
+    border: 1px solid #999; } }
+
+/*---------single image product-------------*/
+
+/*----------gallery------------*/
+
+.mvProductImgWrapper .moreView {
+  position: relative;
+  display: inline-block; }
+
+.mvGalleryBtns {
+  position: absolute;
+  top: 45%;
+  width: 100%;
+  z-index: 5; }
+
+.mvGalleryPrevBtn, .mvGalleryNextBtn {
+  border: 1px solid #ccc;
+  display: block;
+  width: 30px;
+  height: 41px;
+  position: relative;
+  opacity: .9;
+  z-index: 5; }
+
+.mvGalleryPrevBtn {
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/big_left_arrow.png) 50% no-repeat;
+  background: white url(../../images/css/big_left_arrow.png) 50% no-repeat;
+  float: left; }
+
+.mvGalleryNextBtn {
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/big_right_arrow.png) 50% no-repeat;
+  background: white url(../../images/css/big_right_arrow.png) 50% no-repeat;
+  float: right; }
+
+.mvProductImg {
+  position: relative;
+  display: inline-block;
+  img {
+    border: 1px solid #ccc; } }
+
+.mvZoom {
+  border: 1px solid #555;
+  position: absolute;
+  z-index: 10; }
+
+/*------ Uranium Styles: Zoom Preview ------*/
+
+[data-ur-zoom-preview-component='container'] {
+  overflow: hidden;
+  position: relative; }
+
+[data-ur-zoom-preview-component='zoom_image'] {
+  position: absolute;
+  z-index: 20;
+  top: 0px;
+  left: 0px;
+  height: auto !important;
+  width: auto !important; }
+
+[data-ur-zoom-preview-component='button'] {
+  z-index: 19;
+  width: 50px;
+  height: 62px;
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/zoom.png) 50% no-repeat;
+  background: white url(../../images/css/zoom.png) 50% no-repeat;
+  position: absolute;
+  left: 2px;
+  bottom: 2px;
+  background-color: #FFF;
+  &.loading {
+    //background: white url(http://dl.dropbox.com/u/3940085/moovweb/clients/macys-contract/images/loading.gif) 50% no-repeat;
+    background: white url(../../images/css/loading.gif) 50% no-repeat;
+    &.loaded {
+      border: 1px solid black;
+      height: 62px;
+      width: auto; } } }
+
+/*.mw_zoom_button.loaded {*/
+
+/*------------swatch-------------*/
+
+.swatchClickable, .largeSwatch {
+  float: left;
+  overflow: hidden; }
+
+#mvSwatchCarousel .largeSwatch {
+  img {
+    width: 40px;
+    height: 40px;
+    margin: 1px;
+    border: 2px solid #999; }
+  img.active {
+    border: 1px solid #222;
+    padding: 2px;
+    margin: 0; } }
+
+.swatches > div > div {
+  overflow: hidden; }
+
+.mvColorControl {
+  overflow: hidden;
+  width: 290px;
+  margin: auto; }
+
+#mvColorText > span {
+  font-weight: bold; }
+
+.mvSwatchesBtns .mvDarkBtn {
+  margin-left: 10px;
+  display: inline-block;
+  letter-spacing: 0px;
+  padding: 4px 6px 5px 6px; }
+
+.mvColorControl .total_count {
+  float: left;
+  padding-top: 12px; }
+
+.mvSwatchesBtns {
+  float: right; }
+
+.mvSwatchesWrapper .swatches {
+  display: inline-block; }
+
+#mvColorText {
+  margin: 0px auto;
+  overflow: hidden;
+  text-align: left;
+  width: 290px; }
+
+/*---- Uranium Styles: Carousel -------*/
+
+#mvSwatchCarousel, *[data-ur-set='carousel'] {
+    text-align: center;
+    position: relative;
+}
+
+*[data-ur-carousel-component='view_container'] {
+    overflow-y: hidden;
+    height: 355px;
+    overflow-x:hidden;
+    width: 290px;
+    margin: 0px auto;
+}
+#moreViews *[data-ur-carousel-component='view_container'] { border:1px solid #999;}
+*[data-ur-carousel-component="button"][data-ur-state="disabled"] {
+  opacity: .3;
+}
+
+*[data-ur-carousel-component="item"] {
+    text-align: center;
+    display: inline-block;
+    float: left;
+    width: 290px;
+}
+
+
+*[data-ur-carousel-component="item"] > img{
+    margin: 0px auto;
+
+}
+
+
+
+/* swatch carousel */
+
+*[data-ur-carousel-component='view_container'].mvSwatchesWrapper {
+  height: 60px;
+}
+
+.mvSwatchesWrapper {
+  width: 290px;
+  margin: 0px auto;
+  overflow: hidden;
+  text-align:left;
+}
+
+*[data-ur-carousel-component='view_container'].mvSwatchesWrapper *[data-ur-carousel-component="item"] {
+    text-align: center;
+    display: inline-block;
+    float: left;
+    width: auto;
+}
+
+.productImageSection .largeSwatch > div {
+  display: none;
+}
+.mvSwatchesWrapper .swatch, .mvSwatchesWrapper .swatchClickable { 
+	padding: 8px 3px;
+	display: inline-block;
+	float: left;
+
+	}
+
+/*------------product options--------------*/
+
+#masterTable {
+  clear: both; }
+
+.mvSizeContainer, .mvColorContainer, .mvQuantityContainer, .mvTypeContainer {
+  float: left;
+  display: inline-block;
+  min-height: 60px;
+  overflow: hidden;
+  font-size: 16px;
+  margin: 10px 25px 0 0; }
+
+.mvSizeContainer a {
+  display: block;
+  padding-top: 10px;
+  text-decoration: underline; }
+
+.mvColorContainer {
+  select, > div {
+    max-width: 160px;
+    clear: both; } }
+
+.mvProOptionLinks {
+  clear: both;
+  overflow: hidden;
+  a {
+    display: inline-block;
+    padding: 10px 20px 0 0;
+    text-decoration: underline;
+    color: #555;
+    font-size: 18px; } }
+
+.mvProOptionLabel {
+  padding: 0 5px 5px 0;
+  float: left; }
+
+#order_detail .mvProOptionWrap {
+  overflow: hidden;
+  clear: both;
+  padding: 5px 15px 10px 15px; }
+
+#masterTable .show {
+  padding: 0 10px 10px 15px;
+  clear: both; }
+
+.mvProOptionWrap select {
+  display: block;
+  clear: both; }
+
+/*-----------product btns and price------------*/
+
+#bag_buttons {
+  margin: 5px 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #efefef), color-stop(70%, #e3e3e3), color-stop(100%, #dbd9d9));
+  -webkit-border-radius: 5px;
+  .standard_prod_pricing_group {
+    > span {
+      display: block;
+      padding-bottom: 5px;
+      font-size: 18px; }
+    .productDetailSale {
+      color: #e70000; } } }
+
+#priceFooter {
+  overflow: hidden;
+  clear: both;
+  text-align: left;
+  a {
+    text-decoration: underline;
+    color: #3A3A39; } }
+
+input {
+  &[value="ADDTOBAG_BUTTON"], &[value="UPDATEBAG_BUTTON"], &[value="ADDANOTHERTOBAG_BUTTON"] {
+    clear: both;
+    display: block; } }
+
+.sa-main {
+  float: left;
+  margin-right: 8px; }
+
+#bag_buttons {
+  input, img {
+    margin-bottom: 8px; } }
+
+.standard_prod_pricing_group {
+  text-align: left; }
+
+/*------------product info-------------*/
+
+#productAttributeDropdown > .productDetailLong, .productCenterSection > .productDetailLong, #productDetailSection > .productDetailLong {
+  padding: 5px 10px 20px 10px;
+  clear: both;
+  overflow: hidden;
+  line-height: 130%; }
+
+.productDetailLong {
+  .mvProductDetailLongText {
+    > .mvPlus {
+      color: #666;
+      float: none;
+      font-size: 14px;
+      display: inline-block;
+      padding-left: 5px;
+      text-decoration: underline; }
+    >.mvPlus.moovweb_open {
+      display: none; } }
+  a {
+    color: #555;
+    text-decoration: underline; } }
+
+.mvProductDetailsTitle + div.productDetailLong > ul.prodInfoList .mvMinus {
+  text-decoration: underline;
+  display: block;
+  color: #666;
+  font-size: 14px; }
+
+.mvProductDetailLongText {
+  overflow: hidden;
+  display: block; }
+
+.mvProductDetailsTitle {
+  padding: 0 10px;
+  font-size: 15px;
+  display: block; }
+
+.mvTopProductInfo .standard_prod_pricing_group {
+  color: #e70000; }
+
+.prod_alt_control {
+  padding: 0 10px 10px 10px;
+  a {
+    color: #666;
+    font-size: 16px;
+    font-weight: bold; } }
+
+.prod_alt_control_link {
+  //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/email.jpg) left no-repeat;
+  background: url(../../images/css/email.jpg) left no-repeat;
+  padding: 10px 10px 10px 40px;
+  display: block; }
+
+.mvProductDetailsTitle, .productDetailLong, #alt_controls {
+  margin: 0 5px; }
+
+/* error message */
+
+#genErrMsgDiv > div {
+  display: inline-block;
+  color: #e70000; }
+
+#errImg {
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macys/alter_red.png) no-repeat 13px 0px;
+  background: white url(../../images/css/alter_red.png) no-repeat 13px 0px;
+  width: 28px;
+  height: 14px;
+  vertical-align: top; }
+
+#errMsg {
+  width: 80%; }
+
+#genErrMsgDiv {
+  padding-bottom: 10px; }
+
+#errMsgDiv {
+  display: none; }
+
+/*-------- Reviews---------*/
+
+#BVCustomerRatings {
+  text-align: right;
+  .BVRRRootElement {
+    overflow: hidden;
+    padding: 0 10px 10px 10px; } }
+
+#BVCustomerRatings {
+  .BVRRRatingSummaryRatings {
+    float: left; }
+  .BVRRSocialBookmarkingLinks {
+    img {
+      width: 23px;
+      height: 23px; }
+    display: inline-block;
+    padding: 0; }
+  .BVDI_SBFacebookLikeButtonContainer {
+    display: inline-block;
+    padding: 0; } 
+    }
+    
+//style for facebook link btn
+//#BVCustomerRatings .BVDI_SBFacebookLikeButtonContainer {
+//  width: 80px;
+//  vertical-align: middle; }
+
+.BVRRRatingNormalImage, .BVRRRatingNormalOutOf {
+  display: inline-block; }
+
+.BVRRContentReview {
+  background: #efefef;
+  padding: 10px;
+  margin: 10px 5px; }
+
+.BVRRSocialBookmarkingLinks {
+  padding: 10px 0; }
+
+.BVRRHidden, .BVDI_PS.BVDI_PSPopin, .BVRRUserNicknameReadReviewsContainer, .BVRRRatingSummaryLinks, .BVRRUserNicknameContainer > .BVRRUserLocationContainer, .BVDI_PSSpacer, #BVRRDisplayContentTitleID, .BVRRRatingsHistogramButtonScript > img {
+  display: none; }
+
+.BVRRHistogramBarRow {
+  overflow: hidden;
+  padding: 5px 0; }
+
+.BVRRHistogramBar {
+  webkit-box-shadow: rgba(0, 0, 0, 0.496) -1px 1px 2px inset, rgba(250, 250, 250, 0.496) -1px -1px 4px inset;
+  background: -webkit-gradient(linear, 0% 0%, 0% 23%, from(#aaaaaa), to(#eeeeee));
+  border: 1px inset #ccc;
+  display: inline-block;
+  height: 14px;
+  margin: 0px 5px;
+  width: 200px; }
+
+.BVRRHistogramFullBar {
+  background: #e70000 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f71848), to(#a00c01));
+  height: 14px; }
+
+.BVRRHistogramBarRow > span {
+  font-size: 11px;
+  display: inline-block; }
+
+.BVRRHistStarLabel {
+  width: 40px; }
+
+.BVRRRatingSummaryCount {
+  display: none; }
+
+#BVCustomerRatings {
+  .BVRRRatingSummaryRatings > .BVRRRatingsHistogramButton, .BVRRSecondaryRatingsContainer, .BVRRBuyAgainContainer, .BVRRCustomPromotion, .BVRRRatingNormalOutOf, .BVRRLabel.BVRRRatingNormalLabel {
+    display: none; } }
+
+.BVRRRatingSlider > div {
+  display: inline-block;
+  font-size: 11px; }
+
+.yui-panel-container {
+  position: absolute;
+  //visibility: hidden;
+  z-index: 101;
+  top: 0; }
+
+.yui-hidden, .hidden {
+  display: none; }
+
+.mvShinnyBlackBar {
+  background: black -webkit-gradient(linear, 0% 0%, 0% 100%, from(#45484d), to(black));
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #222;
+  color: white;
+  padding: 10px;
+  text-shadow: black 0px -1px 0px;
+  font-size: 15px; }
+
+#BVRRDisplayContentLinkWriteID {
+  overflow: hidden;
+  a {
+    display: inline-block;
+    -webkit-border-radius: 4px;
+    padding: 5px;
+    color: white;
+    text-align: center;
+    line-height: 100%;
+    float: right;
+    text-transform: lowercase;
+    font-weight: bold;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e30404), color-stop(60%, #9f0100), color-stop(100%, #733132)); } }
+
+#BVRRDisplayContentHeaderID {
+  overflow: hidden; }
+
+.BVRRNickname, .BVRRValue {
+  font-weight: bold; }
+
+.BVRRNickname {
+  padding-left: 10px;
+  display: inline-block; }
+
+.BVRRRatingNormalImage {
+  display: inline-block; }
+
+.BVRRRatingNormalOutOf {
+  display: inline-block;
+  padding-top: 2px; }
+
+.BVRRReviewRatingsContainer {
+  padding-bottom: 10px; }
+
+.BVRRReviewDisplayStyle3Main {
+  background: #fff;
+  padding: 10px;
+  margin-top: 10px; }
+
+.BVRRUserLocationContainer, .BVRRContextDataContainer > div {
+  padding: 3px 0; }
+
+.BVRRReviewDetailsContainer {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc; }
+
+.BVRRReviewDate {
+  font-size: 11px;
+  font-weight: normal;
+  color: #666666;
+  padding: 5px 0 10px 0;
+  display: block; }
+
+.BVRRReviewFeedbackLinksContainer {
+  font-weight: bold;
+  padding-top: 10px; }
+
+.BVRRReviewBookmarkingLabel {
+  font-weight: bold;
+  padding: 10px 0 5px 0; }
+
+.BVRRPagerArrows, .BVRRPageLink > a, .BVRRSelectedPageNumber {
+  display: inline-block;
+  padding: 10px; }
+
+.BVRRProductBookmarkingLabel {
+  font-weight: bold;
+  padding-bottom: 5px; }
+
+.BVRRReviewFeedbackLinkActive {
+  padding: 0 10px; }
+
+#BVRRDisplayContentSortID select {
+  width: 150px;
+  display: inline-block; }
+
+#BVRRDisplayContentHeaderID {
+  padding: 10px 5px;
+  overflow: hidden; }
+
+.BVRRSocialBookmarkingSharingLink {
+  display: inline-block;
+  padding-left: 10px; }
+
+.BVRRSocialBookmarkingSharingLinkMySpace, #BVCustomerRatings .BVRRRatingSummaryNoReviews {
+  display: none; }
+
+.BVRRReviewFeedbackLinkInappropriate a {
+  color: #3A3A39;
+  text-decoration: underline;
+  font-weight: normal;
+  display: block;
+  padding-top: 10px; }
+
+.BVRRTop1ContributorGraphic, .BVRRTop10ContributorGraphic, .BVRRTop25ContributorGraphic, .BVRRTop50ContributorGraphic, .BVRRTop100ContributorGraphic, .BVRRTop250ContributorGraphic, .BVRRTop500ContributorGraphic, .BVRRTop1000ContributorGraphic {
+  background-position: 0 0; }
+
+.BVRRReviewBadgeGraphic {
+  height: 23px;
+  margin: 10px 0;
+  width: 142px; }
+
+.BVRRTop1ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_1_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/1.gif) no-repeat; }
+
+.BVRRTop10ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_10_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/10.gif) no-repeat; }
+
+.BVRRTop25ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_25_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/25.gif) no-repeat; }
+
+.BVRRTop50ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_50_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/50.gif) no-repeat; }
+
+.BVRRTop100ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_100_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/100.gif) no-repeat; }
+
+.BVRRTop250ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_250_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/250.gif) no-repeat; }
+
+.BVRRTop500ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_500_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/500.gif) no-repeat; }
+
+.BVRRTop1000ContributorGraphic {
+  //background: url(http://reviews-cdn.macys.com/macys/include/top_1000_contributor_icon.gif) no-repeat; }
+  background: url(../../images/css/contributor/1000.gif) no-repeat; }
+
+.BVRRReviewDisplayStyle3Main {
+  .BVRRTop1ContributorBadge, .BVRRTop10ContributorBadge, .BVRRTop25ContributorBadge, .BVRRTop50ContributorBadge, .BVRRTop100ContributorBadge, .BVRRTop250ContributorBadge, .BVRRTop500ContributorBadge, .BVRRTop1000ContributorBadge {
+    display: none; }
+  .BVRRFeaturedGraphic {
+    //background: url(http://reviews-cdn.macys.com/macys/include/featured-icon.gif) no-repeat; } }
+    background: url(../../images/css/contributor/featured.gif) no-repeat; } }
+
+.BVRRReviewPhotoSection, .BVRRPhotoSection {
+  display: none; }
+
+/*---------------hide facebook like comments--------------*/
+
+.fb_edge_comment_widget {
+  display: none !important; }
+
+/* add bag popup*/
+
+.divCart_header {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fcfcfc), color-stop(100%, #cecece));
+  -webkit-border-radius: 5px 5px 0 0;
+  border-bottom: 1px solid #ccc; }
+
+.divCart_itemHeader {
+  margin-left: 10px;
+  color: #E70000;
+  font-weight: bold;
+  padding: 12px 0 8px 20px; }
+
+#innerlayer .divCart_itemHeader {
+  //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/redBag_icon.png) 0px 50% no-repeat; }
+  background: url(../../images/css/redBag_icon.png) 0px 50% no-repeat; }
+
+.divCart_itemHeader .atb_linked {
+  text-decoration: underline; }
+
+.outer {
+  background-color: white;
+  display: none;
+  left: 0px;
+  opacity: 0.8;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 1001; }
+
+#innerlayer {
+  height: auto;
+  position: absolute;
+  top: 50px;
+  z-index: 1012;
+  margin: 0 4%;
+  width: 90%;
+  -webkit-border-radius: 5px;
+  -webkit-box-shadow: #555 0px 0px 6px;
+  background: #f1f1f1; }
+
+.topshadow {
+  line-height: 160%; }
+
+.atb_con_img_td {
+  float: left;
+  width: 80px;
+  display: block;
+  padding-bottom: 10px; }
+
+.atb_con_price_td {
+  max-width: 180px; }
+
+.mvItemTotal {
+  clear: both;
+  overflow: hidden;
+  padding-top: 5px;
+  border-top: 1px dotted #ddd; }
+
+.atb_con_img_div {
+  float: left;
+  img {
+    width: 89px;
+    border: 1px solid #DDD;
+    margin: 10px; } }
+
+.divCart_item {
+  overflow: hidden;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(95%, white), color-stop(99%, #f1f0f0), color-stop(100%, #dedede));
+  border-bottom: 1px solid #c2c2c2; }
+
+#innerlayer .divCart_itemInfo {
+  float: left;
+  width: 60%;
+  padding: 10px 5px 10px 0; }
+
+.atb_item_text {
+  font-weight: bold; }
+
+#contentWrap .divCart_bottom {
+  padding: 10px; }
+
+.divCart_bottom.leftCol {
+  overflow: hidden; }
+
+.atb_sub {
+  display: block;
+  padding-top: 5px;
+  font-weight: bold; }
+
+.divCart_button {
+  padding-bottom: 10px;
+  overflow: hidden;
+  a {
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+    overflow: hidden; }
+  img {
+    float: none !important; } }
+
+.savedPrice {
+  padding: 5px 0;
+  color: #e70000;
+  font-weight: bold; }
+
+#innerlayer {
+  .unitPriceColorLabel, .promoDiscount, .promoPrice {
+    color: #e70000; } }
+
+#innerlayer {
+ .unitPriceColorLabel {
+    display: block; }
+  .promoPrice {
+    font-weight: bold; } }
+   
+/*-------------------add registry to bag-------------------*/
+
+#addToRegistryModal_c {
+  left: 0 !important;
+  width: 100%; 
+  #registryClaim_c {
+    left:0 !important;
+  }
+  #registryClaimForm{
+    padding: 10px;
+    background: white;
+    -webkit-border-radius:5px;
+    -webkit-box-shadow: #555 0px 0px 6px;
+    margin:0 5px;
+    .registryClaimHeader {
+      margin-bottom: 10px;
+      text-align: right;
+    }
+    .registryClaimHeader1 {
+      color:#e70000;
+      font-weight:bold;
+      padding-bottom:5px;
+      font-size:17px;
+    }
+    .registryClaimButtons {
+      margin-top:10px;
+      font-size:12px;
+      input {
+        -webkit-appearance: none;
+        background: #EF0000;
+        border-bottom-left-radius: 5px 5px;
+        border-bottom-right-radius: 5px 5px;
+        border: none;
+        border-top-left-radius: 5px 5px;
+        border-top-right-radius: 5px 5px;
+        color: white;
+        margin: 5px 0px 10px 0;
+        padding: 5px;
+      }
+    }
+  }
+  }
+
+#addToRegistryModal {
+  height: auto;
+  top: 50px;
+  z-index: 1012;
+  margin: 0 4%;
+  width: 90% !important;
+  -webkit-border-radius: 5px;
+  -webkit-box-shadow: #555 0px 0px 6px;
+  background: #f1f1f1;
+  overflow: hidden; }
+
+#addToRegistryModal {
+  .divCart_itemHeader {
+    //background: url(http://moovweb-gage.s3.amazonaws.com/yupu/macy2/giftIcon.png) 0px 50% no-repeat; }
+    background: url(../../images/css/giftIcon.png) 0px 50% no-repeat; }
+  .divCart_itemInfo {
+    float: left;
+    width: 60% !important;
+    padding: 10px 5px 10px 0; } }
+
+#loading_mask.mask {
+  background-color: white;
+  left: 0px;
+  opacity: 0.8;
+  position: absolute;
+   }
+
+#addToRegistryModal .registryDivButton input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 16px;
+  width: 200px; }
+
+.divCart_itemInfo {
+  dt, dd {
+    display: inline; } }
+
+/*-------------close bag popup btn---------------*/
+
+.divCart_close > a {
+  float: right;
+  color: #e70000;
+  //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/close_btn.png) no-repeat;
+  background: url(../../images/css/close_btn.png) no-repeat;
+  width: 20px;
+  height: 20px;
+  margin: 8px; }
+
+/*---------- GWP ----------*/
+
+#gwpMessage {
+  padding: 0 10px;
+  a {
+    color: #3A3A39;
+    text-decoration: underline; } }
+
+.divCart_info_GWP_bold {
+  color: #e70000;
+  font-weight: bold; }
+
+/* hide video page */
+
+.pdpAd {
+  display: none; }
+
+/*---------product info accordian--------*/
+
+.mvReviewBar, .mvProductDetailWrapper .pdpTabLabel {
+  text-transform: capitalize;
+  display: block;
+  overflow: hidden;
+  font-size: 17px;
+  line-height: 35px;
+  padding: 0 10px;
+  -webkit-box-shadow: #cccccc 0px -3px 5px inset;
+  background: #EFEFEF; }
+
+.mvReviewBar {
+  border-top: 1px solid #999; }
+
+.moovweb_open.mvReviewBar {
+  border-bottom: 1px solid #ccc; }
+
+.mvProductDetailWrapper {
+  .moovweb_open .pdpTabLabel {
+    border-bottom: 1px solid #ccc; }
+  a {
+    background: none;
+    padding: 0px;
+    display: inline;
+    text-decoration: underline; }
+  border-top: 1px solid #999;
+  overflow: hidden; }
+
+#bizaar_rating, .mvProductDetailWrapper .tabContent {
+  -webkit-box-shadow: inset 0px -3px 4px #e5e5e5;
+  overflow: hidden; }
+
+.prodInfoList {
+  padding: 10px 10px 10px 30px;
+  line-height: 150%; }
+
+#pdpInfoTab2_content br {
+  display: none; }
+
+.tabsPanel {
+  border-bottom: 1px solid #999; }
+
+/*-------------bonus and special offers --------------*/
+
+.mvOfferItemsWrapper {
+  overflow: hidden;
+  padding: 10px;
+  border-top: 1px solid #999;
+  -webkit-box-shadow: inset 0px -3px 5px #cccccc;
+  b {
+    color: #e70000;
+    display: block;
+    padding-bottom: 5px; } }
+
+.tabContent > div > div.mvOfferItemsWrapper:first-child {
+  border-top: none; }
+
+.mvOfferItemsWrapper .productThumb.productThumbBorder {
+  float: left; }
+
+.mvOfferDesc {
+  float: left;
+  a {
+    display: block;
+    text-decoration: none; }
+  .standard {
+    color: #444; } }
+
+.mvOffeDesc a.productThumbBonusDesc {
+  text-decoration: none; }
+
+.mvOfferDesc {
+  width: 70%; }
+
+.mvOfferItemsWrapper .productThumb.productThumbBorder {
+  width: 75px;
+  img {
+    border: 1px solid #ccc; } }
+
+/*------------Offer product page color popup------------*/
+
+.mvOfferSwatch {
+  display: inline-block;
+  padding: 10px;
+  text-align: center; }
+
+/*-----------------master page start now------------------*/
+
+#masterTableContainer .mvDarkGrayBar {
+  padding: 10px; }
+
+.mvMasterItemWrapper {
+  border-bottom: 1px solid #999;
+  > :last-child {
+    -webkit-box-shadow: inset 0px -3px 4px #e5e5e5;
+    overflow: hidden;
+    display: block; }
+  > div {
+    overflow: hidden;
+    padding: 5px 10px; } }
+
+.mvMasterItemImg {
+  img {
+    border: 1px solid #ccc;
+    width: 67px;
+    &[src*="spacer.gif"] {
+      display: none; } }
+  .swatchBoxContainer .largeSwatch > div {
+    display: none; }
+  width: 77px;
+  text-align: left;
+  float: left; }
+
+#masterTable .mvMasterItemSelector {
+  position: relative;
+  -webkit-box-shadow: inset 0px -3px 4px #e5e5e5;
+  overflow: hidden;
+  padding: 10px;
+  &.moovweb_open {
+    -webkit-box-shadow: none;
+    .largeSwatch {
+      float: none; } } }
+
+.mvMasterItemSelector a {
+  color: #444; }
+
+#masterTable .mvMasterItemSelector.moovweb_open .masterPdpMemberPrice {
+  font-size: 15px; }
+
+.mvMasterItemSelector.moovweb_open {
+  h2.productThumbDesc {
+    font-size: 17px; }
+  .mvMasterItemImg {
+    display: block;
+    text-align: center;
+    float: none;
+    width: auto; }
+  .mvMasterNamePrice {
+    display: block;
+    padding-top: 10px;
+    width: 80%; }
+  .mvMasterItemImg img {
+    width: 290px; } }
+
+.mvMasterNamePrice {
+  float: left;
+  width: 65%;
+  display: inline-block; }
+
+.masterPdpMemberPrice > span {
+  display: block;
+  line-height: 160%; }
+
+.productDetailSale {
+  color: #e70000;
+  font-weight: bold; }
+
+.mvMasterBagBtns#ADDTO_BUTTON {
+  display: inline-block; }
+
+.mvMasterMoreInfoContent {
+  background: #efefef;
+  padding: 10px;
+  .prodInfoList {
+    padding: 0px 10px 0px 30px; } }
+
+.mvMasterMoreInfo {
+  //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/arrow_down_fillgray.png) no-repeat right 50%;
+  background: url(../../images/css/arrow_down_fillgray.png) no-repeat right 50%;
+  display: inline-block;
+  padding-right: 20px;
+  font-size: 16px;
+  &.moovweb_open {
+    margin-bottom: 10px;
+    //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/arrow_up_fillgray.png) no-repeat right 50%; } }
+    background: url(../../images/css/arrow_up_fillgray.png) no-repeat right 50%; } }
+
+.mmCollapsed, .mmExpanded {
+  line-height: 130%; }
+
+.mmCollapsed a, .mmExpanded a {
+  text-decoration: underline;
+  color: #3A3A39; }
+
+.mvMasterCloseInfo img {
+  margin-top: -1px; }
+
+.findItInStore .mvDarkBtn {
+  margin: 5px 0 0 0; }
+
+.mvMasterItemWrapper .swatch-box {
+  > div {
+    float: left;
+    padding-right: 10px;
+    text-align: center;
+    min-height:100px;
+     }
+  .largeSwatch {
+    img {
+      margin-bottom: 3px;
+      width: 50px; }
+    width: 50px;
+    font-size: 12px;
+    margin-bottom: 5px;
+    word-wrap: break-word; } }
+
+.mvMasterItemImg {
+  > .swatchBoxContainer {
+    display: block !important; }
+  .largeSwatch {
+    display: none; } }
+
+#MACYS_OverlayTransparentLayer {
+  z-index: 36 !important; }
+#masterTableContainer .inactiveTabContent .mvMasterTable, #masterTableContainer .tabContent.activeTabContent.mvMasterDefault .mvMasterTable {
+   display:none;
+  }
+#masterTableContainer .activeTabContent .mvDarkGrayBar .mvMinus, #masterTableContainer .tabContent.activeTabContent.mvMasterDefault .mvDarkGrayBar .mvPlus { display:block;}
+#masterTableContainer .activeTabContent .mvDarkGrayBar .mvPlus, #masterTableContainer .tabContent.activeTabContent.mvMasterDefault .mvDarkGrayBar .mvMinus{ display:none;}
+
+/*---------------- product not available ------------*/
+
+#pna {
+  display: none; }
+
+.mvNoProduct {
+  .productCenterSection {
+    display: none; }
+  div.mvNoProductContent {
+    padding: 10px 10px 0 10px; }
+  br {
+    display: none; }
+  div.standard {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #e70000; }
+  a {
+    display: block;
+    padding-bottom: 5px;
+    text-decoration: underline; } }
+
+h1.mvNoProductContent {
+  padding-top: 10px; }
+
+.mvNoProduct {
+  .mvErrorText {
+    padding-top: 10px; }
+  .errorText {
+    display: inline !important;
+    br {
+      display: none; } } }
+
+/*------------coach product-------------*/
+
+.coachfooter {
+  height: 45px;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+  img {
+    width: 100px; }
+  > span {
+    padding: 10px;
+    display: inline-block;
+    float: right; } }
+
+#zoomHrefImage {
+  text-align: center;
+  display: block;
+  > img {
+    border: 1px solid #ccc; } }
+
+.coachproductname {
+  line-height: 160%;
+  padding: 5px 10px;
+  margin-top: 1px;
+  border-top: 2px solid #555;
+  font-size: 16px;
+  h1 {
+    font-weight: bold; } }
+
+#zoomHrefButton {
+  display: none; }
+
+#catalog_pdp_swatches {
+  overflow: hidden;
+  padding: 10px 0; }
+
+.coachmaincontent {
+  padding-top: 5px;
+  div.swatch {
+    overflow: hidden;
+    height: 20px;
+    width: 45px;
+    margin-right: 6px; }
+  .swatchContainer {
+    float: left; }
+  div.swatch img {
+    height: 40px !important;
+    margin: -11px 0 0 -2px;
+    width: 40px !important; }
+  #coach_productImage_border {
+    background: #F6EFE7;
+    padding: 15px;
+    margin: 10px; }
+  .prodInfoList {
+    background: #fff;
+    margin: 0;
+    padding: 10px 0px 0px 20px; } }
+
+.mvCoachInfo {
+  background: #fff;
+  padding: 10px;
+  margin: 10px 0 0 0; }
+
+.mvProductAttribute {
+  overflow: hidden;
+  .productAttribute {
+    float: left;
+    margin-right: 20px; } }
+
+.mvCoachPrice {
+  font-size: 17px;
+  font-weight: bold;
+  padding: 5px 0;
+  overflow: hidden; }
+
+.mvProductAttribute .productAttribute .label {
+  padding-bottom: 5px; }
+
+#bag_buttons_alt_controls input {
+  display: block;
+  margin-bottom: 10px; }
+
+/*---------gift card----------*/
+
+.mvGiftCardForm {
+  .standard {
+    display: block;
+    padding-top: 5px; }
+  input[type="text"], #myPdpGiftMessage input {
+    padding: 5px;
+    margin: 5px;
+    display: block; }
+  form > #bag_buttons {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background: none;
+    -webkit-border-radius: 0px; } }
+    
+#vgc_themed_card {
+  text-align: center; }
+
+/*---------find in store--------*/
+
+#storeav-oy {
+  position: absolute !important;
+  z-index: 100 !important;
+  background: #fff;
+  margin: 0 2%;
+  width: 93% !important;
+  -webkit-box-shadow: #555 0px 0px 6px;
+  -webkit-border-radius: 5px; }
+
+#storeav-oy .ovr-hdr.cfx {
+  border-bottom: 1px solid #999;
+  overflow: hidden;
+  padding: 25px 10px 10px 10px;
+  position: relative; }
+
+#closeFindItInStoreOverlayDiv {
+  position: absolute;
+  right: 10px;
+  top: 5px; }
+
+#prod-data > img {
+  margin: 5px;
+  float: left;
+  border: 1px solid #ddd; }
+
+#prod-ul {
+  display: inline-block;
+  width: 70%;
+  padding: 10px 0; }
+
+.barcode-trk, .print-btn {
+  display: none; }
+
+#ftr-txt-prt {
+  white-space: pre-wrap; }
+
+#locatorForm {
+  padding: 10px 6px;
+  background: #efefef; }
+
+.ovr-bd-out {
+  padding: 10px 5px 5px; }
+
+.label-zip, .label-city, .label-state {
+  width: 50px;
+  display: inline-block; }
+
+#f1City, #f1Zip {
+  width: 70%;
+  padding: 3px 5px; }
+
+#f1State {
+  width: 75%; }
+
+.ovr-infrmb > div, .ovr-infrma {
+  overflow: hidden;
+  padding: 5px 0; }
+
+.ovr-infrmc {
+  overflow: hidden;
+  padding: 5px 0;
+  width: 85%;
+  text-align: center; }
+
+#storeav-oy {
+  .submit-btn.button {
+    display: block;
+    margin: 5px 10px;
+    font-size: 17px;
+    padding: 8px; }
+  .rslt-loc {
+    background: white;
+    margin: 5px 0px;
+    padding: 10px; }
+  .error-msg.cfx {
+    //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macys/alter_red.png) no-repeat 0px 0px;
+    background: url(../../images/css/alter_red.png) no-repeat 0px 0px;
+    display: block;
+    padding-left: 18px;
+    margin: 10px 0;
+    color: #e70000; }
+  h2#stp-ttl {
+    font-weight: bold;
+    a {
+      font-weight: normal;
+      display: block;
+      text-decoration: underline;
+      color: #3A3A39; } } }
+
+#see-prevstrs {
+  display: inline-block;
+  text-decoration: underline;
+  color: #3A3A39; }
+
+#see-nxtstrs {
+  display: inline-block;
+  text-decoration: underline;
+  color: #3A3A39;
+  float: right; }
+
+#cont-frm2 {
+  clear: both;
+  margin-top: 10px; }
+
+.map-n-dir {
+  display: none; }
+
+.mask {
+  position: absolute; }
+
+.mvErrorText .errorText, #localContentContainer > .error-msg {
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macys/alter_red.png) no-repeat 10px 0px;
+  background: white url(../../images/css/alter_red.png) no-repeat 10px 0px;
+  display: block;
+  padding-left: 28px;
+  width: 80% !important; }
+.mvGiftCardForm .mvErrorText .errorText {
+  background:none;
+  padding-left:0;
+  color: #3A3A39;
+  font-weight:bold; 
+}
+#ftr-txt-prt > div {
+  font-weight: bold; }
+
+#storeav-oy {
+  .dp-a {
+    font-weight: bold;
+    color: #e70000;
+    padding-bottom: 10px; }
+ .ovr-bd-in {
+    overflow: hidden; }
+ .d-a > p {
+    padding-top: 5px; }
+  .d-c {
+    color: #e70000; }
+  .d-a > p > b {
+    display: block; }
+  .d-b {
+    font-weight: bold;
+    padding: 10px 0; } }
+
+#localContentContainer > .error-msg {
+  margin: 0 0 10px 4px;
+  color: #e70000; }
+
+#storeav-oy {
+  .submit-btn.button.mvRedBtn.hidden, .error-msg.cfx.hidden {
+    display: none; } }
+
+#err-sp {
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macys/alter_red.png) no-repeat;
+  background: white url(../../images/css/alter_red.png) no-repeat;
+  height: 14px;
+  width: 14px;
+  float: left; }
+
+
+&.mvWarrantyBody {
+  .popupContent.popupContentIni {
+    border-top: none; }
+  .standard > p {
+    padding-bottom: 10px; } }
+
+
+.mvCallTime {
+  display: inline-block;
+  margin: 0 10px 15px 10px;
+}
+
+.mvCallBtnWrapper, .mvCallTime {
+  float: left;
+}
+
+
+.mvVendorContentWidget {
+  margin-top: 10px !important;
+  .Collapsed {
+    display: none; }
+  p > a {
+    display: inline-block;
+    padding: 5px 5px 0 0; } }
+
+#vendorContentWidget > p:first-of-type {
+  font-weight: bold; }
+
+.mvVendorContentWidget .Expanded {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
+}
+
+iframe {
+  display: none !important;
+}
+/*.giftOfferDescription:contains("undefined") {
+  
+  display: none;
+}*/

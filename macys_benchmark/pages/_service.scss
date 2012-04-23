@@ -1,0 +1,1163 @@
+.mw_service {
+  #PhoneField {
+    .mw_phone_numbers {
+      display: block;
+      input {
+        display: inline-block;
+        width: 30px;
+      }
+    }
+  }
+  .yui-panel-container {
+    visibility: hidden;
+    position: absolute;
+  }
+  .macysRedText {
+    padding-top: 10px;
+    display: block; }
+  
+  .cssFooter a, #cssPolicies a {
+    color: #3A3A39;
+    text-decoration: underline; }
+  
+  /*------shopping services------*/
+  #doc3 > #bd {
+    margin: 10px;
+  }
+  #globalContentContainer #macysGlobalLayout {
+    padding-top: 10px;
+    #mw_store_links {
+      background-color: #F1F1F1;
+      div {
+        padding: 10px 0px 0px 10px;
+        border-top: 1px #666 solid;
+        margin-top: 10px;
+        a {
+          display: block;
+          padding-bottom: 10px;
+        }
+      }
+      div:last-child {
+        padding-bottom: 20px;
+      }
+    }
+  }
+  
+  /*------page sub title------*/
+  
+  .creditServicesHeading {
+    font-size: 17px;
+    font-weight: bold;
+    color: #e70000;
+    padding: 10px; }
+  
+  /*----------- pay bill ---------------*/
+  
+  &#mvPayBillBody {
+    .mvShadowBox {
+      padding: 0px; }
+    .mvDarkGrayBar {
+      -webkit-border-radius: 6px 0px;
+      border-top: none; }
+    .mvShadowBox .mvDarkGrayBar {
+      padding: 10px; } }
+  
+  /*-------------Quick Pay---------------*/
+  
+  &#mvQuickPayBody {
+  select[name='AccountNumber'] { width:200px !important;}
+    #macysGlobalLayout {
+      padding: 10px 10px 0 10px; }
+    .mvRedTitle span {
+      display: block;
+      color: #444;
+      padding-top: 10px;
+      &.formLabel, &.formBigText {
+        display: inline-block;
+        line-height: 180%; } }
+    textarea[name="Disclosure"] {
+      margin-top: 5px;
+      padding: 5px;
+      height: 200px;
+      width: 94% !important; } 
+      .generalError {
+        background: white url(../../images/css/alter_red.png) no-repeat 10px 10px;
+        border: 1px dotted #DDD;
+        display: block;
+        line-height: 170%;
+        padding: 5px 5px 5px 28px;
+        margin-bottom: 10px; }
+        form[name="EZconfirm_form"] {
+          .errorText {
+            display: block;
+            padding: 10px 0; }
+          input[type="image"] {
+            display: block;
+            margin-top: 10px; } }
+      }
+  
+  form[name="EZselect_form"] {
+    overflow: hidden;
+    margin-bottom: 10px; }
+  
+  &#mvQuickPayBody {
+    #macysGlobalLayout a {
+      color: #3A3A39;
+      text-decoration: underline; }
+    form {
+      overflow: hidden;
+      &[name="EZselect_form"] > div {
+        padding-bottom: 10px; }
+      &[name="EZpay_form"] {
+        .formLabel {
+          display: inline-block;
+          padding: 5px 0; }
+        > div {
+          &:nth-of-type(1) {
+            padding-bottom: 10px; }
+          &:nth-of-type(2), &:nth-of-type(3) {
+            background: #efefef;
+            padding: 10px;
+            overflow: hidden; } }
+        .mvAccountTypeWrapper {
+          .bg_light_gray > div {
+            padding: 5px 0;
+            color: #e70000;
+            > div {
+              color: #3A3A39; } }
+          padding: 5px;
+          border: 1px solid #999;
+          margin-top: 10px; } }
+      margin-bottom: 10px; }
+    .mvCreditAccountTotalWrapper {
+      padding: 10px 0;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #999;
+      > div {
+        padding: 5px 0;
+        > div {
+          color: #e70000; } } }
+    form[name="EZpay_form"] .mvCreditAccountTotalWrapper > div:nth-of-type(1) {
+      font-weight: bold;
+      color: #3A3A39; }
+    label[for="PAYMENT_AMOUNT_TEXTFIELD"] {
+      display: block;
+      padding-bottom: 10px; }
+    form[name="EZpay_form"] img {
+      margin-top: 10px; } }
+  
+  .mvRedBigTitle {
+    color: #e70000;
+    font-size: 19px;
+    padding: 10px 0;
+    border-bottom: 1px solid #999;
+    margin: 0 10px; }
+  
+
+  
+  /*------------------ My Order/ Gift Nav bar---------------------*/
+  
+  .mvPageMenu{
+    margin: -7px 0 0 0;
+    //background: #cccccc url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/arrow_down_fillgray.png) 50% no-repeat; }
+    background: #cccccc url(../../images/css/arrow_down_fillgray.png) 50% no-repeat; }
+  
+  .mvPageMenu.moovweb_open{
+    //background: #eeeeee url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/arrow_up_fillgray.png) 50% no-repeat;
+    background: #eeeeee url(../../images/css/arrow_up_fillgray.png) 50% no-repeat;
+    -webkit-box-shadow: inset 1px 1px 2px 0px #999; }
+  
+  .mvSubTitle a {
+    color: #fff; }
+  
+  .mvMyOrderNav, .mvMyGiftNav {
+    margin: 0 10px;
+    -webkit-border-radius: 0 0 10px 10px;
+    -webkit-box-shadow: #555 1px 1px 4px; }
+  
+  .mvMyOrderNav > .mvWhiteBar, .mvMyGiftNav > .mvWhiteBar {
+    padding-right: 10px; }
+  
+  .mvMyOrderNav > .mvWhiteBar:last-of-type, .mvMyGiftNav > .mvWhiteBar:last-of-type {
+    background: none;
+    border-bottom: none;
+    -webkit-border-radius: 0 0 10px 10px; }
+  
+  /*------------------ My Order( order status and tracking)---------------------*/
+  &.mvMyOrderBody {
+    #panelPopIn_c {
+      position:absolute;
+      top:0;
+    }
+    .vieworderDetail {
+      font-weight:bold;
+      padding:10px;
+    }
+     a.contactDesc {
+       color: #3A3A39;
+       text-decoration:underline;
+     }
+    form[name="signin"] {
+      .toggleOrders {
+        display:none;
+      }
+      .myOrderHistory {
+        padding:10px;
+        font-weight:bold;
+      }
+      .orderHistory {
+        border-top:1px solid #ccc;
+      }
+      #showAllOrdersLink {
+        padding:10px;
+        text-align:right;
+        border-bottom:2px solid #ccc;
+      }
+      div.viewOrderDesc, .indicates, .furnitureHead, .deliveryTime {
+        padding:2px 10px;
+        clear:both;
+        display:block;
+        
+      }
+      .furnitureHead {
+        font-weight:bold;
+      }
+      .primaryBtnM {
+        -webkit-box-shadow: 1px 1px 1px #b3b3b3;
+        background: -webkit-linear-gradient(top, #F81205 0%, #A62C37 50%, #890F0E 52%, #A21007 100%);
+        border: 1px solid;
+        border-color: #cf1f1e #7f0000 #591a1a #cf1f1e;
+        color: white;
+        display: inline-block;
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 2;
+        margin: 5px 0 10px;
+        padding: 0 10px;
+      }
+      > div > div:nth-last-child(3) {
+        -webkit-border-radius: 3px;
+        -webkit-box-shadow: #555 1px 1px 4px;
+        padding: 0 10px;
+        line-height: 1.4;
+        margin: 10px 5px;
+        overflow: hidden;
+        > span > div > div {
+          margin-top: 10px;
+          span:nth-child(4) {
+            display: block;
+          }
+        }
+      }
+      #orderFromDropDown {
+        width: 160px !important;
+      }
+      .orderLabel {
+        display: inline-block;
+        min-width: 125px;
+        font-weight:bold;
+        span.errorText {
+          background: white url(http://localhost:3003/images/css/alter_red.png) no-repeat 0px 50%;
+          padding: 5px 0px 5px 18px;
+        }
+      }
+      #mw_orderNumberPopInLink {
+        border-bottom: 1px dashed black;
+        display: inline-block;
+        margin-left: 130px;
+      }
+      #OrderNumber, #EmailAddress {
+        width: 142px;
+      }
+      a {
+        color: #3A3A39;
+        text-decoration:underline;
+      }
+    }
+    input[name="VIEWORDER_BUTTON"] {
+      -webkit-box-shadow: 1px 1px 1px #b3b3b3;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e30404), color-stop(60%, #9f0100), color-stop(100%, #733132));
+      background-color: #733132;
+      -webkit-border-radius: 5px;
+      border: 1px solid;
+      border-color: #cf1f1e #7f0000 #591a1a #cf1f1e;
+      color: white;
+      font-weight: bold;
+      line-height: 2;
+      margin: 5px 0 10px;
+      padding: 0 10px;
+    }
+    .orderStatus, div.contactDesc, .helpDesc {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .orderStatus {
+      margin-top:10px;
+    }
+    .rn_Content .rn_List {
+      font-size: 16px;
+    }
+   
+    form[name="orderStatusForm"] {
+      > br {
+        display: none;
+      }
+      > div:first-of-type {
+        line-height: 1.5;
+        padding: 10px;
+      }
+      .tabHolder {
+        padding: 10px;
+      }
+      .tabContent > div > div {
+        &:first-child {
+          -webkit-border-radius: 6px;
+          background: #eee;
+          line-height: 1.6;
+          margin: 10px;
+          padding: 10px;
+          br + br:last-child {
+            display: none;
+          }
+        }
+        .mvWhiteBar {
+          border-color: #ddd;
+          border-width: 1px 0 0 0;
+          overflow: hidden;
+          padding: 10px;
+          b, span {
+            float: left;
+          }
+          br {
+            display: none;
+          }
+        }
+        .formFeature {
+          color: red;
+        }
+        .mvShadowBox > span {
+          display: block;
+        }
+      }
+    }
+  }
+ 
+  
+  /*------------- shipping times --------------*/
+  
+  .mvShippingTimes {
+    -webkit-border-radius: 10px;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    > div {
+      &:nth-of-type(2) {
+        background: #eee; }
+      padding: 10px; } }
+  
+  /*-------------Furniture and mattress status ---------------*/
+  
+  &#mvFurnitureBody {
+    .stillHelp a {
+      text-decoration:underline;
+      color: #3A3A39;
+    }
+    .mvTitle span {
+      font-size: 14px; }
+    .mvShadowBox {
+      margin: 0px; }
+    .buttonNonSubmitBorders, .buttonSubmitBorders {
+      -webkit-border-radius: 5px;
+      margin: 10px 10px 0 0;
+      display: inline-block; }
+    .buttonNonSubmitBorders {
+      vertical-align: baseline; }
+    form[name="statusform"] input[type="text"] {
+      width: 180px !important;
+      margin-top: 5px; }
+    .generalError .errorText {
+      //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macys/alter_red.png) no-repeat 5px 10px;
+      background: white url(../../images/css/alter_red.png) no-repeat 5px 10px;
+      line-height: 170%;
+      padding: 5px 5px 5px 23px;
+      border: 1px dotted #DDD;
+      margin-top: 5px;
+      display: block; }
+    form div > .errorText {
+      //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macys/alter_red.png) no-repeat 5px 3px;
+      background: white url(../../images/css/alter_red.png) no-repeat 5px 3px;
+      border: none;
+      padding: 0px 5px 0px 23px;
+      margin-top: 5px;
+      display: block; }
+    #macysGlobalLayout > div > br {
+      display: none;
+    }
+    .arrival {
+      font-weight: bold;
+    }
+    .deliveryDate {
+      margin: 10px 0;
+    }
+    form[name="statusform"] label {
+      font-weight: bold;
+      span {
+        font-weight: normal;
+        padding-left: 6px;
+      }
+    }
+    .formLabel {
+      margin-top: 10px;
+    }
+    #mw_saleCheckPopInLink {
+      border-bottom: 1px dashed black;
+    }
+    a[title="reset"] {
+      margin-right: 20px;
+      > img {
+        vertical-align: baseline;
+      }
+    }
+     .primaryBtnL.submitBtn {
+       @include red_button;
+       padding: 7px 24px;
+     }
+     .secondaryBtnL.resetBtn {
+      display: block;
+      float: left;
+     }
+  }
+  
+  /*--------------Gift cards -----------------------*/
+  
+  &#mvGiftBody {
+    .mvSubTitle a {
+      color: #fff; }
+    h2 {
+      font-weight: bold;
+      font-size: 15px;
+      color: #e70000;
+      padding-top: 10px; }
+    .mvTextHeader {
+      font-weight: bold;
+      padding: 10px 10px 0 10px;
+      font-size: 15px;
+      display: block; }
+    .mvFormBtnContainer > .buttonSubmitBorders {
+      float: left; } }
+  
+  /*------------gift card terms and conditions popup------------*/
+  
+  .mvPopupHeader {
+    border-bottom: 1px solid #999; 
+    padding:5px;}
+  
+  /*-----------activate your card------------*/
+  
+  #myTooltip, #loading_c, #myContext2 {
+    display: none; }
+  
+  .ccActivationForm {
+    > div {
+      padding: 5px;
+      overflow: hidden; 
+      font-weight:bold;
+      }
+    .formLabel {
+      display: block; }
+    input {
+      width: 200px;
+      margin-top: 5px; } }
+  
+  &#mvActivationBody #bd .mvDarkGrayBar {
+    padding: 10px; }
+  
+  .mvCardExample {
+    background: #eee;
+    -webkit-border-radius: 0 0 10px 10px;
+    padding: 6px; }
+  
+  &#mvActivationBody {
+    .generalError {
+      border: 1px solid #E70000;
+      padding: 10px;
+      margin-bottom: 10px; }
+    .mvShadowBox {
+      margin-top: 0px; }
+    &.mvFormBtnContainer {
+      border-top: 1px dotted #666;
+      margin: 0;
+      padding: 10px; }
+      #css_content a {
+    text-decoration: underline;
+    color: #3A3A39; }
+    
+  }
+  /*-------------credit card service-------------*/
+  
+  &#mvCardServiceBody {
+    .mvDarkGrayBar {
+      padding: 10px;
+      border-top: 1px solid #ddd; }
+    .cssContentContainer {
+      border-bottom: 1px solid #ccc; }
+    select[name="RoutingGroup"] {
+      display: block;
+      margin: 5px; } }
+  
+  /*-------------credit card service selections-------------*/
+  
+  &#mvCardServiceSelections {
+    img.buttonNonSubmitBorders {
+      vertical-align: top; }
+    #macysGlobalLayout {
+      padding: 0 10px;
+      > span {
+        display: block;
+        padding: 10px 0; } }
+    &.mvFormLabel2, .formLabel strong {
+      padding: 10px 0 5px 0;
+      display: block; }
+    input[type="text"] {
+      width: 200px; }
+    form[name="contact_email_form"] > select {
+      margin-bottom: 10px;
+      display: block; }
+    textarea[name="Comments"] {
+      width: 250px;
+      margin-bottom: 10px; }
+    &.generalError.errorText {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #e70000; }
+    form[name="contact_email_form"] {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #999;
+      overflow: hidden; } }
+  
+  /*------------------after submit credit card service selections forms-----------------*/
+  
+  &#mvCardServiceFormSubmited .header_bold {
+    font-size: 20px;
+    display: block;
+    padding: 10px 0; }
+  
+  /*-----------credict card landing page-----------*/
+  
+  &#mvMacyCardLanding {
+    #macysNoFlash {
+      display: none; }
+    #disclaimer {
+      padding: 10px;
+      > p {
+        padding: 5px 0;
+        &:last-of-type span {
+          color: #e70000;
+          font-weight: bold; } } } }
+  
+  /*-------------- View credit card Account ----------------*/
+  
+  &#mvViewAccountBody {
+    .accountheader {
+      padding-bottom: 10px;
+      border-bottom: 1px dotted #666;
+      margin-bottom: 10px; }
+    .mvPaymentBtn {
+      margin: 0 5px;
+      display: inline-block; }
+    .mvSubOrderDetails > .mvShadowBox > div > div {
+      display: inline-block; }
+    .account .mvRevolvingTr {
+      padding: 10px 0;
+      border-top: 1px dotted #444;
+      overflow: hidden; }
+    .mvShadowBox .mvRevolvingTr > span:last-of-type {
+      float: right; }
+    .makepayment {
+      padding: 10px; }
+    .accounttype {
+      font-weight: bold;
+      padding-bottom: 10px; } 
+      .redbold {
+        color: #e70000; }
+        #accountheader {
+          padding: 10px; }
+        .accountNo {
+          color: #e70000;
+          padding: 10px;
+          a {
+            text-decoration: underline; } }
+        #transactdetail > .inner {
+          > div > div > span {
+            display: block; }
+          > h3 {
+            color: #e70000;
+            font-weight: bold;
+            padding: 10px 0; }
+          background: #efefef;
+          padding: 10px;
+          margin: 5px;
+          .mvRevolvingTr {
+            padding: 10px 0;
+            border-top: 1px solid #999; } }
+        }
+  
+  #propCardHolderAgreementLink {
+    padding-top: 10px;
+    a {
+      color: #3A3A39;
+      text-decoration: underline; } }
+  
+  #transactdetail a {
+    color: #3A3A39;
+    text-decoration: underline; }
+  
+ 
+  
+  /*------------- Manage Account------------*/
+  
+  &#mvManageAccountBody {
+    .manageCreditNavList a {
+      display: block;
+      padding: 5px 0px;
+      color: #3A3A39;
+      text-decoration: underline; }
+    .mvShadowBox p {
+      border-bottom: 1px dotted #444;
+      padding-bottom: 10px;
+      margin-bottom: 10px; } 
+      .transactdetail {
+        background: #EFEFEF;
+        padding: 10px; }
+      #accountDropdown strong {
+        padding-bottom: 5px; }
+      .manageCreditNavList {
+        padding-top: 15px; }
+      .cssContentContainer {
+        padding: 10px; }
+      .creditServicesDescription br {
+        display: none; }
+      form[name="setCurrentAccount"] {
+        padding-top: 10px; }
+      .cssContentContainer a {
+        color: #3A3A39;
+        text-decoration: underline; }
+      .buttonSubmitBorders {
+        display: block; }
+      .creditServicesDescription {
+        display: inline; }
+        .mvDisputeForm a {
+          color: #e70000; }
+           #termsContainer, .disclaimer, #agreeTermsContainer {
+              padding: 10px 0;
+              line-height: 130%; }
+            h2.terms {
+              float: left;
+              font-weight: bold;
+              margin-right: 10px; }
+            #termsContainer {
+              border-bottom: 1px dotted #444;
+              border-top: 1px dotted #444; }
+            #termsContainer p {
+              margin: 8px 0; }
+              .generalError {
+                margin: 10px 5px 0 5px;
+                 background: white url(../../images/css/alter_red.png) no-repeat 10px 10px;
+                  border: 1px dotted #DDD;
+                  display: block;
+                  line-height: 170%;
+                  padding: 5px 5px 5px 28px; }
+          }
+  
+ 
+  .mvDisputeForm {
+    display: inline; }
+  
+  .creditServicesPrimaryContent > div:nth-of-type(2) {
+    color: #e70000;
+    padding: 10px 0; }
+  
+  
+  /*-----------paper statement--------------*/
+  
+  #paperStatement .instructionHeading {
+    font-weight: bold; }
+  
+  #managePaperStatementsRadioButtons > .radioButton, .TACinstructions {
+    padding: 10px 0; }
+ 
+  
+  /*----------start rewards---------*/
+  
+  // hide 'Apply for your Macy's Card Today' link
+  &#mvAboutCards .mvStarRewardsTop .standard {
+    display: none;
+  }
+  
+  &#mvAboutCards #bd a {
+    text-decoration: underline;
+    color: #3A3A39; }
+  
+  .mvCardItems {
+    overflow: hidden;
+    border-bottom: 1px solid #999;
+    padding: 10px;
+    > div {
+      &:last-child {
+        float: right;
+        width: 60%; }
+      &:first-child {
+        float: left; } } }
+  
+  #sv-cr-xx-xx-overview_disclaimer {
+    padding: 10px; }
+  
+  .mvStarRewardsTop {
+    padding: 10px;
+    h1 {
+      font-weight: bold;
+      padding-top: 10px; }
+    a {
+      display: block; } }
+  
+  .mvCardItems {
+    h3, h2 {
+      color: #e70000;
+      font-weight: bold; } }
+  
+  /*----------- transaction Detail------------*/
+  
+  &#mvTransactionDetail {
+    #macysGlobalLayout {
+      padding: 10px; }
+    .buttonNonSubmitBorders {
+      margin-top: 10px; } 
+      }
+
+
+  /* iHelp */
+  .orderStatus, .deliveryTopics {
+    -webkit-border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: #ddd 2px 2px 3px;
+    margin-bottom: 10px;
+  }
+  .orderHeader, .furnitureHeader {
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FBFBFB), color-stop(65%, #F7F7F7), color-stop(100%, #E8E8E8));
+    color: #c00;
+    font-size: 20px;
+    line-height: 1.8;
+    padding: 0 10px;
+   
+    h2 {
+       display:inline-block;
+     background: url(../../images/icons/icon_help.png) no-repeat right 50%;
+     padding-right:35px;
+    }
+  }
+  .KnowledgeSyndication .rn_Item {
+    overflow: hidden;
+    .rn_Title {
+      float: left;
+      width: 100%;
+    }
+    a {
+      border-bottom: 1px dashed #ccc;
+      display: block;
+      font-size: 14px !important;
+      padding: 10px;
+      color: #3A3A39;
+    }
+    &:last-child a {
+      border-bottom: none;
+    }
+  }
+  .orderFooter, .furnitureFooter {
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FBFBFB), color-stop(65%, #F7F7F7), color-stop(100%, #E8E8E8));
+    border-top: 1px solid #ccc;
+    padding: 6px 10px;
+  }
+  .seeall > a {
+    color: black;
+    -webkit-box-shadow: 1px 1px 1px #ececec;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(50%, #f4f4f4), color-stop(51%, #dcddde), color-stop(100%, #dedfe1));
+    border: 1px solid;
+    border-color: #D6D6D6 #ADADAD #ADADAD #D3D3D3;
+    display: inline-block;
+    line-height: 1.5;
+    padding: 0 10px;
+  }
+  .help, .helpDesc {
+    font-weight: bold;
+    & ~ br {
+      display: none;
+    }
+  }
+}
+/*--------------credit card privacy popup-------------*/
+#mvCreditPrivacy {
+  #DSNB179PRV1010_pageOneWrapper {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      width: 686px;
+  }
+  .font14 {
+      font-size: 14px;
+      line-height: 14px;
+  }
+  .font16 {
+      font-size: 16px;
+      line-height: 16px;
+  }
+
+  .rowOne_leftBox_DSNB179PRV1010 {
+      float: left; 
+      width: 85px; 
+      background-color: #231F20; 
+      padding: 15px 5px 5px 10px; 
+      height: 36px;
+  }
+  .rowOne_leftBox_copy_DSNB179PRV1010{    
+      color: #FFF; 
+      font-size: 22px; 
+      font-weight: bold;
+  }
+
+  .rowOne_rightBox_DSNB179PRV1010 {
+      float: right;   
+      width: 575px; 
+      height: 44px; 
+      padding: 5px; 
+      border-top: 1px solid #000; 
+      border-right: 1px solid #000; 
+      border-bottom: 1px solid #000;
+  }
+  .rowOne_rightBox_copy_DSNB179PRV1010{
+      font-size: 18px;
+      line-height: 20px; 
+      font-weight: bold; 
+      color: #231F20;
+  }
+
+  /* row 2 */
+
+  .rowTwo_leftBox_DSNB179PRV1010 {
+      float: left; 
+      width: 85px; 
+      background-color: #58585A; 
+      padding: 5px 5px 5px 10px; 
+      height: 78px;
+  }
+  .rowTwo_leftBox_copy_DSNB179PRV1010{    
+      color: #FFF; 
+      font-size: 18px; 
+      font-weight: bold;
+  }
+
+  .rowTwo_rightBox_DSNB179PRV1010 {
+      float: right; 
+      width: 575px; 
+      height: 76px; 
+      padding: 5px; 
+      border-top: 1px solid #000; 
+      border-right: 1px solid #000; 
+      border-bottom: 1px solid #000;
+  }
+  .rowTwo_rightBox_copy_DSNB179PRV1010{
+      font-size: 14px; 
+      color: #231F20;
+  }
+
+  /* row 3 */
+
+  .rowThree_leftBox_DSNB179PRV1010 {
+      float: left; 
+      width: 85px; 
+      background-color: #58585A; 
+      padding: 5px 5px 5px 10px; 
+      height: 97px;
+  }
+  .rowThree_leftBox_copy_DSNB179PRV1010 { 
+      color: #FFF; 
+      font-size: 18px; 
+      font-weight: bold;
+  }
+
+  .rowThree_rightBox_DSNB179PRV1010 {
+      float: right; 
+      width: 575px; 
+      height: 95px; 
+      padding: 5px; 
+      border-top: 1px solid #000; 
+      border-right: 1px solid #000; 
+      border-bottom: 1px solid #000;
+  }
+  .rowThree_rightBox_copy_DSNB179PRV1010{
+      font-size: 14px; 
+      color: #231F20;
+  }
+
+  /* row 4 */
+
+  .rowFour_leftBox_DSNB179PRV1010 {
+      float: left; 
+      width: 85px; 
+      background-color: #58585A; 
+      padding: 5px 5px 5px 10px; 
+      height: 78px;
+  }
+  .rowFour_leftBox_copy_DSNB179PRV1010 {  
+      color: #FFF; 
+      font-size: 18px; 
+      font-weight: bold;
+  }
+
+  .rowFour_rightBox_DSNB179PRV1010 {
+      float: right; 
+      width: 575px; 
+      height: 76px; 
+      padding: 5px; 
+      border-top: 1px solid #000; 
+      border-right: 1px solid #000; 
+      border-bottom: 1px solid #000;
+  }
+  .rowFour_rightBox_copy_DSNB179PRV1010 {
+      font-size: 14px; 
+      color: #231F20;
+  }
+
+  /* row 5 */
+
+  .rowFive_leftBox_DSNB179PRV1010 {
+      float: left; 
+      width: 90px; 
+      background-color: #58585A; 
+      padding: 5px; 
+      height: 162px;
+  }
+  .rowFive_leftBox_copy_DSNB179PRV1010{   
+      color: #FFF;
+      font-size: 14px; 
+      font-weight: bold;
+  }
+
+  .rowFive_rightBox_DSNB179PRV1010 {
+      float: right; 
+      width: 575px; 
+      height: 160px; 
+      padding: 5px; 
+      border-top: 1px solid #000; 
+      border-right: 1px solid #000; 
+      border-bottom: 1px solid #000;
+  }
+  .rowFive_rightBox_copy_DSNB179PRV1010{
+      font-size: 14px; 
+      color: #231F20;
+  }
+
+  /* row 6 */
+
+  .rowSix_leftBox_DSNB179PRV1010 {
+      float: left; 
+      width: 90px; 
+      background-color: #58585A; 
+      padding: 5px; 
+      height: 37px;
+  }
+  .rowSix_leftBox_copy_DSNB179PRV1010{    
+      color: #FFF; 
+      font-size: 14px; 
+      font-weight: bold;
+  }
+
+  .rowSix_rightBox_DSNB179PRV1010 {
+      float: right; 
+      width: 575px; 
+      height: 35px; 
+      padding: 5px; 
+      border-top: 1px solid #000; 
+      border-right: 1px solid #000; 
+      border-bottom: 1px solid #000;
+  }
+  .rowSix_rightBox_copy_DSNB179PRV1010{
+      color: #231F20; 
+      font-size: 14px;
+  }
+
+
+  /* table */
+  .tableHeaderCopy_DSNB179PRV1010 {
+      font-size: 17px;
+      line-height: 18px; 
+      font-weight: bold; 
+      color: #FFF;
+  }
+  .cellColOne_DSNB179PRV1010 {
+      width: 403px;
+      float: left;
+      border-bottom: 1px solid #58585A;
+      padding: 3px;
+  }
+  .cellColTwo_DSNB179PRV1010 {
+      width: 129px;
+      float: left;
+      border-left: 1px solid #58585A;
+      border-right: 1px solid #58585A;
+      border-bottom: 1px solid #58585A;
+      padding: 3px;
+  }
+  .cellColThree_DSNB179PRV1010 {
+      width: 132px;
+      float: left;
+      border-bottom: 1px solid #58585A;
+      padding: 3px;
+  }
+  .tableWrapper_DSNB179PRV1010 {
+      border: 1px solid #58585A;
+      height: 261px;
+  }
+  .tableRowOne_DSNB179PRV1010 {
+      height: 65px;
+  }
+  .tableRowTwo_DSNB179PRV1010 {
+      height: 35px;
+  }
+  .tableRowThree_DSNB179PRV1010 {
+      height: 18px;
+  }
+  .tableRowFour_DSNB179PRV1010 {
+      height: 30px;
+  }
+  .tableRowFive_DSNB179PRV1010 {
+      height: 30px;
+  }
+  .tableRowSix_DSNB179PRV1010 {
+      height: 18px;
+  }
+  .tableRowSeven_DSNB179PRV1010 {
+      height: 18px;
+  }
+  .tableCellDivMiddle_DSNB179PRV1010 {
+      border-bottom: 1px solid #58585A;
+      padding: 3px;
+  }
+  #tableHeaderColOne_DSNB179PRV1010 {
+      padding: 10px 5px 0 5px;
+      background-color: #58585A; 
+      height: 39px;
+      float: left;
+      width: 400px;
+  }
+  #tableHeaderColTwo_DSNB179PRV1010 {
+      background-color: #58585A; 
+      height: 39px; 
+      width: 125px; 
+      float: left;
+      padding: 5px;
+      border-left: 1px solid #FFF;    
+  }
+  #tableHeaderColThree_DSNB179PRV1010 {
+      background-color: #58585A; 
+      height: 39px;
+      width: 129px; 
+      float: left;
+      padding: 5px; 
+      border-left: 1px solid #FFF;
+  }
+  #DSNB179PRV1010_pageTwoWrapper {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      width: 686px;
+  }
+
+  .pageTwoHeader_DSNB179PRV1010 {
+      float: left; 
+      width: 125px; 
+      background-color: #231F20; 
+      padding: 2px 5px 5px 10px; 
+      height: 18px;
+  }
+  .pageTwoHeaderCopy_DSNB179PRV1010{  
+      color: #FFF; 
+      font-size: 18px;
+      line-height: 20px; 
+      font-weight: bold;
+  }
+  .pageTwoSubHeader_DSNB179PRV1010 {
+      background-color: #58585A;
+      height: 18px;
+      padding: 2px 5px 5px 10px;
+  }
+  .pageTwoSubHeaderCopy_DSNB179PRV1010 {
+      color: #FFF;
+      font-size: 14px;
+      font-weight: bold;
+  }
+  .colOne_DSNB179PRV1010 {
+      float: left;
+      width: 235px;
+      padding: 5px 5px 5px 10px;
+      border-bottom: 1px solid #58585A;
+  }
+  .colTwo_DSNB179PRV1010 {
+      float: left;
+      width: 418px;
+      padding: 5px 5px 5px 10px;
+      border-left: 1px solid #58585A;
+      border-bottom: 1px solid #58585A;
+  }
+  #pageTwoSectionOne_DSNB179PRV1010 {
+      border-left: 1px solid #58585A;
+      border-right: 1px solid #58585A;
+      height: 41px;
+  }
+  .sectionOneRow_DSNB179PRV1010 {
+      height: 30px;
+  }
+  #pageTwoSectionTwo_DSNB179PRV1010 {
+      border-left: 1px solid #58585A;
+      border-right: 1px solid #58585A;
+      height: 338px;
+  }
+  .sectionTwoRowA_DSNB179PRV1010 {
+      height: 65px;
+  }
+  .sectionTwoRowB_DSNB179PRV1010 {
+      height: 110px;
+  }
+  .sectionTwoRowC_DSNB179PRV1010{
+      height: 130px;
+  }
+  #pageTwoSectionThree_DSNB179PRV1010 {
+      border-left: 1px solid #58585A;
+      border-right: 1px solid #58585A;
+      height: 288px;
+  }
+  .sectionThreeRowA_DSNB179PRV1010 {
+      height: 85px;
+  }
+  .sectionThreeRowB_DSNB179PRV1010 {
+      height: 85px;
+  }
+  .sectionThreeRowC_DSNB179PRV1010 {
+      height: 85px;
+  }
+  #pageTwoSectionFour_DSNB179PRV1010 {
+      border-left: 1px solid #58585A;
+      border-right: 1px solid #58585A;
+      border-bottom: 1px solid #58585A;
+      height: 120px;
+      padding: 5px 5px 5px 10px;
+  }
+  #pageTwoSectionFive_DSNB179PRV1010 {
+      border: 1px solid #58585A;
+      height: 50px;
+      padding: 5px 5px 5px 10px;
+  }
+ .popupTable {
+   margin:50px 10px 10px 10px;
+ }
+}

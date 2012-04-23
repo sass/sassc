@@ -1,0 +1,378 @@
+.mw_writeReview{
+#localContentContainer {
+  p {
+    padding-bottom:15px;
+  }
+  .BVRRInappropriateContentDisclaimer {
+    font-weight: bold;
+    padding-bottom: 15px;
+  }
+ a {
+  color: #3A3A39;
+  text-decoration:underline;  
+}
+}
+#BVRRReviewSubmissionSectionHelpStyle1ID, .BVRRReviewSubmissionPrompt {
+  display: none; }
+
+#BVRRProductInformationID {
+  overflow: hidden;
+   }
+
+#BVRRProductDetailsImageID {
+  float: left;
+  padding-right: 5px; }
+
+.mvReviewItemInfo {
+  width: 170px;
+  float: right;
+  padding-right: 10px; }
+
+.BVRRColumnOne {
+  padding: 10px 0;
+ }
+
+.BVRRColumnOneTitle {
+  padding: 10px 0;
+  font-weight: bold;
+  font-size: 14px; 
+  color:#e70000;}
+
+#bd {
+  background: #fff; }
+
+.BVRRFieldLegend {
+  padding: 10px 0px 5px 0px;
+  margin-top: 15px;
+  border-top: 1px solid #ddd; }
+
+.BVRRSectionHeaderContainer span {
+  color: #E70000;
+  font-size: 14px;
+  text-transform: uppercase;
+  display: block; }
+
+.BVRRFieldFollowingText, #BVRRFieldLabelPhotoInputID, #BVRRReviewTipsListTitle {
+  display: none; }
+
+#BVRRFieldTextAreaReviewTextID {
+  width: 280px !important; }
+.BVRRProductDetailsName {  
+  font-weight: bold;
+  padding-bottom: 10px;
+  }
+/* require */
+
+.BVRRRequiredFieldIndicatorSuffix {
+  display: none; }
+
+.BVRRFieldLabelReviewRecommend, .BVRRFieldLabelReviewReviewtext, .BVRRFieldLabelReviewTitle, .BVRRFieldLabelReviewRating, .BVRRRequiredFieldIndicatorSuffix {
+  background: url(http://reviews-cdn.macys.com/macys/include/required.gif) no-repeat 0px 0px;
+  padding-left: 13px; }
+
+.BVRRRequiredFieldIndicator {
+  color: red;
+  display: none; }
+
+.BVRRColumnMain {
+  padding-left:10px; 
+  overflow:hidden;}
+
+form.BVRRForm > div.BVRRColumnMain:nth-of-type(2) {
+  padding: 0 10px; }
+
+/* star */
+
+#BVRROverallRatingSubmissionContainerID {
+  overflow: hidden; }
+
+.BVRRMetadata {
+  display: none; }
+
+.BVRRRatingStarsPrefix {
+  float: left;
+  padding-right: 0.5em; }
+
+.BVRRWidget div {
+  &.star {
+    background: transparent !important;
+    overflow: hidden !important; }
+  &.cancel a {
+    background-position: 0px 0px;
+    display: block;
+    height: 100%;
+    width: 20px; }
+  &.star {
+    a {
+      background-position: 0px 0px;
+      display: block;
+      height: 100%;
+      width: 20px;
+      background: url(http://reviews-cdn.macys.com/macys/include/ratingStars_star.gif) no-repeat 0px 0px; }
+    background: url(http://reviews-cdn.macys.com/macys/include/ratingStars_star.gif) no-repeat 0px 0px; }
+  &.cancel, &.star {
+    background: transparent;
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 17px;
+    overflow: hidden;
+    text-indent: -999em;
+    width: 20px; }
+  &.star_on a {
+    background-position: 0px -17px !important; } }
+
+.BVRRRatingSubmissionSectionHelpStyle1, #BVRRFieldHelperReviewTitleID, .BVRRSectionCollapsed .BVRRSectionBodyContainer, #BVRRFieldHelperNetPromoterScoreID {
+  display: none; }
+
+/* rate Macy's*/
+
+.BVRRFieldRadioOptionReviewNetPromoterScore {
+  overflow: hidden; }
+
+.BVRRNetPromoterRadioItemContainer {
+  float: left;
+  padding: 5px;
+  text-align: center;
+  width: 15px; }
+
+#BVRRFieldLabelReviewNetpromotercommentID {
+  display: block;
+  margin-right: 10px;
+  padding-bottom: 4px; }
+
+#BVRRNetPromoterSectionHelpStyle1ID {
+  background: #F8F8F8;
+  border: 1px solid #F1F1F1;
+  margin: 10px 0px;
+  padding: 6px; }
+
+.BVRRFieldCheckbox {
+  margin-right: 5px; }
+
+.BVRRRatingStarsLegend {
+  display: inline-block;
+  margin: 3px 0 0 5px; }
+
+#BVRRFieldOverallStarReviewRatingID {
+  padding: 0 0 10px 20px;
+  border-bottom: 1px solid #ddd; }
+
+/* upload photo*/
+
+.BVRRColumnTwo {
+  .BVRRReviewSubmissionSectionHelpStyle1, .BVRRPhotoUploadGuidelinesStyle1 {
+    display: none; } }
+
+/* about yourself*/
+
+.BVRRBasicInformation label {
+  font-size: 12px;
+  font-weight: bold; }
+#BVRRNetPromoterToggleStyle1ID {
+  font-weight:bold;
+}
+.BVRRFieldContainer {
+  label {
+    display: block;
+    margin-right: 10px;
+    padding-bottom: 4px; }
+  margin-bottom: 10px; }
+
+#BVRRReviewerDisplayNameID .BVRRFieldLegend {
+  display: none; }
+
+#BVRRFieldTextReviewTitleID {
+  padding: 3px 5px; }
+
+#BVRRFieldTextReviewUserlocationID {
+  padding: 3px 5px;
+  margin-bottom: 5px; }
+
+/* review bar*/
+
+#BVRRSliderRatingsContainerID {
+  overflow: hidden; }
+
+.BVRRWidget {
+  .ui-slider-handle {
+    background-image: url(http://reviews-cdn.macys.com/macys/include/slider_handle.gif);
+    height: 17px;
+    left: 0px;
+    position: absolute;
+    top: 4px;
+    width: 9px;
+    z-index: 1; }
+  .ui-slider {
+    float: left;
+    margin-top: -3px;
+    background-image: url(http://reviews-cdn.macys.com/macys/include/slider_background.gif);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    height: 23px;
+    position: relative;
+    width: 135px; } }
+
+.BVRRSliderRatingsContainer {
+  .BVRRSliderPrefix, .BVRRSliderSuffix {
+    text-align: right;
+    width: 70px;
+    float: left; } }
+
+.BVRRSliderRatingContainer label, .BVRRSliderLegend {
+  display: none; }
+
+.BVRRRatingBlock {
+  overflow: hidden; }
+
+/* submit */
+
+.BVRRTermsAndConditionsAgreement, #BVRRReviewSubmitFormButtonID {
+  display: none; }
+
+/* recommend friend */
+
+#BVRRFieldRadioButtonReviewRecommendID label {
+  display: inline-block;
+  float: none;
+  font-weight: normal;
+  padding-left: 5px; }
+
+/* divide line */
+
+.BVRRSliderDisplayPrompt {
+  padding: 10px 0px 5px 0px;
+  text-align: left; }
+
+/* viewing review */
+
+.BVRRUserNicknameContainer .BVRRUserLocationContainer {
+  display: none; }
+
+.BVRRPreviewContentHeaderSentenceSubmit {
+  padding-bottom: 5px;
+  font-weight: bold; }
+
+.BVRRSubmitContentHeader {
+  padding: 10px 10px 0px; }
+
+.BVRRPreviewContentHeaderSentence {
+  padding: 3px 0; }
+
+#BVRRDisplayContentReviewID_preview {
+  padding: 10px;
+  -webkit-box-shadow: #555 1px 1px 4px;
+  margin: 10px 10px 0 10px;
+  -webkit-border-radius: 10px; }
+
+.BVRRRatingNormalImage, .BVRRRatingNormalOutOf, .BVRRReviewTitleContainer, .BVRRReviewDateContainer {
+  display: inline-block;
+  padding: 5px 5px 5px 0; }
+
+.BVRRRecommendedContainer, .BVRRReviewDetailsContainer {
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+  border-bottom: 1px dotted #ddd; }
+
+.BVRRAvatar {
+  margin-right: 15px; }
+
+.BVRRUserLocationContainer, .BVRRContextDataContainer > div, .BVRRUserNicknameContainer {
+  padding: 5px 0; }
+
+.BVRRValue {
+  font-weight: bold; }
+
+.BVRRReviewDateContainer {
+  font-weight: normal !important;
+  font-size: 11px;
+  color: #999; }
+
+.BVRRPreviewTermsAndConditionsNotice {
+  padding: 10px 0; }
+
+.BVRRReviewDisplayStyle3Content {
+  font-style: italic; }
+
+/* thanks */
+
+#BVRRSubmittedReviewContentID {
+  padding: 10px; }
+
+.BVRRTitle {
+  font-weight: bold;
+  font-size: 15px;
+  color: #E70000;
+  padding-bottom: 5px; }
+
+.BVRRThankYouContent > div {
+  padding-top: 5px; }
+
+#BVRRReviewThankYouShareThisProductTextID {
+  padding: 10px 0; }
+/*----------company feedback---------*/
+ul.BVRRNetPromoterTipsList, .BVRRTipBoxTips {
+  list-style-type: disc;
+  padding: 10px 20px;
+}
+/* error message */
+
+#BVRRSubmissionErrorID {
+  padding: 10px;
+  border: 1px dashed #E70000;
+  color: #E70000;
+  margin-top: 5px;
+  ul {
+    padding-left: 10px; } }
+.BVRRColumn.BVRRColumnThree {
+  border:1px solid #ddd;
+  padding:10px;
+  margin-top:10px;
+  .BVRRColumnThreeTitle {
+    color:#e70000;
+  }
+  > div:nth-of-type(1),  > div:nth-of-type(2), > div:nth-of-type(3){
+    display:none;
+  };
+}
+
+.BVRRColumnThreeElement a {
+  background: url(http://reviews-cdn.macys.com/macys/include/red-arrow.gif) no-repeat 0px 5px;
+  display: block;
+  font-weight: bold;
+  margin: 6px 0px 15px;
+  padding-left: 8px;
+}
+/* btn*/
+
+.BVRRPreviewButton {
+  margin-top: 10px;
+  display: inline-block; }
+
+/* hided upload photo */
+
+#BVRRPhotoUploadID {
+  display: none; }
+
+/*-------breadcrumb---------*/
+
+.breadCrumbs {
+  overflow: hidden;
+  padding: 6px;
+  border-bottom: 2px solid #444;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(75%, white), color-stop(97%, #f1f0f0), color-stop(100%, #dedede));
+  > .depthPathLinked {
+    float: left;
+    display: block;
+    padding: 0 3px;
+    line-height: 160%; } }
+    
+/*----------error message---------------*/
+input.BVRRError,textarea.BVRRError {
+  border:1px solid #e70000;
+}
+.BVRRFieldError .BVRRFieldLabel, .BVRRCustomPromotionDetails {
+  color:#e70000;
+  font-weight:bold;
+}
+}

@@ -1,0 +1,62 @@
+.mw_home {
+  #bd {
+    display: none;
+  }
+  a {
+    &[name="MOBILE_MB_HP_TOPBANNER1"], &[name="MOBILE_MB_HP_MAINAD"] {
+      display: block; 
+      img {
+        width: 100%;
+      }
+    } 
+  }
+  .mvHomelinks {
+    width: 47%;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 0;
+  }
+  .mvHomeIcons {
+    width: 96%;
+  }
+  a {
+    &[name="MOBILE_MB_HP_SUBAD2"] {
+      float: left;
+      padding-left: 6px; 
+      width: 47%;     
+      display: inline-block;
+      text-align: center;
+      padding: 10px 0;
+      img {
+        width: 96%;
+      }
+    }
+    &[name="MOBILE_MB_HP_SUBAD1"] {
+      float: right;
+      padding-right: 6px;
+      width: 47%;
+      display: inline-block;
+      text-align: center;
+      padding: 10px 0;
+      img {
+        width: 96%;
+      }
+    } 
+  }
+  .mvShadowBox {
+    padding: 0px;
+  }
+  form[name="locatorForm"] {
+    padding: 10px;
+  }
+  select[name="State"] {
+    margin: 10px 0;
+  }
+  .mvMainContainer {
+    > .mvHomeMainImg img, > a:first-of-type > img {
+      width: 100%;
+    }
+    overflow: hidden;
+  }
+}
+

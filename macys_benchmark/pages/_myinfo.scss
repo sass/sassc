@@ -1,0 +1,764 @@
+.mw_myinfo {
+  /*------------paperless popup---------------*/
+
+  div#psPanel {
+    display:none;
+    #panelcontent, img {
+      padding:5px 10px;
+    }
+    #panelcontent {
+      border-top:1px solid #999;
+      p#disclaimer {
+        padding:5px;
+        margin:5px 0;
+        background:#efefef;
+      }
+    }
+  }
+  .yui-panel-container {
+    line-height: 150%;
+    position:absolute;
+    .yui-overlay {
+      width: 94% !important;
+      background: #fff;
+      margin: 0 auto;
+      -webkit-border-radius: 6px;
+      position: relative;
+    }
+    #yui-gen1 {
+      padding: 10px;
+    }
+  }
+  .mask {
+    width: 100% !important;
+    position: absolute;
+    background: rgba(120, 120, 120, 0.85);
+  }
+  #TNCbuttongroup button {
+    padding: 5px;
+    display: inline-block;
+    margin: 10px 5px 5px 5px;
+    -webkit-appearance: none;
+    border: 1px solid #e70000;
+    -webkit-border-radius: 6px;
+    color: #fff;
+    background: #e70000;
+    font-weight: bold;
+  }
+  div#psPanel h2 {
+    font-size: 14px;
+    margin: 16px 6px 0 0;
+    float: left;
+    color: #ef0000;
+  }
+  #statementTooltip, #statementTooltip0, #myTooltip {
+    display: none;
+  }
+  iframe {
+    #psPanel_f, #ie-slct {
+      left: 0 !important;
+      display: none !important;
+    }
+  }  
+  #innerlayer, .yui-tt {
+    display: none;
+  }
+
+  /* -------------- My profile, create profile ------------------*/
+
+  .mvRadioRow, .mvCheckboxRow {
+    line-height: 150%;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+  .mvRadioRow {
+    > input[type="radio"], > span {
+      float: left; 
+    }
+    > input[type="radio"] {
+      margin-top: 2px; 
+    }
+    > span {
+      width: 85%; 
+    } 
+  }
+
+  #formFieldsColumn .mvTextInputRow {
+    margin: 8px 0;
+    overflow: hidden;
+    font-size: 13px; 
+    &#phFields {
+      label{ 
+        margin-bottom:5px;
+      }
+      input {
+        width: 30px !important;
+        margin-right: 5px;
+        display: inline-block;
+        float:none !important;
+      }    
+    }
+    &#STATE_DROPDOWN {
+      margin-right:0px;
+      float:right;
+    }
+
+     input[type="text"], input[type="password"] {
+      width: 140px;
+    } 
+    label {
+      display: inline-block;
+      padding-right: 5px;
+      text-align: left;
+      font-weight:bold;
+      width:120px;
+      em{
+        display:inline-block;
+        padding-right:5px;
+      }
+      &[for='passwordRecoveryVB.secureQuestion'] {
+        /*border: 1px solid #ff0000;*/
+        width: auto;
+        float: left;
+      }
+    }
+    label.optional { font-weight:normal;}
+    #whatsthis {
+      padding-left: 5px;
+      text-decoration: underline;
+      font-weight: normal;
+      float: left;
+      margin-top: -2px;
+/*      width: 10px;
+      height: 15px;*/
+    }
+  }
+
+  .yui3-widget { /* for the security question help layer */
+    left: 10px !important;
+    #myPanelContent {
+      .pannel {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        -webkit-box-shadow: 1px 1px 2px 0 #999;
+        padding: 5px;
+        width: 92%;
+        position: relative;
+        font-size: 12px;
+        #close, .close {
+          position: absolute;
+          right: 5px;
+          top: 0px;
+        }
+        .header, #questionHead { 
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  
+  .emphasize { font-weight:bold;}
+  
+  label[for="BIRTHMONTH_DROPDOWN"] {
+    font-size: 13px; 
+  }
+
+  &#mvProfile {
+    // security question tooltip
+    #myPanelContent {
+      display: none;
+      position: relative;
+    }
+   .existingCard {
+      padding:10px;
+      border-bottom: 1px solid #999;
+      border-top: 1px solid #DDD;
+      -webkit-box-shadow: #E5E5E5 0px -3px 4px inset;
+    }
+    #addAnotherCard .formDef ul li label {
+      font-weight:bold;
+    }
+    .stateDropdown {
+      width:150px;
+    }
+    label[for="userBirthDate.month"] {
+      display:block;
+    }
+    #yui-gen0 {
+        padding:10px;
+      > img {
+        display:none;
+      }
+      > div {
+        border-top: none !important;
+      }
+    }
+    #editProfile a, .instFtTxt a, #benefits {
+      text-decoration:underline;
+      color: #3A3A39;
+    }
+      .png-hack, #outerlayer {
+      display: none !important; 
+    }
+    fieldset.formDef label { 
+      display:block;
+      margin:5px 0;
+      font-weight:bold;
+    }
+    label[for="BIRTHMONTH_DROPDOWN"] {
+      display: block;
+      margin: 8px 0; }
+    select {
+      display: inline-block;
+      margin-right: 5px; 
+    }
+    fieldset.align { 
+      legend{
+        font-weight:bold;
+      }
+      label{
+        display:block;
+        padding:5px 0;
+      }
+    } 
+  }
+
+
+  .mvSubscribeOptions {
+    > div {
+      -webkit-border-radius: 6px;
+      border: 1px solid #fff;
+      padding: 5px 10px; 
+    }
+    -webkit-border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px; 
+  }
+
+  .formValidation {
+    display: block;
+    clear: both; 
+  }
+
+  .formText {
+    padding: 5px 0;
+    display: block; 
+  }
+
+  #psPanel_c #psPanel #yui-gen1 {
+    > img {
+      display: none; 
+    }
+    padding-top: 45px;
+    //background: url(http://moovweb-gage.s3.amazonaws.com/yupu/macy2/macysBtns/mvDynamicPopupLogo.gif) no-repeat 10px 5px; }
+    //background: url(../../images/sprite_me/logo.png) no-repeat 0 0; }
+    width: 116px;
+    height: 32px;
+  }
+
+  #formButtonBgGrey { padding:5px 10px;}
+
+
+  /*---------- cluttered inbox --------------*/
+
+  .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(150, 150, 150, 0.85);
+    z-index: 10;
+    > div:first-of-type {
+      margin: 700px 10px 1300px 10px;
+      -webkit-border-radius: 10px;
+      padding: 15px;
+      background: #fff; 
+    } 
+  }
+
+  .generalError, .generalStatusMessage {     
+    border: 1px solid #E70000;
+    color: #E70000;
+    margin: 10px;
+    padding: 10px;
+  }
+  /*----------account landing page----------*/
+
+  .nav_cat_item_bold, .mvMyStoreSelector {
+    padding: 10px;
+  }
+  .cssFooter {
+    padding: 0px 10px;
+  }
+  .mvAccountGroupWrapper .menu_parent_normal {
+    padding-right: 35px; 
+  }
+
+  .mvSUPC {
+    padding: 10px;
+    font-weight: bold; 
+  }
+    /*----------my address book/ wallet----------*/
+  #myWallet {
+    select[id="creditCardVB.billingAddress.state"], #myaddress select[id="addressVB.state"], .expCardSelect.walletField{
+      width:150px;
+    }
+    &:not(.mw_ishop_wallet) a {
+      color: black;
+    }
+  }
+  #formFieldsColumn #expDate {
+    label{ 
+      display:block;
+    }
+    select{
+      margin:5px;
+    }
+  }
+}
+
+div#bd {
+  div#globalContentContainer {
+    div#profileBorderShadow {
+      h1#Resetpassword {
+        padding: 6px 10px;
+        background: white;
+        -webkit-box-shadow: #E5E5E5 0px -3px 4px inset;
+        font-size: 19px;
+        color: #444;
+        display: block;
+        text-transform: capitalize;
+        overflow: hidden;
+        border-top: 1px solid #DDD;
+        border-bottom: 1px solid #555;
+      }
+      form#signInVB {
+        line-height: 140%;
+        clear: both;
+        padding: 10px;
+        display: block;
+        -webkit-box-shadow: #E5E5E5 0px -3px 4px inset;
+        background: white;
+        border-bottom: 1px solid #999;
+        overflow: hidden;
+        div#resetpageBorderShadow {
+          li {
+            >label {
+              font-weight:bold;
+
+            }
+            >span {
+              display: block;
+              font-size: 12px;
+              margin-bottom: 10px;
+            }
+          }
+        }
+        div.Resetshow {
+          input.primaryBtnL {
+            @include red_button();
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+    div#ResetContainer {
+      padding: 10px;
+      h1.mw_red_header {
+        color: rgb(220,0,0);
+        font-weight: bold;
+        font-size: 17px;
+      }
+      div#accountData {
+        margin:10px 0;
+      }
+      input.primaryBtnL {
+        @include red_button();
+        font-weight: bold;
+        margin: 5px 0;
+      }
+    }
+  }
+}
+
+
+.mw_myinfo {
+  /*------------paperless popup---------------*/
+
+  div#psPanel {
+    display:none;
+    #panelcontent, img {
+      padding:5px 10px;
+    }
+    #panelcontent {
+      border-top:1px solid #999;
+      p#disclaimer {
+        padding:5px;
+        margin:5px 0;
+        background:#efefef;
+      }
+    }
+  }
+  .yui-panel-container {
+    line-height: 150%;
+    position:absolute;
+    .yui-overlay {
+      width: 94% !important;
+      background: #fff;
+      margin: 0 auto;
+      -webkit-border-radius: 6px;
+      position: relative;
+    }
+    #yui-gen1 {
+      padding: 10px;
+    }
+  }
+  .mask {
+    width: 100% !important;
+    position: absolute;
+    background: rgba(120, 120, 120, 0.85);
+  }
+  #TNCbuttongroup button {
+    padding: 5px;
+    display: inline-block;
+    margin: 10px 5px 5px 5px;
+    -webkit-appearance: none;
+    border: 1px solid #e70000;
+    -webkit-border-radius: 6px;
+    color: #fff;
+    background: #e70000;
+    font-weight: bold;
+  }
+  div#psPanel h2 {
+    font-size: 14px;
+    margin: 16px 6px 0 0;
+    float: left;
+    color: #ef0000;
+  }
+  #statementTooltip, #statementTooltip0, #myTooltip {
+    display: none;
+  }
+  iframe {
+    #psPanel_f, #ie-slct {
+      left: 0 !important;
+      display: none !important;
+    }
+  }  
+  #innerlayer, .yui-tt {
+    display: none;
+  }
+
+  /* -------------- My profile, create profile ------------------*/
+
+  .mvRadioRow, .mvCheckboxRow {
+    line-height: 150%;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+  .mvRadioRow {
+    > input[type="radio"], > span {
+      float: left; 
+    }
+    > input[type="radio"] {
+      margin-top: 2px; 
+    }
+    > span {
+      width: 85%; 
+    } 
+  }
+
+  #formFieldsColumn .mvTextInputRow {
+    margin: 8px 0;
+    overflow: hidden;
+    font-size: 13px; 
+    &#phFields {
+      label{ 
+        margin-bottom:5px;
+      }
+      input {
+        width: 30px !important;
+        margin-right: 5px;
+        display: inline-block;
+        float:none !important;
+      }    
+    }
+    &#STATE_DROPDOWN {
+      margin-right:0px;
+      float:right;
+    }
+
+     input[type="text"], input[type="password"] {
+      width: 140px;
+    } 
+    label {
+      display: inline-block;
+      padding-right: 5px;
+      text-align: left;
+      font-weight:bold;
+      width:120px;
+      em{
+        display:inline-block;
+        padding-right:5px;
+      }
+      &[for='passwordRecoveryVB.secureQuestion'] {
+        /*border: 1px solid #ff0000;*/
+        width: auto;
+        float: left;
+      }
+    }
+    label.optional { font-weight:normal;}
+    #whatsthis {
+      padding-left: 5px;
+      text-decoration: underline;
+      font-weight: normal;
+      float: left;
+      margin-top: -2px;
+/*      width: 10px;
+      height: 15px;*/
+    }
+  }
+
+  .yui3-widget { /* for the security question help layer */
+    left: 10px !important;
+    #myPanelContent {
+      .pannel {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        -webkit-box-shadow: 1px 1px 2px 0 #999;
+        padding: 5px;
+        width: 92%;
+        position: relative;
+        font-size: 12px;
+        #close, .close {
+          position: absolute;
+          right: 5px;
+          top: 0px;
+        }
+        .header, #questionHead { 
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  
+  .emphasize { font-weight:bold;}
+  
+  label[for="BIRTHMONTH_DROPDOWN"] {
+    font-size: 13px; 
+  }
+
+  &#mvProfile {
+    // security question tooltip
+    #myPanelContent {
+      display: none;
+      position: relative;
+    }
+   .existingCard {
+      padding:10px;
+      border-bottom: 1px solid #999;
+      border-top: 1px solid #DDD;
+      -webkit-box-shadow: #E5E5E5 0px -3px 4px inset;
+    }
+    #addAnotherCard .formDef ul li label {
+      font-weight:bold;
+    }
+    .stateDropdown {
+      width:150px;
+    }
+    label[for="userBirthDate.month"] {
+      display:block;
+    }
+    #yui-gen0 {
+        padding:10px;
+      > img {
+        display:none;
+      }
+      > div {
+        border-top: none !important;
+      }
+    }
+    #editProfile a, .instFtTxt a, #benefits {
+      text-decoration:underline;
+      color: #3A3A39;
+    }
+      .png-hack, #outerlayer {
+      display: none !important; 
+    }
+    fieldset.formDef label { 
+      display:block;
+      margin:5px 0;
+      font-weight:bold;
+    }
+    label[for="BIRTHMONTH_DROPDOWN"] {
+      display: block;
+      margin: 8px 0; }
+    select {
+      display: inline-block;
+      margin-right: 5px; 
+    }
+    fieldset.align { 
+      legend{
+        font-weight:bold;
+      }
+      label{
+        display:block;
+        padding:5px 0;
+      }
+    } 
+  }
+
+
+  .mvSubscribeOptions {
+    > div {
+      -webkit-border-radius: 6px;
+      border: 1px solid #fff;
+      padding: 5px 10px; 
+    }
+    -webkit-border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px; 
+  }
+
+  .formValidation {
+    display: block;
+    clear: both; 
+  }
+
+  .formText {
+    padding: 5px 0;
+    display: block; 
+  }
+
+  #psPanel_c #psPanel #yui-gen1 {
+    > img {
+      display: none; 
+    }
+    padding-top: 45px;
+    //background: url(http://moovweb-gage.s3.amazonaws.com/yupu/macy2/macysBtns/mvDynamicPopupLogo.gif) no-repeat 10px 5px; }
+    //background: url(../../images/sprite_me/logo.png) no-repeat 0 0; }
+    width: 116px;
+    height: 32px;
+  }
+
+  #formButtonBgGrey { padding:5px 10px;}
+
+
+  /*---------- cluttered inbox --------------*/
+
+  .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(150, 150, 150, 0.85);
+    z-index: 10;
+    > div:first-of-type {
+      margin: 700px 10px 1300px 10px;
+      -webkit-border-radius: 10px;
+      padding: 15px;
+      background: #fff; 
+    } 
+  }
+
+  .generalError, .generalStatusMessage {     
+    border: 1px solid #E70000;
+    color: #E70000;
+    margin: 10px;
+    padding: 10px;
+  }
+  /*----------account landing page----------*/
+
+  .nav_cat_item_bold, .mvMyStoreSelector {
+    padding: 10px;
+  }
+  .cssFooter {
+    padding: 0px 10px;
+  }
+  .mvAccountGroupWrapper .menu_parent_normal {
+    padding-right: 35px; 
+  }
+
+  .mvSUPC {
+    padding: 10px;
+    font-weight: bold; 
+  }
+    /*----------my address book/ wallet----------*/
+  #myWallet {
+    select[id="creditCardVB.billingAddress.state"], #myaddress select[id="addressVB.state"], .expCardSelect.walletField{
+      width:150px;
+    }
+    &:not(.mw_ishop_wallet) a {
+      color: black;
+    }
+  }
+  #formFieldsColumn #expDate {
+    label{ 
+      display:block;
+    }
+    select{
+      margin:5px;
+    }
+  }
+}
+
+div#bd {
+  div#globalContentContainer {
+    div#profileBorderShadow {
+      h1#Resetpassword {
+        padding: 6px 10px;
+        background: white;
+        -webkit-box-shadow: #E5E5E5 0px -3px 4px inset;
+        font-size: 19px;
+        color: #444;
+        display: block;
+        text-transform: capitalize;
+        overflow: hidden;
+        border-top: 1px solid #DDD;
+        border-bottom: 1px solid #555;
+      }
+      form#signInVB {
+        line-height: 140%;
+        clear: both;
+        padding: 10px;
+        display: block;
+        -webkit-box-shadow: #E5E5E5 0px -3px 4px inset;
+        background: white;
+        border-bottom: 1px solid #999;
+        overflow: hidden;
+        div#resetpageBorderShadow {
+          li {
+            >label {
+              font-weight:bold;
+
+            }
+            >span {
+              display: block;
+              font-size: 12px;
+              margin-bottom: 10px;
+            }
+          }
+        }
+        div.Resetshow {
+          input.primaryBtnL {
+            @include red_button();
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+    div#ResetContainer {
+      padding: 10px;
+      h1.mw_red_header {
+        color: rgb(220,0,0);
+        font-weight: bold;
+        font-size: 17px;
+      }
+      div#accountData {
+        margin:10px 0;
+      }
+      input.primaryBtnL {
+        @include red_button();
+        font-weight: bold;
+        margin: 5px 0;
+      }
+    }
+  }
+}

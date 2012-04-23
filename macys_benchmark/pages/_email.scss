@@ -1,0 +1,34 @@
+.mw_email{
+.mvInputRow input[type="text"] {
+  width: 90% !important;
+  margin-right: 5px; }
+
+form > div > div {
+  overflow: hidden;
+  clear: both;
+  font-size: 12px !important;
+  padding-top: 10px; }
+
+.mvInputRow > span {
+  &:first-of-type, &:nth-of-type(3) {
+    width: 48%;
+    float: left;
+    display: block; } }
+
+.popupContent {
+  overflow: hidden;
+  padding: 10px; }
+
+.popupBanner {
+  font-size: 17px;
+  font-weight: bold;
+  color: #e70000;
+  padding: 10px 0 0 10px;
+  text-transform: uppercase; }
+
+.buttonNonSubmitBorders, .buttonSubmitBorders {
+  margin: 10px 10px 0 0; }
+
+textarea {
+  width: 95% !important; }
+}

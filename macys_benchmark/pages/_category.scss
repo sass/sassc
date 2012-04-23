@@ -1,0 +1,31 @@
+.mw_category {
+  .yui-panel-container, li.hidden {
+    display: none;
+  }
+  .nav_cat_item_hilite .mvWhiteGrayBar {
+    > div {
+      color: #e70000;
+      padding: 8px 10px;
+      font-size: 17px;
+    }
+    > a {
+      color: #e70000;
+      padding: 8px 10px;
+      font-size: 17px;
+    }
+  }
+  #localNavigationContainer .mvDarkGrayBar {
+    padding: 10px;
+  }
+  .mvBanner {
+    padding-top: 1px;
+    img {
+      width: 100%;
+      border-top: 2px solid #555;
+    }
+  }
+  #SeeAllBrands {
+    display: block;
+    padding: 10px;
+  }
+}

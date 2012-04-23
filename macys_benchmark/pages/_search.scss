@@ -1,0 +1,258 @@
+.mw_search {
+  /*--------breadCrumbs---------*/
+  
+  #globalContentContainer {
+    > h5, > h1 {
+      overflow: hidden;
+      padding: 8px 10px;
+      color: #444;
+      line-height: 150%;
+      border-bottom: 1px solid #ccc;
+      -webkit-box-shadow: inset 0px -3px 4px #e5e5e5;
+      word-wrap: break-word;
+    }
+    > h1 { 
+      font-weight: bold;
+      > span {
+        font-weight: normal;
+      }
+    }
+  }
+  
+  /*-------------narrow by row---------------*/
+  
+  .mvNarrowWrapper {
+    position: relative; }
+  
+  .mvNarrowSearchContainer {
+    background: #7E7E7E;
+    padding: 5px 10px;
+    overflow: hidden; }
+  
+  .mvNarrowSearch {
+    float: right;
+    -webkit-border-radius: 4px;
+    font-size: 14px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e22222), color-stop(50%, #b31717), color-stop(51%, #9b1515), color-stop(100%, #9b1313));
+    background-color: #B31717;
+    padding: 7px 10px;
+    color: white;
+    text-shadow: #555555 0px -1px 1px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: capitalize;
+    line-height: 100%;
+    overflow: hidden;
+    > span:nth-of-type(1) {
+      float: left;
+      display: block;
+      padding-right: 5px; }
+    &.moovweb_open {
+      -webkit-border-radius: 4px 4px 0 0;
+      margin-bottom: -4px; } }
+  
+  #localNavigationContainer {
+    position: absolute;
+    top: 33px;
+    width: 100%;
+    z-index: 2;
+    > .esnLocalNav {
+      display: none;
+      &.mvEsnLocalNav {
+        display: block;
+        margin: 0 10px;
+        padding: 10px;
+        border-top: 3px solid #9B1313;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(97%, white), color-stop(100%, #e0e0e0));
+        background-color: #F9F9F9;
+        -webkit-box-shadow: #555 1px 2px 2px;
+        -webkit-border-radius: 0 0 4px 4px;
+        overflow: hidden; } } }
+  
+  .mvNarrowResultCate .mvWhiteGrayBar {
+    border-right: 1px solid #999;
+    border-left: 1px solid #999; }
+  
+  #localNavigationContainer .mvDarkGrayBar {
+    padding: 10px; }
+  
+  /*------------sort by row -------------*/
+  
+  .mvSearchSortBy {
+    display: block;
+    padding: 9px 10px;
+    border-bottom: 2px solid #444; }
+  
+  /*------------product rows-------------*/
+  
+  .mvMoreColor {
+    border: 1px solid #CCC;
+    clear: both;
+    color: #666;
+    display: inline-block;
+    font-size: 12px;
+    margin-top: 10px;
+    padding: 5px;
+    text-align: center;
+     }
+  
+  .productThumbBorder img {
+    width: 82px;
+    height: 100px; }
+  
+  .mvSearchItemsWrapper {
+    border-top: 1px solid #999;
+    padding: 10px;
+    overflow: hidden; }
+  
+  .productThumb.productThumbBorder > a {
+    float: left;
+    display: inline-block;
+    padding-right: 10px; }
+  
+  .mvSearchItemsWrapper > span.productThumb {
+    float: right;
+    width: 65%; }
+  
+  .productThumbSale {
+    color: #e70000;
+    font-weight: bold;
+    display: block;
+    line-height: 150%; }
+  
+  .productThumbPrice {
+    font-weight: bold;
+    display: block;
+    line-height: 150%; }
+  
+  .productThumbBonusDesc {
+    display: block;
+    margin-bottom: 5px; }
+  
+  .productThumbDesc {
+    color: #3A3A39; }
+  
+  /*----------- different layout view -------------*/
+  
+  .mvlistViewBtn, .mvColumnViewBtn {
+    width: 38px;
+    height: 38px;
+    display: inline-block;
+    float: right;
+    margin-top: -7px; }
+  
+  .mvlistViewBtn {
+    //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/browse_row.png) no-repeat; }
+    background: url(../../images/css/browse_row.png) no-repeat; }
+  
+  .mvColumnViewBtn {
+    //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/browse_column.png) no-repeat;
+    background: url(../../images/css/browse_column.png) no-repeat;
+    margin-left: 10px;
+    opacity: .5; }
+  
+  .mvColumnView {
+    .mvItemContainer {
+      padding: 2px;
+      overflow: hidden;
+      border-bottom: none; }
+    .mvColumnViewBtn {
+      opacity: 1; }
+    .mvlistViewBtn {
+      opacity: .5; }
+    span.productThumbnail {
+      display: block;
+      padding: 0;
+      border: 1px solid #DDD;
+      margin: 2px;
+      float: left; }
+    .productThumbBorder img {
+      width: 152px !important;
+      height: 186px !important; } }
+  
+  .mvColumnView {
+    &.productThumb.productThumbBorder {
+      overflow: hidden; }
+    .productThumb.productThumbBorder > a {
+      border: 1px solid #ccc;
+      padding-right: 0px; }
+    span.productThumb {
+      display: none; }
+    .mvSearchItemsWrapper {
+      border-top: none;
+      padding: 0;
+      overflow: hidden;
+      margin: 2px;
+      float: left; } }
+  
+  .depthPathLinked, .depthPathActive {
+    padding: 5px;
+    display: inline-block; }
+  
+  .productPagination {
+    padding: 5px 10px;
+    a {
+      text-decoration: underline; } }
+  
+  /*-------no search results------*/
+  
+  #browseLayout.mvNoSearchResult {
+    line-height: 150%;
+    p {
+      margin: 10px !important; }
+    a {
+      text-decoration: underline;
+      padding: 0 10px;
+      text-transform: capitalize;
+      color: #3A3A39; } }
+  
+  /*-------------for search banner has text message---------*/
+  
+  .searchBanner a {
+    color: #444; }
+  
+  .banner-box {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 5px; }
+  
+  a.banner-link-bold-large {
+    color: #e70000;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 13px; }
+  
+  /*------------more and less--------------*/
+  
+  #mvLess {
+    > div > span.standard.mvWhiteGrayBar {
+      display: none; }
+    .mvLessBar {
+      padding: 10px 10px 10px 20px;
+      .mvPlus, .mvMinus {
+        float: left;
+        font-size: 16px;
+        margin-top: 0; } } }
+  
+  
+  /*------------related info ----------*/
+  
+  .mvRelatedInfo {
+    padding: 10px;
+    a {
+      display: block;
+      text-decoration: underline;
+      color: #3A3A39;
+      line-height: 150%; } }
+  
+  /*---------narrow resault mask----------*/
+  
+  .mvNarrowResaultMask {
+    width: 100%;
+    height: 10000px;
+    background: rgba(120, 120, 120, 0.85);
+    position: absolute;
+    top: 34px;
+    z-index: 1; }
+  }
+

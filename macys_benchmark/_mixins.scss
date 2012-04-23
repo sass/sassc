@@ -1,0 +1,46 @@
+@mixin red_button() {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #eb0000), color-stop(1, #550000) );
+	background:-moz-linear-gradient( center top, #eb0000 5%, #550000 100% );
+	// filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eb0000', endColorstr='#550000');
+	background-color:#eb0000;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	border:none;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+}
+@mixin gray_button() {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #dedfe1) );
+	background:-moz-linear-gradient( center top, #ffffff 5%, #dedfe1 100% );
+	// filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dedfe1');
+	background-color:#ffffff;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#000000;
+	font-family:arial;
+	font-size:14px;
+	font-weight:normal;
+	padding:6px 24px;
+	text-decoration:none;
+}
+@mixin grey_card_header() {
+  background: #fcfcfc; /* Old browsers */
+  background: -moz-linear-gradient(top, #fcfcfc 0%, #f9f9f9 50%, #eaeaea 51%, #d9d9d9 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fcfcfc), color-stop(50%,#f9f9f9), color-stop(51%,#eaeaea), color-stop(100%,#d9d9d9)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #fcfcfc 0%,#f9f9f9 50%,#eaeaea 51%,#d9d9d9 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #fcfcfc 0%,#f9f9f9 50%,#eaeaea 51%,#d9d9d9 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #fcfcfc 0%,#f9f9f9 50%,#eaeaea 51%,#d9d9d9 100%); /* IE10+ */
+  background: linear-gradient(top, #fcfcfc 0%,#f9f9f9 50%,#eaeaea 51%,#d9d9d9 100%); /* W3C */
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#d9d9d9',GradientType=0 ); /* IE6-9 */
+  border-top: 1px solid #e8e8e8;
+  padding: 6px 12px;
+}

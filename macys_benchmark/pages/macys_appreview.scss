@@ -1,0 +1,212 @@
+/* ------- RESET STYLE ------- */
+
+* {
+  margin: 0;
+  padding: 0; }
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-family: inherit; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote {
+  &:before, &:after {
+    content: '';
+    content: none; } }
+
+q {
+  &:before, &:after {
+    content: '';
+    content: none; } }
+
+/* remember to define focus styles! */
+
+:focus {
+  outline: 0; }
+
+/* remember to highlight inserts somehow! */
+
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+img {
+  vertical-align: middle;
+  height: inherit;
+  max-width: 100%; }
+
+/* ------- BASE STYLE ------- */
+
+body {
+  font-family: verdana, arial, lucida, sans-serif;
+  font-size: 12px;
+  color: #3a3a39;
+  -webkit-text-size-adjust: none;
+  background-color: #F1F1F1;
+  overflow-x: hidden; }
+
+strong {
+  font-weight: bold; }
+
+hr, .hide {
+  display: none; }
+
+abbr, acronym {
+  border-bottom: 1px dotted #999;
+  cursor: help; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  line-height: 100%; }
+
+em {
+  font-style: italic; }
+
+input, textarea, select {
+  font: 13px sans-serif; }
+
+/* Link */
+
+a {
+  color: #e70000;
+  text-decoration: none;
+  &:hover, &:active {
+    text-decoration: none; } }
+
+/*-------- Reviews---------*/
+
+#BVRRDisplayContentHeaderID {
+  display: none;
+  /* hide choose a sort order and write review*/ }
+
+#BVRRRatingSummarySourceID {
+  display: none; }
+
+#BVRRSourceID {
+  padding: 0 10px; }
+
+.productCenterSection {
+  overflow: hidden; }
+
+.BVRRHidden, .BVDI_PS.BVDI_PSPopin, .BVRRUserNicknameReadReviewsContainer, .BVRRRatingSummaryLinks, .BVRRUserNicknameContainer > .BVRRUserLocationContainer, .BVDI_PSSpacer, #BVRRDisplayContentTitleID, .BVRRRatingsHistogramButtonScript > img {
+  display: none; }
+
+.BVRRHistogramBarRow {
+  overflow: hidden;
+  padding: 5px 0; }
+
+.BVRRHistogramBar {
+  webkit-box-shadow: rgba(0, 0, 0, 0.496) -1px 1px 2px inset, rgba(250, 250, 250, 0.496) -1px -1px 4px inset;
+  background: -webkit-gradient(linear, 0% 0%, 0% 23%, from(#aaaaaa), to(#eeeeee));
+  border: 1px inset #ccc;
+  display: inline-block;
+  height: 14px;
+  margin: 0px 5px;
+  width: 200px; }
+
+.BVRRHistogramFullBar {
+  background: #e70000 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f71848), to(#a00c01));
+  height: 14px; }
+
+.BVRRHistogramBarRow > span {
+  font-size: 11px;
+  display: inline-block; }
+
+.BVRRHistStarLabel {
+  width: 40px; }
+
+.BVRRRatingSummaryCount {
+  display: none; }
+
+.BVRRRatingSlider > div {
+  display: inline-block;
+  font-size: 11px; }
+
+#storeav-oy, .yui-panel-container {
+  position: absolute;
+  visibility: hidden;
+  z-index: 101;
+  top: 0; }
+
+.yui-hidden, .hidden {
+  display: none; }
+
+#BVReviewsContainer {
+  padding: 10px;
+  background: #ddd;
+  -webkit-border-radius: 6px;
+  margin: 6px; }
+
+.mvShinnyBlackBar {
+  background: black -webkit-gradient(linear, 0% 0%, 0% 100%, from(#45484d), to(black));
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #222;
+  color: white;
+  padding: 10px;
+  text-shadow: black 0px -1px 0px;
+  font-size: 15px; }
+
+#BVRRDisplayContentLinkWriteID {
+  padding: 10px 0;
+  display: block; }
+
+.BVRRRatingSummaryRatings, .tabsPanel .BVRRSecondaryRatingsContainer, .BVRRContentReview {
+  background: #fff;
+  -webkit-box-shadow: #555 1px 1px 4px;
+  -webkit-border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0; }
+
+.BVRRNickname, .BVRRValue {
+  font-weight: bold; }
+
+.BVRRRatingNormalImage {
+  display: inline-block; }
+
+.BVRRRatingNormalOutOf {
+  display: inline-block;
+  padding-top: 2px; }
+
+.BVRRReviewRatingsContainer {
+  padding-bottom: 10px; }
+
+.BVRRUserNicknameContainer {
+  padding: 10px 0;
+  border-top: 1px dotted #ccc;
+  margin-top: 10px; }
+
+.BVRRUserLocationContainer, .BVRRContextDataContainer > div {
+  padding: 3px 0; }
+
+.BVRRReviewDetailsContainer {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px dotted #ccc; }
+
+.BVRRReviewDate {
+  font-size: 11px;
+  font-weight: normal;
+  color: #666666;
+  padding: 5px 0 10px 0;
+  display: block; }
+
+.BVRRReviewFeedbackLinksContainer {
+  font-weight: bold;
+  padding-top: 10px; }
+
+.BVRRPagerArrows, .BVRRPageLink > a, .BVRRSelectedPageNumber {
+  display: inline-block;
+  padding: 10px 5px; }

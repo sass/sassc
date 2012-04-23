@@ -1,0 +1,1234 @@
+.mw_billpay {
+  .generalError {
+    padding:10px;
+    color:#e70000;
+  }
+  p.note {
+    font-size: 12px;
+    padding: 5px;
+    span { font-weight: bold; }
+  }
+  #localContentContainer {
+    a {
+      text-decoration:underline;
+      color: #3A3A39;
+    }
+    > h6 {
+      margin: 10px;
+    }
+    > p {
+      margin: 10px;
+    }
+  }
+  div.fullwidthCoulumn {
+    h3.quick {
+      font-weight: bold;
+      padding: 7px 5px 0;
+    }
+    ul#call-to-action li {
+      padding: 0 5px 10px;
+      h4 {
+        color: rgb(223,54,39);
+        font-size: 17px;
+        padding: 5px 0;
+      }
+      p {
+        font-size: 11px;
+      }
+      a.primaryBtnL {
+        @include red_button();
+        font-weight: bold;
+        margin: 5px 0;
+      }
+    }
+  }
+  .headingBar {
+    padding: 10px 5px 5px;
+  }
+  ul#options li, div.contentPadding {
+    padding: 5px;
+    p {
+      margin: 0;
+    }
+    h6 {
+      padding: 3px 0;
+      font-weight: bold;
+      font-size: 15px;
+    }
+    &.two {
+      background: #eee;
+    }
+    em {
+      margin-top: 10px;
+      display: block;
+      font-style: normal;
+      font-weight: bold;
+    }
+    p span {
+      font-weight: bold;
+    }
+  }
+  ul#privacyLinks {
+    padding: 0 5px;
+    li {
+      em {
+        font-style: normal;
+        font-weight: bold;
+      }
+      padding: 3px 0;
+    }
+  }
+  ul#paymentSteps {
+    padding: 10px;
+    li {
+      display: inline;
+      list-style-type: none;
+      font-size: 16px;
+      font-weight: normal;
+      color: #CCC;
+      font-family: arial, verdana, lucida, san-serif;
+    }
+    li.selected {
+      color: #C00;
+    }
+  }
+  .cardHeader {
+    @include grey_card_header();
+    sup {
+      font-size: 10px;
+    }
+  }
+  .paymentContent, .paymentOptions {
+    padding: 10px 10px 0;
+    #addAnotherChecking {
+      display:block;
+      padding:10px 0;
+      border-bottom:1px solid #ddd;
+    }
+    form {
+      display: inline-block;
+    }
+    p.large {
+      padding-top: 12px;
+      span {
+        font-weight: bold;
+      }
+    }
+    fieldset {
+      padding: 10px 0;
+      border-bottom:1px solid #ddd;
+      &.last { border-bottom:none;
+        }
+      div.rows {
+        font-weight: bold;
+        padding: 4px 0;
+        label {
+          display: inline-block;
+          width: 140px;
+        }
+        .normal {
+          font-weight: normal;
+        }
+      }
+    }
+    button {
+      padding: 0;
+      text-decoration: underline;
+      background: transparent;
+      border: none;
+      font-size: 13px;
+      width: auto !important;
+    }
+    .confirmationInfo h5 span {
+      color: red;
+    }
+    fieldset {
+      h5 {
+        font-weight: bold;
+        padding-bottom: 5px;
+      }
+      .radioRow {
+        line-height: 22px;
+        select {
+          margin:0 5px;
+          display:inline-block;
+        }
+        label {
+          display: inline-block;
+          font-size: 13px;
+        }
+        div {
+          display: inline-block;
+          text-align: right;
+          input {
+            width: 50px;
+            padding: 0;
+          }
+          &.amount {
+            width: 80px;
+          }
+          &.amountError {
+            width: 22px;
+          }
+        }
+      }
+      .mCheckingClone {
+        display: none;
+      }
+    }
+  }
+  .btnContainer {
+    margin: 10px 5px 50px;
+    #submitBtn, #continueBtn {
+      @include red_button();
+      float: right;
+      margin: 10px;
+    }
+    #cancelBtn {
+      @include gray_button();
+      float: left;
+      margin: 10px;
+    }
+  }
+  .yui3-widget-bd {
+    div.ovlContent {
+      h4 {
+        font-weight: bold;
+      }
+      span.bold {
+        font-weight: bold;
+      }
+      p {
+        font-size: 12px;
+        padding-bottom: 10px;
+      }
+      div.paymentsContainer {
+        font-size: 10px;
+      }
+      button.secondaryBtnS {
+        @include gray_button();
+        margin: 5px;
+        float: right;
+      }
+      table.payments {
+        thead {
+          background-color: #CCC;
+          text-transform: capitalize;
+          font-weight: bold;
+        }
+        tr {
+          td {
+            border-bottom-style: dotted;
+            border-bottom-width: 1px;
+            border-color: #999;
+          }        
+          td:nth-of-type(4) {
+            font-weight: bold;
+            font-size: 12px;
+          }
+          button.secondaryBtnS {
+             padding: 6px 10px;
+          }
+        }
+      }
+    }
+  }
+  .yui3-overlay {
+   // left: 2% !important;
+   left: 0 !important;
+    .yui3-widget-hd {
+      height:27px;
+      .closeIcon {
+        float: right;
+        margin: 5px;
+        background: url(../../images/css/close_btn.png) no-repeat;
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .yui3-widget-bd {
+      margin: 10px;
+    }
+    #calendarOverlay {
+      top: 500px !important;
+      .calheader a {
+        display: block;
+      }
+      .calbody > tr > td {
+        padding: 5px;
+      }
+    }
+  }
+  p.payment {
+    margin:10px;
+  }
+  a.whyLink {
+    margin: 10px 0;
+  }
+  div.cardContainer {
+    margin: 10px 0;
+    div.accountLeft {
+      margin: 10px;
+    }
+   /* div.mAccountContainer {
+         margin: 10px;
+       }*/
+    div.accountsContent {
+      div.accountBalance {
+        div.hdrColumn {
+          display:inline-block;
+          clear: both;
+          margin-top:10px;
+        }
+        div.right {
+          button.primaryBtnL {
+            @include red_button();
+            font-weight: bold;
+            margin: 5px 0;
+          }
+          div.hdrColumn {
+            font-weight:bold;
+            span > a {
+              display: inline-block;
+            }
+          }
+        }
+      }
+      span {
+        clear:right;
+      }
+      span.emphasize {
+        font-weight: bold;
+      }
+    }
+  }
+  div#bubblePointer {
+    bottom: -30px;
+    height: 15px;
+    left: -50px;
+    position: absolute;
+    z-index: 3010;
+  }
+  div#cancelOverlay {
+    top: 500px !important;
+    h6 {
+      font-size: 16px;
+      font-weight: bold;
+      color: #C00;
+    }
+    
+    p {
+      margin: 10px 0;
+    }
+    .primaryBtnL {
+      @include gray_button();
+    }
+    .secondaryBtnL, .secondaryBtnS {
+      @include gray_button();
+    }
+  }
+  div.cancelOnetimeConfirmation {
+    h5 {
+      font-size: 16px;
+      font-weight: bold;
+      color: #C00;
+    }
+    button#closeBtn {
+      @include gray_button();
+    }
+  }
+  .btnContainer {
+    .cancelBtn {
+      @include gray_button();
+      float: left;
+      margin: 10px;
+    }
+  }
+  #okOverlay {
+    #okOverlayContent>h6 {
+      margin: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: #C00;
+    }
+    #closeOkOverlayBtn {
+      margin-top: 10px;
+      @include gray_button();
+    }
+  }
+}
+
+
+.mw_checkout {
+.MultipleShipment_probableDate {
+  color: red; }
+
+#invitelayer {
+  display: none !important; }
+
+#globalMastheadMiniCart > p {
+  display: none; }
+
+.mvLightGrayBox {
+  margin: 5px;
+  -webkit-border-radius: 6px;
+  border: 1px solid #ddd;
+  line-height: 150%; }
+
+#bd a {
+  text-decoration: underline;
+  color: #3A3A39; }
+
+.mvLightGrayBox {
+  > div {
+    margin: 3px;
+    -webkit-border-radius: 6px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #dddddd));
+    padding: 5px;
+    overflow: hidden; }
+  .shippingDetails_selected {
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#999999), to(#777777));
+    color: #fff; } }
+
+#bd .mvLightGrayBox .shippingDetails_selected a {
+  color: #fff; }
+
+.generalError {
+  padding: 0 10px 10px 10px; }
+
+#macysGlobalLayout {
+  .mvDarkGrayBar {
+    padding: 10px; }
+  form .mvDarkGrayBar a {
+    background: none;
+    padding: 0; } }
+
+/*--------- shipping address-----------*/
+
+#shippingAddress > div {
+  &:nth-of-type(1) {
+    padding: 10px;
+    overflow: hidden; }
+  &:nth-of-type(2) {
+    padding: 10px;
+    overflow: hidden;
+    border-bottom: 1px solid #999;
+    margin-bottom: 1px;
+    padding-top: 0px; } }
+
+.shippingDetails_separator_text {
+  display: none; }
+
+.shippingDetails_checkbox, .shippingDetails_registrantAddress_checkbox {
+  float: left;
+  width: 20px; }
+
+#mvCheckOutBody {
+  .shippingDetails_content_1 {
+    float: left; }
+  #shippingNoAddressForm {
+    overflow: hidden;
+    clear: both; } }
+
+#divregistrantAddress {
+  padding:0 10px;
+.shippingDetails_registrantAddress_giftIcon {
+  float: left;
+  padding: 0 5px 20px 0; }
+}
+
+.shippingDetails_multipleAddress_content {
+  float: left;
+  width: 85%; }
+
+.mvNewAddressRow {
+  overflow: hidden;
+  padding: 5px 5px 5px 15px;
+  .shippingDetails_state, .shippingDetails_formInputs_phone {
+    margin: 5px 10px; }
+  > .shippingDetails_formText {
+    font-weight: bold; } }
+
+.shippingDetails_state {
+  width: 120px; }
+
+.mvNewAddressRow:first-child {
+  margin-top: 5px; }
+
+.shippingDetails_content {
+  width: 80%;
+  display: inline-block; }
+
+.shippingDetails_addressoption_text {
+  padding: 10px; }
+
+.mvBreakLine {
+  line-height: 5px; }
+
+.mvNewAddressRow .errorText {
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macys/alter_red.png) no-repeat 0px 8px;
+  background: white url(../../images/css/alter_red.png) no-repeat 0px 8px;
+  color: #E70000;
+  display: inline-block;
+  line-height: 130%;
+  padding: 5px 0px 0px 18px; }
+
+#globalContentContainer a {
+  color: #3A3A39;
+  text-decoration: underline;
+  font-size:15px !important; }
+
+.shippingDetails_content > a {
+  margin-right: 10px; }
+
+/*--------- price summary--------*/
+
+.mvPriceDetails {
+  float: right; }
+
+#mcyCheckoutPricingSummary {
+  border-top: 1px solid #999;
+  a {
+    color: #3A3A39;
+    text-decoration: underline; } }
+
+#orderSummaryRightSidebar > h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px;
+  color: #e70000;
+  .orderSummary_bagid {
+color: #3A3A39;
+font-weight:normal;
+display:block;
+padding-top:5px;
+  }
+   }
+
+
+.mvPriceColumn {
+  padding: 3px 10px;
+  overflow: hidden;
+  clear: both;
+  > span {
+    display: block;
+    float: left;
+}
+ }
+
+.mvSummaryTotal {
+  padding: 10px 0;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fbfbfb), color-stop(100%, #cecece));
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+  font-weight: bold;
+  margin-top: 10px; }
+
+.shippingDetails_addressoption_Header {
+  text-transform: capitalize; }
+
+.freeShip {
+  color: #e70000;
+  font-weight: bold; }
+
+.promoText {
+  color: #e70000; }
+
+/*------- choose Items for shipment------*/
+
+.itemSelection_checkbox, .itemSelection_image, .itemSelection_content {
+  float: left; }
+
+.itemSelection_image {
+  margin: 0 5px; }
+
+.itemSelection_content {
+  width: 67%;
+  display: inline-block;
+  padding-bottom: 5px;
+  > span:first-of-type {
+    display: block; } }
+
+.mvItemPriceContainer {
+  clear: both;
+  padding-top: 5px;
+  border-top: 1px dotted #CCC;
+  text-align: right;
+  font-size:14px;
+  .itemSelection_qty {
+    display: inline-block;
+    padding: 0 18px; } 
+    }
+
+.mvRegistryItemStart {
+  padding: 10px 10px 0px 10px;
+  border-top: 1px solid #999; }
+
+form[name="multipleShipping"] {
+  > div:first-of-type {
+    padding: 10px;
+    overflow: hidden;
+    border-bottom: 1px solid #999;
+    margin-bottom: 1px; }
+  > .submast {
+    padding: 0 10px; } }
+
+.mvGoGreenGift {
+  padding: 10px;
+  margin: 5px 0;
+  > span {
+    display: block;
+    font-size: 13px !important; } }
+
+/*---------------shipping method-----------------*/
+
+.ShippingOption_shippingMethod {
+  padding: 10px; 
+  .ShippingOption_delivery img {
+    margin-top: 10px;
+  }
+}
+
+.ShippingOption_radio {
+  width: 18px; }
+
+.ShippingOption_note {
+  display: block; }
+
+#mcyCheckoutMainContent {
+  .ShippingOption_giftOptions .row > span, .ShippingOption_giftRestrictions .row > span {
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px 0; } }
+
+.ShippingOption_link {
+  padding: 10px 10px 10px 0px;
+  display: inline-block; }
+
+.ShippingOption_giftOptions {
+  padding: 10px 10px 0 10px; }
+
+.ShippingOption_giftRestrictions, .addMessage {
+  padding: 10px; }
+
+.ShippingOption_giftRestrictions {
+  margin: 10px;
+  border: 1px solid #ddd; }
+
+.ShippingOption_checkbox {
+  width: 18px;
+  margin-top: 5px; }
+
+.itemSelection_content2 {
+  width: 90%;
+  .generalError {
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #e70000; } }
+
+#mcyCheckoutMainContent .row .ShippingOption_radio1_content {
+  padding-right: 20px; }
+
+label[for="giftmsgdesc"] {
+  padding-top: 10px;
+  display: block; }
+
+.ShippingOption_generalError_padding input[type="text"] {
+  width: 90% !important; }
+
+.ShippingOption_generalError {
+  padding: 10px; 
+  br{
+    display:block !important;
+  }
+  .ShippingOptions_dashedLineBottom {
+    border-bottom:1px dashed #ccc;
+    padding-bottom:5px;
+  }
+  .shippingOptions_deliveryWindowMessage {
+    color: #3A3A39;
+  }
+  }
+
+.ShippingOption_generalError_padding {
+  padding-top: 5px; }
+
+.formError.ShippingOption_generalError_padding {
+  color: #e70000; }
+
+.formColHeading.ShippingOption_generalError_padding a {
+  color: #3A3A39;
+  font-size: 15px !important;
+  text-decoration: under-line;
+  font-weight: bold; }
+
+.formError {
+  color: #e70000; }
+
+#HaveGiftRadio55 img {
+  vertical-align: baseline; }
+
+/*----------multiple shipping popup---------*/
+
+#viewShipmentItems_c {
+  position: absolute !important;
+  top: 100px !important;
+  width: 94%;
+  padding: 0 3%;
+  left: 0 !important;
+  .hd {
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fcfcfc), to(#cecece));
+    border-bottom: 1px solid #CCC;
+    -webkit-border-radius: 6px 6px 0px 0px;
+    padding: 10px 10px 10px 0;
+    color: #E70000;
+    font-weight: bold; } }
+
+.container-close {
+  //background: url(https://moovweb-gage.s3.amazonaws.com/yupu/macy2/close_btn.png) no-repeat;
+  background: url(../../images/css/close_btn.png) no-repeat;
+  height: 20px;
+  margin: 8px;
+  width: 20px;
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  display: inline-block; }
+
+.mask {
+  position: absolute;
+  background: #fff;
+  opacity: .8; }
+
+#viewShipmentItems {
+  width: 100% !important;
+  background: #fff;
+  position: relative;
+  -webkit-box-shadow: #555 0px 0px 6px;
+  -webkit-border-radius: 6px;
+  .scrollableHeight > div:last-of-type {
+    -webkit-border-radius: 0 0 6px 6px; }
+  .hd img, .checkoutContainer > div:first-of-type {
+    display: none; } }
+
+#closeOverlayBtn {
+  display: none; }
+
+#viewShipmentItems_c br {
+  display: block; }
+
+/*------------bill information------------*/
+
+.mvBillRow {
+  overflow: hidden;
+  padding: 5px 5px 5px 15px;
+  > span {
+    float: left; }
+  > .BillingRegister_creditCard_formContent {
+    min-width: 100px;
+    font-weight: bold;
+    font-size: 14px;
+    padding-right: 5px; } }
+
+input#phoneSubscriberNBR {
+  min-width: 45px; }
+
+.shippingDetails_state {
+  width: 120px; }
+
+#addressLine2 {
+  margin-left: 105px; }
+
+.mvBreakLine {
+  line-height: 5px; }
+
+.mvBillRow {
+  strong {
+    font-size: 14px; }
+  .errorText {
+    //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macys/alter_red.png) no-repeat 0px 8px;
+    background: white url(../../images/css/alter_red.png) no-repeat 0px 8px;
+    color: #E70000;
+    display: inline-block;
+    line-height: 130%;
+    padding: 5px 0px 0px 18px; } }
+
+.BillingRegister_creditCard_formContent_1, .BillingRegister_creditCard_link, .BillingRegister_billing_Address_content, #creditCardDetails .billing_style3:first-child > .row:nth-of-type(2), form[name="billingForm"] > div:first-of-type, .billing_style6 > .row:first-of-type > span:last-child {
+  padding: 5px 10px 5px 15px;
+  display: block; }
+
+#billingAddress .errorTextWithoutIcon {
+  padding: 5px 10px 5px 20px; }
+
+.mvBillPhoneNo {
+  padding: 0px 10px 10px 15px;
+  > span {
+    padding: 5px 0 5px 0px;
+    display: inline-block; } }
+
+.billing_style4 .mvPadding10 {
+  padding: 15px 10px 5px 10px; }
+
+.mvBillPhoneNo .Shopping_Bag_content {
+  display: block;
+  font-size: 14px;
+  font-weight: bold; }
+
+.mvPromoCodeWrapper {
+  padding: 10px;
+  -webkit-box-shadow: #e5e5e5 0px -3px 4px inset;
+  border-top: 1px solid #999;
+  > div {
+    padding: 5px 0; }
+  .promoDiscount {
+    letter-spacing: -0.5px;
+    margin-top: 5px; } }
+
+.Shopping_Bag_promoCode {
+  font-weight: bold;
+  font-size: 17px;
+  padding-bottom: 10px;
+  display: block; }
+
+.billing_style5 {
+  padding: 0 10px 10px 10px; }
+
+#applyButton {
+  display: inline-block;
+  padding-left: 10px;
+  margin-top: -5px; }
+
+#showGiftCardNumber .Shopping_Bag_giftCard_content, .Shopping_Bag_giftCard_inputType {
+  display: block;
+  padding: 5px 0; }
+
+#giftcard, .Shopping_Bag_giftCard_image {
+  display: block; }
+
+.wallet_left, .wallet_right{
+  overflow: hidden; 
+  border-bottom:1px solid #ccc;
+  &.wallet_selected {
+    background:#efefef;
+  } }
+  input[id^="cuuv"] {
+    width:60px !important;
+  }
+  .mvCheckoutNewCardWrapper {
+    overflow: hidden; 
+  }
+
+#showGiftCardDetails > div {
+  padding: 5px 0; }
+
+.wallet_left > div, .wallet_right > div, .mvCheckoutNewCardWrapper > div {
+  float: left;
+  padding: 10px 0 10px 10px;
+  &.billing_content {
+    width:80%;
+  } }
+
+.mvPhoneOptions {
+  padding: 10px;
+  .Shopping_Bag_content {
+    label.formLabel {
+      font-weight: bold; }
+    display: block; }
+  > span {
+    display: inline-block;
+    padding: 5px;
+    &.phone {
+      width: 50px !important; } } }
+
+#cuuv2_0, #securitycode {
+  width: 60px !important; }
+
+/*---------------Review Your Shipments----------------*/
+
+.MultipleShipment_shippingDetails, .MultipleShipment_shippingMethod {
+  padding: 10px;
+  -webkit-box-shadow: #e5e5e5 0px -3px 4px inset;
+  border-bottom: 1px solid #999; }
+
+.mvItemPriceContainer > .MultipleShipment_qty {
+  display: inline-block;
+  padding-right: 25px; }
+
+.mvQtyLabel {
+  padding-left: 25px;
+  display: inline-block; }
+
+.MultipleShipment_checkbox, .MultipleShipment_image, .MultipleShipment_content {
+  float: left; }
+
+.MultipleShipment_image {
+  margin: 0px 5px; }
+
+.MultipleShipment_content {
+  padding-bottom: 5px;
+  .formLabel {
+    font-weight: bold; }
+  width: 60%; }
+
+.MultipleShipment_textHeader, .MultipleShipment_moveToShipment {
+  padding: 5px 10px; }
+
+.MultipleShipment_textHeader {
+  font-weight: bold; }
+
+form[name="shipmentReview"] .mvRegistryItemStart {
+  border-top: none; }
+
+.MultipleShipment_moveToShipment > .MultipleShipping_Shipment_content {
+  display: block; }
+
+.MultipleShipment_shippingDetails h3, .MultipleShipment_shippingMethod h3 {
+  font-weight: bold;
+  display: inline-block; }
+
+.MultipleShipment_error {
+  .promoDiscount, .promoPrice {
+    color: #e70000; } }
+
+.promoPrice {
+  font-weight: bold; }
+
+.mvBonusReviewRow {
+  padding-top: 5px;
+  border-top: 1px dotted #CCC;
+  overflow: hidden;
+  margin-top: 5px; }
+
+/*-----------Edit Bill Address----------*/
+
+.mvEditBillRow {
+  overflow: hidden;
+  padding: 5px 5px 5px 15px;
+  .Edit_Billing_content {
+    min-width: 100px;
+    font-weight: bold;
+    font-size: 14px;
+    padding-right: 5px; }
+  > span {
+    float: left; } }
+
+.Edit_Billing_links {
+  padding: 5px 5px 5px 105px;
+  display: block;
+  float: none; }
+
+form[name="billingAddressForm"] > #mcyCheckoutMainContent > .checkoutContainer > div:first-of-type {
+  padding: 10px; }
+
+.mvEditBillRow .small_form.Edit_Billing_state {
+  width: 180px; }
+
+.Edit_Billing_inputType #phoneSubscriberNBR {
+  display: inline-block;
+  width: 40px; }
+
+/*-----------order overview-------------*/
+.OrderReview_shippingOptions > h2, .OrderReview_giftOptions > h2 {
+  display: inline-block; }
+
+.mvReviewItemPriceContainer {
+  padding: 5px 0;
+  margin: 5px 0;
+  border-top: 1px dotted #CCC;
+  text-align: right;
+  .OrderReview_qty {
+    display: inline-block;
+    padding-right: 25px; }
+  .mvQtyLabel {
+    padding-left: 25px; } }
+.MultipleShipment_shippingDetails {
+  >img, >br, >.clearboth {
+    display:none;
+  }
+}
+#checkoutSummary > div .generalError, .OrderReview_recheckLabelPlaceOrder, #checkoutSummary > div > div {
+  padding: 5px 10px; }
+
+.OrderReview_placeOrder {
+  display: none; }
+
+.OrderReview_buttons {
+  padding: 6px;
+  img {
+    padding: 3px; } }
+
+.OrderReview_image {
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: top; }
+
+.OrderReview_content {
+  display: inline-block;
+  width: 75%; }
+
+.OrderReview_textHeader {
+  padding: 10px;
+  font-weight: bold; }
+
+.mvOverviewRegistryItem {
+  padding: 10px 10px 0 10px; }
+
+.checkoutContainer {
+  &.contInfo > strong {
+    padding: 10px 10px 0 10px;
+    display: block; }
+  &.BillInfo h2 {
+    float: left; } }
+
+.mvDarkGrayBar > h2.withSubText {
+  float: left; }
+
+#bd .mvDarkGrayBar .headerEditLink {
+  color: white;
+  float: right; }
+
+.checkoutContainer {
+  &.BillInfo > .mvDarkGrayBar, &.contInfo > .mvDarkGrayBar {
+    overflow: hidden; } }
+
+.mvDarkGrayBar {
+  overflow: hidden; }
+
+.OrderReview_dashedLine .mvLightGrayBox strong {
+  font-weight: normal; }
+
+.mvLightGrayBox h2.withSubText, .OrderReview_shippingDetails > strong:first-of-type {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 15px !important;
+  margin-right: 5px; }
+
+#bd .shippingDetails_registrantAddr a {
+  font-weight: normal;
+  text-transform: lowercase; }
+
+/*------------Popup Window--------------*/
+
+&#mvEstimatedTax {
+  strong {
+    display: block;
+    padding: 10px;
+    font-weight: normal; }
+  .popupContent {
+    border-top: none; } }
+
+/*-------- guest checkout --------*/
+
+.shippingDetails_formInputs_phone > input.phone {
+  width: 50px; }
+
+&#mvSingleShipping {
+  .mvTitle {
+    font-size: 17px; }
+  #checkoutSummary > div br {
+    display: none; }
+  form[name="ordeReviewForm"] > .ExpressCheckout_recheckLabelPlaceOrder {
+    padding: 10px 10px 0 10px; }
+  .promoCode_content {
+    display: block; }
+  .promoCode_content br {
+    display: none; } 
+    #checkoutFooterContent {
+      border-top: 1px solid #999; }
+    .checkoutContainer.BillInfo > div > br {
+      display: none; }
+    #securitycode {
+      display: inline-block;
+      margin-left: 10px; }
+    .swatchText {
+      display: block; }
+   
+    .checkoutContainer.BillInfo > .mvPadding10 > .row {
+      br {
+        display: none; }
+      padding-top: 10px; }}
+       .mvPromoteWrap {
+          padding: 10px;
+          border-top: 1px solid #999; 
+        h2 {
+          text-transform: uppercase;
+          font-weight: bold;
+          padding-bottom: 10px; }
+        .promoCode_input, &.promoCode_image {
+          display: inline-block;
+          margin: 10px 0; }
+          .Shopping_Bag_promoCode_content {
+            display:block;
+            padding-bottom:5px;
+          }
+        }
+#expressCheckoutSummary > .ExpressCheckout_Order_Summary_bottom_buttons > img {
+  display: inline-block;
+  margin-left: 10px; }
+
+
+
+.OrderReview_color, .promoDiscount, .promoPrice {
+  color: #e70000; }
+
+.checkoutContainer.BillInfo > .mvPadding10 > :first-child {
+  display: block;
+  padding: 5px 0; }
+
+/*------------buttons-----------*/
+
+#bag_buttons {
+  padding: 6px;
+  img {
+    padding: 3px; } }
+
+/*--------- express check out----------*/
+
+.checkoutContainer {
+  &.shipAddr, &.shipMeth {
+    padding: 10px; } }
+
+.mvExpressCheckoutForm {
+  > div:first-of-type {
+    padding: 10px; }
+  > .ExpressCheckout_placeOrder, #mcyCheckoutPricingSummary {
+    display: none; } }
+form[name="ordeReviewForm"] > .ExpressCheckout_recheckLabelPlaceOrder {
+  padding: 10px 10px 0 10px; 
+}
+/*----------- error message-----------*/
+
+.errorTextWithoutIcon {
+  //background: white url(https://moovweb-gage.s3.amazonaws.com/yupu/macys/alter_red.png) no-repeat 2px 8px;
+  background: white url(../../images/css/alter_red.png) no-repeat 2px 8px;
+  color: #E70000;
+  display: block;
+  line-height: 130%;
+  padding: 5px 0px 0px 20px; }
+
+/*------edit shipping address-------*/
+
+.editShipping_fields > div.row {
+  padding: 5px 10px;
+  > span:first-of-type {
+    width: 100px;
+    display: inline-block; } }
+
+/*-----------Edit shipping address for e gift card-------------*/
+
+.shippingDetails_formText_virtual {
+  font-weight: bold;
+  padding: 5px 10px; }
+
+.shippingDetails_formInputs input {
+  width: 200px !important;
+  margin: 5px 10px; }
+
+/*------------Receipt page -----------*/
+
+#mvReceipt {
+  #checkoutConfirmation > img {
+    display: none; }
+  .lty_header {
+    padding-bottom: 10px; }
+  .mvItemContent {
+    overflow: hidden;
+    > span {
+      &:first-of-type > img {
+        margin-right: 5px;
+        float: left; }
+      &:nth-of-type(2) {
+        float: right;
+        widht: 68%; } } }
+  .mvItemData {
+    overflow: hidden;
+    padding-top: 5px;
+    border-top: 1px dotted #CCC;
+    > span {
+      display: inline-block;
+      padding-right: 10px; } }
+  .mvPriceTotal {
+    padding: 10px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fbfbfb), color-stop(100%, #cecece));
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    font-weight: bold;
+    margin-top: 10px;
+    clear: both; }
+  .mvRedColor {
+    color: #e70000; } }
+
+#checkoutConfirmation {
+  > div {
+    > img, > iframe {
+      display: none; } }
+  > img {
+    display: none; } }
+
+.mvOrderSummary {
+  > div {
+    padding: 10px;
+    overflow: hidden; }
+  border-top: 1px solid #999; }
+ .hideTriangle {
+   left: 0px !important;
+   text-align: center;
+   visibility: hidden;
+   width: 240px;
+   img{
+     margin-top: 0px;
+     position: relative;
+     z-index: 15;
+   }
+ }
+}
+/*--------shipping fee popup-------*/
+
+#myShippingFeePopupContainer {
+	margin: 0 18px 0 0;
+	font-size:11px;
+	display:inline-block;
+	h1 {
+	  color: #C00;
+    font-family: 'Myriad Pro',Arial,Sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    text-transform: lowercase;
+	}
+	  h3 {
+    display: inline;
+    font-size: 11px;
+    font-weight: bold;
+    margin-top:10px;
+    }
+    .myRatesTable {
+      border:1px solid #999;
+    }
+}
+#myShippingFeePopupContainer p {
+	margin: 0 18px 0 0;
+}
+.myShippingFeePopupCalculatedFees {
+	border-collapse: collapse;
+	margin: 0;
+	border: 1px #cccccc solid;
+//  width: 438px;
+}
+.myShippingFeePopupCalculatedFees td {
+	padding: 4px 10px 4px 10px;
+	vertical-align: top;
+}
+.myShippingFeePopupCalculatedFeesTotalRow {
+	background-color:  #F1F1F1;
+}
+.myShippingFeePopupCalculatedFeesTotalRow td, .myShippingFeePopupCalculatedFeesSubtotalRow td {
+	border-top: 1px #cccccc solid;
+	border-bottom: 1px #cccccc solid;
+}
+
+.freeShip{
+	color: #cc0000;
+	font-weight: bold;
+	padding-right: 5px;
+}
+	
