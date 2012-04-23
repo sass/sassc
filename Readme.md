@@ -1,15 +1,42 @@
-Libsass
+SassC
 =======
 
-Written by Hampton Catlin (@hcatlin) and Aaron Leung
+Written by Aaron Leung and Hampton Catlin (@hcatlin)
 
-About
------
+http://github.com/hcatlin/sassc
 
-Libsass is a C/C++ port of the Sass CSS precompiler. The original version was written in Ruby, but this version is meant for efficiency and portability.
+About SassC
+-----------
 
-This library strives to be light, simple, and easy to build and integrate with a variety of platforms and languages.
+SassC is a wrapper around libsass (http://github.com/hcatlin/libsass)
+used to generate a useful command-line application that can be installed
+and packaged for several operating systems.
 
+SassC currently statically links the libsass library, but might one
+day using dynamic linking if libsass supports that in the future.
+
+About Sass
+----------
+
+Sass is a CSS pre-processor language to add on exciting, new, 
+awesome features to CSS. Sass was the first language of its kind
+and by far the most mature and up to date codebase.
+
+Sass was originally created by the co-creator of this library, 
+Hampton Catlin (@hcatlin). The extension and continuing evolution
+of the language has all been the result of years of work by Nathan
+Weizenbaum (@nex3) and Chris Eppstein (@chriseppstein). 
+
+For more information about Sass itself, please visit http://sass-lang.org
+
+Building
+--------
+
+After you checkout the project, please make sure to update the
+submodules.
+
+	git submodules init
+	git submodules update
 
 Contribution Agreement
 ----------------------
