@@ -13,10 +13,10 @@ CPP_FILES = \
 	$(SRC_DIR)/prelexer.cpp
 
 sassc: sassc_obj libsass
-	gcc -o $(BIN_DIR)/sassc $(BUILD_DIR)/sassc.o libsass.a -lstdc++
+	gcc -O2 -o $(BIN_DIR)/sassc $(BUILD_DIR)/sassc.o libsass.a -lstdc++
 
 sassc_obj: build_dir sassc.c
-	gcc -c sassc.c
+	gcc -O2 -c sassc.c
 	mv *.o $(BUILD_DIR)
 
 libsass: libsass_objs
@@ -33,7 +33,7 @@ libsass: libsass_objs
 			$(BUILD_DIR)/prelexer.o
 
 libsass_objs: build_dir $(SRC_DIR)/sass_interface.cpp $(CPP_FILES)
-	g++ -c -combine $(SRC_DIR)/sass_interface.cpp $(CPP_FILES)
+	g++ -O2 -c -combine $(SRC_DIR)/sass_interface.cpp $(CPP_FILES)
 	mv *.o $(BUILD_DIR)/
 
 test: sassc
