@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-searchpath = ARGV[0]
+searchpath = ARGV[0] || ""
 
 messages = []
 warnings = []
