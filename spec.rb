@@ -3,6 +3,7 @@
 searchpath = ARGV[0]
 
 messages = []
+warnings = []
 worked = 0
 spec_count = 0
 
@@ -17,7 +18,7 @@ Dir[File.join(searchpath + "***/input.*")].each do |input_file|
   sass_output = `sass #{input_file}`
   expected_output = File.read(File.join(spec_dir, "output.css"))
   if expected_output.strip != sass_output.strip 
-    puts "Problem with Ruby compat in #{input_file}"
+    warnings << "Problem with Ruby compat in #{input_file}"
   end
   if output.strip != expected_output.strip
     print "F"
@@ -29,6 +30,11 @@ Dir[File.join(searchpath + "***/input.*")].each do |input_file|
 end
 
 puts("\n\n#{worked}/#{spec_count} Specs Passed!")
+
+if warnings.length > 0 
+  warn = ([""] + warnings).join("\n-----WARN------\n")
+  puts("\n#{warn}")
+end
 
 if messages.length > 0 
   puts("\n================================\nTEST FAILURES!\n\n")
