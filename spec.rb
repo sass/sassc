@@ -9,23 +9,25 @@ spec_count = 0
 
 puts("Running tests in #{searchpath}..\n\n")
 
-Dir[File.join(searchpath + "***/input.*")].each do |input_file|
-  spec_count += 1
-  spec_dir = File.dirname(input_file)
-  cmd = "./bin/sassc #{input_file}"
-  #puts cmd
-  output = `#{cmd}`
-  sass_output = `sass #{input_file}`
-  expected_output = File.read(File.join(spec_dir, "output.css"))
-  if expected_output.strip != sass_output.strip 
-    warnings << "Problem with Ruby compat in #{input_file}"
-  end
-  if output.strip != expected_output.strip
-    print "F"
-    messages << "Failed test #{spec_dir}"
-  else
-    worked += 1
-    print "."
+Dir["**/input.*"].each do |input_file|
+  if input_file[0..(searchpath.length - 1)] == (searchpath)
+    spec_count += 1
+    spec_dir = File.dirname(input_file)
+    cmd = "./bin/sassc #{input_file}"
+    #puts cmd
+    output = `#{cmd}`
+    sass_output = `sass #{input_file}`
+    expected_output = File.read(File.join(spec_dir, "output.css"))
+    if expected_output.strip != sass_output.strip 
+      warnings << "Problem with Ruby compat in #{input_file}"
+    end
+    if output.strip != expected_output.strip
+      print "F"
+      messages << "Failed test #{spec_dir}"
+    else
+      worked += 1
+      print "."
+    end
   end
 end
 
