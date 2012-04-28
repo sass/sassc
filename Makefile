@@ -1,40 +1,18 @@
-SRC_DIR = libsass
-BIN_DIR = bin
-BUILD_DIR = build
-CPP_FILES = \
-	$(SRC_DIR)/context.cpp \
-	$(SRC_DIR)/functions.cpp \
-	$(SRC_DIR)/document.cpp \
-	$(SRC_DIR)/document_parser.cpp \
-	$(SRC_DIR)/eval_apply.cpp \
-	$(SRC_DIR)/node.cpp \
-	$(SRC_DIR)/node_comparisons.cpp \
-	$(SRC_DIR)/values.cpp \
-	$(SRC_DIR)/prelexer.cpp
+SRC_DIR= libsass
+BIN_DIR= bin
+CC=gcc
+CFLAGS= -c -Wall -O2
+SOURCES= sassc.c
+OBJECTS = $(SOURCES:.c=.o)
 
-sassc: sassc_obj libsass
-	gcc -O2 -o $(BIN_DIR)/sassc $(BUILD_DIR)/sassc.o libsass.a -lstdc++
+sassc: $(OBJECTS) libsass.a
+	gcc -O2 -o $(BIN_DIR)/sassc sassc.o $(SRC_DIR)/libsass.a -lstdc++
 
-sassc_obj: build_dir sassc.c
-	gcc -O2 -c sassc.c
-	mv *.o $(BUILD_DIR)
+libsass.a: force_look
+	cd $(SRC_DIR); make
 
-libsass: libsass_objs
-	ar rvs libsass.a \
-			$(BUILD_DIR)/sass_interface.o \
-			$(BUILD_DIR)/context.o \
-			$(BUILD_DIR)/functions.o \
-			$(BUILD_DIR)/document.o \
-			$(BUILD_DIR)/document_parser.o \
-			$(BUILD_DIR)/eval_apply.o \
-			$(BUILD_DIR)/node.o \
-			$(BUILD_DIR)/node_comparisons.o \
-			$(BUILD_DIR)/values.o \
-			$(BUILD_DIR)/prelexer.o
-
-libsass_objs: build_dir $(SRC_DIR)/sass_interface.cpp $(CPP_FILES)
-	g++ -O2 -c -combine $(SRC_DIR)/sass_interface.cpp $(CPP_FILES)
-	mv *.o $(BUILD_DIR)/
+.c.o:
+	$(CC) $(CFLAGS) $<  -o $@
 
 test: sassc
 	ruby spec.rb spec/basic/
@@ -42,9 +20,10 @@ test: sassc
 test_all: sassc
 	ruby spec.rb spec/
 
-build_dir:
-	mkdir -p $(BUILD_DIR)
-
 clean:
 	rm -rf *.o build/*.o *.a
 	rm -rf bin/*
+	cd $(SRC_DIR); make clean
+
+force_look :
+	true
