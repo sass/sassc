@@ -35,8 +35,8 @@ Building
 After you checkout the project, please make sure to update the
 submodules.
 
-	git submodules init
-	git submodules update
+	git submodule init
+	git submodule update
 	
 Then run make:
   make

@@ -1,8 +1,10 @@
-hey ho {
-  + fuzz {
-    blah: blah;
-    huzz & [onclick] {
-      display: none;
-    }
-  }
+@import url(../blahblah/blah.blah);
+
+div {
+  blah: "hello #{2+2} world #{unit(23px)} #{'bloo\n'} blah";
 }
+
+$foo: iphone;
+
+@import url("hello.css");
+@import url("blah-#{$foo}.css");
