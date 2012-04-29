@@ -1,6 +1,8 @@
 SassC
 =======
 
+[![Build Status](https://secure.travis-ci.org/hcatlin/sassc.png?branch=master)](http://travis-ci.org/hcatlin/sassc)
+
 Written by Aaron Leung and Hampton Catlin (@hcatlin)
 
 http://github.com/hcatlin/sassc
