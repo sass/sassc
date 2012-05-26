@@ -1,3 +1,16 @@
-div {
-  a: "hello #{2+2} world #{unit(23px)} #{'bloo\n'} blah";
+a b + c {
+  p: q;
+}
+
+c {
+  p: q;
+}
+
+d ~ e f {
+  r: s;
+  @extend c;
+}
+
+g {
+  @extend .foo.bar.hux.foo;
 }
