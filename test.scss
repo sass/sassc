@@ -1,16 +1,28 @@
-a b + c {
-  p: q;
+/* rudimentary inheritance */
+
+/*a {
+  p: 1;
 }
 
-c {
-  p: q;
+b {
+  @extend a;
+  q: 2;
+}*/
+
+/* inheritance with qualified selectors */
+
+/*c.foo {
+  p: 1;
 }
 
-d ~ e f {
-  r: s;
+d {
   @extend c;
+  q: 2;
 }
 
-g {
-  @extend .foo.bar.hux.foo;
+*/
+
+
+"foo" bar {
+  hello: baz;
 }
