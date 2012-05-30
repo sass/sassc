@@ -1,28 +1,8 @@
-/* rudimentary inheritance */
-
-/*a {
-  p: 1;
+a b c {
+  blee: blee;
 }
 
-b {
-  @extend a;
-  q: 2;
-}*/
-
-/* inheritance with qualified selectors */
-
-/*c.foo {
-  p: 1;
-}
-
-d {
+d e f {
+  blah: blah;
   @extend c;
-  q: 2;
-}
-
-*/
-
-
-[foo=23] {
-  a: b;
 }
