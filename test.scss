@@ -1,6 +1,17 @@
-$a : a;
-$b : b;
+@warn "hey ho #{1 + 2}";
 
-foo {#{"baz" + "bang"}: blip}
+@mixin blub() {
+  @warn hey, 4+5, "blah #{1 + 2}";
+  blub: blab;
+}
 
-div { -foo-#{$a}-#{$b}-foo: foo }
+foo {
+  bar: bar;
+  @each $i in 1 2 3 {
+    @warn "blah-#{$i}";
+    blah: blah-$i;
+  }
+  @include blub();
+  b: "I'm a " + "\"fashion\" \"expert\"";
+  c: unquote("blah \"blah\" blah");
+}
