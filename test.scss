@@ -15,3 +15,8 @@ foo {
   b: "I'm a " + "\"fashion\" \"expert\"";
   c: unquote("blah \"blah\" blah");
 }
+
+foo {
+  #{"baz" + "bang"}buzz: blip;
+  boo: bingo-#{"bon" + "go"};
+}
