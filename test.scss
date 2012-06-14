@@ -14,9 +14,16 @@ foo {
   @include blub();
   b: "I'm a " + "\"fashion\" \"expert\"";
   c: unquote("blah \"blah\" blah");
+  d: nth();
 }
 
 foo {
   #{"baz" + "bang"}buzz: blip;
   boo: bingo-#{"bon" + "go"};
 }
+
+@import "partial.scss";
+
+@import "nonpartial";
+
+@import "scratch/fartial";
