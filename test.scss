@@ -1,29 +1,20 @@
-@warn "hey ho #{1 + 2}";
-
-@mixin blub() {
-  @warn hey, 4+5, "blah #{1 + 2}";
-  blub: blab;
-}
-
-foo {
-  bar: bar;
-  @each $i in 1 2 3 {
-    @warn "blah-#{$i}";
-    blah: blah-$i;
+@foo {
+  hey: ho;
+  blee: blah;
+  div span {
+    hello: world;
+    @poo {
+      doo: goo;
+    }
   }
-  @include blub();
-  b: "I'm a " + "\"fashion\" \"expert\"";
-  c: unquote("blah \"blah\" blah");
-  d: nth();
 }
 
-foo {
-  #{"baz" + "bang"}buzz: blip;
-  boo: bingo-#{"bon" + "go"};
+div {
+  color: red;
 }
 
-@import "partial.scss";
+@bar;
 
-@import "nonpartial";
+@hux;
 
-@import "scratch/fartial";
+@mux;
