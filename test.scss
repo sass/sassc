@@ -1,20 +1,14 @@
-@foo {
-  hey: ho;
-  blee: blah;
-  div span {
-    hello: world;
-    @poo {
-      doo: goo;
-    }
-  }
+@mixin foo($x, $y, $a: a, $b: false, $c: false, $d: false, $e: e) {
+  @if $a { #{$x}-a: $y; }
+  @if $b { #{$x}-b: $y; }
+  @if $c { #{$x}-c: $y; }
+  @if $d { #{$x}-d: $y; }
+  @if $e { #{$x}-e: $y; }
+  vals: $a $b $c $d $e;
 }
 
 div {
-  color: red;
+  /* What will appear? */
+  @include foo(blah, bloo, $b: b, $a: a, $c: c, $d: d);
+  blah: add-prefix(foo, bar);
 }
-
-@bar;
-
-@hux;
-
-@mux;
