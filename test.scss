@@ -1,14 +1,12 @@
-@mixin foo($x, $y, $a: a, $b: false, $c: false, $d: false, $e: e) {
-  @if $a { #{$x}-a: $y; }
-  @if $b { #{$x}-b: $y; }
-  @if $c { #{$x}-c: $y; }
-  @if $d { #{$x}-d: $y; }
-  @if $e { #{$x}-e: $y; }
-  vals: $a $b $c $d $e;
+$vendor: webkit;
+$gradient-type: linear;
+$gradients: center;
+
+@function blarg($x, $y: why) {
+  @return $x (2 + 2) $y;
 }
 
 div {
-  /* What will appear? */
-  @include foo(blah, bloo, $b: b, $a: a, $c: c, $d: d);
-  blah: add-prefix(foo, bar);
+  goo: blarg(oh god, why);
+  roo: oh god (2 + 2) $gradients;
 }
