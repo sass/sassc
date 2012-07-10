@@ -1,18 +1,22 @@
-SRC_DIR= libsass
-BIN_DIR= bin
-CC=gcc
-CFLAGS= -c -Wall -O2
-SOURCES= sassc.c
+CC = gcc
+CFLAGS = -Wall -O2
+LDFLAGS = -O2
+LDLIBS = -lstdc++ -lm
+
+SOURCES = sassc.c
 OBJECTS = $(SOURCES:.c=.o)
+TARGET = bin/sassc
 
-sassc: $(OBJECTS) libsass.a
-	gcc -O2 -o $(BIN_DIR)/sassc sassc.o $(SRC_DIR)/libsass.a -lstdc++ -lm
+all: libsass $(TARGET)
 
-libsass.a: force_look
-	cd $(SRC_DIR); $(MAKE)
+$(TARGET): $(OBJECTS) libsass/libsass.a
+	$(CC) $(LDFLAGS) -o $@ $^ $(LDLIBS)
 
-.c.o:
-	$(CC) $(CFLAGS) $<  -o $@
+libsass:
+	$(MAKE) -C libsass
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $< -o $@
 
 test: sassc
 	ruby spec.rb spec/basic/
@@ -21,9 +25,8 @@ test_all: sassc
 	ruby spec.rb spec/
 
 clean:
-	rm -rf *.o build/*.o *.a
-	rm -rf bin/*
-	cd $(SRC_DIR); $(MAKE) clean
+	rm -f $(OBJECTS) $(TARGET)
+	$(MAKE) -C libsass clean
 
-force_look :
-	true
+.PHONY: clean libsass
+
