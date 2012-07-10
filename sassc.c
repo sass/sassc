@@ -17,16 +17,19 @@ int main(int argc, char** argv)
 	sass_compile_file(ctx);
 	
 	if (ctx->error_status) {
-    if (ctx->error_message) printf("%s", ctx->error_message);
-    else printf("An error occured; no error message available.\n");
-  }
+		if (ctx->error_message)
+			printf("%s", ctx->error_message);
+		else
+			printf("An error occured; no error message available.\n");
+	}
 	else if (ctx->output_string) {
-	  printf("%s", ctx->output_string);
-  }
-  else {
-    printf("Unknown internal error.\n");
-  }
+		printf("%s", ctx->output_string);
+	}
+	else {
+		printf("Unknown internal error.\n");
+	}
 	
-  sass_free_file_context(ctx);
+	sass_free_file_context(ctx);
 	return 0;
 }
+
