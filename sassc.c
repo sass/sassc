@@ -3,6 +3,8 @@
 
 int main(int argc, char** argv)
 {
+	int ret;
+
 	if (argc < 2) {
 		printf("Usage: sassc [INPUT FILE]\n");
 		return 0;
@@ -21,15 +23,18 @@ int main(int argc, char** argv)
 			printf("%s", ctx->error_message);
 		else
 			printf("An error occured; no error message available.\n");
+		ret = 1;
 	}
 	else if (ctx->output_string) {
 		printf("%s", ctx->output_string);
+		ret = 0;
 	}
 	else {
 		printf("Unknown internal error.\n");
+		ret = 2;
 	}
 
 	sass_free_file_context(ctx);
-	return 0;
+	return ret;
 }
 
