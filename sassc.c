@@ -20,9 +20,9 @@ int main(int argc, char** argv)
 
 	if (ctx->error_status) {
 		if (ctx->error_message)
-			printf("%s", ctx->error_message);
+			fprintf(stderr, "%s", ctx->error_message);
 		else
-			printf("An error occured; no error message available.\n");
+			fprintf(stderr, "An error occured; no error message available.\n");
 		ret = 1;
 	}
 	else if (ctx->output_string) {
@@ -30,7 +30,7 @@ int main(int argc, char** argv)
 		ret = 0;
 	}
 	else {
-		printf("Unknown internal error.\n");
+		fprintf(stderr, "Unknown internal error.\n");
 		ret = 2;
 	}
 
