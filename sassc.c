@@ -10,6 +10,7 @@ int main(int argc, char** argv)
 	
 	struct sass_file_context* ctx = sass_new_file_context();
 	ctx->options.include_paths = "";
+	ctx->options.image_path = "images";
 	ctx->options.output_style = SASS_STYLE_NESTED;
 	ctx->input_path = argv[1];
 		
