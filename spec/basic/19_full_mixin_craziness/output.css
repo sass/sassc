@@ -3,10 +3,10 @@ div {
   margin: 1 2;
   /* end foo */
   /* begin foo */
-  margin: 1 global-y;
+  margin: 1 3;
   /* end foo */
-  margin: 1 2 global-z;
-  margin: global-x kwd-y kwd-z; }
+  margin: 1 2 zee;
+  margin: 1 kwd-y kwd-z; }
   div blip {
     hey: now; }
   div blip {
@@ -26,7 +26,7 @@ div {
   /* begin hux */
   color: calling-hux-again;
   /* begin foo */
-  margin: called-from-hux different-global-y;
+  margin: called-from-hux calling-hux-again;
   /* end foo */
   /* end hux */ }
   div blip {
@@ -44,13 +44,8 @@ div {
 
 div {
   /* begin foo */
-  margin: arg1 arg2;
-  /* end foo */
-  /* begin foo */
-  margin: arg1 arg2;
+  margin: kwdarg1 kwdarg2;
   /* end foo */ }
-  div blip {
-    hey: now; }
   div blip {
     hey: now; }
 

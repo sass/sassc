@@ -20,8 +20,7 @@
 
 a {
   hey: ho;
-  @include foo($x: kwd-arg another-kwd-arg, second, third);
-  @include foo(eks, why, $x: kwd-eks);
+  @include foo(second, third);
   @include foo($y: kwd-y, $x: kwd-x);
   goo: boo hoo;
   @include hux;

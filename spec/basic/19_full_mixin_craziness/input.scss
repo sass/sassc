@@ -18,19 +18,19 @@ $z: global-z;
 @mixin hux($y) {
   /* begin hux */
   color: $y;
-  @include foo(called-from-hux);
+  @include foo(called-from-hux, $y: $y);
   /* end hux */
 }
 
 div {
   @include foo(1, 2);
-  @include foo(1);
-  @include foogoo(1, 2);
-  @include foogoo($y /* blah */ : kwd-y, $z: kwd-z);
+  @include foo(1, 3);
+  @include foogoo(1, 2, $z: zee);
+  @include foogoo(1, $y /* blah */ : kwd-y, $z: kwd-z);
 }
 
 div {
-  @include hux();
+  @include hux($y: $y);
 }
 
 $y: different-global-y;
@@ -61,8 +61,7 @@ div {
 }
 
 div {
-  @include foo(arg1, arg2, $x: kwdarg1, $y: kwdarg2);
-  @include foo($x: kwdarg1, $y: kwdarg2, arg1, arg2);
+  @include foo($x: kwdarg1, $y: kwdarg2);
 }
 
 @mixin ruleset() {
