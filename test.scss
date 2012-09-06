@@ -6,7 +6,13 @@ $gradients: center;
   @return $x (2 + 2) $y;
 }
 
-div {
+div:bloo("goo") 
   goo: blarg(oh god, why);
   roo: oh god (2 + 2) $gradients;
+}
+
+div:nth-child(n+2) {
+  color: red;
+  blah: bar + "foo";
+  blah: "bar" + foo;
 }
