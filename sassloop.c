@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 #include "libsass/sass_interface.h"
 
 int main(int argc, char** argv)
@@ -12,13 +13,14 @@ int main(int argc, char** argv)
 	for (i = 0; i < atoi(argv[2]); ++i) {
 		printf("\n***\n*** PASS %d ***\n***\n\n", i);
 		struct sass_file_context* ctx = sass_new_file_context();
+		printf("*** ALLOCATED A NEW CONTEXT\n");
 		ctx->options.include_paths = "";
 		ctx->options.image_path = "images";
 		ctx->options.output_style = SASS_STYLE_NESTED;
 		ctx->input_path = argv[1];
-			
+		printf("*** POPULATED THE CONTEXT\n");
 		sass_compile_file(ctx);
-		
+		printf("*** COMPILED THE FILE\n");
 		if (ctx->error_status) {
 	    if (ctx->error_message) printf("%s", ctx->error_message);
 	    else printf("An error occured; no error message available.\n");
@@ -31,6 +33,8 @@ int main(int argc, char** argv)
 	  }
 		
 	  sass_free_file_context(ctx);
+	  printf("*** DEALLOCATED THE CONTEXT\n");
+	  sleep(1);
 	}
 	return 0;
 }
