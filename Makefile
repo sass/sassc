@@ -9,7 +9,7 @@ sassc: $(OBJECTS) libsass.a
 	gcc -O2 -o $(BIN_DIR)/sassc sassc.o $(SRC_DIR)/libsass.a -lstdc++
 
 libsass.a: force_look
-	cd $(SRC_DIR); make
+	cd $(SRC_DIR); $(MAKE)
 
 .c.o:
 	$(CC) $(CFLAGS) $<  -o $@
@@ -23,7 +23,7 @@ test_all: sassc
 clean:
 	rm -rf *.o build/*.o *.a
 	rm -rf bin/*
-	cd $(SRC_DIR); make clean
+	cd $(SRC_DIR); $(MAKE) clean
 
 force_look :
 	true
