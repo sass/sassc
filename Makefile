@@ -6,7 +6,7 @@ SOURCES= sassc.c
 OBJECTS = $(SOURCES:.c=.o)
 
 sassc: $(OBJECTS) libsass.a
-	gcc -O2 -o $(BIN_DIR)/sassc sassc.o $(SRC_DIR)/libsass.a -lstdc++
+	gcc -O2 -o $(BIN_DIR)/sassc sassc.o $(SRC_DIR)/libsass.a -lstdc++ -lm
 
 libsass.a: force_look
 	cd $(SRC_DIR); $(MAKE)
