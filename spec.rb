@@ -14,26 +14,27 @@ Dir["**/input.*"].each do |input_file|
     spec_count += 1
     spec_dir = File.dirname(input_file)
 
-    sassc_file  = File.join(spec_dir, "sassc_output.css")
-    sass_file   = File.join(spec_dir, "sass_output.css")
-    output_file = File.join(spec_dir, "output.css")
+    sassc_file    = File.join(spec_dir, "sassc_output.css")
+    sass_file     = File.join(spec_dir, "sass_output.css")
+    expected_file = File.join(spec_dir, "expected_output.css")
 
     `./bin/sassc #{input_file} > #{sassc_file}`
     `sass #{input_file} > #{sass_file}`
 
-    sassc_output = File.read(sassc_file)
-    sass_output  = File.read(sass_file)
-    output       = File.read(output_file)
+    sassc_output    = File.read(sassc_file)
+    sass_output     = File.read(sass_file)
+    expected_output = File.read(expected_file)
 
     if sassc_output.strip != sass_output.strip
       warning = "Problem with Ruby compat in #{input_file}\n"
       warning << `diff -rub #{sass_file} #{sassc_file}`
       warnings << warning
     end
-    if output.strip != sassc_output.strip
+
+    if expected_output.strip != sassc_output.strip
       print "F"
       message = "Failed test #{spec_dir}\n"
-      warning << `diff -rub #{output_file} #{sassc_file}`
+      warning << `diff -rub #{expected_file} #{sassc_file}`
       messages << message
     else
       worked += 1
