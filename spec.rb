@@ -13,21 +13,35 @@ Dir["**/input.*"].each do |input_file|
   if input_file[0..(searchpath.length - 1)] == (searchpath)
     spec_count += 1
     spec_dir = File.dirname(input_file)
-    cmd = "./bin/sassc #{input_file}"
-    #puts cmd
-    output = `#{cmd}`
-    sass_output = `sass #{input_file}`
-    expected_output = File.read(File.join(spec_dir, "output.css"))
-    if expected_output.strip != sass_output.strip 
-      warnings << "Problem with Ruby compat in #{input_file}"
+
+    sassc_file  = File.join(spec_dir, "sassc_output.css")
+    sass_file   = File.join(spec_dir, "sass_output.css")
+    output_file = File.join(spec_dir, "output.css")
+
+    `./bin/sassc #{input_file} > #{sassc_file}`
+    `sass #{input_file} > #{sass_file}`
+
+    sassc_output = File.read(sassc_file)
+    sass_output  = File.read(sass_file)
+    output       = File.read(output_file)
+
+    if sassc_output.strip != sass_output.strip
+      warning = "Problem with Ruby compat in #{input_file}\n"
+      warning << `diff -rub #{sass_file} #{sassc_file}`
+      warnings << warning
     end
-    if output.strip != expected_output.strip
+    if output.strip != sassc_output.strip
       print "F"
-      messages << "Failed test #{spec_dir}"
+      message = "Failed test #{spec_dir}\n"
+      warning << `diff -rub #{output_file} #{sassc_file}`
+      messages << message
     else
       worked += 1
       print "."
     end
+
+    `rm "#{sassc_file}"`
+    `rm "#{sass_file}"`
   end
 end
 
