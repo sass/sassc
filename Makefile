@@ -12,6 +12,7 @@ all: libsass $(TARGET)
 $(TARGET): $(OBJECTS) libsass/libsass.a
 	$(CC) $(LDFLAGS) -o $@ $^ $(LDLIBS)
 
+libsass/libsass.a: libsass
 libsass:
 	$(MAKE) -C libsass
 
