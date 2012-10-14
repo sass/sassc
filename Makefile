@@ -18,15 +18,15 @@ libsass:
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
-test: sassc
+test: all
 	ruby spec.rb spec/basic/
 
-test_all: sassc
+test_all: all
 	ruby spec.rb spec/
 
 clean:
 	rm -f $(OBJECTS) $(TARGET)
 	$(MAKE) -C libsass clean
 
-.PHONY: clean libsass
+.PHONY: clean libsass test test_all
 
