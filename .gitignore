@@ -1,11 +1,7 @@
-src/Makefile
-.DS_Store
-tmp/
-.sass-cache
-sassc
-build/*
-*.o
-*.a
-a.out
 bin/*
+*.o
 *.gem
+.sass-cache
+
+a.out
+.DS_Store
