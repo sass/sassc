@@ -4,6 +4,7 @@
 
 int main(int argc, char** argv)
 {
+	struct sass_file_context* ctx;
 	int ret;
 	int style = SASS_STYLE_NESTED; /* Default style */
 	int Iflag = 0;
@@ -37,7 +38,7 @@ int main(int argc, char** argv)
 		return 1;
 	}
 
-	struct sass_file_context* ctx = sass_new_file_context();
+	ctx = sass_new_file_context();
 
 	if (Iflag == 1) {
 		ctx->options.include_paths = Iflag_arg;
