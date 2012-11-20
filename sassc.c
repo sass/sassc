@@ -1,20 +1,46 @@
 #include <stdio.h>
+#include <getopt.h>
 #include "libsass/sass_interface.h"
 
 int main(int argc, char** argv)
 {
+	struct sass_file_context* ctx;
+	char *include_paths = NULL;
+	char *filename = NULL;
+	int style = SASS_STYLE_NESTED; /* Default style */
 	int ret;
+	int c;
 
-	if (argc < 2) {
-		printf("Usage: sassc [INPUT FILE]\n");
-		return 0;
+	while ((c = getopt(argc, argv, "cI:")) != -1) {
+		switch (c) {
+		case 'I':
+			include_paths = optarg;
+			break;
+		case 'c':
+			style = SASS_STYLE_COMPRESSED;
+			break;
+		case '?':
+			/* Unrecognized flag or missing an expected value */
+			/* getopt should produce it's own error message for this case */
+			return 1;
+		default:
+			fprintf(stderr, "Unknown error while processing arguments\n");
+			return 2;
+		}
 	}
 
-	struct sass_file_context* ctx = sass_new_file_context();
-	ctx->options.include_paths = "";
+	if (optind < argc) {
+		filename = argv[optind];
+	} else {
+		fprintf(stderr, "Usage: sassc [OPTION]... FILE\n");
+		return 1;
+	}
+
+	ctx = sass_new_file_context();
+	ctx->options.include_paths = include_paths;
 	ctx->options.image_path = "images";
-	ctx->options.output_style = SASS_STYLE_NESTED;
-	ctx->input_path = argv[1];
+	ctx->options.output_style = style;
+	ctx->input_path = filename;
 
 	sass_compile_file(ctx);
 
@@ -37,4 +63,3 @@ int main(int argc, char** argv)
 	sass_free_file_context(ctx);
 	return ret;
 }
-
