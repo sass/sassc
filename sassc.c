@@ -5,18 +5,16 @@
 int main(int argc, char** argv)
 {
 	struct sass_file_context* ctx;
-	int ret;
+	char *include_paths = NULL;
+	char *filename = NULL;
 	int style = SASS_STYLE_NESTED; /* Default style */
-	int Iflag = 0;
-	char *Iflag_arg;
-	char *filename;
+	int ret;
 	int c;
 
 	while ((c = getopt(argc, argv, "cI:")) != -1) {
 		switch (c) {
 		case 'I':
-			Iflag_arg = optarg;
-			Iflag = 1;
+			include_paths = optarg;
 			break;
 		case 'c':
 			style = SASS_STYLE_COMPRESSED;
@@ -39,13 +37,7 @@ int main(int argc, char** argv)
 	}
 
 	ctx = sass_new_file_context();
-
-	if (Iflag == 1) {
-		ctx->options.include_paths = Iflag_arg;
-	} else {
-		ctx->options.include_paths = "";
-	}
-
+	ctx->options.include_paths = include_paths;
 	ctx->options.image_path = "images";
 	ctx->options.output_style = style;
 	ctx->input_path = filename;
@@ -71,4 +63,3 @@ int main(int argc, char** argv)
 	sass_free_file_context(ctx);
 	return ret;
 }
-
