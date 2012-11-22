@@ -8,16 +8,20 @@ int main(int argc, char** argv)
 	char *include_paths = "";
 	char *filename = "";
 	int style = SASS_STYLE_NESTED;
+	int comments = 0;
 	int ret;
 	int c;
 
-	while ((c = getopt(argc, argv, "cI:")) != -1) {
+	while ((c = getopt(argc, argv, "cgI:")) != -1) {
 		switch (c) {
 		case 'I':
 			include_paths = optarg;
 			break;
 		case 'c':
 			style = SASS_STYLE_COMPRESSED;
+			break;
+		case 'g':
+			comments = 1;
 			break;
 		case '?':
 			/* Unrecognized flag or missing an expected value */
@@ -40,6 +44,7 @@ int main(int argc, char** argv)
 	ctx->options.include_paths = include_paths;
 	ctx->options.image_path = "images";
 	ctx->options.output_style = style;
+	ctx->options.source_comments = comments;
 	ctx->input_path = filename;
 
 	sass_compile_file(ctx);
