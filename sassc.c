@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <getopt.h>
 #include "libsass/sass_interface.h"
 
@@ -12,13 +13,24 @@ int main(int argc, char** argv)
 	int ret;
 	int c;
 
-	while ((c = getopt(argc, argv, "cgI:")) != -1) {
+	while ((c = getopt(argc, argv, "gt:I:")) != -1) {
 		switch (c) {
 		case 'I':
 			include_paths = optarg;
 			break;
-		case 'c':
-			style = SASS_STYLE_COMPRESSED;
+		case 't':
+			if (strcmp(optarg, "compressed") == 0) {
+				style = SASS_STYLE_COMPRESSED;
+			} else if (strcmp(optarg, "compact") == 0) {
+				style = SASS_STYLE_COMPACT;
+			} else if (strcmp(optarg, "expanded") == 0) {
+				style = SASS_STYLE_EXPANDED;
+			} else if (strcmp(optarg, "nested") == 0) {
+				style = SASS_STYLE_NESTED;
+			} else {
+				fprintf(stderr, "Invalid argument for -t flag: '%s'\n", optarg);
+				/* No abort here, just use the default and continue */
+			}
 			break;
 		case 'g':
 			comments = 1;
