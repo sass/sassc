@@ -13,7 +13,7 @@ int main(int argc, char** argv)
 	int ret;
 	int c;
 
-	while ((c = getopt(argc, argv, "gt:I:")) != -1) {
+	while ((c = getopt(argc, argv, "lt:I:")) != -1) {
 		switch (c) {
 		case 'I':
 			include_paths = optarg;
@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 				/* No abort here, just use the default and continue */
 			}
 			break;
-		case 'g':
+		case 'l':
 			comments = 1;
 			break;
 		case '?':
