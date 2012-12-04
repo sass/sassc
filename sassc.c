@@ -6,7 +6,7 @@
 
 #define BUFSIZE 512
 
-int output(int error_status, char* error_message, char* output_string) {
+int output(int error_status, char* error_message, char* output_string, char* outfile) {
     if (error_status) {
         if (error_message) {
             fprintf(stderr, "%s", error_message);
@@ -15,7 +15,22 @@ int output(int error_status, char* error_message, char* output_string) {
         }
         return 1;
     } else if (output_string) {
-        printf("%s", output_string);
+        if(outfile) {
+            FILE* fp = fopen(outfile, "w");
+            if(!fp) {
+                perror("Error opening output file");
+                return 1;
+            }
+            if(fprintf(fp, "%s", output_string) < 0) {
+                perror("Error writing to output file");
+                fclose(fp);
+                return 1;
+            }
+            fclose(fp);
+        }
+        else {
+            printf("%s", output_string);
+        }
         return 0;
     } else {
         fprintf(stderr, "Unknown internal error.\n");
@@ -23,7 +38,7 @@ int output(int error_status, char* error_message, char* output_string) {
     }
 }
 
-int compile_stdin(struct sass_options options) {
+int compile_stdin(struct sass_options options, char* outfile) {
     int ret;
     struct sass_context* ctx;
     char buffer[BUFSIZE];
@@ -59,14 +74,14 @@ int compile_stdin(struct sass_options options) {
     ctx->options = options;
     ctx->source_string = source_string;
     sass_compile(ctx);
-    ret = output(ctx->error_status, ctx->error_message, ctx->output_string);
+    ret = output(ctx->error_status, ctx->error_message, ctx->output_string, outfile);
 
     sass_free_context(ctx);
     free(source_string);
     return ret;
 }
 
-int compile_file(struct sass_options options, char* input_path) {
+int compile_file(struct sass_options options, char* input_path, char* outfile) {
     int ret;
     struct sass_file_context* ctx = sass_new_file_context();
 
@@ -74,7 +89,7 @@ int compile_file(struct sass_options options, char* input_path) {
     ctx->input_path = input_path;
 
     sass_compile_file(ctx);
-    ret = output(ctx->error_status, ctx->error_message, ctx->output_string);
+    ret = output(ctx->error_status, ctx->error_message, ctx->output_string, outfile);
 
     sass_free_file_context(ctx);
     return ret;
@@ -98,6 +113,7 @@ void print_usage(char* argv0) {
     int i;
     printf("Usage: %s [OPTIONS] FILE\n", argv0);
     printf("Options:\n");
+    printf("  -o OUTFILE               File to save the output. If not supplied will write to standard output.\n");
     printf("  -t NAME                  Output style. Can be:");
     for(i = 0; i < NUM_STYLE_OPTION_STRINGS; ++i) {
         printf(" %s", style_option_strings[i].style_string);
@@ -116,6 +132,7 @@ void invalid_usage(char* argv0) {
 }
 
 int main(int argc, char** argv) {
+    char *outfile = 0;
     struct sass_options options;
     options.output_style = SASS_STYLE_NESTED;
     options.source_comments = 0;
@@ -123,8 +140,11 @@ int main(int argc, char** argv) {
     options.include_paths = "";
 
     int c, i;
-    while ((c = getopt(argc, argv, "hlt:I:")) != -1) {
+    while ((c = getopt(argc, argv, "ho:lt:I:")) != -1) {
         switch (c) {
+        case 'o':
+            outfile = optarg;
+            break;
         case 'I':
             options.include_paths = optarg;
             break;
@@ -170,8 +190,8 @@ int main(int argc, char** argv) {
     }
 
     if(strcmp(argv[optind], "-") != 0) {
-        return compile_file(options, argv[optind]);
+        return compile_file(options, argv[optind], outfile);
     } else {
-        return compile_stdin(options);
+        return compile_stdin(options, outfile);
     }
 }
