@@ -94,6 +94,26 @@ struct
 #define NUM_STYLE_OPTION_STRINGS \
     sizeof(style_option_strings) / sizeof(style_option_strings[0])
 
+void print_usage(char* argv0) {
+    int i;
+    printf("Usage: %s [OPTIONS] FILE\n", argv0);
+    printf("Options:\n");
+    printf("  -s                       Read input from standard input instead of an input file.\n");
+    printf("  -t NAME                  Output style. Can be:");
+    for(i = 0; i < NUM_STYLE_OPTION_STRINGS; ++i) {
+        printf(" %s", style_option_strings[i].style_string);
+    }
+    printf(".\n");
+    printf("  -l                       Emit comments in the generated CSS indicating the corresponding source line.\n");
+    printf("  -I PATH                  Sass import path.\n");
+    printf("  -h                       Display help message.\n");
+}
+
+void invalid_usage(char* argv0) {
+    fprintf(stderr, "See '%s -h'\n", argv0);
+    exit(EXIT_FAILURE);
+}
+
 int main(int argc, char** argv) {
     int read_from_stdin = 0;
     struct sass_options options;
@@ -103,7 +123,7 @@ int main(int argc, char** argv) {
     options.include_paths = "";
 
     int c, i;
-    while ((c = getopt(argc, argv, "lst:I:")) != -1) {
+    while ((c = getopt(argc, argv, "hlst:I:")) != -1) {
         switch (c) {
         case 'I':
             options.include_paths = optarg;
@@ -121,7 +141,7 @@ int main(int argc, char** argv) {
                     fprintf(stderr, " %s", style_option_strings[i].style_string);
                 }
                 fprintf(stderr, "\n");
-                return 1;
+                invalid_usage(argv[0]);
             }
             break;
         case 'l':
@@ -130,10 +150,13 @@ int main(int argc, char** argv) {
         case 's':
             read_from_stdin = 1;
             break;
+        case 'h':
+            print_usage(argv[0]);
+            return 0;
         case '?':
             /* Unrecognized flag or missing an expected value */
             /* getopt should produce it's own error message for this case */
-            return 1;
+            invalid_usage(argv[0]);
         default:
             fprintf(stderr, "Unknown error while processing arguments\n");
             return 2;
