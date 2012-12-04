@@ -80,6 +80,20 @@ int compile_file(struct sass_options options, char* input_path) {
     return ret;
 }
 
+struct
+{
+    char* style_string;
+    int output_style;
+} style_option_strings[] = {
+    { "compressed", SASS_STYLE_COMPRESSED },
+    { "compact", SASS_STYLE_COMPACT },
+    { "expanded", SASS_STYLE_EXPANDED },
+    { "nested", SASS_STYLE_NESTED }
+};
+
+#define NUM_STYLE_OPTION_STRINGS \
+    sizeof(style_option_strings) / sizeof(style_option_strings[0])
+
 int main(int argc, char** argv) {
     int read_from_stdin = 0;
     struct sass_options options;
@@ -88,24 +102,26 @@ int main(int argc, char** argv) {
     options.image_path = "images";
     options.include_paths = "";
 
-    int c;
+    int c, i;
     while ((c = getopt(argc, argv, "lst:I:")) != -1) {
         switch (c) {
         case 'I':
             options.include_paths = optarg;
             break;
         case 't':
-            if (strcmp(optarg, "compressed") == 0) {
-                options.output_style = SASS_STYLE_COMPRESSED;
-            } else if (strcmp(optarg, "compact") == 0) {
-                options.output_style = SASS_STYLE_COMPACT;
-            } else if (strcmp(optarg, "expanded") == 0) {
-                options.output_style = SASS_STYLE_EXPANDED;
-            } else if (strcmp(optarg, "nested") == 0) {
-                options.output_style = SASS_STYLE_NESTED;
-            } else {
-                fprintf(stderr, "Invalid argument for -t flag: '%s'\n", optarg);
-                /* No abort here, just use the default and continue */
+            for(i = 0; i < NUM_STYLE_OPTION_STRINGS; ++i) {
+                if(strcmp(optarg, style_option_strings[i].style_string) == 0) {
+                    options.output_style = style_option_strings[i].output_style;
+                    break;
+                }
+            }
+            if(i == NUM_STYLE_OPTION_STRINGS) {
+                fprintf(stderr, "Invalid argument for -t flag: '%s'. Allowed arguments are:", optarg);
+                for(i = 0; i < NUM_STYLE_OPTION_STRINGS; ++i) {
+                    fprintf(stderr, " %s", style_option_strings[i].style_string);
+                }
+                fprintf(stderr, "\n");
+                return 1;
             }
             break;
         case 'l':
