@@ -118,9 +118,8 @@ void print_usage(char* argv0) {
     printf("   -t NAME        Output style. Can be:");
     for(i = NUM_STYLE_OPTION_STRINGS - 1; i >= 0; i--) {
         printf(" %s", style_option_strings[i].style_string);
-        printf(i == 0 ? "." : ",");
+        printf(i == 0 ? ".\n" : ",");
     }
-    printf("\n");
 
     printf("   -l             Emit comments showing original line numbers.\n");
     printf("   -I PATH        Set Sass import path.\n");
