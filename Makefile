@@ -25,9 +25,15 @@ test: all
 test_all: all
 	ruby spec.rb spec/
 
+test_flags: all
+	$(TARGET) -t compressed -o $@.css -I spec/getopt/inc spec/getopt/input.scss
+	diff -u $@.css spec/getopt/expected.css
+	rm -f $@.css
+	@printf '\nCommand-line flag test passed\n\n'
+
 clean:
 	rm -f $(OBJECTS) $(TARGET)
 	$(MAKE) -C libsass clean
 
-.PHONY: clean libsass test test_all
-
+.PHONY: clean libsass test test_all test_flags
+.DELETE_ON_ERROR:
