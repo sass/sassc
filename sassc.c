@@ -181,16 +181,12 @@ int main(int argc, char** argv) {
         }
     }
 
-    if(optind > argc - 1) {
-        fprintf(stderr, "Error: You must supply a FILE argument.\n");
-        invalid_usage(argv[0]);
-    }
-    else if(optind < argc - 1) {
+    if(optind < argc - 1) {
         fprintf(stderr, "Error: Too many arguments.\n");
         invalid_usage(argv[0]);
     }
 
-    if(strcmp(argv[optind], "-") != 0) {
+    if(optind < argc && strcmp(argv[optind], "-") != 0) {
         return compile_file(options, argv[optind], outfile);
     } else {
         return compile_stdin(options, outfile);
