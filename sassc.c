@@ -111,19 +111,20 @@ struct
 
 void print_usage(char* argv0) {
     int i;
-    printf("Usage: %s [OPTIONS] FILE\n", argv0);
+    printf("Usage: %s [OPTION]... [FILE]\n\n", argv0);
     printf("Options:\n");
-    printf("  -o OUTFILE               File to save the output. If not supplied will write to standard output.\n");
-    printf("  -t NAME                  Output style. Can be:");
-    for(i = 0; i < NUM_STYLE_OPTION_STRINGS; ++i) {
+    printf("   -o OUTFILE     Write output to specified file.\n");
+
+    printf("   -t NAME        Output style. Can be:");
+    for(i = NUM_STYLE_OPTION_STRINGS - 1; i >= 0; i--) {
         printf(" %s", style_option_strings[i].style_string);
+        printf(i == 0 ? ".\n" : ",");
     }
-    printf(".\n");
-    printf("  -l                       Emit comments in the generated CSS indicating the corresponding source line.\n");
-    printf("  -I PATH                  Sass import path.\n");
-    printf("  -h                       Display help message.\n");
+
+    printf("   -l             Emit comments showing original line numbers.\n");
+    printf("   -I PATH        Set Sass import path.\n");
+    printf("   -h             Display this help message.\n");
     printf("\n");
-    printf("Specify a file name of - (dash) to read from standard input.\n");
 }
 
 void invalid_usage(char* argv0) {
