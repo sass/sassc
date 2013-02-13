@@ -122,6 +122,7 @@ void print_usage(char* argv0) {
     }
 
     printf("   -l             Emit comments showing original line numbers.\n");
+    printf("   -m             Emit source map.\n");
     printf("   -I PATH        Set Sass import path.\n");
     printf("   -h             Display this help message.\n");
     printf("\n");
@@ -141,7 +142,7 @@ int main(int argc, char** argv) {
     options.include_paths = "";
 
     int c, i;
-    while ((c = getopt(argc, argv, "ho:lt:I:")) != -1) {
+    while ((c = getopt(argc, argv, "ho:lmt:I:")) != -1) {
         switch (c) {
         case 'o':
             outfile = optarg;
@@ -166,7 +167,10 @@ int main(int argc, char** argv) {
             }
             break;
         case 'l':
-            options.source_comments = 1;
+            options.source_comments = SASS_SOURCE_COMMENTS_DEFAULT;
+            break;
+        case 'm':
+            options.source_comments = SASS_SOURCE_COMMENTS_MAP;
             break;
         case 'h':
             print_usage(argv[0]);
