@@ -122,7 +122,7 @@ void print_usage(char* argv0) {
     }
 
     printf("   -l             Emit comments showing original line numbers.\n");
-    printf("   -m             Emit source map.\n");
+    printf("   -g             Emit source map.\n");
     printf("   -I PATH        Set Sass import path.\n");
     printf("   -h             Display this help message.\n");
     printf("\n");
@@ -169,7 +169,7 @@ int main(int argc, char** argv) {
         case 'l':
             options.source_comments = SASS_SOURCE_COMMENTS_DEFAULT;
             break;
-        case 'm':
+        case 'g':
             options.source_comments = SASS_SOURCE_COMMENTS_MAP;
             break;
         case 'h':
