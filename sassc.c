@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <getopt.h>
-#include "libsass/sass_interface.h"
+#include "sass_interface.h"
 
 #define BUFSIZE 512
 
