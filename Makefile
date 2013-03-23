@@ -1,23 +1,25 @@
 CC = gcc
-CFLAGS = -Wall -O2
-LDFLAGS = -O2
-LDLIBS = -lstdc++ -lm
+CFLAGS = -Wall -O2 -Ilibsass
+LDFLAGS = -Llibsass
+LDLIBS = -lstdc++ -lm -lsass
 
 SOURCES = sassc.c
 OBJECTS = $(SOURCES:.c=.o)
 TARGET = bin/sassc
 
-all: libsass $(TARGET)
+all: submodule $(TARGET)
 
-$(TARGET): $(OBJECTS) libsass/libsass.a
+shared:
+	@$(MAKE) $(TARGET) CFLAGS='-Wall -O2 -fPIC' LDFLAGS=''
+
+$(TARGET): $(OBJECTS)
 	$(CC) $(LDFLAGS) -o $@ $^ $(LDLIBS)
-
-libsass/libsass.a: libsass
-libsass:
-	$(MAKE) -C libsass
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
+
+submodule:
+	$(MAKE) -C libsass
 
 test: all
 	ruby spec.rb spec/basic/
@@ -35,5 +37,6 @@ clean:
 	rm -f $(OBJECTS) $(TARGET)
 	$(MAKE) -C libsass clean
 
-.PHONY: clean libsass test test_all test_flags
+
+.PHONY: all shared submodule test test_all test_flags clean
 .DELETE_ON_ERROR:
