@@ -1,0 +1,44 @@
+box:hover {
+  -webkit-animation-name: scale, slide;
+  -moz-animation-name: scale, slide;
+  animation-name: scale, slide;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  animation-timing-function: ease;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation: scale 1.0s ease-in, slide 2.0s ease;
+  -moz-animation: scale 1.0s ease-in, slide 2.0s ease;
+  animation: scale 1.0s ease-in, slide 2.0s ease; }
+
+div {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  /* boo boo boo */
+  background-image: url("/images/a.png"), url("images/b.png");
+  background-image: url("/images/a.png"), url("images/b.png");
+  background-image: url("/images/a.png"), url("images/b.png");
+  background-image: url("/images/a.png"), url("images/b.png");
+  background-image: url("/images/a.png"), url("images/b.png");
+  background-image: url("/images/a.png"), -webkit-linear-gradient(top, white 0, yellow 50%, transparent 50%);
+  background-image: url("/images/a.png"), -moz-linear-gradient(top, white 0, yellow 50%, transparent 50%);
+  background-image: url("/images/a.png"), -ms-linear-gradient(top, white 0, yellow 50%, transparent 50%);
+  background-image: url("/images/a.png"), -o-linear-gradient(top, white 0, yellow 50%, transparent 50%);
+  background-image: url("/images/a.png"), linear-gradient(top, white 0, yellow 50%, transparent 50%);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 50%), -webkit-linear-gradient(top, #4e7ba3, #3e6281);
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 50%), -moz-linear-gradient(top, #4e7ba3, #3e6281);
+  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 50%), -ms-linear-gradient(top, #4e7ba3, #3e6281);
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 50%), -o-linear-gradient(top, #4e7ba3, #3e6281);
+  background-image: linear-gradient(top, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 50%), linear-gradient(top, #4e7ba3, #3e6281);
+  background-image: -webkit-url("/images/a.png")-gradient(center), -webkit-url("images/b.png")-gradient(left);
+  background-image: -moz-url("/images/a.png")-gradient(center), -moz-url("images/b.png")-gradient(left);
+  background-image: -ms-url("/images/a.png")-gradient(center), -ms-url("images/b.png")-gradient(left);
+  background-image: -o-url("/images/a.png")-gradient(center), -o-url("images/b.png")-gradient(left);
+  background-image: url("/images/a.png")-gradient(center), url("images/b.png")-gradient(left); }
