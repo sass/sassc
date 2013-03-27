@@ -34,7 +34,7 @@ Dir["**/input.*"].each do |input_file|
     if expected_output.strip != sassc_output.strip
       print "F"
       message = "Failed test #{spec_dir}\n"
-      warning << `diff -rub #{expected_file} #{sassc_file}`
+      message << `diff -rub #{expected_file} #{sassc_file}`
       messages << message
     else
       worked += 1
