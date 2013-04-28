@@ -1,0 +1,17 @@
+@function foo() {
+  @warn "FOO";
+  @return 5;
+}
+
+@mixin moo() {
+  @warn "MOO";
+  moo: moo;
+}
+
+@warn "global!";
+
+div {
+  foo: foo();
+  @include moo();
+  @warn "the end!";
+}

@@ -29,3 +29,16 @@ span {
   h: change-color(hsl(25, 100%, 80%), $alpha: 0.8, $lightness: 40%);
   i: hsla(25, 100%, 40%, 0.8);
 }
+
+
+@mixin foo() {
+  hey: ho;
+  @content;
+}
+
+.foo {
+  @include foo {
+    blah: blah;
+  };;;
+  ho: hoo;
+}

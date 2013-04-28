@@ -1,0 +1,10 @@
+@mixin foo {
+  .foo {
+    color: red;
+    @content;
+  }
+}
+
+div.a {
+  @include foo();
+}

@@ -1,0 +1,3 @@
+div {
+  color: ie-hex-str(red) + "bar";
+}
