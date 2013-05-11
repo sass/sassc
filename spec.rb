@@ -25,6 +25,8 @@ Dir["**/input.*"].each do |input_file|
     sass_output     = File.read(sass_file)
     expected_output = File.read(expected_file)
 
+    warning = ''
+
     if sassc_output.strip != sass_output.strip
       warning = "Problem with Ruby compat in #{input_file}\n"
       warning << `diff -rub #{sass_file} #{sassc_file}`
