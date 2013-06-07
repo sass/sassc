@@ -37,19 +37,35 @@ Building
 After you checkout the project, please make sure to update the
 submodules.
 
-	git submodule init
-	git submodule update
-	
+	git submodule update --init --recursive
+
 Then run make:
-  make
+
+    make
 
 OR
 
-  make sassc
+    make sassc
   
 The executable will be in the bin folder. To run it, simply try something like
 
-  ./bin/sassc [input file]
+    ./bin/sassc [input file] > output.css
+
+
+Test
+----
+
+Run the basic tests:
+
+    make test
+
+Run Bourbon tests:
+
+    ruby spec.rb spec/bourbon_test
+
+Run all the test suite (fail because there are TODO):
+
+    make test_all
 
 Contribution Agreement
 ----------------------
