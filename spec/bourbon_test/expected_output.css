@@ -1,0 +1,44 @@
+box:hover {
+  -webkit-animation-name: compact(scale, slide, false, false, false, false, false, false, false);
+  -moz-animation-name: compact(scale, slide, false, false, false, false, false, false, false);
+  animation-name: compact(scale, slide, false, false, false, false, false, false, false);
+  -webkit-animation-duration: compact(2s, false, false, false, false, false, false, false, false);
+  -moz-animation-duration: compact(2s, false, false, false, false, false, false, false, false);
+  animation-duration: compact(2s, false, false, false, false, false, false, false, false);
+  -webkit-animation-timing-function: compact(ease, false, false, false, false, false, false, false, false);
+  -moz-animation-timing-function: compact(ease, false, false, false, false, false, false, false, false);
+  animation-timing-function: compact(ease, false, false, false, false, false, false, false, false);
+  -webkit-animation-iteration-count: compact(infinite, false, false, false, false, false, false, false, false);
+  -moz-animation-iteration-count: compact(infinite, false, false, false, false, false, false, false, false);
+  animation-iteration-count: compact(infinite, false, false, false, false, false, false, false, false);
+  -webkit-animation: compact(scale 1s ease-in, slide 2s ease, false, false, false, false, false, false, false);
+  -moz-animation: compact(scale 1s ease-in, slide 2s ease, false, false, false, false, false, false, false);
+  animation: compact(scale 1s ease-in, slide 2s ease, false, false, false, false, false, false, false); }
+
+div {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  /* boo boo boo */
+  background-image: compact(url("/images/a.png"), url("images/b.png"), false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png"), url("images/b.png"), false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png"), url("images/b.png"), false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png"), url("images/b.png"), false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png"), url("images/b.png"), false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png"), linear, compact(top, white 0, yellow 50%, transparent 50%, false, false, false, false, false, false, false), false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png"), linear, compact(top, white 0, yellow 50%, transparent 50%, false, false, false, false, false, false, false), false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png"), linear, compact(top, white 0, yellow 50%, transparent 50%, false, false, false, false, false, false, false), false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png"), linear, compact(top, white 0, yellow 50%, transparent 50%, false, false, false, false, false, false, false), false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png"), linear, compact(top, white 0, yellow 50%, transparent 50%, false, false, false, false, false, false, false), false, false, false, false, false, false, false, false);
+  background-image: compact(linear, compact(top, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 50%, false, false, false, false, false, false, false), linear, compact(top, #4e7ba3, #3e6181, false, false, false, false, false, false, false, false), false, false, false, false, false, false, false, false);
+  background-image: compact(linear, compact(top, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 50%, false, false, false, false, false, false, false), linear, compact(top, #4e7ba3, #3e6181, false, false, false, false, false, false, false, false), false, false, false, false, false, false, false, false);
+  background-image: compact(linear, compact(top, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 50%, false, false, false, false, false, false, false), linear, compact(top, #4e7ba3, #3e6181, false, false, false, false, false, false, false, false), false, false, false, false, false, false, false, false);
+  background-image: compact(linear, compact(top, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 50%, false, false, false, false, false, false, false), linear, compact(top, #4e7ba3, #3e6181, false, false, false, false, false, false, false, false), false, false, false, false, false, false, false, false);
+  background-image: compact(linear, compact(top, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 50%, false, false, false, false, false, false, false), linear, compact(top, #4e7ba3, #3e6181, false, false, false, false, false, false, false, false), false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png") center no-repeat, url("images/b.png") left repeat, false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png") center no-repeat, url("images/b.png") left repeat, false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png") center no-repeat, url("images/b.png") left repeat, false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png") center no-repeat, url("images/b.png") left repeat, false, false, false, false, false, false, false, false);
+  background-image: compact(url("/images/a.png") center no-repeat, url("images/b.png") left repeat, false, false, false, false, false, false, false, false); }
