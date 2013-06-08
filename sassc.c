@@ -142,7 +142,7 @@ int main(int argc, char** argv) {
     options.include_paths = "";
 
     int c, i;
-    while ((c = getopt(argc, argv, "ho:lmt:I:")) != -1) {
+    while ((c = getopt(argc, argv, "ho:lgt:I:")) != -1) {
         switch (c) {
         case 'o':
             outfile = optarg;
