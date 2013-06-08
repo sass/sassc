@@ -37,7 +37,7 @@ Building
 After you checkout the project, please make sure to update the
 submodules.
 
-	git submodule update --init --recursive
+    git submodule update --init --recursive
 
 Then run make:
 
@@ -61,7 +61,7 @@ Run the basic tests:
 
 Run Bourbon tests:
 
-    ruby spec.rb spec/bourbon_test
+    ruby spec.rb spec/bourbon
 
 Run all the test suite (fail because there are TODO):
 
