@@ -1,5 +1,0 @@
-@import "compass/css3";
-
-.test {
-  @include background-image(linear-gradient(#000, #FFF));
-}
