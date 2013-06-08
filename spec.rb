@@ -34,7 +34,7 @@ Dir["**/input.*"].each do |input_file|
     if expected_output.strip != sassc_output.strip
       print "F"
       message = "Failed test #{spec_dir}\n"
-      warning << `diff -rub #{expected_file} #{sassc_file}`
+      message << `diff -rub #{expected_file} #{sassc_file}`
       messages << message
     else
       worked += 1
@@ -48,12 +48,12 @@ end
 
 puts("\n\n#{worked}/#{spec_count} Specs Passed!")
 
-if warnings.length > 0 
+if warnings.length > 0
   warn = ([""] + warnings).join("\n-----WARN------\n")
   puts("\n#{warn}")
 end
 
-if messages.length > 0 
+if messages.length > 0
   puts("\n================================\nTEST FAILURES!\n\n")
   puts(messages.join("\n-----------\n"))
   puts("\n")
