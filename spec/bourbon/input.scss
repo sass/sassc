@@ -1,4 +1,4 @@
-@import "../bourbon/_bourbon.scss";
+@import "lib/_bourbon.scss";
 
 box:hover {
   @include animation-name(scale, slide);
