@@ -9,7 +9,7 @@ spec_count = 0
 
 puts("Running tests in #{searchpath}..\n\n")
 
-Dir["**/input.*"].each do |input_file|
+Dir["**/input.s?ss"].each do |input_file|
   if input_file[0..(searchpath.length - 1)] == (searchpath)
     spec_count += 1
     spec_dir = File.dirname(input_file)
@@ -18,7 +18,14 @@ Dir["**/input.*"].each do |input_file|
     sass_file     = File.join(spec_dir, "sass_output.css")
     expected_file = File.join(spec_dir, "expected_output.css")
 
-    `./bin/sassc #{input_file} > #{sassc_file}`
+    sassc_arg_file = File.join(spec_dir, "input.args")
+    if File.exists?(sassc_arg_file)
+      sassc_args = File.read(sassc_arg_file).strip.gsub('@specdir@', spec_dir)
+    else
+      sassc_args = ''
+    end
+
+    `./bin/sassc #{sassc_args} #{input_file} > #{sassc_file}`
     `sass #{input_file} > #{sass_file}`
 
     sassc_output    = File.read(sassc_file)
