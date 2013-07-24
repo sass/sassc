@@ -22,6 +22,9 @@ libsass:
 test: all
 	ruby spec.rb spec/basic/
 
+test_bourbon: all
+	ruby spec.rb spec/bourbon/
+
 test_all: all
 	ruby spec.rb spec/
 
