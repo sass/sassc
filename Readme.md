@@ -61,9 +61,9 @@ Run the basic tests:
 
 Run Bourbon tests:
 
-    ruby spec.rb spec/bourbon
+    make test_bourbon
 
-Run all the test suite (fail because there are TODO):
+Run all the test suite (fail because there are TODO's):
 
     make test_all
 
