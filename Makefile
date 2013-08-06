@@ -27,7 +27,7 @@ test_all: all
 
 test_flags: all
 	$(TARGET) -t compressed -o $@.css -I spec/getopt/inc spec/getopt/input.scss
-	diff -u $@.css spec/getopt/expected_output.css
+	diff -u spec/getopt/expected_output.css $@.css
 	rm -f $@.css
 	@printf '\nCommand-line flag test passed\n\n'
 
