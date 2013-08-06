@@ -25,10 +25,11 @@ test: all
 test_all: all
 	ruby spec.rb spec/
 
-test_flags: all
-	$(TARGET) -t compressed -o $@.css -I spec/getopt/inc spec/getopt/input.scss
-	diff -u spec/getopt/expected_output.css $@.css
-	rm -f $@.css
+test_flags: test_flags.css
+.INTERMEDIATE: test_flags.css
+test_flags.css: all
+	$(TARGET) -t compressed -o $@ -I spec/getopt/inc spec/getopt/input.scss
+	diff -u spec/getopt/expected_output.css $@
 	@printf '\nCommand-line flag test passed\n\n'
 
 clean:
