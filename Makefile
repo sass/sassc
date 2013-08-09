@@ -6,6 +6,7 @@ LDLIBS = -lstdc++ -lm
 SOURCES = sassc.c
 OBJECTS = $(SOURCES:.c=.o)
 TARGET = bin/sassc
+SPEC_PATH = $(SASS_SPEC_PATH)
 
 all: libsass $(TARGET)
 
@@ -20,20 +21,14 @@ libsass:
 	$(CC) -c $(CFLAGS) $< -o $@
 
 test: all
-	ruby spec.rb spec/basic/
+	ruby $(SASS_SPEC_PATH)/sass-spec.rb -s -d=$(SASS_SPEC_PATH) -c=$(TARGET)
 
-test_all: all
-	ruby spec.rb spec/
-
-test_flags: all
-	$(TARGET) -t compressed -o $@.css -I spec/getopt/inc spec/getopt/input.scss
-	diff -u $@.css spec/getopt/expected.css
-	rm -f $@.css
-	@printf '\nCommand-line flag test passed\n\n'
+test_issues: all
+	ruby $(SASS_SPEC_PATH)/sass-spec.rb -s -d=$(SASS_SPEC_PATH)/spec/issues -c=$(TARGET)
 
 clean:
 	rm -f $(OBJECTS) $(TARGET)
 	$(MAKE) -C libsass clean
 
-.PHONY: clean libsass test test_all test_flags
+.PHONY: clean libsass test
 .DELETE_ON_ERROR:
