@@ -2,4 +2,6 @@
 before_install:
   - git submodule update --init --recursive
   - gem install sass
+  - git clone git@github.com:hcatlin/sass-spec.git
+  - export SASS_SPEC_PATH=sass-spec
 script: "make test"
