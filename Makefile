@@ -21,6 +21,7 @@ libsass:
 	$(CC) -c $(CFLAGS) $< -o $@
 
 test: all
+	bin/sassc -h
 
 clean:
 	rm -f $(OBJECTS) $(TARGET)
