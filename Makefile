@@ -25,7 +25,7 @@ test: all
 
 clean:
 	rm -f $(OBJECTS) $(TARGET)
-	$(MAKE) -C libsass clean
+	$(MAKE) -C $(SASS_LIBSASS_PATH) clean
 
 .PHONY: clean libsass test
 .DELETE_ON_ERROR:
