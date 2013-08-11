@@ -34,18 +34,9 @@ For more information about Sass itself, please visit http://sass-lang.com
 Building
 --------
 
-After you checkout the project, please make sure to update the
-submodules.
-
-    git submodule update --init --recursive
-
-Then run make:
-
-    make
-
-OR
-
-    make sassc
+To build SassC, you must have either local copy of the libsass source or it must be installed into your system. For development, please use the source version. You must then setup an environment variable pointing to the libsass folder, like:
+  
+    export SASS_LIBSASS_PATH=/Users/hcatlin/path/libsass
   
 The executable will be in the bin folder. To run it, simply try something like
 
@@ -55,16 +46,21 @@ The executable will be in the bin folder. To run it, simply try something like
 Test
 ----
 
-The official libsass/sassc test suite is located at http://github.com/hcatlin/sass-spec. It's a specialized project just to ensure that Sass works as expected. First, go clone (and ensure its up-to-date) the sass-spec repo. THEN, you must setup an environment variable to point to the spec folder.
+The official libsass/sassc test suite is located at http://github.com/hcatlin/sass-spec. It's a specialized project just to ensure that Sass works as expected. First, go clone (and ensure its up-to-date) the sass-spec repo. THEN, you must setup an environment variable to point to the spec folder. Also, if you want to test against the lastest libsass, you MUST define the location of a copy of the libsass repo.
 
 For instance, this is in my profile.
 
-    export SASS_SPEC_PATH=/Users/hcatlin/dev/sass/spec
+  export SASS_SPEC_PATH=/Users/hcatlin/dev/sass/sass-spec
+  export SASS_SASSC_PATH=/Users/hcatlin/dev/sass/sassc
+  export SASS_LIBSASS_PATH=/Users/hcatlin/dev/sass/libsass
 
-Run the basic tests:
+Then, run the SassC specific tests this way:
 
     make test
 
+Or, if you want to run the whole SassSpec suite
+
+    make test_spec
 
 Contribution Agreement
 ----------------------

@@ -1,7 +1,7 @@
 CC = gcc
-CFLAGS = -Wall -O2
+CFLAGS = -Wall -O2 -I $(SASS_LIBSASS_PATH)
 LDFLAGS = -O2
-LDLIBS = -lstdc++ -lm
+LDLIBS = -lstdc++ -lm 
 
 SOURCES = sassc.c
 OBJECTS = $(SOURCES:.c=.o)
@@ -10,21 +10,18 @@ SPEC_PATH = $(SASS_SPEC_PATH)
 
 all: libsass $(TARGET)
 
-$(TARGET): $(OBJECTS) libsass/libsass.a
+$(TARGET): $(OBJECTS) $(SASS_LIBSASS_PATH)/libsass.a
 	$(CC) $(LDFLAGS) -o $@ $^ $(LDLIBS)
 
-libsass/libsass.a: libsass
+$(SASS_LIBSASS_PATH)/libsass.a: libsass
 libsass:
-	$(MAKE) -C libsass
+	$(MAKE) -C $(SASS_LIBSASS_PATH)
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
 test: all
-	ruby $(SASS_SPEC_PATH)/sass-spec.rb -s -d=$(SASS_SPEC_PATH) -c=$(TARGET)
-
-test_issues: all
-	ruby $(SASS_SPEC_PATH)/sass-spec.rb -s -d=$(SASS_SPEC_PATH)/spec/issues -c=$(TARGET)
+	TODO
 
 clean:
 	rm -f $(OBJECTS) $(TARGET)
