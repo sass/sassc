@@ -1,8 +1,6 @@
 
 before_install:
   - gem install sass
-  - git clone https://github.com/hcatlin/sass-spec.git
-  - git clone https://github.com/hcatlin/sassc.git
-  - export SASS_SPEC_PATH=sass-spec
-  - export SASS_SPEC_PATH=sassc
+  - git clone https://github.com/hcatlin/libsass.git
+  - export SASS_LIBSASS_PATH=libsass
 script: "make test"
