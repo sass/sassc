@@ -6,6 +6,11 @@
 
 #define BUFSIZE 512
 
+struct sassc_options {
+    char print_included_files;
+    struct sass_options opt;
+};
+
 int output(int error_status, char* error_message, char* output_string, char* outfile) {
     if (error_status) {
         if (error_message) {
@@ -38,7 +43,15 @@ int output(int error_status, char* error_message, char* output_string, char* out
     }
 }
 
-int compile_stdin(struct sass_options options, char* outfile) {
+void print_stderr(char** strings, int num)
+{
+  int i;
+  for(i = 0; i < num; i++) {
+    fprintf(stderr, "%s\n", strings[i]);
+  }
+}
+
+int compile_stdin(struct sassc_options options, char* outfile) {
     int ret;
     struct sass_context* ctx;
     char buffer[BUFSIZE];
@@ -71,25 +84,33 @@ int compile_stdin(struct sass_options options, char* outfile) {
     }
 
     ctx = sass_new_context();
-    ctx->options = options;
+    ctx->options = options.opt;
     ctx->source_string = source_string;
     sass_compile(ctx);
     ret = output(ctx->error_status, ctx->error_message, ctx->output_string, outfile);
+
+    if(options.print_included_files) {
+        print_stderr(ctx->included_files, ctx->num_included_files);
+    }
 
     sass_free_context(ctx);
     free(source_string);
     return ret;
 }
 
-int compile_file(struct sass_options options, char* input_path, char* outfile) {
+int compile_file(struct sassc_options options, char* input_path, char* outfile) {
     int ret;
     struct sass_file_context* ctx = sass_new_file_context();
 
-    ctx->options = options;
+    ctx->options = options.opt;
     ctx->input_path = input_path;
 
     sass_compile_file(ctx);
     ret = output(ctx->error_status, ctx->error_message, ctx->output_string, outfile);
+
+    if(options.print_included_files) {
+        print_stderr(ctx->included_files, ctx->num_included_files);
+    }
 
     sass_free_file_context(ctx);
     return ret;
@@ -124,6 +145,7 @@ void print_usage(char* argv0) {
     printf("   -l             Emit comments showing original line numbers.\n");
     printf("   -g             Emit source map.\n");
     printf("   -I PATH        Set Sass import path.\n");
+    printf("   -p             Print included files to stderr.\n");
     printf("   -h             Display this help message.\n");
     printf("\n");
 }
@@ -135,25 +157,26 @@ void invalid_usage(char* argv0) {
 
 int main(int argc, char** argv) {
     char *outfile = 0;
-    struct sass_options options;
-    options.output_style = SASS_STYLE_NESTED;
-    options.source_comments = 0;
-    options.image_path = "images";
-    options.include_paths = "";
+    struct sassc_options options;
+    options.print_included_files = 0;
+    options.opt.output_style = SASS_STYLE_NESTED;
+    options.opt.source_comments = 0;
+    options.opt.image_path = "images";
+    options.opt.include_paths = "";
 
     int c, i;
-    while ((c = getopt(argc, argv, "ho:lgt:I:")) != -1) {
+    while ((c = getopt(argc, argv, "ho:plgt:I:")) != -1) {
         switch (c) {
         case 'o':
             outfile = optarg;
             break;
         case 'I':
-            options.include_paths = optarg;
+            options.opt.include_paths = optarg;
             break;
         case 't':
             for(i = 0; i < NUM_STYLE_OPTION_STRINGS; ++i) {
                 if(strcmp(optarg, style_option_strings[i].style_string) == 0) {
-                    options.output_style = style_option_strings[i].output_style;
+                    options.opt.output_style = style_option_strings[i].output_style;
                     break;
                 }
             }
@@ -167,10 +190,13 @@ int main(int argc, char** argv) {
             }
             break;
         case 'l':
-            options.source_comments = SASS_SOURCE_COMMENTS_DEFAULT;
+            options.opt.source_comments = SASS_SOURCE_COMMENTS_DEFAULT;
+            break;
+        case 'p':
+            options.print_included_files = 1;
             break;
         case 'g':
-            options.source_comments = SASS_SOURCE_COMMENTS_MAP;
+            options.opt.source_comments = SASS_SOURCE_COMMENTS_MAP;
             break;
         case 'h':
             print_usage(argv[0]);
