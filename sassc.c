@@ -72,9 +72,11 @@ int compile_stdin(struct sass_options options, char* outfile) {
 
     ctx = sass_new_context();
     ctx->options = options;
-    ctx->source_string = source_string;
+    ctx->input = source_string;
+    ctx->context_type = SASS_CONTEXT_STRING;
+
     sass_compile(ctx);
-    ret = output(ctx->error_status, ctx->error_message, ctx->output_string, outfile);
+    ret = output(ctx->error_status, ctx->error_message, ctx->output, outfile);
 
     sass_free_context(ctx);
     free(source_string);
@@ -83,15 +85,16 @@ int compile_stdin(struct sass_options options, char* outfile) {
 
 int compile_file(struct sass_options options, char* input_path, char* outfile) {
     int ret;
-    struct sass_file_context* ctx = sass_new_file_context();
+    struct sass_context* ctx = sass_new_context();
 
     ctx->options = options;
-    ctx->input_path = input_path;
+    ctx->input = input_path;
+    ctx->context_type = SASS_CONTEXT_FILE;
 
     sass_compile_file(ctx);
-    ret = output(ctx->error_status, ctx->error_message, ctx->output_string, outfile);
+    ret = output(ctx->error_status, ctx->error_message, ctx->output, outfile);
 
-    sass_free_file_context(ctx);
+    sass_free_context(ctx);
     return ret;
 }
 
