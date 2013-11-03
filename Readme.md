@@ -50,9 +50,9 @@ The official libsass/sassc test suite is located at http://github.com/hcatlin/sa
 
 For instance, this is in my profile.
 
-  export SASS_SPEC_PATH=/Users/hcatlin/dev/sass/sass-spec
-  export SASS_SASSC_PATH=/Users/hcatlin/dev/sass/sassc
-  export SASS_LIBSASS_PATH=/Users/hcatlin/dev/sass/libsass
+    export SASS_SPEC_PATH=/Users/hcatlin/dev/sass/sass-spec
+    export SASS_SASSC_PATH=/Users/hcatlin/dev/sass/sassc
+    export SASS_LIBSASS_PATH=/Users/hcatlin/dev/sass/libsass
 
 Then, run the SassC specific tests this way:
 
