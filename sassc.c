@@ -87,9 +87,18 @@ int compile_file(struct sass_options options, char* input_path, char* outfile) {
 
     ctx->options = options;
     ctx->input_path = input_path;
+    if (outfile && (ctx->options.source_comments == SASS_SOURCE_COMMENTS_MAP)) {
+      const char* extension = ".map";
+      ctx->source_map_file  = calloc(strlen(outfile) + strlen(extension) + 1, sizeof(char));
+      strcpy(ctx->source_map_file, outfile);
+      strcat(ctx->source_map_file, extension);
+    }
 
     sass_compile_file(ctx);
     ret = output(ctx->error_status, ctx->error_message, ctx->output_string, outfile);
+    if (outfile && (ctx->options.source_comments == SASS_SOURCE_COMMENTS_MAP)) {
+      ret = output(ctx->error_status, ctx->error_message, ctx->source_map_string, ctx->source_map_file);
+    }
 
     sass_free_file_context(ctx);
     return ret;
