@@ -1,4 +1,4 @@
-AC_PREREQ([2.64])
+AC_PREREQ([2.61])
 AC_INIT([sassc], [1.0], [support@moovweb.com])
 AC_CONFIG_SRCDIR([sassc.c])
 AC_CONFIG_MACRO_DIR([m4])
