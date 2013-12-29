@@ -126,18 +126,16 @@ void print_usage(char* argv0) {
     int i;
     printf("Usage: %s [OPTION]... [FILE]\n\n", argv0);
     printf("Options:\n");
-    printf("   -o OUTFILE     Write output to specified file.\n");
-
-    printf("   -t NAME        Output style. Can be:");
+    printf("   -o OUTFILE              Write output to specified file.\n");
+    printf("   -t NAME                 Output style. Can be:");
     for(i = NUM_STYLE_OPTION_STRINGS - 1; i >= 0; i--) {
         printf(" %s", style_option_strings[i].style_string);
         printf(i == 0 ? ".\n" : ",");
     }
-
-    printf("   -l             Emit comments showing original line numbers.\n");
-    printf("   -g             Emit source map.\n");
-    printf("   -I PATH        Set Sass import path.\n");
-    printf("   -h             Display this help message.\n");
+    printf("   -l                      Emit comments showing original line numbers.\n");
+    printf("   -I PATH                 Set Sass import path.\n");
+    printf("   -m, --sourcemap         Emit source map.\n");
+    printf("   -h                      Display this help message.\n");
     printf("\n");
 }
 
@@ -155,7 +153,12 @@ int main(int argc, char** argv) {
     options.include_paths = "";
 
     int c, i;
-    while ((c = getopt(argc, argv, "ho:lgt:I:")) != -1) {
+    int long_index = 0;
+    static struct option long_options[] =
+    {
+        { "sourcemap", no_argument, 0, 'm' }
+    };
+    while ((c = getopt_long_only(argc, argv, "ho:lmt:I:", long_options, &long_index)) != -1) {
         switch (c) {
         case 'o':
             outfile = optarg;
@@ -182,7 +185,7 @@ int main(int argc, char** argv) {
         case 'l':
             options.source_comments = SASS_SOURCE_COMMENTS_DEFAULT;
             break;
-        case 'g':
+        case 'm':
             options.source_comments = SASS_SOURCE_COMMENTS_MAP;
             break;
         case 'h':
