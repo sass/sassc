@@ -132,7 +132,8 @@ void print_usage(char* argv0) {
         printf(" %s", style_option_strings[i].style_string);
         printf(i == 0 ? ".\n" : ",");
     }
-    printf("   -l                      Emit comments showing original line numbers.\n");
+    printf("   -l, --line-numbers      Emit comments showing original line numbers.\n");
+    printf("       --line-comments\n");
     printf("   -I, --load-path PATH    Set Sass import path.\n");
     printf("   -m, --sourcemap         Emit source map.\n");
     printf("   -h                      Display this help message.\n");
@@ -158,6 +159,8 @@ int main(int argc, char** argv) {
     {
         { "load-path",     required_argument, 0, 'I' },
         { "style",         required_argument, 0, 't' },
+        { "line-numbers",  no_argument,       0, 'l' },
+        { "line-comments", no_argument,       0, 'l' },
         { "sourcemap",     no_argument,       0, 'm' }
     };
     while ((c = getopt_long_only(argc, argv, "ho:lmt:I:", long_options, &long_index)) != -1) {
