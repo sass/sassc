@@ -133,7 +133,7 @@ void print_usage(char* argv0) {
         printf(i == 0 ? ".\n" : ",");
     }
     printf("   -l                      Emit comments showing original line numbers.\n");
-    printf("   -I PATH                 Set Sass import path.\n");
+    printf("   -I, --load-path PATH    Set Sass import path.\n");
     printf("   -m, --sourcemap         Emit source map.\n");
     printf("   -h                      Display this help message.\n");
     printf("\n");
@@ -156,7 +156,8 @@ int main(int argc, char** argv) {
     int long_index = 0;
     static struct option long_options[] =
     {
-        { "sourcemap", no_argument, 0, 'm' }
+        { "load-path",     required_argument, 0, 'I' },
+        { "sourcemap",     no_argument,       0, 'm' }
     };
     while ((c = getopt_long_only(argc, argv, "ho:lmt:I:", long_options, &long_index)) != -1) {
         switch (c) {
