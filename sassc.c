@@ -127,7 +127,7 @@ void print_usage(char* argv0) {
     printf("Usage: %s [OPTION]... [FILE]\n\n", argv0);
     printf("Options:\n");
     printf("   -o OUTFILE              Write output to specified file.\n");
-    printf("   -t NAME                 Output style. Can be:");
+    printf("   -t, --style NAME                 Output style. Can be:");
     for(i = NUM_STYLE_OPTION_STRINGS - 1; i >= 0; i--) {
         printf(" %s", style_option_strings[i].style_string);
         printf(i == 0 ? ".\n" : ",");
@@ -157,6 +157,7 @@ int main(int argc, char** argv) {
     static struct option long_options[] =
     {
         { "load-path",     required_argument, 0, 'I' },
+        { "style",         required_argument, 0, 't' },
         { "sourcemap",     no_argument,       0, 'm' }
     };
     while ((c = getopt_long_only(argc, argv, "ho:lmt:I:", long_options, &long_index)) != -1) {
