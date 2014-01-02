@@ -124,20 +124,19 @@ struct
 
 void print_usage(char* argv0) {
     int i;
-    printf("Usage: %s [OPTION]... [FILE]\n\n", argv0);
+    printf("Usage: %s [options] [INPUT] [OUTPUT]\n\n", argv0);
     printf("Options:\n");
-    printf("   -o OUTFILE     Write output to specified file.\n");
-
-    printf("   -t NAME        Output style. Can be:");
+    printf("   -s, --stdin             Read input from standard input instead of an input file.\n");
+    printf("   -t, --style NAME        Output style. Can be:");
     for(i = NUM_STYLE_OPTION_STRINGS - 1; i >= 0; i--) {
         printf(" %s", style_option_strings[i].style_string);
         printf(i == 0 ? ".\n" : ",");
     }
-
-    printf("   -l             Emit comments showing original line numbers.\n");
-    printf("   -g             Emit source map.\n");
-    printf("   -I PATH        Set Sass import path.\n");
-    printf("   -h             Display this help message.\n");
+    printf("   -l, --line-numbers      Emit comments showing original line numbers.\n");
+    printf("       --line-comments\n");
+    printf("   -I, --load-path PATH    Set Sass import path.\n");
+    printf("   -m, --sourcemap         Emit source map.\n");
+    printf("   -h, --help              Display this help message.\n");
     printf("\n");
 }
 
@@ -148,6 +147,7 @@ void invalid_usage(char* argv0) {
 
 int main(int argc, char** argv) {
     char *outfile = 0;
+    int from_stdin = 0;
     struct sass_options options;
     options.output_style = SASS_STYLE_NESTED;
     options.source_comments = 0;
@@ -155,10 +155,21 @@ int main(int argc, char** argv) {
     options.include_paths = "";
 
     int c, i;
-    while ((c = getopt(argc, argv, "ho:lgt:I:")) != -1) {
+    int long_index = 0;
+    static struct option long_options[] =
+    {
+        { "stdin",         no_argument,       0, 's' },
+        { "load-path",     required_argument, 0, 'I' },
+        { "style",         required_argument, 0, 't' },
+        { "line-numbers",  no_argument,       0, 'l' },
+        { "line-comments", no_argument,       0, 'l' },
+        { "sourcemap",     no_argument,       0, 'm' },
+        { "help",          no_argument,       0, 'h' }
+    };
+    while ((c = getopt_long_only(argc, argv, "hslmt:I:", long_options, &long_index)) != -1) {
         switch (c) {
-        case 'o':
-            outfile = optarg;
+        case 's':
+            from_stdin = 1;
             break;
         case 'I':
             options.include_paths = optarg;
@@ -182,7 +193,7 @@ int main(int argc, char** argv) {
         case 'l':
             options.source_comments = SASS_SOURCE_COMMENTS_DEFAULT;
             break;
-        case 'g':
+        case 'm':
             options.source_comments = SASS_SOURCE_COMMENTS_MAP;
             break;
         case 'h':
@@ -198,14 +209,20 @@ int main(int argc, char** argv) {
         }
     }
 
-    if(optind < argc - 1) {
+    if(optind < argc - 2) {
         fprintf(stderr, "Error: Too many arguments.\n");
         invalid_usage(argv[0]);
     }
 
-    if(optind < argc && strcmp(argv[optind], "-") != 0) {
+    if(optind < argc && strcmp(argv[optind], "-") != 0 && !from_stdin) {
+        if (optind + 1 < argc) {
+            outfile = argv[optind + 1];
+        }
         return compile_file(options, argv[optind], outfile);
     } else {
+        if (optind < argc) {
+            outfile = argv[optind];
+        }
         return compile_stdin(options, outfile);
     }
 }
