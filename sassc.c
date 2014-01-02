@@ -6,7 +6,7 @@
 
 #define BUFSIZE 512
 
-int output(int error_status, char* error_message, char* output_string, char* outfile) {
+int output(int error_status, char* error_message, char* output_string, const char* outfile) {
     if (error_status) {
         if (error_message) {
             fprintf(stderr, "%s", error_message);
@@ -83,15 +83,18 @@ int compile_stdin(struct sass_options options, char* outfile) {
 
 int compile_file(struct sass_options options, char* input_path, char* outfile) {
     int ret;
+    char* source_map_file = 0;
     struct sass_file_context* ctx = sass_new_file_context();
 
     ctx->options = options;
     ctx->input_path = input_path;
+
     if (outfile && (ctx->options.source_comments == SASS_SOURCE_COMMENTS_MAP)) {
       const char* extension = ".map";
-      ctx->source_map_file  = calloc(strlen(outfile) + strlen(extension) + 1, sizeof(char));
-      strcpy(ctx->source_map_file, outfile);
-      strcat(ctx->source_map_file, extension);
+      source_map_file  = calloc(strlen(outfile) + strlen(extension) + 1, sizeof(char));
+      strcpy(source_map_file, outfile);
+      strcat(source_map_file, extension);
+      ctx->source_map_file = source_map_file;
     }
 
     sass_compile_file(ctx);
@@ -100,6 +103,7 @@ int compile_file(struct sass_options options, char* input_path, char* outfile) {
       ret = output(ctx->error_status, ctx->error_message, ctx->source_map_string, ctx->source_map_file);
     }
 
+    free(source_map_file);
     sass_free_file_context(ctx);
     return ret;
 }
