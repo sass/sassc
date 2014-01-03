@@ -166,7 +166,7 @@ int main(int argc, char** argv) {
         { "sourcemap",     no_argument,       0, 'm' },
         { "help",          no_argument,       0, 'h' }
     };
-    while ((c = getopt_long_only(argc, argv, "hslmt:I:", long_options, &long_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "hslmt:I:", long_options, &long_index)) != -1) {
         switch (c) {
         case 's':
             from_stdin = 1;
