@@ -15,7 +15,11 @@ $(TARGET): $(OBJECTS) $(SASS_LIBSASS_PATH)/libsass.a
 
 $(SASS_LIBSASS_PATH)/libsass.a: libsass
 libsass:
+ifdef SASS_LIBSASS_PATH
 	$(MAKE) -C $(SASS_LIBSASS_PATH)
+else
+	$(error SASS_LIBSASS_PATH must be defined)
+endif
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
