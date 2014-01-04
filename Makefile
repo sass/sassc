@@ -1,4 +1,4 @@
-CC = gcc
+CC ?= gcc
 CFLAGS = -Wall -O2 -I $(SASS_LIBSASS_PATH)
 LDFLAGS = -O2
 LDLIBS = -lstdc++ -lm 
