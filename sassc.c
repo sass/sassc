@@ -88,6 +88,7 @@ int compile_file(struct sass_options options, char* input_path, char* outfile) {
 
     ctx->options = options;
     ctx->input_path = input_path;
+    ctx->output_path = outfile;
 
     if (outfile && (ctx->options.source_comments == SASS_SOURCE_COMMENTS_MAP)) {
       const char* extension = ".map";
