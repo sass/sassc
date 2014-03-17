@@ -137,6 +137,7 @@ void print_usage(char* argv0) {
     printf("       --line-comments\n");
     printf("   -I, --load-path PATH    Set Sass import path.\n");
     printf("   -m, --sourcemap         Emit source map.\n");
+    printf("       --precision         Set the precision for numbers.\n");
     printf("   -h, --help              Display this help message.\n");
     printf("\n");
 }
@@ -154,6 +155,7 @@ int main(int argc, char** argv) {
     options.source_comments = 0;
     options.image_path = "images";
     options.include_paths = "";
+    options.precision = 5;
 
     int c, i;
     int long_index = 0;
@@ -165,6 +167,7 @@ int main(int argc, char** argv) {
         { "line-numbers",  no_argument,       0, 'l' },
         { "line-comments", no_argument,       0, 'l' },
         { "sourcemap",     no_argument,       0, 'm' },
+        { "precision",     required_argument, 0, 'p' },
         { "help",          no_argument,       0, 'h' }
     };
     while ((c = getopt_long(argc, argv, "hslmt:I:", long_options, &long_index)) != -1) {
@@ -196,6 +199,10 @@ int main(int argc, char** argv) {
             break;
         case 'm':
             options.source_comments = SASS_SOURCE_COMMENTS_MAP;
+            break;
+        case 'p':
+            options.precision = atoi(optarg); // TODO: make this more robust
+            if (options.precision < 0) options.precision = 5;
             break;
         case 'h':
             print_usage(argv[0]);
