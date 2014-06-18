@@ -2,5 +2,7 @@
 before_install:
   - gem install sass
   - git clone https://github.com/sass/libsass.git
+  - cd ../libsass && git submodule init && git submodule update
+  - cd ../sassc
   - export SASS_LIBSASS_PATH=libsass
 script: "make test"
