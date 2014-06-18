@@ -1,16 +1,16 @@
 SassC
 =======
 
-[![Build Status](https://secure.travis-ci.org/hcatlin/sassc.png?branch=master)](http://travis-ci.org/hcatlin/sassc)
+[![Build Status](https://secure.travis-ci.org/sass/sassc.png?branch=master)](http://travis-ci.org/hcatlin/sassc)
 
-Written by Aaron Leung and Hampton Catlin (@hcatlin)
+Written by Aaron Leung (@akhleung) and Hampton Catlin (@hcatlin)
 
-http://github.com/hcatlin/sassc
+http://github.com/sass/sassc
 
 About SassC
 -----------
 
-SassC is a wrapper around libsass (http://github.com/hcatlin/libsass)
+SassC is a wrapper around libsass (http://github.com/sass/libsass)
 used to generate a useful command-line application that can be installed
 and packaged for several operating systems.
 
@@ -36,7 +36,7 @@ Building
 
 To build SassC, you must have either local copy of the libsass source or it must be installed into your system. For development, please use the source version. You must then setup an environment variable pointing to the libsass folder, like:
   
-    export SASS_LIBSASS_PATH=/Users/hcatlin/path/libsass
+    export SASS_LIBSASS_PATH=/Users/you/path/libsass
   
 The executable will be in the bin folder. To run it, simply try something like
 
@@ -50,9 +50,9 @@ The official libsass/sassc test suite is located at http://github.com/hcatlin/sa
 
 For instance, this is in my profile.
 
-    export SASS_SPEC_PATH=/Users/hcatlin/dev/sass/sass-spec
-    export SASS_SASSC_PATH=/Users/hcatlin/dev/sass/sassc
-    export SASS_LIBSASS_PATH=/Users/hcatlin/dev/sass/libsass
+    export SASS_SPEC_PATH=/Users/you/dev/sass/sass-spec
+    export SASS_SASSC_PATH=/Users/you/dev/sass/sassc
+    export SASS_LIBSASS_PATH=/Users/you/dev/sass/libsass
 
 Then, run the SassC specific tests this way:
 
