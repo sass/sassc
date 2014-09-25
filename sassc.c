@@ -135,6 +135,7 @@ void print_usage(char* argv0) {
     }
     printf("   -l, --line-numbers      Emit comments showing original line numbers.\n");
     printf("       --line-comments\n");
+    printf("   -o  --import-once       Only inline duplicate @import statements once.\n");
     printf("   -I, --load-path PATH    Set Sass import path.\n");
     printf("   -m, --sourcemap         Emit source map.\n");
     printf("       --precision         Set the precision for numbers.\n");
@@ -153,6 +154,7 @@ int main(int argc, char** argv) {
     struct sass_options options;
     options.output_style = SASS_STYLE_NESTED;
     options.source_comments = 0;
+    options.import_once = 0;
     options.image_path = "images";
     options.include_paths = "";
     options.precision = 5;
@@ -167,10 +169,11 @@ int main(int argc, char** argv) {
         { "line-numbers",  no_argument,       0, 'l' },
         { "line-comments", no_argument,       0, 'l' },
         { "sourcemap",     no_argument,       0, 'm' },
+        { "import-once",   no_argument,       0, 'o' },
         { "precision",     required_argument, 0, 'p' },
         { "help",          no_argument,       0, 'h' }
     };
-    while ((c = getopt_long(argc, argv, "hslmt:I:", long_options, &long_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "hslomt:I:", long_options, &long_index)) != -1) {
         switch (c) {
         case 's':
             from_stdin = 1;
@@ -199,6 +202,9 @@ int main(int argc, char** argv) {
             break;
         case 'm':
             options.source_comments = SASS_SOURCE_COMMENTS_MAP;
+            break;
+        case 'o':
+            options.import_once = 1;
             break;
         case 'p':
             options.precision = atoi(optarg); // TODO: make this more robust
