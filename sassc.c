@@ -90,7 +90,7 @@ int compile_file(struct sass_options options, char* input_path, char* outfile) {
     ctx->input_path = input_path;
     ctx->output_path = outfile;
 
-    if (outfile && (ctx->options.source_comments == SASS_SOURCE_COMMENTS_MAP)) {
+    if (outfile && ctx->options.source_comments) {
       const char* extension = ".map";
       source_map_file  = calloc(strlen(outfile) + strlen(extension) + 1, sizeof(char));
       strcpy(source_map_file, outfile);
@@ -100,7 +100,7 @@ int compile_file(struct sass_options options, char* input_path, char* outfile) {
 
     sass_compile_file(ctx);
     ret = output(ctx->error_status, ctx->error_message, ctx->output_string, outfile);
-    if (outfile && (ctx->options.source_comments == SASS_SOURCE_COMMENTS_MAP)) {
+    if (outfile && ctx->options.source_comments) {
       ret = output(ctx->error_status, ctx->error_message, ctx->source_map_string, ctx->source_map_file);
     }
 
@@ -152,7 +152,7 @@ int main(int argc, char** argv) {
     int from_stdin = 0;
     struct sass_options options;
     options.output_style = SASS_STYLE_NESTED;
-    options.source_comments = 0;
+    options.source_comments = false;
     options.image_path = "images";
     options.include_paths = "";
     options.precision = 5;
@@ -195,10 +195,10 @@ int main(int argc, char** argv) {
             }
             break;
         case 'l':
-            options.source_comments = SASS_SOURCE_COMMENTS_DEFAULT;
+            options.source_comments = false;
             break;
         case 'm':
-            options.source_comments = SASS_SOURCE_COMMENTS_MAP;
+            options.source_comments = true;
             break;
         case 'p':
             options.precision = atoi(optarg); // TODO: make this more robust
