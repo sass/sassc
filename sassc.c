@@ -152,7 +152,7 @@ int main(int argc, char** argv) {
     int from_stdin = 0;
     struct sass_options options;
     options.output_style = SASS_STYLE_NESTED;
-    options.source_comments = false;
+    options.source_comments = true;
     options.image_path = "images";
     options.include_paths = "";
     options.precision = 5;
