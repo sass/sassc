@@ -1,7 +1,7 @@
 CC = gcc
-CFLAGS = -Wall -O2 -I $(SASS_LIBSASS_PATH)
-LDFLAGS = -O2
-LDLIBS = -lstdc++ -lm 
+CFLAGS = -Wall -O2 -I $(SASS_LIBSASS_PATH) $(EXTRA_CFLAGS)
+LDFLAGS = -O2 $(EXTRA_LDFLAGS)
+LDLIBS = -lstdc++ -lm
 
 SOURCES = sassc.c
 OBJECTS = $(SOURCES:.c=.o)
