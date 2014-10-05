@@ -95,18 +95,10 @@ int compile_file(struct sass_options options, char* input_path, char* outfile) {
     ctx->input_path = input_path;
     ctx->output_path = outfile;
 
-    if (outfile && ctx->options.source_comments) {
-      const char* extension = ".map";
-      source_map_file  = calloc(strlen(outfile) + strlen(extension) + 1, sizeof(char));
-      strcpy(source_map_file, outfile);
-      strcat(source_map_file, extension);
-      ctx->source_map_file = source_map_file;
-    }
-
     sass_compile_file(ctx);
     ret = output(ctx->error_status, ctx->error_message, ctx->output_string, outfile);
-    if (outfile && ctx->options.source_comments) {
-      ret = output(ctx->error_status, ctx->error_message, ctx->source_map_string, ctx->source_map_file);
+    if (ctx->options.source_map_file) {
+      ret = output(ctx->error_status, ctx->error_message, ctx->source_map_string, ctx->options.source_map_file);
     }
 
     free(source_map_file);
@@ -142,7 +134,8 @@ void print_usage(char* argv0) {
     printf("       --line-comments\n");
     printf("   -I, --load-path PATH    Set Sass import path.\n");
     printf("   -m, --sourcemap         Emit source map.\n");
-    printf("       --precision         Set the precision for numbers.\n");
+    printf("   -M, --omit-map-comment  Omits the source map url comment.\n");
+    printf("   -p, --precision         Set the precision for numbers.\n");
     printf("   -h, --help              Display this help message.\n");
     printf("\n");
 }
@@ -155,9 +148,9 @@ void invalid_usage(char* argv0) {
 int main(int argc, char** argv) {
     char *outfile = 0;
     int from_stdin = 0;
-    struct sass_options options;
+    bool generate_source_map = false;
+    struct sass_options options = { 0 };
     options.output_style = SASS_STYLE_NESTED;
-    options.source_comments = true;
     options.image_path = "images";
     char *include_paths = NULL;
     options.precision = 5;
@@ -166,16 +159,17 @@ int main(int argc, char** argv) {
     int long_index = 0;
     static struct option long_options[] =
     {
-        { "stdin",         no_argument,       0, 's' },
-        { "load-path",     required_argument, 0, 'I' },
-        { "style",         required_argument, 0, 't' },
-        { "line-numbers",  no_argument,       0, 'l' },
-        { "line-comments", no_argument,       0, 'l' },
-        { "sourcemap",     no_argument,       0, 'm' },
-        { "precision",     required_argument, 0, 'p' },
-        { "help",          no_argument,       0, 'h' }
+        { "stdin",              no_argument,       0, 's' },
+        { "load-path",          required_argument, 0, 'I' },
+        { "style",              required_argument, 0, 't' },
+        { "line-numbers",       no_argument,       0, 'l' },
+        { "line-comments",      no_argument,       0, 'l' },
+        { "sourcemap",          no_argument,       0, 'm' },
+        { "omit-map-comment",   no_argument,       0, 'M' },
+        { "precision",          required_argument, 0, 'p' },
+        { "help",               no_argument,       0, 'h' }
     };
-    while ((c = getopt_long(argc, argv, "hslmt:I:", long_options, &long_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "hslmMt:I:", long_options, &long_index)) != -1) {
         switch (c) {
         case 's':
             from_stdin = 1;
@@ -207,10 +201,13 @@ int main(int argc, char** argv) {
             }
             break;
         case 'l':
-            options.source_comments = false;
+            options.source_comments = true;
             break;
         case 'm':
-            options.source_comments = true;
+            generate_source_map = true;
+            break;
+        case 'M':
+            options.omit_source_map_url = true;
             break;
         case 'p':
             options.precision = atoi(optarg); // TODO: make this more robust
@@ -240,6 +237,13 @@ int main(int argc, char** argv) {
     if(optind < argc && strcmp(argv[optind], "-") != 0 && !from_stdin) {
         if (optind + 1 < argc) {
             outfile = argv[optind + 1];
+        }
+        if (generate_source_map && outfile) {
+            const char* extension = ".map";
+            char* source_map_file  = calloc(strlen(outfile) + strlen(extension) + 1, sizeof(char));
+            strcpy(source_map_file, outfile);
+            strcat(source_map_file, extension);
+            options.source_map_file = source_map_file;
         }
         result = compile_file(options, argv[optind], outfile);
     } else {
