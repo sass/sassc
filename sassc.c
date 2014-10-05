@@ -5,6 +5,11 @@
 #include <sass_interface.h>
 
 #define BUFSIZE 512
+#ifdef _WIN32
+#define PATH_SEP ';'
+#else
+#define PATH_SEP ':'
+#endif
 
 int output(int error_status, char* error_message, char* output_string, const char* outfile) {
     if (error_status) {
@@ -154,7 +159,7 @@ int main(int argc, char** argv) {
     options.output_style = SASS_STYLE_NESTED;
     options.source_comments = true;
     options.image_path = "images";
-    options.include_paths = "";
+    char *include_paths = NULL;
     options.precision = 5;
 
     int c, i;
@@ -176,7 +181,14 @@ int main(int argc, char** argv) {
             from_stdin = 1;
             break;
         case 'I':
-            options.include_paths = optarg;
+            if (!include_paths) {
+                include_paths = strdup(optarg);
+            } else {
+                char *old_paths = include_paths;
+                include_paths = malloc(strlen(old_paths) + 1 + strlen(optarg) + 1);
+                sprintf(include_paths, "%s%c%s", old_paths, PATH_SEP, optarg);
+                free(old_paths);
+            }
             break;
         case 't':
             for(i = 0; i < NUM_STYLE_OPTION_STRINGS; ++i) {
@@ -217,20 +229,27 @@ int main(int argc, char** argv) {
         }
     }
 
+    options.include_paths = include_paths ? include_paths : "";
+
     if(optind < argc - 2) {
         fprintf(stderr, "Error: Too many arguments.\n");
         invalid_usage(argv[0]);
     }
 
+    int result;
     if(optind < argc && strcmp(argv[optind], "-") != 0 && !from_stdin) {
         if (optind + 1 < argc) {
             outfile = argv[optind + 1];
         }
-        return compile_file(options, argv[optind], outfile);
+        result = compile_file(options, argv[optind], outfile);
     } else {
         if (optind < argc) {
             outfile = argv[optind];
         }
-        return compile_stdin(options, outfile);
+        result = compile_stdin(options, outfile);
     }
+
+    free(include_paths);
+
+    return result;
 }
