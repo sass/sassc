@@ -1,7 +1,22 @@
 CC ?= gcc
 CFLAGS = -Wall -O2 -I $(SASS_LIBSASS_PATH) $(EXTRA_CFLAGS)
 LDFLAGS = -O2 $(EXTRA_LDFLAGS)
-LDLIBS = -lstdc++ -lm
+
+ifneq (,$(findstring /cygdrive/,$(PATH)))
+	UNAME := Cygwin
+else
+ifneq (,$(findstring WINDOWS,$(PATH)))
+	UNAME := Windows
+else
+	UNAME := $(shell uname -s)
+endif
+endif
+
+ifeq ($(UNAME),Darwin)
+	LDLIBS = -lstdc++ -lm -stdlib=libc++
+else
+	LDLIBS = -lstdc++ -lm
+endif
 
 SOURCES = sassc.c
 OBJECTS = $(SOURCES:.c=.o)
