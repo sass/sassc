@@ -86,7 +86,7 @@ int compile_stdin(struct sass_options options, char* outfile) {
     return ret;
 }
 
-int compile_file(struct sass_options options, char* input_path, char* outfile) {
+int compile_file(struct sass_options options, char* input_path, char* outfile,char *extra_data) {
     int ret;
     char* source_map_file = 0;
     struct sass_file_context* ctx = sass_new_file_context();
@@ -94,6 +94,11 @@ int compile_file(struct sass_options options, char* input_path, char* outfile) {
     ctx->options = options;
     ctx->input_path = input_path;
     ctx->output_path = outfile;
+
+    if (extra_data)
+    {
+        ctx->source_string=extra_data;
+    }
 
     sass_compile_file(ctx);
     ret = output(ctx->error_status, ctx->error_message, ctx->output_string, outfile);
@@ -136,6 +141,7 @@ void print_usage(char* argv0) {
     printf("   -m, --sourcemap         Emit source map.\n");
     printf("   -M, --omit-map-comment  Omits the source map url comment.\n");
     printf("   -p, --precision         Set the precision for numbers.\n");
+    printf("   -V, --variable          Pass SASS variable values from the command line.\n");
     printf("   -h, --help              Display this help message.\n");
     printf("\n");
 }
@@ -155,6 +161,8 @@ int main(int argc, char** argv) {
     char *include_paths = NULL;
     options.precision = 5;
 
+    char *extra_parms;
+
     int c, i;
     int long_index = 0;
     static struct option long_options[] =
@@ -167,9 +175,10 @@ int main(int argc, char** argv) {
         { "sourcemap",          no_argument,       0, 'm' },
         { "omit-map-comment",   no_argument,       0, 'M' },
         { "precision",          required_argument, 0, 'p' },
+        { "variable",           required_argument, 0, 'V' },
         { "help",               no_argument,       0, 'h' }
     };
-    while ((c = getopt_long(argc, argv, "hslmMt:I:", long_options, &long_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "hslmMt:I:V:", long_options, &long_index)) != -1) {
         switch (c) {
         case 's':
             from_stdin = 1;
@@ -216,6 +225,9 @@ int main(int argc, char** argv) {
         case 'h':
             print_usage(argv[0]);
             return 0;
+		case 'V':
+			extra_parms=optarg;
+			break;
         case '?':
             /* Unrecognized flag or missing an expected value */
             /* getopt should produce it's own error message for this case */
@@ -245,7 +257,7 @@ int main(int argc, char** argv) {
             strcat(source_map_file, extension);
             options.source_map_file = source_map_file;
         }
-        result = compile_file(options, argv[optind], outfile);
+        result = compile_file(options, argv[optind], outfile,extra_parms);
     } else {
         if (optind < argc) {
             outfile = argv[optind];
