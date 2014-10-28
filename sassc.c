@@ -5,6 +5,11 @@
 #include <sass_interface.h>
 
 #define BUFSIZE 512
+#ifdef _WIN32
+#define PATH_SEP ';'
+#else
+#define PATH_SEP ':'
+#endif
 
 int output(int error_status, char* error_message, char* output_string, const char* outfile) {
     if (error_status) {
@@ -90,18 +95,10 @@ int compile_file(struct sass_options options, char* input_path, char* outfile) {
     ctx->input_path = input_path;
     ctx->output_path = outfile;
 
-    if (outfile && (ctx->options.source_comments == SASS_SOURCE_COMMENTS_MAP)) {
-      const char* extension = ".map";
-      source_map_file  = calloc(strlen(outfile) + strlen(extension) + 1, sizeof(char));
-      strcpy(source_map_file, outfile);
-      strcat(source_map_file, extension);
-      ctx->source_map_file = source_map_file;
-    }
-
     sass_compile_file(ctx);
     ret = output(ctx->error_status, ctx->error_message, ctx->output_string, outfile);
-    if (outfile && (ctx->options.source_comments == SASS_SOURCE_COMMENTS_MAP)) {
-      ret = output(ctx->error_status, ctx->error_message, ctx->source_map_string, ctx->source_map_file);
+    if (ctx->options.source_map_file) {
+      ret = output(ctx->error_status, ctx->error_message, ctx->source_map_string, ctx->options.source_map_file);
     }
 
     free(source_map_file);
@@ -138,7 +135,8 @@ void print_usage(char* argv0) {
     printf("   -o  --import-once       Only inline duplicate @import statements once.\n");
     printf("   -I, --load-path PATH    Set Sass import path.\n");
     printf("   -m, --sourcemap         Emit source map.\n");
-    printf("       --precision         Set the precision for numbers.\n");
+    printf("   -M, --omit-map-comment  Omits the source map url comment.\n");
+    printf("   -p, --precision         Set the precision for numbers.\n");
     printf("   -h, --help              Display this help message.\n");
     printf("\n");
 }
@@ -151,35 +149,43 @@ void invalid_usage(char* argv0) {
 int main(int argc, char** argv) {
     char *outfile = 0;
     int from_stdin = 0;
-    struct sass_options options;
+    bool generate_source_map = false;
+    struct sass_options options = { 0 };
     options.output_style = SASS_STYLE_NESTED;
-    options.source_comments = 0;
     options.import_once = 0;
     options.image_path = "images";
-    options.include_paths = "";
+    char *include_paths = NULL;
     options.precision = 5;
 
     int c, i;
     int long_index = 0;
     static struct option long_options[] =
     {
-        { "stdin",         no_argument,       0, 's' },
-        { "load-path",     required_argument, 0, 'I' },
-        { "style",         required_argument, 0, 't' },
-        { "line-numbers",  no_argument,       0, 'l' },
-        { "line-comments", no_argument,       0, 'l' },
-        { "sourcemap",     no_argument,       0, 'm' },
-        { "import-once",   no_argument,       0, 'o' },
-        { "precision",     required_argument, 0, 'p' },
-        { "help",          no_argument,       0, 'h' }
+        { "stdin",              no_argument,       0, 's' },
+        { "load-path",          required_argument, 0, 'I' },
+        { "style",              required_argument, 0, 't' },
+        { "line-numbers",       no_argument,       0, 'l' },
+        { "line-comments",      no_argument,       0, 'l' },
+        { "sourcemap",          no_argument,       0, 'm' },
+        { "omit-map-comment",   no_argument,       0, 'M' },
+        { "precision",          required_argument, 0, 'p' },
+        { "import-once",        no_argument,       0, 'o' },
+        { "help",               no_argument,       0, 'h' }
     };
-    while ((c = getopt_long(argc, argv, "hslomt:I:", long_options, &long_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "hslomMt:I:", long_options, &long_index)) != -1) {
         switch (c) {
         case 's':
             from_stdin = 1;
             break;
         case 'I':
-            options.include_paths = optarg;
+            if (!include_paths) {
+                include_paths = strdup(optarg);
+            } else {
+                char *old_paths = include_paths;
+                include_paths = malloc(strlen(old_paths) + 1 + strlen(optarg) + 1);
+                sprintf(include_paths, "%s%c%s", old_paths, PATH_SEP, optarg);
+                free(old_paths);
+            }
             break;
         case 't':
             for(i = 0; i < NUM_STYLE_OPTION_STRINGS; ++i) {
@@ -198,10 +204,13 @@ int main(int argc, char** argv) {
             }
             break;
         case 'l':
-            options.source_comments = SASS_SOURCE_COMMENTS_DEFAULT;
+            options.source_comments = true;
             break;
         case 'm':
-            options.source_comments = SASS_SOURCE_COMMENTS_MAP;
+            generate_source_map = true;
+            break;
+        case 'M':
+            options.omit_source_map_url = true;
             break;
         case 'o':
             options.import_once = 1;
@@ -223,20 +232,34 @@ int main(int argc, char** argv) {
         }
     }
 
+    options.include_paths = include_paths ? include_paths : "";
+
     if(optind < argc - 2) {
         fprintf(stderr, "Error: Too many arguments.\n");
         invalid_usage(argv[0]);
     }
 
+    int result;
     if(optind < argc && strcmp(argv[optind], "-") != 0 && !from_stdin) {
         if (optind + 1 < argc) {
             outfile = argv[optind + 1];
         }
-        return compile_file(options, argv[optind], outfile);
+        if (generate_source_map && outfile) {
+            const char* extension = ".map";
+            char* source_map_file  = calloc(strlen(outfile) + strlen(extension) + 1, sizeof(char));
+            strcpy(source_map_file, outfile);
+            strcat(source_map_file, extension);
+            options.source_map_file = source_map_file;
+        }
+        result = compile_file(options, argv[optind], outfile);
     } else {
         if (optind < argc) {
             outfile = argv[optind];
         }
-        return compile_stdin(options, outfile);
+        result = compile_stdin(options, outfile);
     }
+
+    free(include_paths);
+
+    return result;
 }
