@@ -23,15 +23,35 @@ OBJECTS = $(SOURCES:.c=.o)
 TARGET = bin/sassc
 SPEC_PATH = $(SASS_SPEC_PATH)
 
+ifneq ($(BUILD), shared)
+	BUILD = static
+endif
+
 all: libsass $(TARGET)
 
-$(TARGET): $(OBJECTS) $(SASS_LIBSASS_PATH)/libsass.a
-	$(CC) $(LDFLAGS) -o $@ $^ $(LDLIBS)
+$(TARGET): build-$(BUILD)
 
-$(SASS_LIBSASS_PATH)/libsass.a: libsass
-libsass:
+build-static: $(OBJECTS) $(SASS_LIBSASS_PATH)/lib/libsass.a
+	$(CC) $(LDFLAGS) -o $(TARGET) $^ $(LDLIBS)
+
+build-shared: $(OBJECTS) $(SASS_LIBSASS_PATH)/lib/libsass.so
+	$(CC) $(LDFLAGS) -o $(TARGET) $^ $(LDLIBS)
+
+$(SASS_LIBSASS_PATH)/lib/libsass.a: libsass-static
+$(SASS_LIBSASS_PATH)/lib/libsass.so: libsass-shared
+
+libsass: libsass-$(BUILD)
+
+libsass-static:
 ifdef SASS_LIBSASS_PATH
-	$(MAKE) -C $(SASS_LIBSASS_PATH)
+	BUILD="static" $(MAKE) -C $(SASS_LIBSASS_PATH)
+else
+	$(error SASS_LIBSASS_PATH must be defined)
+endif
+
+libsass-shared:
+ifdef SASS_LIBSASS_PATH
+	BUILD="shared" $(MAKE) -C $(SASS_LIBSASS_PATH)
 else
 	$(error SASS_LIBSASS_PATH must be defined)
 endif
@@ -48,5 +68,5 @@ ifdef SASS_LIBSASS_PATH
 	$(MAKE) -C $(SASS_LIBSASS_PATH) clean
 endif
 
-.PHONY: clean libsass test
+.PHONY: clean libsass libsass-static libsass-shared build-static build-shared test
 .DELETE_ON_ERROR:
