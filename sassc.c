@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <getopt.h>
 #include <sass2scss.h>
-#include <sass_interface.h>
+#include <sass_context.h>
 
 #ifndef SASSC_VERSION
 #define SASSC_VERSION "[NA]"
@@ -16,7 +16,7 @@
 #define PATH_SEP ':'
 #endif
 
-int output(int error_status, char* error_message, char* output_string, const char* outfile) {
+int output(int error_status, const char* error_message, const char* output_string, const char* outfile) {
     if (error_status) {
         if (error_message) {
             fprintf(stderr, "%s", error_message);
@@ -48,9 +48,9 @@ int output(int error_status, char* error_message, char* output_string, const cha
     }
 }
 
-int compile_stdin(struct sass_options options, char* outfile) {
+int compile_stdin(struct Sass_Options* options, char* outfile) {
     int ret;
-    struct sass_context* ctx;
+    struct Sass_Data_Context* ctx;
     char buffer[BUFSIZE];
     size_t size = 1;
     char *source_string = malloc(sizeof(char) * BUFSIZE);
@@ -80,34 +80,49 @@ int compile_stdin(struct sass_options options, char* outfile) {
         exit(2);
     }
 
-    ctx = sass_new_context();
-    ctx->options = options;
-    ctx->source_string = source_string;
-    sass_compile(ctx);
-    ret = output(ctx->error_status, ctx->error_message, ctx->output_string, outfile);
-
-    sass_free_context(ctx);
+    ctx = sass_make_data_context(source_string);
+    struct Sass_Context* ctx_out = sass_data_context_get_context(ctx);
+    sass_data_context_set_options(ctx, options);
+    sass_compile_data_context(ctx);
+    ret = output(
+        sass_context_get_error_status(ctx_out),
+        sass_context_get_error_message(ctx_out),
+        sass_context_get_output_string(ctx_out),
+        outfile
+    );
+    sass_delete_data_context(ctx);
     free(source_string);
     return ret;
 }
 
-int compile_file(struct sass_options options, char* input_path, char* outfile) {
+int compile_file(struct Sass_Options* options, char* input_path, char* outfile) {
     int ret;
     char* source_map_file = 0;
-    struct sass_file_context* ctx = sass_new_file_context();
+    struct Sass_File_Context* ctx = sass_make_file_context(input_path);
+    struct Sass_Context* ctx_out = sass_file_context_get_context(ctx);
+    sass_option_set_output_path(options, outfile);
+    sass_file_context_set_options(ctx, options);
 
-    ctx->options = options;
-    ctx->input_path = input_path;
-    ctx->output_path = outfile;
+    sass_compile_file_context(ctx);
 
-    sass_compile_file(ctx);
-    ret = output(ctx->error_status, ctx->error_message, ctx->output_string, outfile);
-    if (ctx->options.source_map_file) {
-      ret = output(ctx->error_status, ctx->error_message, ctx->source_map_string, ctx->options.source_map_file);
+    ret = output(
+        sass_context_get_error_status(ctx_out),
+        sass_context_get_error_message(ctx_out),
+        sass_context_get_output_string(ctx_out),
+        outfile
+    );
+
+    if (sass_option_get_source_map_file(options)) {
+        ret = output(
+            sass_context_get_error_status(ctx_out),
+            sass_context_get_error_message(ctx_out),
+            sass_context_get_source_map_string(ctx_out),
+            sass_option_get_source_map_file(options)
+        );
     }
 
     free(source_map_file);
-    sass_free_file_context(ctx);
+    sass_delete_file_context(ctx);
     return ret;
 }
 
@@ -161,11 +176,11 @@ int main(int argc, char** argv) {
     char *outfile = 0;
     int from_stdin = 0;
     bool generate_source_map = false;
-    struct sass_options options = { 0 };
-    options.output_style = SASS_STYLE_NESTED;
-    options.image_path = "images";
+    struct Sass_Options* options = sass_make_options();
+    sass_option_set_output_style(options, SASS_STYLE_NESTED);
+    sass_option_set_image_path(options, "images");
     char *include_paths = NULL;
-    options.precision = 5;
+    sass_option_set_precision(options, 5);
 
     int c, i;
     int long_index = 0;
@@ -200,7 +215,7 @@ int main(int argc, char** argv) {
         case 't':
             for(i = 0; i < NUM_STYLE_OPTION_STRINGS; ++i) {
                 if(strcmp(optarg, style_option_strings[i].style_string) == 0) {
-                    options.output_style = style_option_strings[i].output_style;
+                    sass_option_set_output_style(options, style_option_strings[i].output_style);
                     break;
                 }
             }
@@ -214,17 +229,17 @@ int main(int argc, char** argv) {
             }
             break;
         case 'l':
-            options.source_comments = true;
+            sass_option_set_source_comments(options, true);
             break;
         case 'm':
             generate_source_map = true;
             break;
         case 'M':
-            options.omit_source_map_url = true;
+            sass_option_set_omit_source_map_url(options, true);
             break;
         case 'p':
-            options.precision = atoi(optarg); // TODO: make this more robust
-            if (options.precision < 0) options.precision = 5;
+            sass_option_set_precision(options, atoi(optarg)); // TODO: make this more robust
+            if (sass_option_get_precision(options) < 0) sass_option_set_precision(options, 5);
             break;
         case 'v':
             print_version(argv[0]);
@@ -242,7 +257,7 @@ int main(int argc, char** argv) {
         }
     }
 
-    options.include_paths = include_paths ? include_paths : "";
+    sass_option_set_include_path(options, include_paths ? include_paths : "");
 
     if(optind < argc - 2) {
         fprintf(stderr, "Error: Too many arguments.\n");
@@ -259,7 +274,7 @@ int main(int argc, char** argv) {
             char* source_map_file  = calloc(strlen(outfile) + strlen(extension) + 1, sizeof(char));
             strcpy(source_map_file, outfile);
             strcat(source_map_file, extension);
-            options.source_map_file = source_map_file;
+            sass_option_set_source_map_file(options, source_map_file);
         }
         result = compile_file(options, argv[optind], outfile);
     } else {
