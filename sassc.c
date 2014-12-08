@@ -5,6 +5,10 @@
 #include <sass2scss.h>
 #include <sass_interface.h>
 
+#ifndef SASSC_VERSION
+#define SASSC_VERSION "[NA]"
+#endif
+
 #define BUFSIZE 512
 #ifdef _WIN32
 #define PATH_SEP ';'
@@ -122,15 +126,9 @@ struct
     sizeof(style_option_strings) / sizeof(style_option_strings[0])
 
 void print_version(char* argv0) {
-    printf("sassc: ");
-    printf(SASSC_VERSION);
-    printf("\n");
-    printf("libsass: ");
-    printf(libsass_version());
-    printf("\n");
-    printf("sass2scss: ");
-    printf(sass2scss_version());
-    printf("\n");
+    printf("sassc: %s\n", SASSC_VERSION);
+    printf("libsass: %s\n", libsass_version());
+    printf("sass2scss: %s\n", sass2scss_version());
 }
 
 void print_usage(char* argv0) {

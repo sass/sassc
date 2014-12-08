@@ -1,0 +1,89 @@
+#!/bin/bash
+
+set -e
+
+# script/bootstrap
+
+# export this path right here (was in script/spec before)
+export SASS_SASSC_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/../ && pwd )"
+
+# use some defaults if not running under travis ci
+if [ "x$TRAVIS_BUILD_DIR" == "x" ]; then export TRAVIS_BUILD_DIR=$(pwd)/build; fi
+if [ "x$SASS_LIBSASS_PATH" == "x" ]; then export SASS_SASSC_PATH=$(pwd)/libsass; fi
+if [ "x$SASS_SPEC_PATH" == "x" ]; then export SASS_SPEC_PATH=$(pwd)/sass-spec; fi
+
+if [ "x$COVERAGE" == "xyes" ]; then
+  COVERAGE_OPT="--enable-coverage"
+  export EXTRA_CFLAGS="-O0 --coverage"
+  export EXTRA_CXXFLAGS="-O0 --coverage"
+  export EXTRA_LDFLAGS="-O0 --coverage"
+else
+  COVERAGE_OPT="--disable-coverage"
+fi
+
+if [ "x$BUILD" == "xstatic" ]; then
+  SHARED_OPT="--disable-shared --enable-static"
+  MAKE_TARGET="static"
+else
+  # Makefile of sassc wants to link to static
+  SHARED_OPT="--enable-shared --enable-static"
+  MAKE_TARGET="shared"
+fi
+
+MAKE_OPTS="$MAKE_OPTS -j3 V=1"
+
+if [ "x$AUTOTOOLS" == "xyes" ]; then
+
+  pushd $SASS_LIBSASS_PATH
+  echo -en 'travis_fold:start:libsass\r'
+
+  autoreconf --force --install
+  ./configure --disable-tests $COVERAGE_OPT \
+    --disable-silent-rules \
+    --prefix=$TRAVIS_BUILD_DIR \
+    ${SHARED_OPT}
+
+  # always rebuild
+  make $MAKE_OPTS clean
+
+  # install the library
+  make $MAKE_OPTS install
+
+  echo -en 'travis_fold:end:libsass\r'
+  popd
+
+  echo -en 'travis_fold:start:configure\r'
+  autoreconf --force --install
+  ./configure --enable-tests $COVERAGE_OPT \
+    --disable-silent-rules \
+    --with-libsass-include=$SASS_LIBSASS_PATH \
+    --with-libsass-lib=$TRAVIS_BUILD_DIR/lib \
+    --prefix=$TRAVIS_BUILD_DIR \
+    ${SHARED_OPT}
+  echo -en 'travis_fold:end:configure\r'
+
+  # always rebuild
+  make $MAKE_OPTS clean
+  # does what $BUILD says
+  make $MAKE_OPTS all
+
+  mkdir -p bin
+  cp -af sassc bin
+
+else
+
+  # always rebuild
+  make $MAKE_OPTS clean
+
+  # does what $BUILD says
+  make $MAKE_OPTS all
+
+  # sassc has static as dep
+  echo make $MAKE_OPTS $SASS_SASSC_PATH/bin/sassc
+
+fi
+
+echo successfully compiled sassc
+echo AUTOTOOLS=$AUTOTOOLS COVERAGE=$COVERAGE BUILD=$BUILD
+
+LD_LIBRARY_PATH="$TRAVIS_BUILD_DIR/lib" bin/sassc -v
