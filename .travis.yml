@@ -7,6 +7,8 @@ compiler:
 env:
   - AUTOTOOLS=no BUILD=shared
   - AUTOTOOLS=no BUILD=static
+  - AUTOTOOLS=yes BUILD=shared
+  - AUTOTOOLS=yes BUILD=static
 
 before_install:
   - gem install sass
@@ -15,4 +17,8 @@ before_install:
   - export SASS_LIBSASS_PATH=libsass
 
 script:
-  - make test
+  - ./script/ci-build-libsass
+
+after_success:
+  - ./bin/sassc -v
+  - ldd ./bin/sassc

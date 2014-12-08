@@ -1,31 +1,66 @@
-CC ?= gcc
-CFLAGS = -Wall -O2 -I $(SASS_LIBSASS_PATH) $(EXTRA_CFLAGS)
-LDFLAGS = -O2 $(EXTRA_LDFLAGS)
+CC       ?= cc
+CXX      ?= g++
+RM       ?= rm -f
+MKDIR    ?= mkdir -p
+CFLAGS   ?= -Wall -fPIC -O2
+CXXFLAGS ?= -Wall -fPIC -O2
+LDFLAGS  ?= -Wall -fPIC -O2
+
+ifeq "$(SASSC_VERSION)" ""
+  ifneq "$(wildcard ./.git/ )" ""
+    SASSC_VERSION = $(shell git describe --abbrev=4 --dirty --always --tags)
+  endif
+endif
+
+ifneq "$(SASSC_VERSION)" ""
+  CFLAGS   += -DSASSC_VERSION="\"$(SASSC_VERSION)\""
+  CXXFLAGS += -DSASSC_VERSION="\"$(SASSC_VERSION)\""
+endif
+
+# enable mandatory flag
+CXXFLAGS += -std=c++0x
+LDFLAGS  += -std=c++0x
+
+ifneq "$(SASS_LIBSASS_PATH)" ""
+  CFLAGS   += -I $(SASS_LIBSASS_PATH)
+  CXXFLAGS += -I $(SASS_LIBSASS_PATH)
+endif
+
+ifneq "$(EXTRA_CFLAGS)" ""
+  CFLAGS   += $(EXTRA_CFLAGS)
+endif
+ifneq "$(EXTRA_CXXFLAGS)" ""
+  CXXFLAGS += $(EXTRA_CXXFLAGS)
+endif
+ifneq "$(EXTRA_LDFLAGS)" ""
+  LDFLAGS  += $(EXTRA_LDFLAGS)
+endif
 
 ifneq (,$(findstring /cygdrive/,$(PATH)))
 	UNAME := Cygwin
 else
-ifneq (,$(findstring WINDOWS,$(PATH)))
-	UNAME := Windows
-else
-	UNAME := $(shell uname -s)
-endif
+	ifneq (,$(findstring WINDOWS,$(PATH)))
+		UNAME := Windows
+	else
+		UNAME := $(shell uname -s)
+	endif
 endif
 
+LDLIBS = -lstdc++ -lm
 ifeq ($(UNAME),Darwin)
-	LDLIBS = -lstdc++ -lm -stdlib=libc++
-else
-	LDLIBS = -lstdc++ -lm
+	CFLAGS += -stdlib=libc++
+	CXXFLAGS += -stdlib=libc++
+	LDFLAGS += -stdlib=libc++
+endif
+
+ifneq ($(BUILD), shared)
+	BUILD = static
 endif
 
 SOURCES = sassc.c
 OBJECTS = $(SOURCES:.c=.o)
 TARGET = bin/sassc
 SPEC_PATH = $(SASS_SPEC_PATH)
-
-ifneq ($(BUILD), shared)
-	BUILD = static
-endif
 
 all: libsass $(TARGET)
 
@@ -61,6 +96,7 @@ endif
 
 test: all
 	bin/sassc -h
+	bin/sassc -v
 
 clean:
 	rm -f $(OBJECTS) $(TARGET)

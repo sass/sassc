@@ -1,6 +1,27 @@
 ACLOCAL_AMFLAGS = -I m4
 
+AM_LDFLAGS =
+AM_CFLAGS = -Wall -fPIC
+AM_CXXFLAGS = -Wall -fPIC
+AM_CFLAGS += -DSASSC_VERSION="\"$(SASSC_VERSION)\""
+AM_CXXFLAGS += -DSASSC_VERSION="\"$(SASSC_VERSION)\""
+
+AM_CXXFLAGS += -std=c++0x
+AM_LDFLAGS += -std=c++0x
+
+LDLIBS = -lstdc++ -lm
+
+if ENABLE_COVERAGE
+  AM_CFLAGS += -O0 --coverage
+  AM_CXXFLAGS += -O0 --coverage
+  AM_LDFLAGS += -O0 --coverage -lgcov
+else
+  AM_CFLAGS += -O2
+  AM_CXXFLAGS += -O2
+endif
+
 bin_PROGRAMS = sassc
 sassc_SOURCES = sassc.c
-sassc_CPPFLAGS = $(LIBSASS_CFLAGS)
-sassc_LDFLAGS= $(LIBSASS_LIBS)
+sassc_CFLAGS = $(AM_CFLAGS) $(LIBSASS_CFLAGS)
+sassc_CXXFLAGS = $(AM_CXXFLAGS) $(LIBSASS_CFLAGS)
+sassc_LDFLAGS= $(AM_LDFLAGS) $(LIBSASS_LIBS) $(LDLIBS)
