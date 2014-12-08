@@ -1,5 +1,14 @@
 CC ?= gcc
-CFLAGS = -Wall -O2 -I $(SASS_LIBSASS_PATH) $(EXTRA_CFLAGS)
+
+ifeq "$(SASSC_VERSION)" ""
+  ifneq "$(wildcard ./.git/ )" ""
+    SASSC_VERSION = $(shell git describe --abbrev=4 --dirty --always --tags)
+  endif
+endif
+
+SASSC_VERSION ?= [NA]
+
+CFLAGS = -DSASSC_VERSION="\"$(SASSC_VERSION)\"" -Wall -O2 -I $(SASS_LIBSASS_PATH) $(EXTRA_CFLAGS)
 LDFLAGS = -O2 $(EXTRA_LDFLAGS)
 
 ifneq (,$(findstring /cygdrive/,$(PATH)))

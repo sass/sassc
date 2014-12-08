@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <getopt.h>
+#include <sass2scss.h>
 #include <sass_interface.h>
 
 #define BUFSIZE 512
@@ -120,6 +121,18 @@ struct
 #define NUM_STYLE_OPTION_STRINGS \
     sizeof(style_option_strings) / sizeof(style_option_strings[0])
 
+void print_version(char* argv0) {
+    printf("sassc: ");
+    printf(SASSC_VERSION);
+    printf("\n");
+    printf("libsass: ");
+    printf(libsass_version());
+    printf("\n");
+    printf("sass2scss: ");
+    printf(sass2scss_version());
+    printf("\n");
+}
+
 void print_usage(char* argv0) {
     int i;
     printf("Usage: %s [options] [INPUT] [OUTPUT]\n\n", argv0);
@@ -136,6 +149,7 @@ void print_usage(char* argv0) {
     printf("   -m, --sourcemap         Emit source map.\n");
     printf("   -M, --omit-map-comment  Omits the source map url comment.\n");
     printf("   -p, --precision         Set the precision for numbers.\n");
+    printf("   -v, --version           Display compiled versions.\n");
     printf("   -h, --help              Display this help message.\n");
     printf("\n");
 }
@@ -167,9 +181,10 @@ int main(int argc, char** argv) {
         { "sourcemap",          no_argument,       0, 'm' },
         { "omit-map-comment",   no_argument,       0, 'M' },
         { "precision",          required_argument, 0, 'p' },
+        { "version",            no_argument,       0, 'v' },
         { "help",               no_argument,       0, 'h' }
     };
-    while ((c = getopt_long(argc, argv, "hslmMt:I:", long_options, &long_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "vhslmMt:I:", long_options, &long_index)) != -1) {
         switch (c) {
         case 's':
             from_stdin = 1;
@@ -213,6 +228,9 @@ int main(int argc, char** argv) {
             options.precision = atoi(optarg); // TODO: make this more robust
             if (options.precision < 0) options.precision = 5;
             break;
+        case 'v':
+            print_version(argv[0]);
+            return 0;
         case 'h':
             print_usage(argv[0]);
             return 0;

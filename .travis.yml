@@ -16,3 +16,6 @@ before_install:
 
 script:
   - make test
+
+after_success:
+  - ./bin/sassc -v
