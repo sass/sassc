@@ -100,7 +100,7 @@ int compile_file(struct Sass_Options* options, char* input_path, char* outfile) 
     char* source_map_file = 0;
     struct Sass_File_Context* ctx = sass_make_file_context(input_path);
     struct Sass_Context* ctx_out = sass_file_context_get_context(ctx);
-    sass_option_set_output_path(options, outfile);
+    if (outfile) sass_option_set_output_path(options, outfile);
     sass_file_context_set_options(ctx, options);
 
     sass_compile_file_context(ctx);
