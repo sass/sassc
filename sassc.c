@@ -112,7 +112,7 @@ int compile_file(struct Sass_Options* options, char* input_path, char* outfile) 
         outfile
     );
 
-    if (sass_option_get_source_map_file(options)) {
+    if (ret == 0 && sass_option_get_source_map_file(options)) {
         ret = output(
             sass_context_get_error_status(ctx_out),
             sass_context_get_error_message(ctx_out),
