@@ -97,7 +97,6 @@ int compile_stdin(struct Sass_Options* options, char* outfile) {
 
 int compile_file(struct Sass_Options* options, char* input_path, char* outfile) {
     int ret;
-    char* source_map_file = 0;
     struct Sass_File_Context* ctx = sass_make_file_context(input_path);
     struct Sass_Context* ctx_out = sass_file_context_get_context(ctx);
     if (outfile) sass_option_set_output_path(options, outfile);
@@ -121,7 +120,6 @@ int compile_file(struct Sass_Options* options, char* input_path, char* outfile) 
         );
     }
 
-    free(source_map_file);
     sass_delete_file_context(ctx);
     return ret;
 }
