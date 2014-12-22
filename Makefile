@@ -1,10 +1,27 @@
-CC       ?= cc
+CC       ?= gcc
 CXX      ?= g++
 RM       ?= rm -f
+CP       ?= cp -a
 MKDIR    ?= mkdir -p
-CFLAGS   ?= -Wall -fPIC -O2
-CXXFLAGS ?= -Wall -fPIC -O2
-LDFLAGS  ?= -Wall -fPIC -O2
+WINDRES  ?= windres
+CFLAGS   ?= -Wall -O2
+CXXFLAGS ?= -Wall -O2
+LDFLAGS  ?= -Wall -O2
+
+ifneq (,$(findstring /cygdrive/,$(PATH)))
+	UNAME := Cygwin
+else
+	ifneq (,$(findstring WINDOWS,$(PATH)))
+		UNAME := Windows
+	else
+		ifneq (,$(findstring mingw32,$(MAKE)))
+			UNAME := MinGW
+		else
+			UNAME := $(shell uname -s)
+		endif
+	endif
+endif
+
 
 ifeq "$(SASSC_VERSION)" ""
   ifneq "$(wildcard ./.git/ )" ""
@@ -18,9 +35,14 @@ ifneq "$(SASSC_VERSION)" ""
 endif
 
 # enable mandatory flag
-CXXFLAGS += -std=c++0x
-LDFLAGS  += -std=c++0x
-
+ifeq (MinGW,$(UNAME))
+	CXXFLAGS += -std=gnu++0x
+	LDFLAGS  += -std=gnu++0x
+else
+	CXXFLAGS += -std=c++0x
+	LDFLAGS  += -std=c++0x
+endif
+	
 ifneq "$(SASS_LIBSASS_PATH)" ""
   CFLAGS   += -I $(SASS_LIBSASS_PATH)
   CXXFLAGS += -I $(SASS_LIBSASS_PATH)
@@ -36,16 +58,6 @@ ifneq "$(EXTRA_LDFLAGS)" ""
   LDFLAGS  += $(EXTRA_LDFLAGS)
 endif
 
-ifneq (,$(findstring /cygdrive/,$(PATH)))
-	UNAME := Cygwin
-else
-	ifneq (,$(findstring WINDOWS,$(PATH)))
-		UNAME := Windows
-	else
-		UNAME := $(shell uname -s)
-	endif
-endif
-
 LDLIBS = -lstdc++ -lm
 ifeq ($(UNAME),Darwin)
 	CFLAGS += -stdlib=libc++
@@ -53,27 +65,51 @@ ifeq ($(UNAME),Darwin)
 	LDFLAGS += -stdlib=libc++
 endif
 
-ifneq ($(BUILD), shared)
+ifneq ($(BUILD),shared)
 	BUILD = static
 endif
 
 SOURCES = sassc.c
+
+LIB_STATIC = $(SASS_LIBSASS_PATH)/lib/libsass.a
+LIB_SHARED = $(SASS_LIBSASS_PATH)/lib/libsass.so
+
+ifeq (MinGW,$(UNAME))
+	ifeq (shared,$(BUILD))
+		CFLAGS     += -D ADD_EXPORTS 
+		CXXFLAGS   += -D ADD_EXPORTS 
+		LIB_SHARED  = $(SASS_LIBSASS_PATH)/lib/libsass.dll
+	endif
+else
+	CFLAGS   += -fPIC
+	CXXFLAGS += -fPIC
+	LDFLAGS  += -fPIC
+endif
+
 OBJECTS = $(SOURCES:.c=.o)
 TARGET = bin/sassc
 SPEC_PATH = $(SASS_SPEC_PATH)
+
+ifeq (MinGW,$(UNAME))
+	TARGET = bin/sassc.exe
+endif
+ifeq (Windows,$(UNAME))
+	TARGET = bin/sassc.exe
+endif
 
 all: libsass $(TARGET)
 
 $(TARGET): build-$(BUILD)
 
-build-static: $(OBJECTS) $(SASS_LIBSASS_PATH)/lib/libsass.a
+build-static: $(OBJECTS) $(LIB_STATIC)
+	$(CC) -static $(LDFLAGS) -o $(TARGET) $^ $(LDLIBS)
+
+build-shared: $(OBJECTS) $(LIB_SHARED)
+	$(CP) $(LIB_SHARED) bin/
 	$(CC) $(LDFLAGS) -o $(TARGET) $^ $(LDLIBS)
 
-build-shared: $(OBJECTS) $(SASS_LIBSASS_PATH)/lib/libsass.so
-	$(CC) $(LDFLAGS) -o $(TARGET) $^ $(LDLIBS)
-
-$(SASS_LIBSASS_PATH)/lib/libsass.a: libsass-static
-$(SASS_LIBSASS_PATH)/lib/libsass.so: libsass-shared
+$(LIB_STATIC): libsass-static
+$(LIB_SHARED): libsass-shared
 
 libsass: libsass-$(BUILD)
 
@@ -98,11 +134,18 @@ test: all
 	bin/sassc -h
 	bin/sassc -v
 
+specs: all
+ifdef SASS_LIBSASS_PATH
+	$(MAKE) -C $(SASS_LIBSASS_PATH) test_build
+else
+	$(error SASS_LIBSASS_PATH must be defined)
+endif
+
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+	rm -f $(OBJECTS) $(TARGET) bin/*.so bin/*.dll
 ifdef SASS_LIBSASS_PATH
 	$(MAKE) -C $(SASS_LIBSASS_PATH) clean
 endif
 
-.PHONY: clean libsass libsass-static libsass-shared build-static build-shared test
+.PHONY: clean libsass libsass-static libsass-shared build-static build-shared test specs
 .DELETE_ON_ERROR:
