@@ -177,7 +177,6 @@ int main(int argc, char** argv) {
     bool generate_source_map = false;
     struct Sass_Options* options = sass_make_options();
     sass_option_set_output_style(options, SASS_STYLE_NESTED);
-    sass_option_set_image_path(options, "images");
     char *include_paths = NULL;
     sass_option_set_precision(options, 5);
 
