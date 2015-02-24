@@ -3,11 +3,16 @@ ACLOCAL_AMFLAGS = -I m4
 AM_LDFLAGS =
 AM_CFLAGS = -Wall -fPIC
 AM_CXXFLAGS = -Wall -fPIC
-AM_CFLAGS += -DSASSC_VERSION="\"$(SASSC_VERSION)\""
-AM_CXXFLAGS += -DSASSC_VERSION="\"$(SASSC_VERSION)\""
+AM_CFLAGS += -DSASSC_VERSION="\"$(VERSION)\""
+AM_CXXFLAGS += -DSASSC_VERSION="\"$(VERSION)\""
 
-AM_CXXFLAGS += -std=c++0x
-AM_LDFLAGS += -std=c++0x
+if COMPILER_IS_MINGW32
+  AM_CXXFLAGS += -std=gnu++0x
+  AM_LDFLAGS += -std=gnu++0x
+else
+  AM_CXXFLAGS += -std=c++0x
+  AM_LDFLAGS += -std=c++0x
+endif
 
 LDLIBS = -lstdc++ -lm
 

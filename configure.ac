@@ -1,5 +1,5 @@
 AC_PREREQ([2.61])
-AC_INIT([sassc], [1.0], [support@moovweb.com])
+AC_INIT([sassc], m4_esyscmd_s([./version.sh]), [support@moovweb.com])
 AC_CONFIG_SRCDIR([sassc.c])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS([config.h])
@@ -49,30 +49,10 @@ fi
 
 AM_CONDITIONAL(ENABLE_COVERAGE, test "x$enable_cov" = "xyes")
 
-AC_ARG_VAR(SASSC_VERSION, libsass version)
-if test "x$SASSC_VERSION" = "x"; then
-  AC_CHECK_PROG(GIT, git, git)
-  if test "x$GIT" = "x"; then
-    AC_MSG_ERROR([Unable to find git binary to query version.
-You can solve this by setting SASSC_VERSION:
-# export SASSC_VERSION="x.y.z"
-])
-  else
-    AC_CHECK_FILE(.git/config, [], [
-    AC_MSG_ERROR([Unable to find .git directory to query version.
-You can solve this by setting SASSC_VERSION:
-# export SASSC_VERSION="x.y.z"
-])
-    ])
-    SASSC_VERSION=`$GIT describe --abbrev=4 --dirty --always --tags`
-  fi
-  if test "x$SASSC_VERSION" = "x"; then
-    AC_MSG_ERROR([SASSC_VERSION not defined.
-You can solve this by setting SASSC_VERSION:
-# export SASSC_VERSION="x.y.z"
-])
-  fi
-fi
+AS_CASE([$host], [*-*-mingw32], [is_mingw32=yes], [is_mingw32=no])
+AM_CONDITIONAL(COMPILER_IS_MINGW32, test "x$is_mingw32" = "xyes")
+
+AC_MSG_NOTICE([Building sassc ($VERSION)])
 
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
