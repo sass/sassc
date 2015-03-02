@@ -131,8 +131,8 @@ struct
     int output_style;
 } style_option_strings[] = {
     { "compressed", SASS_STYLE_COMPRESSED },
-    //{ "compact", SASS_STYLE_COMPACT },
-    //{ "expanded", SASS_STYLE_EXPANDED },
+    { "compact", SASS_STYLE_COMPACT },
+    { "expanded", SASS_STYLE_EXPANDED },
     { "nested", SASS_STYLE_NESTED }
 };
 
