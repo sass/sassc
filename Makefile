@@ -46,7 +46,7 @@ ifeq (MinGW,$(UNAME))
 	LDFLAGS  += -std=gnu++0x
 else
 	CXXFLAGS += -std=c++0x
-	LDFLAGS  += -std=c++0x -ldl
+	LDFLAGS  += -std=c++0x
 endif
 
 ifneq "$(SASS_LIBSASS_PATH)" ""
@@ -69,6 +69,11 @@ ifeq ($(UNAME),Darwin)
 	CFLAGS += -stdlib=libc++
 	CXXFLAGS += -stdlib=libc++
 	LDFLAGS += -stdlib=libc++
+endif
+
+ifneq (MinGW,$(UNAME))
+	LDFLAGS += -ldl
+	LDLIBS += -ldl
 endif
 
 ifneq ($(BUILD),shared)
