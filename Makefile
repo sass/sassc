@@ -103,17 +103,12 @@ ifeq (Windows,$(UNAME))
 	TARGET = bin/sassc.exe
 endif
 
-STATICFLAG=-static
-ifeq (Darwin,$(UNAME))
-	STATICFLAG=
-endif
-
 all: libsass $(TARGET)
 
 $(TARGET): build-$(BUILD)
 
 build-static: $(OBJECTS) $(LIB_STATIC)
-	$(CC) $(STATICFLAG) $(LDFLAGS) -o $(TARGET) $^ $(LDLIBS)
+	$(CC) $(LDFLAGS) -o $(TARGET) $^ $(LDLIBS)
 
 build-shared: $(OBJECTS) $(LIB_SHARED)
 	$(CP) $(LIB_SHARED) bin/
