@@ -24,14 +24,20 @@ endif
 
 
 ifeq "$(SASSC_VERSION)" ""
-  ifneq "$(wildcard ./.git/ )" ""
-    SASSC_VERSION = $(shell git describe --abbrev=4 --dirty --always --tags)
-  endif
+	ifneq "$(wildcard ./.git/ )" ""
+		SASSC_VERSION = $(shell git describe --abbrev=4 --dirty --always --tags)
+	endif
+endif
+
+ifeq "$(SASSC_VERSION)" ""
+	ifneq ("$(wildcard VERSION)","")
+		SASSC_VERSION ?= $(shell $(CAT) VERSION)
+	endif
 endif
 
 ifneq "$(SASSC_VERSION)" ""
-  CFLAGS   += -DSASSC_VERSION="\"$(SASSC_VERSION)\""
-  CXXFLAGS += -DSASSC_VERSION="\"$(SASSC_VERSION)\""
+	CFLAGS   += -DSASSC_VERSION="\"$(SASSC_VERSION)\""
+	CXXFLAGS += -DSASSC_VERSION="\"$(SASSC_VERSION)\""
 endif
 
 # enable mandatory flag
@@ -40,22 +46,22 @@ ifeq (MinGW,$(UNAME))
 	LDFLAGS  += -std=gnu++0x
 else
 	CXXFLAGS += -std=c++0x
-	LDFLAGS  += -std=c++0x
+	LDFLAGS  += -std=c++0x -ldl
 endif
-	
+
 ifneq "$(SASS_LIBSASS_PATH)" ""
-  CFLAGS   += -I $(SASS_LIBSASS_PATH)
-  CXXFLAGS += -I $(SASS_LIBSASS_PATH)
+	CFLAGS   += -I $(SASS_LIBSASS_PATH)
+	CXXFLAGS += -I $(SASS_LIBSASS_PATH)
 endif
 
 ifneq "$(EXTRA_CFLAGS)" ""
-  CFLAGS   += $(EXTRA_CFLAGS)
+	CFLAGS   += $(EXTRA_CFLAGS)
 endif
 ifneq "$(EXTRA_CXXFLAGS)" ""
-  CXXFLAGS += $(EXTRA_CXXFLAGS)
+	CXXFLAGS += $(EXTRA_CXXFLAGS)
 endif
 ifneq "$(EXTRA_LDFLAGS)" ""
-  LDFLAGS  += $(EXTRA_LDFLAGS)
+	LDFLAGS  += $(EXTRA_LDFLAGS)
 endif
 
 LDLIBS = -lstdc++ -lm
@@ -76,8 +82,8 @@ LIB_SHARED = $(SASS_LIBSASS_PATH)/lib/libsass.so
 
 ifeq (MinGW,$(UNAME))
 	ifeq (shared,$(BUILD))
-		CFLAGS     += -D ADD_EXPORTS 
-		CXXFLAGS   += -D ADD_EXPORTS 
+		CFLAGS     += -D ADD_EXPORTS
+		CXXFLAGS   += -D ADD_EXPORTS
 		LIB_SHARED  = $(SASS_LIBSASS_PATH)/lib/libsass.dll
 	endif
 else
