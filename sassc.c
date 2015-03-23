@@ -91,7 +91,6 @@ int compile_stdin(struct Sass_Options* options, char* outfile) {
         outfile
     );
     sass_delete_data_context(ctx);
-    free(source_string);
     return ret;
 }
 
