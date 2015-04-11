@@ -46,7 +46,7 @@ The executable will be in the bin folder. To run it, simply try something like
 Test
 ----
 
-The official libsass/sassc test suite is located at http://github.com/hcatlin/sass-spec. It's a specialized project just to ensure that Sass works as expected. First, go clone (and ensure its up-to-date) the sass-spec repo. THEN, you must setup an environment variable to point to the spec folder. Also, if you want to test against the lastest libsass, you MUST define the location of a copy of the libsass repo.
+The official libsass/sassc test suite is located at http://github.com/sass/sass-spec. It's a specialized project just to ensure that Sass works as expected. First, go clone (and ensure its up-to-date) the sass-spec repo. THEN, you must setup an environment variable to point to the spec folder. Also, if you want to test against the lastest libsass, you MUST define the location of a copy of the libsass repo.
 
 For instance, this is in my profile.
 
