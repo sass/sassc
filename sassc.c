@@ -192,7 +192,8 @@ int main(int argc, char** argv) {
         { "omit-map-comment",   no_argument,       0, 'M' },
         { "precision",          required_argument, 0, 'p' },
         { "version",            no_argument,       0, 'v' },
-        { "help",               no_argument,       0, 'h' }
+        { "help",               no_argument,       0, 'h' },
+        { NULL,                 0,                 NULL, 0}
     };
     while ((c = getopt_long(argc, argv, "vhslmMt:I:", long_options, &long_index)) != -1) {
         switch (c) {
