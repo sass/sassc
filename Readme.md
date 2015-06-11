@@ -20,14 +20,14 @@ day using dynamic linking if libsass supports that in the future.
 About Sass
 ----------
 
-Sass is a CSS pre-processor language to add on exciting, new, 
+Sass is a CSS pre-processor language to add on exciting, new,
 awesome features to CSS. Sass was the first language of its kind
 and by far the most mature and up to date codebase.
 
-Sass was originally created by the co-creator of this library, 
+Sass was originally created by the co-creator of this library,
 Hampton Catlin (@hcatlin). The extension and continuing evolution
 of the language has all been the result of years of work by Natalie
-Weizenbaum (@nex3) and Chris Eppstein (@chriseppstein). 
+Weizenbaum (@nex3) and Chris Eppstein (@chriseppstein).
 
 For more information about Sass itself, please visit http://sass-lang.com
 
@@ -41,6 +41,31 @@ To build SassC, you must have either local copy of the libsass source or it must
 The executable will be in the bin folder. To run it, simply try something like
 
     ./bin/sassc [input file] > output.css
+
+Step-by-step
+------------
+
+1) Clone the libsass repo:
+
+    git clone https://github.com/sass/libsass.git
+
+2) Edit your .bash_profile to include libsass directory:
+
+    export SASS_LIBSASS_PATH=/Users/you/path/libsass
+
+3) Clone the sassC repo
+
+    git clone https://github.com/sass/sassc.git
+
+4) cd into the sassC repo
+
+    cd ./sassC
+
+5) Type 'make'
+
+    make
+
+6) Job done!
 
 
 Test
