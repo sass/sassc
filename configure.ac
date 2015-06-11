@@ -6,7 +6,7 @@ AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([1.10 foreign])
 
 AC_ARG_WITH([libsass-include],
-  [AS_HELP_STRING([--with-libass-include],
+  [AS_HELP_STRING([--with-libsass-include],
     [location of the libsass headers, defaults to /usr/include])],
   [LIBSASS_CFLAGS="-I$withval"],
   [LIBSASS_CFLAGS='-I/usr/include'])
