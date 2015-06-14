@@ -138,7 +138,7 @@ struct
 #define NUM_STYLE_OPTION_STRINGS \
     sizeof(style_option_strings) / sizeof(style_option_strings[0])
 
-void print_version(char* argv0) {
+void print_version() {
     printf("sassc: %s\n", SASSC_VERSION);
     printf("libsass: %s\n", libsass_version());
     printf("sass2scss: %s\n", sass2scss_version());
