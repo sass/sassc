@@ -241,7 +241,7 @@ int main(int argc, char** argv) {
             if (sass_option_get_precision(options) < 0) sass_option_set_precision(options, 5);
             break;
         case 'v':
-            print_version(argv[0]);
+            print_version();
             return 0;
         case 'h':
             print_usage(argv[0]);
