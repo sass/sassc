@@ -179,7 +179,8 @@ int main(int argc, char** argv) {
     char *include_paths = NULL;
     sass_option_set_precision(options, 5);
 
-    int c, i;
+    int c;
+    size_t i;
     int long_index = 0;
     static struct option long_options[] =
     {
