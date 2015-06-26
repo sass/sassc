@@ -59,7 +59,7 @@ Step-by-step
 
 4) cd into the sassC repo
 
-    cd ./sassC
+    cd ./sassc
 
 5) Type 'make'
 
