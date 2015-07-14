@@ -1,9 +1,19 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
 AC_PREREQ([2.61])
+
 AC_INIT([sassc], m4_esyscmd_s([./version.sh]), [support@moovweb.com])
 AC_CONFIG_SRCDIR([sassc.c])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS([config.h])
-AM_INIT_AUTOMAKE([1.10 foreign])
+AC_CONFIG_FILES([sassc_version.h])
+# These are flags passed to automake
+# Though they look like gcc flags!
+AM_INIT_AUTOMAKE([foreign parallel-tests -Wall])
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([no])])
+# would fail with mingw otherwise
+m4_pattern_allow([AM_PROG_AR])
 
 AC_ARG_WITH([libsass-include],
   [AS_HELP_STRING([--with-libsass-include],
@@ -18,8 +28,10 @@ AC_ARG_WITH([libsass-lib],
   [LIBSASS_LIBS='-lsass'])
 AC_SUBST([LIBSASS_LIBS])
 
-LT_INIT
 AC_PROG_CXX
+AC_LANG([C++])
+AM_PROG_AR([])
+LT_INIT([dlopen])
 
 AC_CHECK_HEADERS([sass.h])
 AC_CHECK_HEADERS([sass2scss.h])
