@@ -59,6 +59,8 @@ if test "x$enable_cov" = "xyes"; then
     AC_SUBST(GCOV)
 fi
 
+AC_CHECK_PROG(WINDRES, windres, windres)
+
 AM_CONDITIONAL(ENABLE_COVERAGE, test "x$enable_cov" = "xyes")
 
 AS_CASE([$host], [*-*-mingw32], [is_mingw32=yes], [is_mingw32=no])

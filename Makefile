@@ -101,9 +101,8 @@ ifeq ($(STATIC_LIBSTDCPP),1)
 	LDFLAGS += -static-libstdc++
 endif
 
-ifeq ($(BUILD),shared)
-	LDLIBS += $(shell $(MAKE) -s -C "$(SASS_LIBSASS_PATH)" lib-opts-shared)
-else
+# shared opts make problems with clang
+ifneq ($(BUILD),shared)
 	LDLIBS += $(shell $(MAKE) -s -C "$(SASS_LIBSASS_PATH)" lib-opts-static)
 endif
 
@@ -151,10 +150,13 @@ OBJECTS = $(SOURCES:.c=.o)
 TARGET = bin/sassc
 SPEC_PATH = $(SASS_SPEC_PATH)
 
+RESOURCES =
 ifeq (MinGW,$(UNAME))
+	RESOURCES = libsass.res
 	TARGET = bin/sassc.exe
 endif
 ifeq (Windows,$(UNAME))
+	RESOURCES = libsass.res
 	TARGET = bin/sassc.exe
 endif
 
@@ -162,10 +164,11 @@ all: libsass $(TARGET)
 
 $(TARGET): build-$(BUILD)
 
-build-static: $(OBJECTS) $(LIB_STATIC)
+
+build-static: $(RESOURCES) $(OBJECTS) $(LIB_STATIC)
 	$(CC) $(LDFLAGS) -o $(TARGET) $^ $(LDLIBS)
 
-build-shared: $(OBJECTS) $(LIB_SHARED)
+build-shared: $(RESOURCES) $(OBJECTS) $(LIB_SHARED)
 	$(MKDIR) bin/include
 	$(CP) $(LIB_SHARED) bin/
 	$(CP) $(SASS_LIBSASS_PATH)/sass.h bin/include
@@ -201,6 +204,9 @@ endif
 test: all
 	$(MAKE) -C $(SASS_LIBSASS_PATH) version
 
+libsass.res:
+	$(WINDRES) res/libsass.rc -O coff libsass.res
+
 specs: all
 ifdef SASS_LIBSASS_PATH
 	$(MAKE) -C $(SASS_LIBSASS_PATH) test_build
@@ -214,8 +220,7 @@ ifdef SASS_LIBSASS_PATH
 	$(MAKE) -C $(SASS_LIBSASS_PATH) clean
 endif
 
-.PHONY: all libsass \
-        clean test specs \
-        build-static build-shared \
-        libsass-static libsass-shared
+.PHONY: test specs clean \
+        all build-static build-shared \
+        libsass libsass-static libsass-shared
 .DELETE_ON_ERROR:
