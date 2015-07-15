@@ -131,8 +131,9 @@ endif
 
 SOURCES = sassc.c
 
-LIB_STATIC = $(shell $(MAKE) -s -C "$(SASS_LIBSASS_PATH)" lib-file-static)
-LIB_SHARED = $(shell $(MAKE) -s -C "$(SASS_LIBSASS_PATH)" lib-file-shared)
+# shell invocation makes problem in mingw64
+LIB_STATIC = $(SASS_LIBSASS_PATH)/lib/libsass.a
+LIB_SHARED = $(SASS_LIBSASS_PATH)/lib/libsass.so
 
 ifeq (MinGW,$(UNAME))
 	ifeq (shared,$(BUILD))
