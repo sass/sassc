@@ -4,10 +4,7 @@
 #include <getopt.h>
 #include <sass2scss.h>
 #include <sass_context.h>
-
-#ifndef SASSC_VERSION
-#define SASSC_VERSION "[NA]"
-#endif
+#include "sassc_version.h"
 
 #define BUFSIZE 512
 #ifdef _WIN32

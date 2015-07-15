@@ -26,7 +26,7 @@ else
 endif
 
 bin_PROGRAMS = sassc
-sassc_SOURCES = sassc.c
+sassc_SOURCES = sassc.c res/libsass.rc
 sassc_CFLAGS = $(AM_CFLAGS) $(LIBSASS_CFLAGS)
 sassc_CXXFLAGS = $(AM_CXXFLAGS) $(LIBSASS_CFLAGS)
 sassc_LDFLAGS= $(AM_LDFLAGS) $(LIBSASS_LIBS) $(LDLIBS)
