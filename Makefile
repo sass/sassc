@@ -101,11 +101,6 @@ ifeq ($(STATIC_LIBSTDCPP),1)
 	LDFLAGS += -static-libstdc++
 endif
 
-# shared opts make problems with clang
-ifneq ($(BUILD),shared)
-	LDLIBS += $(shell $(MAKE) -s -C "$(SASS_LIBSASS_PATH)" lib-opts-static)
-endif
-
 ifeq ($(UNAME),Darwin)
 	CFLAGS += -stdlib=libc++
 	CXXFLAGS += -stdlib=libc++
