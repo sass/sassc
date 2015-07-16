@@ -4,6 +4,7 @@ RM       ?= rm -f
 CP       ?= cp -a
 MKDIR    ?= mkdir -p
 WINDRES  ?= windres
+INSTALL  ?= install
 CFLAGS   ?= -Wall
 CXXFLAGS ?= -Wall
 LDFLAGS  ?= -Wall
@@ -32,6 +33,9 @@ else
 		endif
 	endif
 endif
+
+SASS_SASSC_PATH ?= $(shell pwd)
+SASS_LIBSASS_PATH ?= $(shell pwd)/..
 
 ifeq ($(SASSC_VERSION),)
 	ifneq ($(wildcard ./.git/ ),)
@@ -68,6 +72,10 @@ else
 endif
 
 ifneq ($(SASS_LIBSASS_PATH),)
+	CFLAGS   += -I $(SASS_LIBSASS_PATH)/include
+	CXXFLAGS += -I $(SASS_LIBSASS_PATH)/include
+    # only needed to support old source tree
+    # we have moved the files to src folder
 	CFLAGS   += -I $(SASS_LIBSASS_PATH)
 	CXXFLAGS += -I $(SASS_LIBSASS_PATH)
 endif
@@ -143,37 +151,50 @@ else
 endif
 
 OBJECTS = $(SOURCES:.c=.o)
-TARGET = bin/sassc
+SASSC_EXE = bin/sassc
 SPEC_PATH = $(SASS_SPEC_PATH)
 
 RESOURCES =
 ifeq (MinGW,$(UNAME))
 	RESOURCES = libsass.res
-	TARGET = bin/sassc.exe
+	SASSC_EXE = bin/sassc.exe
 endif
 ifeq (Windows,$(UNAME))
 	RESOURCES = libsass.res
-	TARGET = bin/sassc.exe
+	SASSC_EXE = bin/sassc.exe
 endif
 
-all: libsass $(TARGET)
+all: sassc
 
-$(TARGET): build-$(BUILD)
+sassc: $(SASSC_EXE)
 
+$(SASSC_EXE): libsass build-$(BUILD)
+
+$(DESTDIR)$(PREFIX):
+	$(MKDIR) $(DESTDIR)$(PREFIX)
+
+$(DESTDIR)$(PREFIX)/bin:
+	$(MKDIR) $(DESTDIR)$(PREFIX)/bin
+
+$(DESTDIR)$(PREFIX)/bin/%: bin/%
+	$(INSTALL) -D -v -m0755 "$<" "$@"
+
+install: $(DESTDIR)$(PREFIX)/$(SASSC_EXE)
 
 build-static: $(RESOURCES) $(OBJECTS) $(LIB_STATIC)
-	$(CC) $(LDFLAGS) -o $(TARGET) $^ $(LDLIBS)
+	$(CC) $(LDFLAGS) -o $(SASSC_EXE) $^ $(LDLIBS)
 
 build-shared: $(RESOURCES) $(OBJECTS) $(LIB_SHARED)
 	$(MKDIR) bin/include
 	$(CP) $(LIB_SHARED) bin/
-	$(CP) $(SASS_LIBSASS_PATH)/sass.h bin/include
-	$(CP) $(SASS_LIBSASS_PATH)/sass2scss.h bin/include
-	$(CP) $(SASS_LIBSASS_PATH)/sass_values.h bin/include
-	$(CP) $(SASS_LIBSASS_PATH)/sass_version.h bin/include
-	$(CP) $(SASS_LIBSASS_PATH)/sass_context.h bin/include
-	$(CP) $(SASS_LIBSASS_PATH)/sass_functions.h bin/include
-	$(CC) $(LDFLAGS) -o $(TARGET) $^ $(LDLIBS)
+    # headers are now installed by libsass makefile
+	# $(CP) $(SASS_LIBSASS_PATH)/include/sass.h bin/include
+	# $(CP) $(SASS_LIBSASS_PATH)/include/sass2scss.h bin/include
+	# $(CP) $(SASS_LIBSASS_PATH)/include/sass_values.h bin/include
+	# $(CP) $(SASS_LIBSASS_PATH)/include/sass_version.h bin/include
+	# $(CP) $(SASS_LIBSASS_PATH)/include/sass_context.h bin/include
+	# $(CP) $(SASS_LIBSASS_PATH)/include/sass_functions.h bin/include
+	$(CC) $(LDFLAGS) -o $(SASSC_EXE) $^ $(LDLIBS)
 
 $(LIB_STATIC): libsass-static
 $(LIB_SHARED): libsass-shared
@@ -211,12 +232,12 @@ else
 endif
 
 clean:
-	rm -f $(OBJECTS) $(TARGET) bin/*.so bin/*.dll bin/*.h
+	rm -f $(OBJECTS) $(SASSC_EXE) bin/*.so bin/*.dll bin/*.h
 ifdef SASS_LIBSASS_PATH
 	$(MAKE) -C $(SASS_LIBSASS_PATH) clean
 endif
 
-.PHONY: test specs clean \
+.PHONY: test specs clean sassc \
         all build-static build-shared \
         libsass libsass-static libsass-shared
 .DELETE_ON_ERROR:
