@@ -8,6 +8,7 @@ AC_CONFIG_SRCDIR([sassc.c])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([sassc_version.h])
+AC_CONFIG_AUX_DIR([script])
 # These are flags passed to automake
 # Though they look like gcc flags!
 AM_INIT_AUTOMAKE([foreign parallel-tests -Wall])
@@ -15,30 +16,56 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([no])])
 # would fail with mingw otherwise
 m4_pattern_allow([AM_PROG_AR])
 
+# the new prefered way
+# only need install path
+AC_ARG_WITH([libsass],
+  [AS_HELP_STRING([--with-libsass],
+    [libsass install location])],
+  [LDFLAGS="$LDFLAGS -L$withval/lib"]
+  [CPPFLAGS="$CPPFLAGS -I$withval/include"])
+
+# this is discouraged, use `with-libsass`:
+AC_ARG_WITH([libsass-lib],
+  [AS_HELP_STRING([--with-libsass-lib],
+    [location of libsass library])],
+  [AC_MSG_WARN([use of --with-libsass-lib is discouraged!
+  use new syntax: ./configure --with-libsass="prefix"])]
+  [LDFLAGS="$LDFLAGS -L$withval"])
+
+# this is discouraged, use `with-libsass`:
+# ./configure INCLUDE_PATH="build/include"
 AC_ARG_WITH([libsass-include],
   [AS_HELP_STRING([--with-libsass-include],
-    [location of the libsass headers, defaults to /usr/include])],
-  [LIBSASS_CFLAGS="-I$withval"],
-  [LIBSASS_CFLAGS='-I/usr/include'])
-AC_SUBST([LIBSASS_CFLAGS])
+    [location of libsass headers])],
+  [AC_MSG_WARN([use of --with-libsass-include is discouraged,
+  use new syntax: ./configure --with-libsass="prefix"])]
+  [CPPFLAGS="$CPPFLAGS -I$withval"])
 
-AC_ARG_WITH([libsass-lib],
-  [AS_HELP_STRING([--with-libsass-lib], [location of the libsass library])],
-  [LIBSASS_LIBS="-L$withval -lsass"],
-  [LIBSASS_LIBS='-lsass'])
-AC_SUBST([LIBSASS_LIBS])
-
+# Checks for programs.
+AC_PROG_CC
 AC_PROG_CXX
 AC_LANG([C++])
+AC_GNU_SOURCE
+# Check fails on Travis, but it works fine
+# AX_CXX_COMPILE_STDCXX_11([ext],[optional])
+AC_CHECK_TOOL([AR], [ar], [false])
+if test "x$is_mingw32" != "xyes"; then
+  AC_CHECK_TOOL([DLLTOOL], [dlltool], [false])
+  AC_CHECK_TOOL([DLLWRAP], [dllwrap], [false])
+  AC_CHECK_TOOL([WINDRES], [windres], [false])
+fi
 AM_PROG_AR([])
 LT_INIT([dlopen])
 
-AC_CHECK_HEADERS([sass.h])
-AC_CHECK_HEADERS([sass2scss.h])
-AC_CHECK_HEADERS([sass_values.h])
-AC_CHECK_HEADERS([sass_context.h])
-AC_CHECK_HEADERS([sass_functions.h])
-AC_CHECK_HEADERS([sass_interface.h])
+# check the main assets needed to link to libsass (headers and library)
+AC_CHECK_LIB([sass],[libsass_version],, [AC_MSG_ERROR([unable to find libsass library (use --with-libsass?)])])
+AC_CHECK_HEADERS([sass.h],, [AC_MSG_ERROR([unable to find libsass headers (use --with-libsass?)])])
+
+# also check for additional libsass headers (just in case)
+AC_CHECK_HEADERS([sass2scss.h],, [AC_MSG_ERROR([unable to find sass2scss.h])])
+AC_CHECK_HEADERS([sass_values.h],, [AC_MSG_ERROR([unable to find sass_values.h])])
+AC_CHECK_HEADERS([sass_context.h],, [AC_MSG_ERROR([unable to find sass_context.h])])
+AC_CHECK_HEADERS([sass_functions.h],, [AC_MSG_ERROR([unable to find sass_functions.h])])
 
 AC_ARG_ENABLE([coverage],
   [AS_HELP_STRING([--enable-coverage],
