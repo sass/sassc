@@ -34,8 +34,12 @@ else
 	endif
 endif
 
-SASS_SASSC_PATH ?= $(shell pwd)
-SASS_LIBSASS_PATH ?= $(shell pwd)/..
+ifeq ($(SASS_SASSC_PATH),)
+	SASS_SASSC_PATH = $(abspath $(CURDIR))
+endif
+ifeq ($(SASS_LIBSASS_PATH),)
+	SASS_LIBSASS_PATH = $(abspath $(CURDIR)/..)
+endif
 
 ifeq ($(SASSC_VERSION),)
 	ifneq ($(wildcard ./.git/ ),)
@@ -74,10 +78,14 @@ endif
 ifneq ($(SASS_LIBSASS_PATH),)
 	CFLAGS   += -I $(SASS_LIBSASS_PATH)/include
 	CXXFLAGS += -I $(SASS_LIBSASS_PATH)/include
-    # only needed to support old source tree
-    # we have moved the files to src folder
+	# only needed to support old source tree
+	# we have moved the files to src folder
 	CFLAGS   += -I $(SASS_LIBSASS_PATH)
 	CXXFLAGS += -I $(SASS_LIBSASS_PATH)
+else
+	# this is needed for mingw
+	CFLAGS   += -I include
+	CXXFLAGS += -I include
 endif
 
 ifneq ($(EXTRA_CFLAGS),)
@@ -187,7 +195,7 @@ build-static: $(RESOURCES) $(OBJECTS) $(LIB_STATIC)
 build-shared: $(RESOURCES) $(OBJECTS) $(LIB_SHARED)
 	$(MKDIR) bin/include
 	$(CP) $(LIB_SHARED) bin/
-    # headers are now installed by libsass makefile
+	# headers are now installed by libsass makefile
 	# $(CP) $(SASS_LIBSASS_PATH)/include/sass.h bin/include
 	# $(CP) $(SASS_LIBSASS_PATH)/include/sass2scss.h bin/include
 	# $(CP) $(SASS_LIBSASS_PATH)/include/sass_values.h bin/include
@@ -203,14 +211,14 @@ libsass: libsass-$(BUILD)
 
 libsass-static:
 ifdef SASS_LIBSASS_PATH
-	BUILD="static" $(MAKE) -C $(SASS_LIBSASS_PATH)
+	$(MAKE) BUILD="static" -C $(SASS_LIBSASS_PATH)
 else
 	$(error SASS_LIBSASS_PATH must be defined)
 endif
 
 libsass-shared:
 ifdef SASS_LIBSASS_PATH
-	BUILD="shared" $(MAKE) -C $(SASS_LIBSASS_PATH)
+	$(MAKE) BUILD="shared" -C $(SASS_LIBSASS_PATH)
 else
 	$(error SASS_LIBSASS_PATH must be defined)
 endif
