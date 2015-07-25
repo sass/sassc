@@ -6,6 +6,10 @@
 #include <sass_context.h>
 #include "sassc_version.h"
 
+#ifdef _WIN32
+#include <assert.h>
+#endif
+
 #define BUFSIZE 512
 #ifdef _WIN32
 #define PATH_SEP ';'
@@ -23,7 +27,15 @@ int output(int error_status, const char* error_message, const char* output_strin
         return 1;
     } else if (output_string) {
         if(outfile) {
-            FILE* fp = fopen(outfile, "w");
+#ifdef _MSC_VER
+			FILE* fp;
+			if (fopen_s(&fp, outfile, "w") != 0) {
+				perror("Error opening output file(Secure)");
+				return 1;
+			}
+#else
+			FILE* fp = fopen(outfile, "w");
+#endif
             if(!fp) {
                 perror("Error opening output file");
                 return 1;
@@ -68,7 +80,11 @@ int compile_stdin(struct Sass_Options* options, char* outfile) {
             free(old);
             exit(2);
         }
-        strcat(source_string, buffer);
+#ifdef _MSC_VER
+		strcat_s(source_string, size, buffer);
+#else
+		strcat(source_string, buffer);
+#endif
     }
 
     if(ferror(stdin)) {
@@ -199,12 +215,22 @@ int main(int argc, char** argv) {
             break;
         case 'I':
             if (!include_paths) {
-                include_paths = strdup(optarg);
-            } else {
+#ifdef _MSC_VER
+                include_paths = _strdup(optarg);
+#else 
+				include_paths = strdup(optarg);
+#endif
+			} else {
                 char *old_paths = include_paths;
-                include_paths = malloc(strlen(old_paths) + 1 + strlen(optarg) + 1);
-                sprintf(include_paths, "%s%c%s", old_paths, PATH_SEP, optarg);
-                free(old_paths);
+				size_t len = strlen(old_paths) + 1 + strlen(optarg) + 1;
+                include_paths = malloc(len);
+				assert(include_paths != 0);
+#ifdef _MSC_VER
+                sprintf_s(include_paths, len, "%s%c%s", old_paths, PATH_SEP, optarg);
+#else
+				sprintf(include_paths, "%s%c%s", old_paths, PATH_SEP, optarg);
+#endif
+				free(old_paths);
             }
             break;
         case 't':
@@ -266,9 +292,15 @@ int main(int argc, char** argv) {
         }
         if (generate_source_map && outfile) {
             const char* extension = ".map";
-            char* source_map_file  = calloc(strlen(outfile) + strlen(extension) + 1, sizeof(char));
-            strcpy(source_map_file, outfile);
-            strcat(source_map_file, extension);
+			size_t len = strlen(outfile) + strlen(extension) + 1;
+            char* source_map_file  = calloc(len, sizeof(char));
+#ifdef _MSC_VER
+            strcpy_s(source_map_file, (len*sizeof(char)), outfile);
+            strcat_s(source_map_file, (len*sizeof(char)), extension);
+#else
+			strcpy(source_map_file, outfile);
+			strcat(source_map_file, extension);
+#endif
             sass_option_set_source_map_file(options, source_map_file);
         }
         result = compile_file(options, argv[optind], outfile);
