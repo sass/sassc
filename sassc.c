@@ -6,7 +6,7 @@
 #include <sass_context.h>
 #include "sassc_version.h"
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <assert.h>
 #endif
 
@@ -224,8 +224,8 @@ int main(int argc, char** argv) {
                 char *old_paths = include_paths;
 				size_t len = strlen(old_paths) + 1 + strlen(optarg) + 1;
                 include_paths = malloc(len);
-				assert(include_paths != 0);
 #ifdef _MSC_VER
+				assert(include_paths != 0);
                 sprintf_s(include_paths, len, "%s%c%s", old_paths, PATH_SEP, optarg);
 #else
 				sprintf(include_paths, "%s%c%s", old_paths, PATH_SEP, optarg);
