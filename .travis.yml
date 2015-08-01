@@ -14,7 +14,7 @@ before_install:
   - gem install sass
   - git clone https://github.com/sass/libsass.git
   - cd libsass && git submodule init && git submodule update && cd ..
-  - export SASS_LIBSASS_PATH=libsass
+  - export SASS_LIBSASS_PATH=$TRAVIS_BUILD_DIR/libsass
 
 script:
   - ./script/ci-build-libsass
