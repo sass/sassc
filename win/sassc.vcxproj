@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\timer.c" />
     <ClCompile Include="posix\getopt.c" />
     <ClCompile Include="..\..\*.cpp" />
     <ClCompile Include="..\..\*.c" />

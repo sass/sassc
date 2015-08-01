@@ -140,7 +140,7 @@ ifeq (,$(PREFIX))
 	endif
 endif
 
-SOURCES = sassc.c
+SOURCES = sassc.c timer.c
 
 # shell invocation makes problem in mingw64
 LIB_STATIC = $(SASS_LIBSASS_PATH)/lib/libsass.a
