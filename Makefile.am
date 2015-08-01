@@ -17,7 +17,7 @@ AM_LDFLAGS  = $(AM_COPT) $(AM_COVLDFLAGS)
 # we have moved the files to src folder
 AM_CPPFLAGS += -I$(top_srcdir)
 
-SOURCES = sassc.c
+SOURCES = sassc.c timer.c
 if COMPILER_IS_MINGW32
   SOURCES += res/libsass.rc
   AM_CXXFLAGS += -std=gnu++0x
