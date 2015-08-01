@@ -33,7 +33,7 @@ uint64 GetTimeMs64()
 	/* Linux */
 	struct timeval tv;
 
-	gettimeofday(&tv, NULL);
+	gettimeofday(&tv, 0);
 
 	uint64 ret = tv.tv_usec;
 	/* Convert from micro seconds (10^-6) to milliseconds (10^-3) */
