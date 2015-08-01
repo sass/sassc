@@ -11,6 +11,7 @@
 #include <sass2scss.h>
 #include <sass_context.h>
 #include "sassc_version.h"
+#include "timer.h"
 
 #define BUFSIZE 512
 #ifdef _WIN32
@@ -163,7 +164,8 @@ void print_usage(char* argv0) {
     printf("   -m, --sourcemap         Emit source map.\n");
     printf("   -M, --omit-map-comment  Omits the source map url comment.\n");
     printf("   -p, --precision         Set the precision for numbers.\n");
-    printf("   -v, --version           Display compiled versions.\n");
+	printf("   -w, --stopwatch         Use stopwatch to time compiler.\n");
+	printf("   -v, --version           Display compiled versions.\n");
     printf("   -h, --help              Display this help message.\n");
     printf("\n");
 }
@@ -177,6 +179,7 @@ int main(int argc, char** argv) {
     char *outfile = 0;
     int from_stdin = 0;
     bool generate_source_map = false;
+	uint64 start_timestamp = 0;
     struct Sass_Options* options = sass_make_options();
     sass_option_set_output_style(options, SASS_STYLE_NESTED);
     char *include_paths = NULL;
@@ -194,11 +197,12 @@ int main(int argc, char** argv) {
         { "sourcemap",          no_argument,       0, 'm' },
         { "omit-map-comment",   no_argument,       0, 'M' },
         { "precision",          required_argument, 0, 'p' },
+		{ "stopwatch",			no_argument,	   0, 'w' },
         { "version",            no_argument,       0, 'v' },
         { "help",               no_argument,       0, 'h' },
         { NULL,                 0,                 NULL, 0}
     };
-    while ((c = getopt_long(argc, argv, "vhslmMt:I:", long_options, &long_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "vwhslmMt:I:", long_options, &long_index)) != -1) {
         switch (c) {
         case 's':
             from_stdin = 1;
@@ -246,6 +250,9 @@ int main(int argc, char** argv) {
             sass_option_set_precision(options, atoi(optarg)); // TODO: make this more robust
             if (sass_option_get_precision(options) < 0) sass_option_set_precision(options, 5);
             break;
+		case 'w':
+			start_timestamp = GetTimeMs64();
+			break;
         case 'v':
             print_version(argv[0]);
             return 0;
@@ -290,6 +297,10 @@ int main(int argc, char** argv) {
     }
 
     free(include_paths);
+
+	if (start_timestamp > 0) {
+		printf("Compile time: %u (ms)\n", (GetTimeMs64() - start_timestamp));
+	}
 
     return result;
 }
