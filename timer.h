@@ -1,6 +1,8 @@
 #ifndef SASSC_TIMER_H
 #define SASSC_TIMER_H
 
+#include <inttypes.h>
+
 /*
 
  Source reference: 

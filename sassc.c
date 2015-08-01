@@ -299,7 +299,7 @@ int main(int argc, char** argv) {
     free(include_paths);
 
 	if (start_timestamp > 0) {
-		printf("Compile time: %u (ms)\n", (GetTimeMs64() - start_timestamp));
+		printf("Compile time: %" PRIu64 " (ms)\n", (GetTimeMs64() - start_timestamp));
 	}
 
     return result;
