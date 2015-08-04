@@ -1,3 +1,9 @@
+#ifdef _MSC_VER
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS 1
+#endif
+#endif
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -199,7 +205,11 @@ int main(int argc, char** argv) {
             break;
         case 'I':
             if (!include_paths) {
-                include_paths = strdup(optarg);
+#ifdef _MSC_VER
+				include_paths = _strdup(optarg);
+#else
+				include_paths = strdup(optarg);
+#endif
             } else {
                 char *old_paths = include_paths;
                 include_paths = malloc(strlen(old_paths) + 1 + strlen(optarg) + 1);
