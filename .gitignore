@@ -1,9 +1,3 @@
-bin/*
-*.o
-*.gem
-*.res
-.sass-cache
-
 a.out
 .DS_Store
 
@@ -31,3 +25,27 @@ Makefile.in
 /stamp-h1
 /compile
 /sassc
+
+# Build stuff
+
+*.o
+*.gem
+*.res
+*.o
+*.lo
+*.so
+*.dll
+*.a
+*.suo
+*.sdf
+*.opensdf
+a.out
+libsass.js
+tester
+tester.exe
+build/
+config.h.in*
+lib/pkgconfig/
+.sass-cache
+
+win/bin
