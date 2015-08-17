@@ -1,5 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="GitVersion;Main" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SASSC_VERSION>[NA]</SASSC_VERSION>
+    <LIBSASS_VERSION>[NA]</LIBSASS_VERSION>
+    <LIBSASS_DIR>..\..</LIBSASS_DIR>
+    <LIBSASS_SRC_DIR>$(LIBSASS_DIR)\src</LIBSASS_SRC_DIR>
+    <LIBSASS_HEADERS_DIR>$(LIBSASS_DIR)\src</LIBSASS_HEADERS_DIR>
+  </PropertyGroup>
+  <Target Name="GitVersion">
+    <Exec Command="git -C .. describe --abbrev=4 --dirty --always --tags" LogStandardErrorAsError="true" ContinueOnError="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="SASSC_VERSION" />
+    </Exec>
+    <Exec Command="git -C $(LIBSASS_DIR) describe --abbrev=4 --dirty --always --tags" LogStandardErrorAsError="true" ContinueOnError="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="LIBSASS_VERSION" />
+    </Exec>
+  </Target>
+  <Target Name="VersionMacros">
+    <ItemGroup>
+      <ClCompile>
+        <PreprocessorDefinitions>%(PreprocessorDefinitions);SASSC_VERSION="$(SASSC_VERSION)"</PreprocessorDefinitions>
+      </ClCompile>
+      <ClCompile>
+        <PreprocessorDefinitions>%(PreprocessorDefinitions);LIBSASS_VERSION="$(LIBSASS_VERSION)"</PreprocessorDefinitions>
+      </ClCompile>
+    </ItemGroup>
+  </Target>
+  <Target Name="Main">
+    <Message Text="sassc: $(SASSC_VERSION)" />
+    <Message Text="libsass: $(LIBSASS_VERSION)" />
+    <CallTarget Targets="VersionMacros" />
+    <CallTarget Targets="Build" />
+  </Target>
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -18,37 +49,31 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E4030474-AFC9-4CC6-BEB6-D846F631502B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>libsass</RootNamespace>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+  <PropertyGroup Label="Common Properties">
     <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <TargetName>sassc</TargetName>
+    <OutDir>$(SolutionDir)..\bin\</OutDir>
+    <IntDir>$(SolutionDir)..\bin\$(Configuration)\obj\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Label="VS2013 toolset selection" Condition="'$(VisualStudioVersion)' == '12.0'">
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="VS2015 toolset selection" Condition="'$(VisualStudioVersion)' == '14.0'">
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32' Or '$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32' Or '$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -66,33 +91,15 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32' Or '$(Configuration)|$(Platform)' == 'Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <TargetName>sassc</TargetName>
-    <OutDir>$(SolutionDir)..\bin\</OutDir>
-    <IntDir>$(SolutionDir)..\bin\obj\</IntDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <TargetName>sassc</TargetName>
-    <OutDir>$(SolutionDir)bin\Debug\</OutDir>
-    <IntDir>$(SolutionDir)bin\Debug\obj\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32' Or '$(Configuration)|$(Platform)' == 'Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <TargetName>sassc</TargetName>
-    <OutDir>$(SolutionDir)..\bin\</OutDir>
-    <IntDir>$(SolutionDir)..\bin\obj</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-    <TargetName>sassc</TargetName>
-    <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)bin\obj\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>..;posix;..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;posix;..\..\include;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -155,15 +162,13 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <Import Project="$(LIBSASS_DIR)\win\libsass.targets" />
   <ItemGroup>
     <ClCompile Include="posix\getopt.c" />
-    <ClCompile Include="..\..\*.cpp" />
-    <ClCompile Include="..\..\*.c" />
     <ClCompile Include="..\sassc.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\*.hpp" />
-    <ClInclude Include="..\..\*.h" />
+    <ClInclude Include="posix\getopt.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
