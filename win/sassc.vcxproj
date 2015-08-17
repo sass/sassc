@@ -8,10 +8,10 @@
     <LIBSASS_HEADERS_DIR>$(LIBSASS_DIR)\src</LIBSASS_HEADERS_DIR>
   </PropertyGroup>
   <Target Name="GitVersion">
-    <Exec Command="git -C .. describe --abbrev=4 --dirty --always --tags" ConsoleToMSBuild="true">
+    <Exec Command="git -C .. describe --abbrev=4 --dirty --always --tags" LogStandardErrorAsError="true" ContinueOnError="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="SASSC_VERSION" />
     </Exec>
-    <Exec Command="git -C $(LIBSASS_DIR) describe --abbrev=4 --dirty --always --tags" ConsoleToMSBuild="true">
+    <Exec Command="git -C $(LIBSASS_DIR) describe --abbrev=4 --dirty --always --tags" LogStandardErrorAsError="true" ContinueOnError="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="LIBSASS_VERSION" />
     </Exec>
   </Target>
