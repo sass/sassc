@@ -49,3 +49,4 @@ lib/pkgconfig/
 .sass-cache
 
 win/bin
+*.user
