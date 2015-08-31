@@ -47,6 +47,4 @@ build/
 config.h.in*
 lib/pkgconfig/
 .sass-cache
-
-win/bin
 *.user
