@@ -124,8 +124,10 @@ ifeq ($(UNAME),Darwin)
 endif
 
 ifneq (MinGW,$(UNAME))
-	LDFLAGS += -ldl
-	LDLIBS += -ldl
+	ifneq (FreeBSD,$(UNAME))
+		LDFLAGS += -ldl
+		LDLIBS += -ldl
+	endif
 endif
 
 ifneq ($(BUILD),shared)
@@ -178,10 +180,10 @@ sassc: $(SASSC_EXE)
 
 $(SASSC_EXE): libsass build-$(BUILD)
 
-$(DESTDIR)$(PREFIX):
+$(DESTDIR)$(PREFIX)/:
 	$(MKDIR) $(DESTDIR)$(PREFIX)
 
-$(DESTDIR)$(PREFIX)/bin:
+$(DESTDIR)$(PREFIX)/bin/:
 	$(MKDIR) $(DESTDIR)$(PREFIX)/bin
 
 $(DESTDIR)$(PREFIX)/bin/%: bin/%

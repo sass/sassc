@@ -24,7 +24,7 @@ if COMPILER_IS_MINGW32
   AM_LDFLAGS += -std=gnu++0x
 else
   AM_CXXFLAGS += -std=c++0x
-  AM_LDFLAGS += -std=c++0x -ldl
+  AM_LDFLAGS += -std=c++0x
 endif
 
 if ENABLE_COVERAGE
