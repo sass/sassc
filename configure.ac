@@ -100,5 +100,5 @@ AM_CONDITIONAL(ENABLE_COVERAGE, test "x$enable_cov" = "xyes")
 
 AC_MSG_NOTICE([Building sassc ($VERSION)])
 
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([GNUmakefile])
 AC_OUTPUT

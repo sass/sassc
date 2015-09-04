@@ -1,7 +1,8 @@
 a.out
 .DS_Store
 
-Makefile.in
+GNUmakefile
+GNUmakefile.in
 .deps/
 /aclocal.m4
 /autom4te.cache/
@@ -46,6 +47,15 @@ tester.exe
 build/
 config.h.in*
 lib/pkgconfig/
+libsass/
+script/ar-lib
+script/compile
+script/config.guess
+script/config.sub
+script/depcomp
+script/install-sh
+script/ltmain.sh
+script/missing
 .sass-cache
 *.user
 *.db
