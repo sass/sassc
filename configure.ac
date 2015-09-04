@@ -57,6 +57,14 @@ fi
 AM_PROG_AR([])
 LT_INIT([dlopen])
 
+if test "x$is_mingw32" != "xyes"; then
+  dnl The dlopen() function is in the C library for *BSD and in
+  dnl libdl on GLIBC-based systems. Windows uses `LoadLibrary`!
+  AC_SEARCH_LIBS([dlopen], [dl dld], [], [
+    AC_MSG_ERROR([unable to find the dlopen() function])
+  ])
+fi
+
 # check the main assets needed to link to libsass (headers and library)
 AC_CHECK_LIB([sass],[libsass_version],, [AC_MSG_ERROR([unable to find libsass library (use --with-libsass?)])])
 AC_CHECK_HEADERS([sass.h],, [AC_MSG_ERROR([unable to find libsass headers (use --with-libsass?)])])
