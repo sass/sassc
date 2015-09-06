@@ -8,9 +8,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <getopt.h>
-#include <sass2scss.h>
-#include <sass_context.h>
-#include "sassc_version.h"
+#include <sass.h>
 
 #define BUFSIZE 512
 #ifdef _WIN32
