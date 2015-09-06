@@ -197,13 +197,6 @@ build-static: $(RESOURCES) $(OBJECTS) $(LIB_STATIC)
 build-shared: $(RESOURCES) $(OBJECTS) $(LIB_SHARED)
 	$(MKDIR) bin/include
 	$(CP) $(LIB_SHARED) bin/
-	# headers are now installed by libsass makefile
-	# $(CP) $(SASS_LIBSASS_PATH)/include/sass.h bin/include
-	# $(CP) $(SASS_LIBSASS_PATH)/include/sass2scss.h bin/include
-	# $(CP) $(SASS_LIBSASS_PATH)/include/sass_values.h bin/include
-	# $(CP) $(SASS_LIBSASS_PATH)/include/sass_version.h bin/include
-	# $(CP) $(SASS_LIBSASS_PATH)/include/sass_context.h bin/include
-	# $(CP) $(SASS_LIBSASS_PATH)/include/sass_functions.h bin/include
 	$(CC) $(LDFLAGS) -o $(SASSC_EXE) $^ $(LDLIBS)
 
 $(LIB_STATIC): libsass-static
