@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "libsass/sass_interface.h"
+#include "libsass/sass/interface.h"
 
 int main(int argc, char** argv)
 {
