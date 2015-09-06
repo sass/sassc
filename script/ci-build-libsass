@@ -1,88 +1,79 @@
-#!/bin/bash
-
-set -e
-
-. bootstrap.sh
-
-# export this path right here (was in script/spec before)
-export SASS_SASSC_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/../ && pwd )"
+#!/bin/sh
 
 # use some defaults if not running under travis ci
-if [ "x$TRAVIS_BUILD_DIR" == "x" ]; then export TRAVIS_BUILD_DIR=$(pwd)/build; fi
-if [ "x$SASS_LIBSASS_PATH" == "x" ]; then export SASS_LIBSASS_PATH=$(pwd)/..; fi
-if [ "x$SASS_SPEC_PATH" == "x" ]; then export SASS_SPEC_PATH=$(pwd)/sass-spec; fi
+: ${SASS_LIBSASS_PATH:?SASS_LIBSASS_PATH should point to libsass sources}
+: ${BUILD:?Please configure BUILD as either "shared" or "static"}
+: ${AUTOTOOLS:?Need to know wheter to use AUTOTOOLS - set it to "yes" or "no"}
 
-if [ "x$COVERAGE" == "xyes" ]; then
+. bootstrap.sh
+: ${PREFIX:=${TRAVIS_BUILD_DIR-$(pwd)}/build}
+
+SASS_SASSC_PATH="${PREFIX}"
+export SASS_SASSC_PATH
+export SASS_LIBSASS_PATH
+
+export EXTRA_CFLAGS
+export EXTRA_CXXFLAGS
+export EXTRA_LDFLAGS
+
+travis_fold() {
+  if [ -n "${TRAVIS_BUILD_DIR}" ]; then
+      printf "travis_fold:$1:$2\r"
+  fi
+}
+
+if [ "x$COVERAGE" = "xyes" ]; then
   COVERAGE_OPT="--enable-coverage"
-  export EXTRA_CFLAGS="--coverage"
-  export EXTRA_CXXFLAGS="--coverage"
-  export EXTRA_LDFLAGS="--coverage"
+  EXTRA_CFLAGS="--coverage"
+  EXTRA_CXXFLAGS="--coverage"
+  EXTRA_LDFLAGS="--coverage"
 else
   COVERAGE_OPT="--disable-coverage"
 fi
 
-if [ "x$BUILD" == "xstatic" ]; then
-  SHARED_OPT="--disable-shared --enable-static"
-  MAKE_TARGET="static"
-else
-  # Makefile of sassc wants to link to static
-  SHARED_OPT="--enable-shared --enable-static"
-  MAKE_TARGET="shared"
-fi
-
-if [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+uname_s="$(uname -s)"
+if [ "${uname_s%%-.*}" = "MINGW32_NT" ]; then
   MAKE_OPTS="$MAKE_OPTS -j1 V=1"
 else
   MAKE_OPTS="$MAKE_OPTS -j5 V=1"
 fi
+SINGLE_MAKE_OPS="$MAKE_OPTS -j1 V1"
 
-if [ "x$PREFIX" == "x" ]; then
-  if [ "x$TRAVIS_BUILD_DIR" == "x" ]; then
-    PREFIX=$SASS_LIBSASS_PATH/build
+if [ "x$AUTOTOOLS" = "xyes" ]; then
+
+  if [ "x$BUILD" = "xstatic" ]; then
+    SHARED_OPT="--disable-shared --enable-static"
   else
-    PREFIX=$TRAVIS_BUILD_DIR
+    # Makefile of sassc wants to link to static
+    SHARED_OPT="--enable-shared --enable-static"
   fi
-fi
 
-if [ "x$AUTOTOOLS" == "xyes" ]; then
-
-  pushd $SASS_LIBSASS_PATH
-
-  echo -en 'travis_fold:start:libsass\r'
-  autoreconf --force --install
+  travis_fold start libsass
+  (cd ${SASS_LIBSASS_PATH} &&
+  autoreconf --force --install &&
   ./configure --disable-tests $COVERAGE_OPT \
     --disable-silent-rules \
-    --prefix=$PREFIX \
-    ${SHARED_OPT}
+    --prefix=${PREFIX} \
+    ${SHARED_OPT} &&
+  ${MAKE:=make} $MAKE_OPTS clean &&
+  ${MAKE} $MAKE_OPTS all &&
+  ${MAKE} install ) || exit 2
+  travis_fold end libsass
 
-  # always rebuild
-  make $MAKE_OPTS clean
-
-  # install the library
-  make $MAKE_OPTS install
-
-  echo -en 'travis_fold:end:libsass\r'
-  popd
-
-  echo -en 'travis_fold:start:configure\r'
-  autoreconf --force --install
+  travis_fold start configure
+  autoreconf --force --install &&
   ./configure \
-    --with-libsass="$PREFIX" \
+    --with-libsass="${PREFIX}" \
     --disable-silent-rules \
     --prefix=$PREFIX \
     $COVERAGE_OPT \
-    ${SHARED_OPT}
-  echo -en 'travis_fold:end:configure\r'
-
+    ${SHARED_OPT} || exit 3
+  travis_fold end configure
 fi
 
-# always rebuild
-make $MAKE_OPTS clean
-# does what $BUILD says
-make $MAKE_OPTS all
-make $MAKE_OPTS install
-
-echo successfully compiled sassc
-echo AUTOTOOLS=$AUTOTOOLS COVERAGE=$COVERAGE BUILD=$BUILD
-
-LD_LIBRARY_PATH="$PREFIX/lib" $PREFIX/bin/sassc -v
+# Don't try "all" and "install" in parallel
+${MAKE:=make} $MAKE_OPTS clean &&
+${MAKE} $SINGLE_MAKE_OPTS BUILD=${BUILD} PREFIX=${PREFIX} all install &&
+echo successfully compiled sassc &&
+echo AUTOTOOLS=$AUTOTOOLS COVERAGE=$COVERAGE BUILD=$BUILD &&
+/usr/bin/env LD_LIBRARY_PATH="${SASS_LIBSASS_PATH}/lib" $PREFIX/bin/sassc -v

@@ -184,13 +184,9 @@ sassc: $(SASSC_EXE)
 
 $(SASSC_EXE): libsass build-$(BUILD)
 
-$(DESTDIR)$(PREFIX)/:
-	$(MKDIR) $(DESTDIR)$(PREFIX)
-
-$(DESTDIR)$(PREFIX)/bin/:
-	$(MKDIR) $(DESTDIR)$(PREFIX)/bin
-
 $(DESTDIR)$(PREFIX)/bin/%: bin/%
+	-$(MKDIR) $(DESTDIR)$(PREFIX)
+	-$(MKDIR) $(DESTDIR)$(PREFIX)/bin
 	$(INSTALL) -D -v -m0755 "$<" "$@"
 
 install: $(DESTDIR)$(PREFIX)/$(SASSC_EXE)

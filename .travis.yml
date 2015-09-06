@@ -22,5 +22,5 @@ script:
   - ./script/ci-build-libsass
 
 after_success:
-  - ./bin/sassc -v
-  - ldd ./bin/sassc
+  - ./build/bin/sassc -v
+  - ldd ./build/bin/sassc
