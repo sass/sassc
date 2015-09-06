@@ -71,9 +71,9 @@ AC_CHECK_HEADERS([sass.h],, [AC_MSG_ERROR([unable to find libsass headers (use -
 
 # also check for additional libsass headers (just in case)
 AC_CHECK_HEADERS([sass2scss.h],, [AC_MSG_ERROR([unable to find sass2scss.h])])
-AC_CHECK_HEADERS([sass_values.h],, [AC_MSG_ERROR([unable to find sass_values.h])])
-AC_CHECK_HEADERS([sass_context.h],, [AC_MSG_ERROR([unable to find sass_context.h])])
-AC_CHECK_HEADERS([sass_functions.h],, [AC_MSG_ERROR([unable to find sass_functions.h])])
+AC_CHECK_HEADERS([sass/values.h],, [AC_MSG_ERROR([unable to find sass/values.h])])
+AC_CHECK_HEADERS([sass/functions.h],, [AC_MSG_ERROR([unable to find sass_functions.h])])
+AC_CHECK_HEADERS([sass/context.h],, [AC_MSG_ERROR([unable to find sass/context.h])])
 
 AC_ARG_ENABLE([coverage],
   [AS_HELP_STRING([--enable-coverage],

@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <getopt.h>
 #include <sass.h>
+#include "sassc_version.h"
 
 #define BUFSIZE 512
 #ifdef _WIN32
