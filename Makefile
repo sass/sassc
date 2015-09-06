@@ -100,10 +100,6 @@ endif
 
 LDLIBS = -lm
 
-ifneq ($(BUILD),shared)
-	LDLIBS += -lstdc++
-endif
-
 # link statically into lib
 # makes it a lot more portable
 # increases size by about 50KB
@@ -192,7 +188,7 @@ $(DESTDIR)$(PREFIX)/bin/%: bin/%
 install: $(DESTDIR)$(PREFIX)/$(SASSC_EXE)
 
 build-static: $(RESOURCES) $(OBJECTS) $(LIB_STATIC)
-	$(CC) $(LDFLAGS) -o $(SASSC_EXE) $^ $(LDLIBS)
+	$(CXX) $(LDFLAGS) -o $(SASSC_EXE) $^ $(LDLIBS)
 
 build-shared: $(RESOURCES) $(OBJECTS) $(LIB_SHARED)
 	$(MKDIR) bin/include
@@ -204,7 +200,7 @@ build-shared: $(RESOURCES) $(OBJECTS) $(LIB_SHARED)
 	# $(CP) $(SASS_LIBSASS_PATH)/include/sass_version.h bin/include
 	# $(CP) $(SASS_LIBSASS_PATH)/include/sass_context.h bin/include
 	# $(CP) $(SASS_LIBSASS_PATH)/include/sass_functions.h bin/include
-	$(CC) $(LDFLAGS) -o $(SASSC_EXE) $^ $(LDLIBS)
+	$(CXX) $(LDFLAGS) -o $(SASSC_EXE) $^ $(LDLIBS)
 
 $(LIB_STATIC): libsass-static
 $(LIB_SHARED): libsass-shared
