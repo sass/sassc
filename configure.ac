@@ -22,7 +22,7 @@ AC_ARG_WITH([libsass],
   [AS_HELP_STRING([--with-libsass],
     [libsass install location])],
   [LDFLAGS="$LDFLAGS -L$withval/lib"]
-  [CPPFLAGS="$CPPFLAGS -I$withval/include"])
+  [CPPFLAGS="$CPPFLAGS -I$withval/include -I$withval/include/sass"])
 
 # this is discouraged, use `with-libsass`:
 AC_ARG_WITH([libsass-lib],
@@ -30,7 +30,7 @@ AC_ARG_WITH([libsass-lib],
     [location of libsass library])],
   [AC_MSG_WARN([use of --with-libsass-lib is discouraged!
   use new syntax: ./configure --with-libsass="prefix"])]
-  [LDFLAGS="$LDFLAGS -L$withval"])
+  [LDFLAGS="$LDFLAGS -L$withval -L$withval/sass"])
 
 # this is discouraged, use `with-libsass`:
 # ./configure INCLUDE_PATH="build/include"
@@ -39,7 +39,7 @@ AC_ARG_WITH([libsass-include],
     [location of libsass headers])],
   [AC_MSG_WARN([use of --with-libsass-include is discouraged,
   use new syntax: ./configure --with-libsass="prefix"])]
-  [CPPFLAGS="$CPPFLAGS -I$withval"])
+  [CPPFLAGS="$CPPFLAGS -I$withval -I$withval/sass"])
 
 # Checks for programs.
 AC_PROG_CC
@@ -71,9 +71,9 @@ AC_CHECK_HEADERS([sass.h],, [AC_MSG_ERROR([unable to find libsass headers (use -
 
 # also check for additional libsass headers (just in case)
 AC_CHECK_HEADERS([sass2scss.h],, [AC_MSG_ERROR([unable to find sass2scss.h])])
-AC_CHECK_HEADERS([sass_values.h],, [AC_MSG_ERROR([unable to find sass_values.h])])
-AC_CHECK_HEADERS([sass_context.h],, [AC_MSG_ERROR([unable to find sass_context.h])])
-AC_CHECK_HEADERS([sass_functions.h],, [AC_MSG_ERROR([unable to find sass_functions.h])])
+AC_CHECK_HEADERS([values.h],, [AC_MSG_ERROR([unable to find values.h])])
+AC_CHECK_HEADERS([context.h],, [AC_MSG_ERROR([unable to find context.h])])
+AC_CHECK_HEADERS([functions.h],, [AC_MSG_ERROR([unable to find functions.h])])
 
 AC_ARG_ENABLE([coverage],
   [AS_HELP_STRING([--enable-coverage],
