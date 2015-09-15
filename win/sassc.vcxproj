@@ -164,6 +164,7 @@
   </ItemDefinitionGroup>
   <Import Project="$(LIBSASS_DIR)\win\libsass.targets" />
   <ItemGroup>
+    <ClCompile Include="..\timer.c" />
     <ClCompile Include="posix\getopt.c" />
     <ClCompile Include="..\sassc.c" />
   </ItemGroup>
