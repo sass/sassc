@@ -197,7 +197,7 @@ int main(int argc, char** argv) {
         { "help",               no_argument,       0, 'h' },
         { NULL,                 0,                 NULL, 0}
     };
-    while ((c = getopt_long(argc, argv, "vhslmMt:I:", long_options, &long_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "vhslmMp:t:I:", long_options, &long_index)) != -1) {
         switch (c) {
         case 's':
             from_stdin = 1;
