@@ -159,6 +159,7 @@ void print_usage(char* argv0) {
     printf("   -l, --line-numbers      Emit comments showing original line numbers.\n");
     printf("       --line-comments\n");
     printf("   -I, --load-path PATH    Set Sass import path.\n");
+    printf("   -P, --plugin-path PATH  Set path to autoload plugins.\n");
     printf("   -m, --sourcemap         Emit source map.\n");
     printf("   -M, --omit-map-comment  Omits the source map url comment.\n");
     printf("   -p, --precision         Set the precision for numbers.\n");
@@ -179,6 +180,7 @@ int main(int argc, char** argv) {
     struct Sass_Options* options = sass_make_options();
     sass_option_set_output_style(options, SASS_STYLE_NESTED);
     char *include_paths = NULL;
+    char *plugin_paths = NULL;
     sass_option_set_precision(options, 5);
 
     int c, i;
@@ -187,6 +189,7 @@ int main(int argc, char** argv) {
     {
         { "stdin",              no_argument,       0, 's' },
         { "load-path",          required_argument, 0, 'I' },
+        { "plugin-path",        required_argument, 0, 'P' },
         { "style",              required_argument, 0, 't' },
         { "line-numbers",       no_argument,       0, 'l' },
         { "line-comments",      no_argument,       0, 'l' },
@@ -197,7 +200,7 @@ int main(int argc, char** argv) {
         { "help",               no_argument,       0, 'h' },
         { NULL,                 0,                 NULL, 0}
     };
-    while ((c = getopt_long(argc, argv, "vhslmMp:t:I:", long_options, &long_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "vhslmMp:t:I:P:", long_options, &long_index)) != -1) {
         switch (c) {
         case 's':
             from_stdin = 1;
@@ -213,6 +216,20 @@ int main(int argc, char** argv) {
                 char *old_paths = include_paths;
                 include_paths = malloc(strlen(old_paths) + 1 + strlen(optarg) + 1);
                 sprintf(include_paths, "%s%c%s", old_paths, PATH_SEP, optarg);
+                free(old_paths);
+            }
+            break;
+        case 'P':
+            if (!plugin_paths) {
+#ifdef _MSC_VER
+				plugin_paths = _strdup(optarg);
+#else
+				plugin_paths = strdup(optarg);
+#endif
+            } else {
+                char *old_paths = plugin_paths;
+                plugin_paths = malloc(strlen(old_paths) + 1 + strlen(optarg) + 1);
+                sprintf(plugin_paths, "%s%c%s", old_paths, PATH_SEP, optarg);
                 free(old_paths);
             }
             break;
@@ -262,6 +279,7 @@ int main(int argc, char** argv) {
     }
 
     sass_option_set_include_path(options, include_paths ? include_paths : "");
+    sass_option_set_plugin_path(options, plugin_paths ? plugin_paths : "");
 
     if(optind < argc - 2) {
         fprintf(stderr, "Error: Too many arguments.\n");
@@ -289,6 +307,7 @@ int main(int argc, char** argv) {
     }
 
     free(include_paths);
+    free(plugin_paths);
 
     return result;
 }
