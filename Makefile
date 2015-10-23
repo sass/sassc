@@ -2,7 +2,8 @@ CC       ?= gcc
 CXX      ?= g++
 RM       ?= rm -f
 CP       ?= cp -a
-MKDIR    ?= mkdir -p
+CHDIR    ?= chdir
+MKDIR    ?= mkdir
 WINDRES  ?= windres
 INSTALL  ?= install
 CFLAGS   ?= -Wall
@@ -16,19 +17,29 @@ endif
 LDFLAGS  += -Wl,-undefined,error
 CAT      ?= $(if $(filter $(OS),Windows_NT),type,cat)
 
+# If you run this under windows cmd.com interpreter:
+# You must provide UnxUtils rm.exe and cp.exe in path
+# Otherwise certain targets may not work as intended!
+# Note: It seems impossible to replace `mkdir` command
+
 ifneq (,$(findstring /cygdrive/,$(PATH)))
 	UNAME := Cygwin
+	TARGET := Windows
 else
-	ifneq (,$(findstring WINDOWS,$(PATH)))
+	ifneq (,$(findstring Windows,$(PATH)))
 		UNAME := Windows
+		TARGET := Windows
 	else
 		ifneq (,$(findstring mingw32,$(MAKE)))
 			UNAME := MinGW
+			TARGET := Windows
 		else
 			ifneq (,$(findstring MINGW32,$(shell uname -s)))
 				UNAME = MinGW
+				TARGET := Windows
 			else
 				UNAME := $(shell uname -s)
+				TARGET := $(shell uname -s)
 			endif
 		endif
 	endif
@@ -59,7 +70,7 @@ ifneq ($(SASSC_VERSION),)
 endif
 
 # enable mandatory flag
-ifeq (MinGW,$(UNAME))
+ifeq (Windows,$(TARGET))
 	ifneq ($(BUILD),shared)
 		STATIC_ALL     ?= 1
 	endif
@@ -123,7 +134,7 @@ ifeq ($(UNAME),Darwin)
 	LDFLAGS += -stdlib=libc++
 endif
 
-ifneq (MinGW,$(UNAME))
+ifneq (Windows,$(TARGET))
 	ifneq (FreeBSD,$(UNAME))
 		LDFLAGS += -ldl
 		LDLIBS += -ldl
@@ -144,11 +155,14 @@ endif
 
 SOURCES = sassc.c
 
-# shell invocation makes problem in mingw64
 LIB_STATIC = $(SASS_LIBSASS_PATH)/lib/libsass.a
 LIB_SHARED = $(SASS_LIBSASS_PATH)/lib/libsass.so
 
-ifeq (MinGW,$(UNAME))
+RESOURCES =
+SASSC_EXE = bin/sassc
+ifeq (Windows,$(TARGET))
+	RESOURCES = libsass.res
+	SASSC_EXE = bin/sassc.exe
 	ifeq (shared,$(BUILD))
 		CFLAGS     += -D ADD_EXPORTS
 		CXXFLAGS   += -D ADD_EXPORTS
@@ -161,19 +175,7 @@ else
 endif
 
 OBJECTS = $(SOURCES:.c=.o)
-SASSC_EXE = bin/sassc
 SPEC_PATH = $(SASS_SPEC_PATH)
-
-RESOURCES =
-ifeq (MinGW,$(UNAME))
-	RESOURCES = libsass.res
-	SASSC_EXE = bin/sassc.exe
-endif
-ifeq (Windows,$(UNAME))
-	RESOURCES = libsass.res
-	SASSC_EXE = bin/sassc.exe
-endif
-
 all: sassc
 
 sassc: $(SASSC_EXE)
@@ -195,9 +197,8 @@ build-static: $(RESOURCES) $(OBJECTS) $(LIB_STATIC)
 	$(CC) $(LDFLAGS) -o $(SASSC_EXE) $^ $(LDLIBS)
 
 build-shared: $(RESOURCES) $(OBJECTS) $(LIB_SHARED)
-	$(MKDIR) bin/include
-	$(CP) $(LIB_SHARED) bin/
 	$(CC) $(LDFLAGS) -o $(SASSC_EXE) $^ $(LDLIBS)
+	$(CP) $(LIB_SHARED) bin/.
 
 $(LIB_STATIC): libsass-static
 $(LIB_SHARED): libsass-shared
@@ -235,7 +236,8 @@ else
 endif
 
 clean:
-	rm -f $(OBJECTS) $(SASSC_EXE) bin/*.so bin/*.dll bin/*.h
+	rm -f $(OBJECTS) $(SASSC_EXE) \
+	      bin/*.so bin/*.dll libsass.res
 ifdef SASS_LIBSASS_PATH
 	$(MAKE) -C $(SASS_LIBSASS_PATH) clean
 endif
