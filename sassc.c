@@ -18,6 +18,30 @@
 #define PATH_SEP ':'
 #endif
 
+#ifdef _WIN32
+#include <windows.h>
+
+int get_argv_utf8(int* argc_ptr, char*** argv_ptr) {
+  int argc;
+  char** argv;
+  wchar_t** argv_utf16 = CommandLineToArgvW(GetCommandLineW(), &argc);
+  int i;
+  int offset = (argc + 1) * sizeof(char*);
+  int size = offset;
+  for (i = 0; i < argc; i++)
+    size += WideCharToMultiByte(CP_UTF8, 0, argv_utf16[i], -1, 0, 0, 0, 0);
+  argv = malloc(size);
+  for (i = 0; i < argc; i++) {
+    argv[i] = (char*) argv + offset;
+    offset += WideCharToMultiByte(CP_UTF8, 0, argv_utf16[i], -1,
+      argv[i], size-offset, 0, 0);
+  }
+  *argc_ptr = argc;
+  *argv_ptr = argv;
+  return 0;
+}
+#endif
+
 int output(int error_status, const char* error_message, const char* output_string, const char* outfile) {
     if (error_status) {
         if (error_message) {
@@ -174,6 +198,9 @@ void invalid_usage(char* argv0) {
 }
 
 int main(int argc, char** argv) {
+#ifdef _WIN32
+    get_argv_utf8(&argc, &argv);
+#endif
     char *outfile = 0;
     int from_stdin = 0;
     bool generate_source_map = false;
