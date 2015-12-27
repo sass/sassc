@@ -59,10 +59,10 @@ In `PowerShell`, the above variant would be:
 cd projects\libsass\sassc
 
 # debug build:
-"${env:ProgramFiles(x86)}\MSBuild\12.0\Bin\MSBuild" win\sassc.sln
+&"${env:ProgramFiles(x86)}\MSBuild\12.0\Bin\MSBuild" win\sassc.sln
 
 # or release build:
-"${env:ProgramFiles(x86)}\MSBuild\12.0\Bin\MSBuild" win\sassc.sln /p:Configuration=Release
+&"${env:ProgramFiles(x86)}\MSBuild\12.0\Bin\MSBuild" win\sassc.sln /p:Configuration=Release
 ```
 
 The executable will be in the bin folder under sassc (`sassc\bin\sassc.exe`). To run it, simply try something like
