@@ -68,5 +68,5 @@ cd projects\libsass\sassc
 The executable will be in the bin folder under sassc (`sassc\bin\sassc.exe`). To run it, simply try something like
 
 ```cmd
-sassc\binsassc [input file] > output.css
+sassc\bin\sassc [input file] > output.css
 ```
