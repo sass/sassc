@@ -198,6 +198,10 @@ void invalid_usage(char* argv0) {
 }
 
 int main(int argc, char** argv) {
+#ifdef _MSC_VER
+    _set_error_mode(_OUT_TO_STDERR);
+    _set_abort_behavior( 0, _WRITE_ABORT_MSG);
+#endif
 #ifdef _WIN32
     get_argv_utf8(&argc, &argv);
 #endif
