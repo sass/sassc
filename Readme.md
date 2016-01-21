@@ -1,7 +1,7 @@
 SassC
 =======
 
-[![Build Status](https://secure.travis-ci.org/sass/sassc.png?branch=master)](http://travis-ci.org/sass/sassc)
+[![Build Status](https://secure.travis-ci.org/sass/sassc.svg?branch=master)](http://travis-ci.org/sass/sassc)
 
 Written by Aaron Leung (@akhleung) and Hampton Catlin (@hcatlin)
 
