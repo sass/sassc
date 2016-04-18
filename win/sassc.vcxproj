@@ -59,6 +59,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <TargetName>sassc</TargetName>
+    <TargetExt>sassc.exe</TargetExt>
     <OutDir>$(SolutionDir)..\bin\</OutDir>
     <IntDir>$(SolutionDir)..\bin\$(Configuration)\obj\</IntDir>
   </PropertyGroup>
