@@ -210,8 +210,6 @@ int main(int argc, char** argv) {
     bool generate_source_map = false;
     struct Sass_Options* options = sass_make_options();
     sass_option_set_output_style(options, SASS_STYLE_NESTED);
-    char *include_paths = NULL;
-    char *plugin_paths = NULL;
     sass_option_set_precision(options, 5);
 
     int c, i;
@@ -237,32 +235,10 @@ int main(int argc, char** argv) {
             from_stdin = 1;
             break;
         case 'I':
-            if (!include_paths) {
-#ifdef _MSC_VER
-				include_paths = _strdup(optarg);
-#else
-				include_paths = strdup(optarg);
-#endif
-            } else {
-                char *old_paths = include_paths;
-                include_paths = malloc(strlen(old_paths) + 1 + strlen(optarg) + 1);
-                sprintf(include_paths, "%s%c%s", old_paths, PATH_SEP, optarg);
-                free(old_paths);
-            }
+            sass_option_push_include_path(options, strdup(optarg));
             break;
         case 'P':
-            if (!plugin_paths) {
-#ifdef _MSC_VER
-				plugin_paths = _strdup(optarg);
-#else
-				plugin_paths = strdup(optarg);
-#endif
-            } else {
-                char *old_paths = plugin_paths;
-                plugin_paths = malloc(strlen(old_paths) + 1 + strlen(optarg) + 1);
-                sprintf(plugin_paths, "%s%c%s", old_paths, PATH_SEP, optarg);
-                free(old_paths);
-            }
+            sass_option_push_plugin_path(options, strdup(optarg));
             break;
         case 't':
             for(i = 0; i < NUM_STYLE_OPTION_STRINGS; ++i) {
@@ -309,9 +285,6 @@ int main(int argc, char** argv) {
         }
     }
 
-    sass_option_set_include_path(options, include_paths ? include_paths : "");
-    sass_option_set_plugin_path(options, plugin_paths ? plugin_paths : "");
-
     if(optind < argc - 2) {
         fprintf(stderr, "Error: Too many arguments.\n");
         invalid_usage(argv[0]);
@@ -336,9 +309,6 @@ int main(int argc, char** argv) {
         }
         result = compile_stdin(options, outfile);
     }
-
-    free(include_paths);
-    free(plugin_paths);
 
     return result;
 }
