@@ -164,7 +164,7 @@ struct
 #define NUM_STYLE_OPTION_STRINGS \
     sizeof(style_option_strings) / sizeof(style_option_strings[0])
 
-void print_version(char* argv0) {
+void print_version() {
     printf("sassc: %s\n", SASSC_VERSION);
     printf("libsass: %s\n", libsass_version());
     printf("sass2scss: %s\n", sass2scss_version());
@@ -212,7 +212,8 @@ int main(int argc, char** argv) {
     sass_option_set_output_style(options, SASS_STYLE_NESTED);
     sass_option_set_precision(options, 5);
 
-    int c, i;
+    int c;
+    size_t i;
     int long_index = 0;
     static struct option long_options[] =
     {
@@ -270,7 +271,7 @@ int main(int argc, char** argv) {
             if (sass_option_get_precision(options) < 0) sass_option_set_precision(options, 5);
             break;
         case 'v':
-            print_version(argv[0]);
+            print_version();
             return 0;
         case 'h':
             print_usage(argv[0]);
