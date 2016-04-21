@@ -168,6 +168,7 @@ void print_version() {
     printf("sassc: %s\n", SASSC_VERSION);
     printf("libsass: %s\n", libsass_version());
     printf("sass2scss: %s\n", sass2scss_version());
+    printf("sass: %s\n", libsass_language_version());
 }
 
 void print_usage(char* argv0) {
