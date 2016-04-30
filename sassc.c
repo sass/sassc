@@ -19,6 +19,8 @@
 #endif
 
 #ifdef _WIN32
+#include <io.h>
+#include <fcntl.h>
 #include <windows.h>
 
 int get_argv_utf8(int* argc_ptr, char*** argv_ptr) {
@@ -52,7 +54,7 @@ int output(int error_status, const char* error_message, const char* output_strin
         return 1;
     } else if (output_string) {
         if(outfile) {
-            FILE* fp = fopen(outfile, "w");
+            FILE* fp = fopen(outfile, "wb");
             if(!fp) {
                 perror("Error opening output file");
                 return 1;
@@ -65,6 +67,9 @@ int output(int error_status, const char* error_message, const char* output_strin
             fclose(fp);
         }
         else {
+            #ifdef _WIN32
+              setmode(fileno(stdout), O_BINARY);
+            #endif
             printf("%s", output_string);
         }
         return 0;
