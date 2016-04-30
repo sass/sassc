@@ -1,6 +1,8 @@
 #ifdef _MSC_VER
-#ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS 1
+#endif
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_NONSTDC_NO_WARNINGS 1
 #endif
 #endif
 
@@ -22,7 +24,6 @@
 #include <io.h>
 #include <fcntl.h>
 #include <windows.h>
-
 int get_argv_utf8(int* argc_ptr, char*** argv_ptr) {
   int argc;
   char** argv;
