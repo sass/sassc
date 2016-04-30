@@ -49,6 +49,10 @@ AC_GNU_SOURCE
 # Check fails on Travis, but it works fine
 # AX_CXX_COMPILE_STDCXX_11([ext],[optional])
 AC_CHECK_TOOL([AR], [ar], [false])
+
+AS_CASE([$host], [*-*-mingw32], [is_mingw32=yes], [is_mingw32=no])
+AM_CONDITIONAL(COMPILER_IS_MINGW32, test "x$is_mingw32" = "xyes")
+
 if test "x$is_mingw32" != "xyes"; then
   AC_CHECK_TOOL([DLLTOOL], [dlltool], [false])
   AC_CHECK_TOOL([DLLWRAP], [dllwrap], [false])
@@ -97,9 +101,6 @@ fi
 AC_CHECK_PROG(WINDRES, windres, windres)
 
 AM_CONDITIONAL(ENABLE_COVERAGE, test "x$enable_cov" = "xyes")
-
-AS_CASE([$host], [*-*-mingw32], [is_mingw32=yes], [is_mingw32=no])
-AM_CONDITIONAL(COMPILER_IS_MINGW32, test "x$is_mingw32" = "xyes")
 
 AC_MSG_NOTICE([Building sassc ($VERSION)])
 
