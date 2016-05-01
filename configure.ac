@@ -13,8 +13,6 @@ AC_CONFIG_AUX_DIR([script])
 # Though they look like gcc flags!
 AM_INIT_AUTOMAKE([foreign parallel-tests -Wall])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([no])])
-# would fail with mingw otherwise
-m4_pattern_allow([AM_PROG_AR])
 
 # the new prefered way
 # only need install path
@@ -49,17 +47,19 @@ AC_GNU_SOURCE
 # Check fails on Travis, but it works fine
 # AX_CXX_COMPILE_STDCXX_11([ext],[optional])
 AC_CHECK_TOOL([AR], [ar], [false])
-if test "x$is_mingw32" != "xyes"; then
-  AC_CHECK_TOOL([DLLTOOL], [dlltool], [false])
-  AC_CHECK_TOOL([DLLWRAP], [dllwrap], [false])
-  AC_CHECK_TOOL([WINDRES], [windres], [false])
-fi
+AC_CHECK_TOOL([DLLTOOL], [dlltool], [false])
+AC_CHECK_TOOL([DLLWRAP], [dllwrap], [false])
+AC_CHECK_TOOL([WINDRES], [windres], [false])
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 AM_PROG_AR([])
 LT_INIT([dlopen])
 
+AS_CASE([$host], [*-*-mingw*], [is_mingw32=yes], [is_mingw32=no])
+AM_CONDITIONAL(COMPILER_IS_MINGW32, test "x$is_mingw32" = "xyes")
+
+dnl The dlopen() function is in the C library for *BSD and in
+dnl libdl on GLIBC-based systems
 if test "x$is_mingw32" != "xyes"; then
-  dnl The dlopen() function is in the C library for *BSD and in
-  dnl libdl on GLIBC-based systems. Windows uses `LoadLibrary`!
   AC_SEARCH_LIBS([dlopen], [dl dld], [], [
     AC_MSG_ERROR([unable to find the dlopen() function])
   ])
@@ -97,9 +97,6 @@ fi
 AC_CHECK_PROG(WINDRES, windres, windres)
 
 AM_CONDITIONAL(ENABLE_COVERAGE, test "x$enable_cov" = "xyes")
-
-AS_CASE([$host], [*-*-mingw32], [is_mingw32=yes], [is_mingw32=no])
-AM_CONDITIONAL(COMPILER_IS_MINGW32, test "x$is_mingw32" = "xyes")
 
 AC_MSG_NOTICE([Building sassc ($VERSION)])
 
