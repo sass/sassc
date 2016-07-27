@@ -25,6 +25,10 @@
 #include <io.h>
 #include <fcntl.h>
 #include <windows.h>
+
+#define isatty(h) _isatty(h)
+#define fileno(m) _fileno(m)
+
 int get_argv_utf8(int* argc_ptr, char*** argv_ptr) {
   int argc;
   char** argv;
@@ -44,6 +48,8 @@ int get_argv_utf8(int* argc_ptr, char*** argv_ptr) {
   *argv_ptr = argv;
   return 0;
 }
+#else
+#include <unistd.h>
 #endif
 
 int output(int error_status, const char* error_message, const char* output_string, const char* outfile) {
@@ -213,6 +219,8 @@ int main(int argc, char** argv) {
 #ifdef _WIN32
     get_argv_utf8(&argc, &argv);
 #endif
+    if ((argc == 1) && isatty(fileno(stdin))) {print_usage(argv[0]); return 0;}
+
     char *outfile = 0;
     int from_stdin = 0;
     bool generate_source_map = false;
