@@ -219,7 +219,10 @@ int main(int argc, char** argv) {
 #ifdef _WIN32
     get_argv_utf8(&argc, &argv);
 #endif
-    if ((argc == 1) && isatty(fileno(stdin))) {print_usage(argv[0]); return 0;}
+    if ((argc == 1) && isatty(fileno(stdin))) {
+        print_usage(argv[0]);
+        return 0;
+    }
 
     char *outfile = 0;
     int from_stdin = 0;
