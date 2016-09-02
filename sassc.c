@@ -59,7 +59,7 @@ int output(int error_status, const char* error_message, const char* output_strin
         } else {
             fprintf(stderr, "An error occured; no error message available.\n");
         }
-        return 1;
+        return error_status;
     } else if (output_string) {
         if(outfile) {
             FILE* fp = fopen(outfile, "wb");
