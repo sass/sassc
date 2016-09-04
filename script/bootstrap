@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -e
+
+SCRIPT=`realpath $0`
+SCRIPTPATH=`dirname $SCRIPT`
+
+if [ "x$SASS_LIBSASS_PATH" == "x" ]; then
+  export SASS_LIBSASS_PATH=`realpath ${SCRIPTPATH}/../../libsass`
+  echo "SASS_LIBSASS_PATH variable is missing missing, so using $SASS_LIBSASS_PATH"
+fi
+if [ ! -d "$SASS_LIBSASS_PATH" ]; then
+  git clone https://github.com/sass/libsass.git "$SASS_LIBSASS_PATH"
+else
+    echo "LibSass already exists, skiping Git Clone"
+fi
+
+if [ "x$SASS_SPEC_PATH" == "x" ]; then 
+    export SASS_SPEC_PATH=`realpath ${SCRIPTPATH}/../../sass-spec`
+    echo "SASS_SPEC_PATH variable is missing, so using $SASS_SPEC_PATH"
+fi
+
+if [ ! -d "$SASS_SPEC_PATH" ]; then
+  git clone https://github.com/sass/sass-spec.git "$SASS_SPEC_PATH"
+else
+    echo "sass-spec already exists, skiping Git Clone"
+fi
