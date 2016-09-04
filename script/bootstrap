@@ -2,11 +2,10 @@
 
 set -e
 
-SCRIPT=`realpath $0`
-SCRIPTPATH=`dirname $SCRIPT`
+SCRIPTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/../ && pwd )"
 
 if [ "x$SASS_LIBSASS_PATH" == "x" ]; then
-  export SASS_LIBSASS_PATH=`realpath ${SCRIPTPATH}/../../libsass`
+  export SASS_LIBSASS_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/../../libsass/ && pwd )"
   echo "SASS_LIBSASS_PATH variable is missing missing, so using $SASS_LIBSASS_PATH"
 fi
 if [ ! -d "$SASS_LIBSASS_PATH" ]; then
@@ -15,8 +14,8 @@ else
     echo "LibSass already exists, skiping Git Clone"
 fi
 
-if [ "x$SASS_SPEC_PATH" == "x" ]; then 
-    export SASS_SPEC_PATH=`realpath ${SCRIPTPATH}/../../sass-spec`
+if [ "x$SASS_SPEC_PATH" == "x" ]; then
+    export SASS_SPEC_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/../../sass-spec/ && pwd )"
     echo "SASS_SPEC_PATH variable is missing, so using $SASS_SPEC_PATH"
 fi
 
