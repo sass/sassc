@@ -48,3 +48,5 @@ config.h.in*
 lib/pkgconfig/
 .sass-cache
 *.user
+*.db
+*.opendb

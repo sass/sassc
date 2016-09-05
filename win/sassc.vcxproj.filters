@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -63,6 +63,12 @@
     <ClInclude Include="$(LIBSASS_HEADERS_DIR)\sass_values.hpp">
       <Filter>LibSass\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="$(LIBSASS_HEADERS_DIR)\check_nesting.hpp">
+      <Filter>LibSass\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LIBSASS_INCLUDES_DIR)\sass\version.h.in">
+      <Filter>LibSass\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup Label="Sources">
     <ClCompile Include="..\sassc.c">
@@ -74,33 +80,12 @@
     <ClCompile Condition="$(VisualStudioVersion) &lt; 14.0" Include="$(LIBSASS_SRC_DIR)\c99func.c">
       <Filter>LibSass\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="$(LIBSASS_SRC_DIR)\check_nesting.cpp">
+      <Filter>LibSass\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup Label="LibSass Headers">
     <ClInclude Include="$(LIBSASS_HEADERS_DIR)\ast.hpp">
-      <Filter>LibSass\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="$(LIBSASS_HEADERS_DIR)\ast\nodes.hpp">
-      <Filter>LibSass\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="$(LIBSASS_HEADERS_DIR)\ast\blocks.hpp">
-      <Filter>LibSass\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="$(LIBSASS_HEADERS_DIR)\ast\values.hpp">
-      <Filter>LibSass\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="$(LIBSASS_HEADERS_DIR)\ast\selectors.hpp">
-      <Filter>LibSass\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="$(LIBSASS_HEADERS_DIR)\ast\containers.hpp">
-      <Filter>LibSass\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="$(LIBSASS_HEADERS_DIR)\ast\statements.hpp">
-      <Filter>LibSass\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="$(LIBSASS_HEADERS_DIR)\ast\expressions.hpp">
-      <Filter>LibSass\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="$(LIBSASS_HEADERS_DIR)\ast\common.hpp">
       <Filter>LibSass\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="$(LIBSASS_HEADERS_DIR)\ast_def_macros.hpp">
@@ -250,27 +235,6 @@
   </ItemGroup>
   <ItemGroup Label="LibSass Sources">
     <ClCompile Include="$(LIBSASS_SRC_DIR)\ast.cpp">
-      <Filter>LibSass\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="$(LIBSASS_SRC_DIR)\ast\nodes.cpp">
-      <Filter>LibSass\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="$(LIBSASS_SRC_DIR)\ast\blocks.cpp">
-      <Filter>LibSass\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="$(LIBSASS_SRC_DIR)\ast\values.cpp">
-      <Filter>LibSass\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="$(LIBSASS_SRC_DIR)\ast\selectors.cpp">
-      <Filter>LibSass\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="$(LIBSASS_SRC_DIR)\ast\containers.cpp">
-      <Filter>LibSass\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="$(LIBSASS_SRC_DIR)\ast\statements.cpp">
-      <Filter>LibSass\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="$(LIBSASS_SRC_DIR)\ast\expressions.cpp">
       <Filter>LibSass\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="$(LIBSASS_SRC_DIR)\base64vlq.cpp">
