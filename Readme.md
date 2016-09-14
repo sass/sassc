@@ -1,7 +1,8 @@
 SassC
 =======
 
-[![Build Status](https://secure.travis-ci.org/sass/sassc.svg?branch=master)](http://travis-ci.org/sass/sassc)
+[![Unix CI](https://secure.travis-ci.org/sass/sassc.svg?branch=master)](http://travis-ci.org/sass/sassc)
+[![Windows CI](https://ci.appveyor.com/api/projects/status/github/sass/sassc?svg=true)](https://ci.appveyor.com/project/sass/sassc/branch/master)
 
 Written by Aaron Leung (@akhleung) and Hampton Catlin (@hcatlin)
 

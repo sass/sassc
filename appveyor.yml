@@ -1,0 +1,47 @@
+os: Visual Studio 2015
+
+environment:
+  LIBSASS_DIR: ..\libsass
+  matrix:
+  - configuration: Debug
+  - configuration: Release
+
+cache:
+  - C:\Ruby%ruby_version%\lib\ruby\gems
+
+install:
+  - git clone https://github.com/sass/libsass.git
+  - cd libsass
+  - git clone https://github.com/sass/sass-spec
+  - cd %APPVEYOR_BUILD_FOLDER%
+
+build:
+  parallel: true
+  project: win\sassc.sln
+
+after_build:
+  - bin\sassc -v
+  - call "%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
+  - dumpbin /dependents bin\sassc.exe # equivalent of Unix' lld utility
+
+test_script:
+  - gem install sass minitest
+  - ruby libsass\sass-spec\sass-spec.rb -c bin\sassc -s libsass\sass-spec\spec
+
+test: off
+# Turn off the test script to speedup the CI builds, set it to on or remove the previous line when needed.
+
+artifacts:
+  path: bin
+
+deploy:
+  provider: GitHub
+  description: $(APPVEYOR_REPO_COMMIT_MESSAGE_EXTENDED)
+  auth_token:
+    secure: BOqQ0M2RFDXpSbfPEcN3Dmz6pcj1Y4nBKk0k808KhaFPI2Ylvm0ABhfVZ8pIbGnn
+  draft: true
+  prerelease: false
+  on:
+    branch: master
+    appveyor_repo_tag: true        # deploy on tag push only
+    configuration: Release
