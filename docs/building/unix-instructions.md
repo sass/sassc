@@ -20,14 +20,28 @@ The executable will be in the bin folder. To run it, simply try something like
     cd ./sassc
     ```
 
-1. Type 'script/bootstrap' to clone [`libsass`](https://github.com/sass/libsass) and [`sass-spec`](https://github.com/sass/sass-spec) into the parent directory
+1. Type "`. bootstrap.sh`" to clone [`libsass`](https://github.com/sass/libsass) and [`sass-spec`](https://github.com/sass/sass-spec) into the parent directory. Do not forget the dot in front!
+
    ```bash
-   script/bootstrap
+   . bootstrap.sh
    ```
+
 Alternately, if you already have libsass cloned or installed, you can edit your `.bash_profile` to include libsass directory:
+
     ```bash
-    export SASS_LIBSASS_PATH=/Users/you/path/libsass
+    SASS_LIBSASS_PATH=/Users/you/path/libsass
+    export SASS_LIBSASS_PATH
     ```
+
+
+The following will let you provide the location of the [`sass-spec`](https://github.com/sass/sass-spec) testsuite:
+
+    ```bash
+    SASS_SPEC_SASS=/Users/you/favourite/sass-spec
+    export SASS_SPEC_SASS
+    ```
+
+    You can add the above to `.profile` or `.bash_profile` in your home directory to have those added automatically for your every login session.
 
 1. Type 'make'
    ```bash

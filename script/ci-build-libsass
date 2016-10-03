@@ -2,7 +2,7 @@
 
 set -e
 
-# script/bootstrap
+. bootstrap.sh
 
 # export this path right here (was in script/spec before)
 export SASS_SASSC_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/../ && pwd )"
