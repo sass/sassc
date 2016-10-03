@@ -1,6 +1,10 @@
 # Building On Unix
 
-To build SassC, you must have either local copy of the LibSass source or it must be installed into your system. For development, please use the source version.
+To build SassC, you must have either local copy of the LibSass source or it must be installed into your system. For development, please use the source version. You must then setup an environment variable pointing to the libsass folder, like:
+
+```bash  
+export SASS_LIBSASS_PATH=/Users/you/path/libsass
+```
 
 The executable will be in the bin folder. To run it, simply try something like
 
@@ -10,28 +14,29 @@ The executable will be in the bin folder. To run it, simply try something like
 
 # Step-by-step
 
-1. Clone the SassC repo
+1. Clone the libsass repo:
     ```bash
-    git clone https://github.com/sass/sassc.git
+    git clone https://github.com/sass/libsass.git
     ```
 
-1. cd into the SassC repo
-    ```bash
-    cd ./sassc
-    ```
-
-1. Type 'script/bootstrap' to clone [`libsass`](https://github.com/sass/libsass) and [`sass-spec`](https://github.com/sass/sass-spec) into the parent directory
-   ```bash
-   script/bootstrap
-   ```
-Alternately, if you already have libsass cloned or installed, you can edit your .bash_profile to include libsass directory:
+2. Edit your .bash_profile to include libsass directory:
     ```bash
     export SASS_LIBSASS_PATH=/Users/you/path/libsass
     ```
 
-1. Type 'make'
+3. Clone the sassC repo
+    ```bash
+    git clone https://github.com/sass/sassc.git
+    ```
+
+4. cd into the sassC repo
+    ```bash
+    cd ./sassc
+    ```
+
+5. Type 'make'
    ```bash
    make
    ```
 
-1. Job done!
+6. Job done!
