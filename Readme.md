@@ -44,3 +44,6 @@ Contribution Agreement
 ----------------------
 
 Any contribution to the project are seen as copyright assigned to Hampton Catlin. Your contribution warrants that you have the right to assign copyright on your work. This is to ensure that the project remains free and open -- similar to the Apache Foundation.
+
+[@hcatlin]: https://github.com/hcatlin
+[@akhleung]: https://github.com/akhleung
