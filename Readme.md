@@ -4,7 +4,7 @@ SassC
 [![Unix CI](https://secure.travis-ci.org/sass/sassc.svg?branch=master)](http://travis-ci.org/sass/sassc)
 [![Windows CI](https://ci.appveyor.com/api/projects/status/github/sass/sassc?svg=true)](https://ci.appveyor.com/project/sass/sassc/branch/master)
 
-Written by Aaron Leung (@akhleung) and Hampton Catlin (@hcatlin)
+Written by Aaron Leung ([@akhleung]) and Hampton Catlin ([@hcatlin])
 
 http://github.com/sass/sassc
 
@@ -26,9 +26,9 @@ awesome features to CSS. Sass was the first language of its kind
 and by far the most mature and up to date codebase.
 
 Sass was originally created by the co-creator of this library,
-Hampton Catlin (@hcatlin). The extension and continuing evolution
+Hampton Catlin ([@hcatlin]). The extension and continuing evolution
 of the language has all been the result of years of work by Natalie
-Weizenbaum (@nex3) and Chris Eppstein (@chriseppstein).
+Weizenbaum ([@nex3]) and Chris Eppstein ([@chriseppstein]).
 
 For more information about Sass itself, please visit http://sass-lang.com
 
