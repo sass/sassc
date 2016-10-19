@@ -291,9 +291,11 @@ int main(int argc, char** argv) {
             break;
         case 'v':
             print_version();
+            sass_delete_options(options);
             return 0;
         case 'h':
             print_usage(argv[0]);
+            sass_delete_options(options);
             return 0;
         case '?':
             /* Unrecognized flag or missing an expected value */
@@ -301,6 +303,7 @@ int main(int argc, char** argv) {
             invalid_usage(argv[0]);
         default:
             fprintf(stderr, "Unknown error while processing arguments\n");
+            sass_delete_options(options);
             return 2;
         }
     }
@@ -329,6 +332,8 @@ int main(int argc, char** argv) {
         }
         result = compile_stdin(options, outfile);
     }
+
+    sass_delete_options(options);
 
     return result;
 }
