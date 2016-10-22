@@ -314,7 +314,8 @@ int main(int argc, char** argv) {
     }
 
     int result;
-    if(optind < argc && strcmp(argv[optind], "-") != 0 && !from_stdin) {
+    const char* dash = "-";
+    if(optind < argc && strcmp(argv[optind], dash) != 0 && !from_stdin) {
         if (optind + 1 < argc) {
             outfile = argv[optind + 1];
         }
