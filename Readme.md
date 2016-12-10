@@ -4,7 +4,7 @@ SassC
 [![Unix CI](https://secure.travis-ci.org/sass/sassc.svg?branch=master)](http://travis-ci.org/sass/sassc)
 [![Windows CI](https://ci.appveyor.com/api/projects/status/github/sass/sassc?svg=true)](https://ci.appveyor.com/project/sass/sassc/branch/master)
 
-Written by Aaron Leung (@akhleung) and Hampton Catlin (@hcatlin)
+by Aaron Leung ([@akhleung]), Hampton Catlin ([@hcatlin]), Marcel Greter ([@mgreter]) and Michael Mifsud ([@xzyfer])
 
 http://github.com/sass/sassc
 
@@ -25,12 +25,13 @@ Sass is a CSS pre-processor language to add on exciting, new,
 awesome features to CSS. Sass was the first language of its kind
 and by far the most mature and up to date codebase.
 
-Sass was originally created by the co-creator of this library,
-Hampton Catlin (@hcatlin). The extension and continuing evolution
-of the language has all been the result of years of work by Natalie
-Weizenbaum (@nex3) and Chris Eppstein (@chriseppstein).
+Sass was originally concieved of by the co-creator of this library,
+Hampton Catlin ([@hcatlin]). Most of the language has been the result of years
+of work by Natalie Weizenbaum ([@nex3]) and Chris Eppstein ([@chriseppstein]).
 
 For more information about Sass itself, please visit http://sass-lang.com
+
+Initial development of SassC by Aaron Leung and Hampton Catlin was supported by [Moovweb](http://www.moovweb.com).
 
 Documentation
 -------------
@@ -40,7 +41,14 @@ Documentation
 * [Testing on Unix](docs/testing/unix-instructions.md)
 * [Testing on Windows](docs/testing/windows-instructions.md)
 
-Contribution Agreement
-----------------------
+Licensing
+---------
 
-Any contribution to the project are seen as copyright assigned to Hampton Catlin. Your contribution warrants that you have the right to assign copyright on your work. This is to ensure that the project remains free and open -- similar to the Apache Foundation.
+Our MIT license is designed to be as simple, and liberal as possible.
+
+[@hcatlin]: https://github.com/hcatlin
+[@akhleung]: https://github.com/akhleung
+[@chriseppstein]: https://github.com/chriseppstein
+[@nex3]: https://github.com/nex3
+[@mgreter]: https://github.com/mgreter
+[@xzyfer]: https://github.com/xzyfer
