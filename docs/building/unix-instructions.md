@@ -24,7 +24,7 @@ The executable will be in the bin folder. To run it, simply try something like
    ```bash
    script/bootstrap
    ```
-Alternately, if you already have libsass cloned or installed, you can edit your .bash_profile to include libsass directory:
+Alternately, if you already have libsass cloned or installed, you can edit your `.bash_profile` to include libsass directory:
     ```bash
     export SASS_LIBSASS_PATH=/Users/you/path/libsass
     ```

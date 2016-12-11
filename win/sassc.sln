@@ -5,6 +5,32 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sassc", "sassc.vcxproj", "{E4030474-AFC9-4CC6-BEB6-D846F631502B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".SolutionItems", ".SolutionItems", "{66CDE359-E53F-46E9-9B1E-EC30B50D30AF}"
+	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
+		..\.gitignore = ..\.gitignore
+		..\.travis.yml = ..\.travis.yml
+		..\appveyor.yml = ..\appveyor.yml
+		..\LICENSE = ..\LICENSE
+		..\Readme.md = ..\Readme.md
+		..\sassc_version.h.in = ..\sassc_version.h.in
+		..\version.sh = ..\version.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{5CDEB969-5B7C-4653-BD2D-51D0222BD53D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "building", "building", "{1B7DFCCC-9806-43B5-8739-5E2D9C55CE42}"
+	ProjectSection(SolutionItems) = preProject
+		..\docs\building\unix-instructions.md = ..\docs\building\unix-instructions.md
+		..\docs\building\windows-instructions.md = ..\docs\building\windows-instructions.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "testing", "testing", "{4F8D4A73-7FE3-4602-8B46-68FEC98BD69E}"
+	ProjectSection(SolutionItems) = preProject
+		..\docs\testing\unix-instructions.md = ..\docs\testing\unix-instructions.md
+		..\docs\testing\windows-instructions.md = ..\docs\testing\windows-instructions.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug without static runtime|Win32 = Debug without static runtime|Win32
@@ -36,5 +62,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5CDEB969-5B7C-4653-BD2D-51D0222BD53D} = {66CDE359-E53F-46E9-9B1E-EC30B50D30AF}
+		{1B7DFCCC-9806-43B5-8739-5E2D9C55CE42} = {5CDEB969-5B7C-4653-BD2D-51D0222BD53D}
+		{4F8D4A73-7FE3-4602-8B46-68FEC98BD69E} = {5CDEB969-5B7C-4653-BD2D-51D0222BD53D}
 	EndGlobalSection
 EndGlobal
