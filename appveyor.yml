@@ -38,7 +38,8 @@ deploy:
   provider: GitHub
   description: $(APPVEYOR_REPO_COMMIT_MESSAGE_EXTENDED)
   auth_token:
-    secure: BOqQ0M2RFDXpSbfPEcN3Dmz6pcj1Y4nBKk0k808KhaFPI2Ylvm0ABhfVZ8pIbGnn
+    secure: xGL+pDUi3VJOZWGREe3wEGuZaOVA/Mg2BEhjHYIaUoKQCBhY1V9B6xNtix4CB1+8
+
   draft: true
   prerelease: false
   on:
