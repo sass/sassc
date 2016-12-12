@@ -138,6 +138,7 @@ int compile_file(struct Sass_Options* options, char* input_path, char* outfile) 
     struct Sass_File_Context* ctx = sass_make_file_context(input_path);
     struct Sass_Context* ctx_out = sass_file_context_get_context(ctx);
     if (outfile) sass_option_set_output_path(options, outfile);
+    const char* srcmap_file = sass_option_get_source_map_file(options);
     sass_option_set_input_path(options, input_path);
     sass_file_context_set_options(ctx, options);
 
@@ -150,12 +151,12 @@ int compile_file(struct Sass_Options* options, char* input_path, char* outfile) 
         outfile
     );
 
-    if (ret == 0 && sass_option_get_source_map_file(options)) {
+    if (ret == 0 && srcmap_file) {
         ret = output(
             sass_context_get_error_status(ctx_out),
             sass_context_get_error_message(ctx_out),
             sass_context_get_source_map_string(ctx_out),
-            sass_option_get_source_map_file(options)
+            srcmap_file
         );
     }
 
