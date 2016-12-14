@@ -202,6 +202,7 @@ void print_usage(char* argv0) {
     printf("   -m, --sourcemap         Emit source map.\n");
     printf("   -M, --omit-map-comment  Omits the source map url comment.\n");
     printf("   -p, --precision         Set the precision for numbers.\n");
+    printf("   -a, --sass              Treat input as indented syntax.\n");
     printf("   -v, --version           Display compiled versions.\n");
     printf("   -h, --help              Display this help message.\n");
     printf("\n");
@@ -247,10 +248,11 @@ int main(int argc, char** argv) {
         { "omit-map-comment",   no_argument,       0, 'M' },
         { "precision",          required_argument, 0, 'p' },
         { "version",            no_argument,       0, 'v' },
+        { "sass",               no_argument,       0, 'a' },
         { "help",               no_argument,       0, 'h' },
         { NULL,                 0,                 NULL, 0}
     };
-    while ((c = getopt_long(argc, argv, "vhslmMp:t:I:P:", long_options, &long_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "vhslmMap:t:I:P:", long_options, &long_index)) != -1) {
         switch (c) {
         case 's':
             from_stdin = 1;
@@ -289,6 +291,9 @@ int main(int argc, char** argv) {
         case 'p':
             sass_option_set_precision(options, atoi(optarg)); // TODO: make this more robust
             if (sass_option_get_precision(options) < 0) sass_option_set_precision(options, 5);
+            break;
+        case 'a':
+            sass_option_set_is_indented_syntax_src(options, true);
             break;
         case 'v':
             print_version();
