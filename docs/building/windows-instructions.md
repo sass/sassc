@@ -7,6 +7,8 @@ To build SassC, the following pre-requisites must be met:
 
 Additionally, it is recommended to have `git` installed and available in `PATH`, so to deduce the `libsass` and `sassc` version information. For instance, if GitHub for Windows (https://windows.github.com/) is installed, the `PATH` will have an entry resembling: `X:\Users\<YOUR_NAME>\AppData\Local\GitHub\PortableGit_<SOME_GUID>\cmd\` (where `X` is the drive letter of system drive). If `git` is not available, inquiring the LibSass and SassC versions will result in `[NA]`.
 
+> Note that with `Debug` or `Release` we statically compile VC runtime libraries (e.g. `MSVCP140.dll`) in sassc.exe which result in self-dependent / portable binary that is comparatively large in size. There are separate build configurations for shared runtime: `Debug without static runtime` and `Release without static runtime`, which produce the binary dependent on [VS2015 Redistributable package](https://www.microsoft.com/en-gb/download/details.aspx?id=48145) on the target system. If your target system (where you want to execute sassc.exe) already has VCR (via redistributable pack or Visual Studio itself), it is highly recommended to use this shared configuration. This way when the shared runtime libs receive an updated (performance improvements or bug fixes), the statically compiled image will not be able to take advantage of such updates.
+
 ## Obtaining the Sources:
 
 If `git` in available in `PATH`, open `cmd` or `PowerShell` and run:
@@ -40,17 +42,17 @@ Notice that in the following commands:
 
 * If the platform is 32-bit Windows, replace `ProgramFiles(x86)` with `ProgramFiles`.
 * To build with Visual Studio 2015, replace `12.0` with `14.0` in the aforementioned command.
+* To build 32-bit binary, add `/p:Platform=Win32`.
+* To build 64-bit binary, add `/p:platform=Win64`.
 
-In `cmd`, run:
+For example, in `cmd`, run:
 
 ```cmd
 cd projects\libsass\sassc
 
-:: debug build:
-"%ProgramFiles(x86)%\MSBuild\12.0\Bin\MSBuild" win\sassc.sln
-
-:: or release build:
-"%ProgramFiles(x86)%\MSBuild\12.0\Bin\MSBuild" win\sassc.sln /p:Configuration=Release
+:: 32-bit debug build with statically compiled runtime libs:
+"%ProgramFiles(x86)%\MSBuild\12.0\Bin\MSBuild" win\sassc.sln ^
+/p:Configuration=Debug /p:Platform=Win32
 ```
 
 In `PowerShell`, the above variant would be:
@@ -58,14 +60,12 @@ In `PowerShell`, the above variant would be:
 ```powershell
 cd projects\libsass\sassc
 
-# debug build:
-&"${env:ProgramFiles(x86)}\MSBuild\12.0\Bin\MSBuild" win\sassc.sln
-
-# or release build:
-&"${env:ProgramFiles(x86)}\MSBuild\12.0\Bin\MSBuild" win\sassc.sln /p:Configuration=Release
+# 64-bit release build without statically compiled runtime libs:
+&"${env:ProgramFiles(x86)}\MSBuild\12.0\Bin\MSBuild" win\sassc.sln `
+/p:Configuration='Release without static runtime' /p:Platform=Win64
 ```
 
-You can also override the `LIBSASS_DIR` path by agumenting msbuild properties, such as: `/p:LIBSASS_DIR=../../some/path/leading/to/libsass;Configuration=Release`.
+You can also override the `LIBSASS_DIR` path by augmenting msbuild properties, such as: `/p:LIBSASS_DIR=../../some/path/leading/to/libsass;Configuration=Release`.
 
 The executable will be in the bin folder under sassc (`sassc\bin\sassc.exe`). To run it, simply try something like
 
