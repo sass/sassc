@@ -258,10 +258,10 @@ int main(int argc, char** argv) {
             from_stdin = 1;
             break;
         case 'I':
-            sass_option_push_include_path(options, strdup(optarg));
+            sass_option_push_include_path(options, optarg);
             break;
         case 'P':
-            sass_option_push_plugin_path(options, strdup(optarg));
+            sass_option_push_plugin_path(options, optarg);
             break;
         case 't':
             for(i = 0; i < NUM_STYLE_OPTION_STRINGS; ++i) {
