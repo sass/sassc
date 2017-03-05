@@ -243,6 +243,9 @@
     <ClCompile Include="$(LIBSASS_SRC_DIR)\ast.cpp">
       <Filter>LibSass\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="$(LIBSASS_SRC_DIR)\ast_fwd_decl.cpp">
+      <Filter>LibSass\Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="$(LIBSASS_SRC_DIR)\base64vlq.cpp">
       <Filter>LibSass\Source Files</Filter>
     </ClCompile>
