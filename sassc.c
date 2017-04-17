@@ -14,6 +14,12 @@
 #include <sass.h>
 #include "sassc_version.h"
 
+#ifdef _MSC_VER
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+#endif
+ 
 #define BUFSIZE 512
 #ifdef _WIN32
 #define PATH_SEP ';'
