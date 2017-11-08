@@ -22,7 +22,7 @@ travis_fold() {
   fi
 }
 
-if [ "x$COVERAGE" = "xyes" ]; then
+if [ "${COVERAGE}" = "yes" ]; then
   COVERAGE_OPT="--enable-coverage"
   EXTRA_CFLAGS="--coverage"
   EXTRA_CXXFLAGS="--coverage"
@@ -39,9 +39,9 @@ else
 fi
 SINGLE_MAKE_OPS="$MAKE_OPTS -j1 V1"
 
-if [ "x$AUTOTOOLS" = "xyes" ]; then
+if [ "${AUTOTOOLS}" = "yes" ]; then
 
-  if [ "x$BUILD" = "xstatic" ]; then
+  if [ "${BUILD}" = "static" ]; then
     SHARED_OPT="--disable-shared --enable-static"
   else
     # Makefile of sassc wants to link to static
