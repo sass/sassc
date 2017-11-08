@@ -48,4 +48,13 @@ The following will let you provide the location of the [`sass-spec`](https://git
    make
    ```
 
+   Make sure you are using GNU make (`gmake` may be the command needed on some systems)
+
+1. Install the whole thing if you like
+   ```bash
+   make install
+   ```
+
+   This will install sassc to `/usr/local/bin/sassc`. You can change the `/usr/local` part by setting `PREFIX` variable.
+
 1. Job done!
