@@ -180,28 +180,47 @@ OBJECTS = $(SOURCES:.c=.o)
 SPEC_PATH = $(SASS_SPEC_PATH)
 all: sassc
 
-sassc: $(SASSC_EXE)
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(SASSC_EXE): libsass build-$(BUILD)
+%.o: %.rc
+	$(WINDRES) -i $< -o $@
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+sassc: $(SASSC_EXE)
+build: build-$(BUILD)
+libsass: libsass-$(BUILD)
+
+$(SASSC_EXE): libsass build
+
+$(DESTDIR)$(PREFIX)/:
+	$(MKDIR) $(DESTDIR)$(PREFIX)
+
+$(DESTDIR)$(PREFIX)/bin/:
+	$(MKDIR) $(DESTDIR)$(PREFIX)/bin
 
 $(DESTDIR)$(PREFIX)/bin/%: bin/%
-	-$(MKDIR) $(DESTDIR)$(PREFIX)
-	-$(MKDIR) $(DESTDIR)$(PREFIX)/bin
 	$(INSTALL) -D -v -m0755 "$<" "$@"
 
-install: $(DESTDIR)$(PREFIX)/$(SASSC_EXE)
+install: libsass-install-$(BUILD) \
+	$(DESTDIR)$(PREFIX)/$(SASSC_EXE)
 
 build-static: $(RESOURCES) $(OBJECTS) $(LIB_STATIC)
 	$(CC) $(LDFLAGS) -o $(SASSC_EXE) $^ $(LDLIBS)
 
 build-shared: $(RESOURCES) $(OBJECTS) $(LIB_SHARED)
+	$(CC) $(LDFLAGS) -o $(SASSC_EXE) $(RESOURCES) $(OBJECTS) \
+		$(LDLIBS) -L$(SASS_LIBSASS_PATH)/lib -lsass
+
+build-shared-dev: $(RESOURCES) $(OBJECTS) $(LIB_SHARED)
 	$(CC) $(LDFLAGS) -o $(SASSC_EXE) $^ $(LDLIBS)
-	$(CP) $(LIB_SHARED) bin/.
+
+build-static-dev: build-static
 
 $(LIB_STATIC): libsass-static
 $(LIB_SHARED): libsass-shared
-
-libsass: libsass-$(BUILD)
 
 libsass-static:
 ifdef SASS_LIBSASS_PATH
@@ -217,8 +236,21 @@ else
 	$(error SASS_LIBSASS_PATH must be defined)
 endif
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+# nothing to do for static
+libsass-install-static: libsass-static
+ifdef SASS_LIBSASS_PATH
+	$(MAKE) BUILD="static" -C $(SASS_LIBSASS_PATH) install
+else
+	$(error SASS_LIBSASS_PATH must be defined)
+endif
+
+# install shared library
+libsass-install-shared: libsass-shared
+ifdef SASS_LIBSASS_PATH
+	$(MAKE) BUILD="shared" -C $(SASS_LIBSASS_PATH) install
+else
+	$(error SASS_LIBSASS_PATH must be defined)
+endif
 
 test: all
 	$(MAKE) -C $(SASS_LIBSASS_PATH) version
