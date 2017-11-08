@@ -25,30 +25,24 @@ The executable will be in the bin folder. To run it, simply try something like
    ```bash
    . bootstrap.sh
    ```
-
-Alternately, if you already have libsass cloned or installed, you can edit your `.bash_profile` to include libsass directory:
-
-    ```bash
-    SASS_LIBSASS_PATH=/Users/you/path/libsass
-    export SASS_LIBSASS_PATH
-    ```
-
-
-The following will let you provide the location of the [`sass-spec`](https://github.com/sass/sass-spec) testsuite:
-
-    ```bash
-    SASS_SPEC_SASS=/Users/you/favourite/sass-spec
-    export SASS_SPEC_SASS
-    ```
-
-    You can add the above to `.profile` or `.bash_profile` in your home directory to have those added automatically for your every login session.
+   Alternately, if you already have libsass cloned or installed, you can edit your `.bash_profile` to include libsass directory:
+   ```bash
+   SASS_LIBSASS_PATH=/Users/you/path/libsass
+   export SASS_LIBSASS_PATH
+   ```
+   The following will let you provide the location of the [`sass-spec`](https://github.com/sass/sass-spec) testsuite:
+   ```bash
+   SASS_SPEC_SASS=/Users/you/favourite/sass-spec
+   export SASS_SPEC_SASS
+   ```
+   You can add the above to `.profile` or `.bash_profile` in your home directory to have those added automatically for your every login session.
 
 1. Type 'make'
    ```bash
    make
    ```
 
-   Make sure you are using GNU make (`gmake` may be the command needed on some systems)
+   Make sure you are using GNU make - `gmake` may be the command needed on some systems.
 
 1. Install the whole thing if you like
    ```bash
