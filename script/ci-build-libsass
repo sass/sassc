@@ -5,7 +5,7 @@
 : ${BUILD:?Please configure BUILD as either "shared" or "static"}
 : ${AUTOTOOLS:?Need to know wheter to use AUTOTOOLS - set it to "yes" or "no"}
 
-. ./bootstrap.sh
+. ./script/bootstrap
 : ${PREFIX:=${TRAVIS_BUILD_DIR-$(pwd)}/build}
 
 SASS_SASSC_PATH="${PREFIX}"
