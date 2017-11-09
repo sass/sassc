@@ -1,6 +1,8 @@
 #!/bin/sh
 
-set -e
+if [ -n "${TRAVIS_BUILD_DIR}" ]; then
+  set -e
+fi
 
 if [ -z "$SASSC_PATH" ]; then
   export SASSC_PATH=`pwd`
@@ -41,4 +43,8 @@ if [ ! -d "$SASS_SPEC_PATH" ]; then
   git clone https://github.com/sass/sass-spec.git "$SASS_SPEC_PATH"
 else
     echo "Sass-spec test directory exists, skiping Git Clone"
+fi
+
+if [ -n "${TRAVIS_BUILD_DIR}" ]; then
+  set +e
 fi

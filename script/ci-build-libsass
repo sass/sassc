@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ -n "${TRAVIS_BUILD_DIR}" ]; then
+  set -e
+fi
+
 # use some defaults if not running under travis ci
 : ${SASS_LIBSASS_PATH:?SASS_LIBSASS_PATH should point to libsass sources}
 : ${BUILD:?Please configure BUILD as either "shared" or "static"}
@@ -77,3 +81,7 @@ ${MAKE} $SINGLE_MAKE_OPTS BUILD=${BUILD} PREFIX=${PREFIX} all install &&
 echo successfully compiled sassc &&
 echo AUTOTOOLS=$AUTOTOOLS COVERAGE=$COVERAGE BUILD=$BUILD &&
 /usr/bin/env LD_LIBRARY_PATH="${SASS_LIBSASS_PATH}/lib" $PREFIX/bin/sassc -v
+
+if [ -n "${TRAVIS_BUILD_DIR}" ]; then
+  set +e
+fi
