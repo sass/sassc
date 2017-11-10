@@ -1,0 +1,50 @@
+#!/bin/sh
+
+if [ -n "${TRAVIS_BUILD_DIR}" ]; then
+  set -e
+fi
+
+if [ -z "$SASSC_PATH" ]; then
+  export SASSC_PATH=`pwd`
+fi
+
+if [ -f "$SASSC_PATH/sassc/sassc.c" ]; then
+  export SASSC_PATH=$SASSC_PATH/sassc
+elif [ -f "$SASSC_PATH/../sassc.c" ]; then
+  export SASSC_PATH=$SASSC_PATH/..
+fi
+
+if [ ! -f "$SASSC_PATH/sassc.c" ]; then
+  echo "SassC source directory not found"
+  echo "Consider setting it via SASSC_PATH"
+  echo "Or call this script from the root"
+  unset SASSC_PATH && exit 1
+fi
+
+if [ -z "$SASS_LIBSASS_PATH" ]; then
+  export SASS_LIBSASS_PATH="$SASSC_PATH/../libsass/"
+  echo "SASS_LIBSASS_PATH env-variable missing"
+  echo "Using default: $SASS_LIBSASS_PATH"
+fi
+
+if [ ! -d "$SASS_LIBSASS_PATH" ]; then
+  git clone https://github.com/sass/libsass.git "$SASS_LIBSASS_PATH"
+else
+  echo "LibSass source directory exists, skiping Git Clone"
+fi
+
+if [ -z "$SASS_SPEC_PATH" ]; then
+  export SASS_SPEC_PATH="$SASSC_PATH/../sass-spec/"
+  echo "SASS_SPEC_PATH env-variable missing"
+  echo "Using default: $SASS_SPEC_PATH"
+fi
+
+if [ ! -d "$SASS_SPEC_PATH" ]; then
+  git clone https://github.com/sass/sass-spec.git "$SASS_SPEC_PATH"
+else
+    echo "Sass-spec test directory exists, skiping Git Clone"
+fi
+
+if [ -n "${TRAVIS_BUILD_DIR}" ]; then
+  set +e
+fi
