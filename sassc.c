@@ -50,6 +50,7 @@ int get_argv_utf8(int* argc_ptr, char*** argv_ptr) {
 }
 #else
 #include <unistd.h>
+#include <sysexits.h>
 #endif
 
 int output(int error_status, const char* error_message, const char* output_string, const char* outfile) {
@@ -96,7 +97,11 @@ int compile_stdin(struct Sass_Options* options, char* outfile) {
 
     if(source_string == NULL) {
         perror("Allocation failed");
-        exit(1);
+        #ifdef _WIN32
+            exit(ERROR_OUTOFMEMORY);
+        #else
+            exit(EX_OSERR); // system error (e.g., can't fork)
+        #endif
     }
 
     source_string[0] = '\0';
@@ -108,7 +113,11 @@ int compile_stdin(struct Sass_Options* options, char* outfile) {
         if(source_string == NULL) {
             perror("Reallocation failed");
             free(old);
-            exit(2);
+            #ifdef _WIN32
+                exit(ERROR_OUTOFMEMORY);
+            #else
+                exit(EX_OSERR); // system error (e.g., can't fork)
+            #endif
         }
         strcat(source_string, buffer);
     }
@@ -116,7 +125,11 @@ int compile_stdin(struct Sass_Options* options, char* outfile) {
     if(ferror(stdin)) {
         free(source_string);
         perror("Error reading standard input");
-        exit(2);
+        #ifdef _WIN32
+            exit(ERROR_READ_FAULT); // 
+        #else
+            exit(EX_IOERR); // input/output error
+        #endif
     }
 
     ctx = sass_make_data_context(source_string);
@@ -210,7 +223,12 @@ void print_usage(char* argv0) {
 
 void invalid_usage(char* argv0) {
     fprintf(stderr, "See '%s -h'\n", argv0);
-    exit(EXIT_FAILURE);
+    #ifdef _WIN32
+        exit(ERROR_BAD_ARGUMENTS); // One or more arguments are not correct.
+    #else
+        exit(EX_USAGE); // command line usage error
+    #endif
+    
 }
 
 int main(int argc, char** argv) {
@@ -342,5 +360,9 @@ int main(int argc, char** argv) {
 
     sass_delete_options(options);
 
-    return result;
+    #ifdef _WIN32
+        return result ? ERROR_INVALID_DATA : 0; // The data is invalid.
+    #else
+        return result ? EX_DATAERR : 0; // data format error
+    #endif
 }
