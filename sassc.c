@@ -212,7 +212,7 @@ void print_usage(char* argv0) {
     printf("       --line-comments\n");
     printf("   -I, --load-path PATH    Set Sass import path.\n");
     printf("   -P, --plugin-path PATH  Set path to autoload plugins.\n");
-    printf("   -m, --sourcemap         Emit source map.\n");
+    printf("   -m, --sourcemap[=TYPE]  Emit source map (auto or inline).\n");
     printf("   -M, --omit-map-comment  Omits the source map url comment.\n");
     printf("   -p, --precision         Set the precision for numbers.\n");
     printf("   -a, --sass              Treat input as indented syntax.\n");
@@ -246,6 +246,7 @@ int main(int argc, char** argv) {
 
     char *outfile = 0;
     int from_stdin = 0;
+    bool auto_source_map = false;
     bool generate_source_map = false;
     struct Sass_Options* options = sass_make_options();
     sass_option_set_output_style(options, SASS_STYLE_NESTED);
@@ -262,7 +263,7 @@ int main(int argc, char** argv) {
         { "style",              required_argument, 0, 't' },
         { "line-numbers",       no_argument,       0, 'l' },
         { "line-comments",      no_argument,       0, 'l' },
-        { "sourcemap",          no_argument,       0, 'm' },
+        { "sourcemap",          optional_argument, 0, 'm' },
         { "omit-map-comment",   no_argument,       0, 'M' },
         { "precision",          required_argument, 0, 'p' },
         { "version",            no_argument,       0, 'v' },
@@ -270,7 +271,7 @@ int main(int argc, char** argv) {
         { "help",               no_argument,       0, 'h' },
         { NULL,                 0,                 NULL, 0}
     };
-    while ((c = getopt_long(argc, argv, "vhslmMap:t:I:P:", long_options, &long_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "vhsl:mMap:t:I:P:", long_options, &long_index)) != -1) {
         switch (c) {
         case 's':
             from_stdin = 1;
@@ -301,6 +302,20 @@ int main(int argc, char** argv) {
             sass_option_set_source_comments(options, true);
             break;
         case 'm':
+            if (optarg) { // optional argument
+              if (strcmp(optarg, "auto") == 0) {
+                auto_source_map = true;
+              } else if (strcmp(optarg, "inline") == 0) {
+                sass_option_set_source_map_embed(options, true);
+              } else {
+                fprintf(stderr, "Invalid argument for -m flag: '%s'. Allowed arguments are:", optarg);
+                fprintf(stderr, " %s", "auto inline");
+                fprintf(stderr, "\n");
+                invalid_usage(argv[0]);
+              }
+            } else {
+                auto_source_map = true;
+            }
             generate_source_map = true;
             break;
         case 'M':
@@ -349,6 +364,8 @@ int main(int argc, char** argv) {
             strcpy(source_map_file, outfile);
             strcat(source_map_file, extension);
             sass_option_set_source_map_file(options, source_map_file);
+        } else if (auto_source_map) {
+            sass_option_set_source_map_embed(options, true);
         }
         result = compile_file(options, argv[optind], outfile);
     } else {
