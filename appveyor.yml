@@ -32,7 +32,7 @@ test: off
 # Turn off the test script to speedup the CI builds, set it to on or remove the previous line when needed.
 
 artifacts:
-  path: bin
+  path: bin\sassc.exe
 
 deploy:
   provider: GitHub
