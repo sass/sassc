@@ -202,23 +202,22 @@ void print_usage(char* argv0) {
     int i;
     printf("Usage: %s [options] [INPUT] [OUTPUT]\n\n", argv0);
     printf("Options:\n");
-    printf("   -s, --stdin                 Read input from standard input instead of an input file.\n");
-    printf("   -t, --style NAME            Output style. Can be:");
+    printf("   -s, --stdin             Read input from standard input instead of an input file.\n");
+    printf("   -t, --style NAME        Output style. Can be:");
     for(i = NUM_STYLE_OPTION_STRINGS - 1; i >= 0; i--) {
         printf(" %s", style_option_strings[i].style_string);
         printf(i == 0 ? ".\n" : ",");
     }
-    printf("   -l, --line-numbers          Emit comments showing original line numbers.\n");
+    printf("   -l, --line-numbers      Emit comments showing original line numbers.\n");
     printf("       --line-comments\n");
-    printf("   -I, --load-path PATH        Set Sass import path.\n");
-    printf("   -P, --plugin-path PATH      Set path to autoload plugins.\n");
-    printf("   -E, --import-extension EXT  Set additional extenions to use when resolving imports.\n");
-    printf("   -m, --sourcemap[=TYPE]      Emit source map (auto or inline).\n");
-    printf("   -M, --omit-map-comment      Omits the source map url comment.\n");
-    printf("   -p, --precision             Set the precision for numbers.\n");
-    printf("   -a, --sass                  Treat input as indented syntax.\n");
-    printf("   -v, --version               Display compiled versions.\n");
-    printf("   -h, --help                  Display this help message.\n");
+    printf("   -I, --load-path PATH    Set Sass import path.\n");
+    printf("   -P, --plugin-path PATH  Set path to autoload plugins.\n");
+    printf("   -m, --sourcemap[=TYPE]  Emit source map (auto or inline).\n");
+    printf("   -M, --omit-map-comment  Omits the source map url comment.\n");
+    printf("   -p, --precision         Set the precision for numbers.\n");
+    printf("   -a, --sass              Treat input as indented syntax.\n");
+    printf("   -v, --version           Display compiled versions.\n");
+    printf("   -h, --help              Display this help message.\n");
     printf("\n");
 }
 
@@ -262,7 +261,6 @@ int main(int argc, char** argv) {
         { "load-path",          required_argument, 0, 'I' },
         { "plugin-path",        required_argument, 0, 'P' },
         { "style",              required_argument, 0, 't' },
-        { "import-extension",   required_argument, 0, 'E' },
         { "line-numbers",       no_argument,       0, 'l' },
         { "line-comments",      no_argument,       0, 'l' },
         { "sourcemap",          optional_argument, 0, 'm' },
@@ -273,13 +271,10 @@ int main(int argc, char** argv) {
         { "help",               no_argument,       0, 'h' },
         { NULL,                 0,                 NULL, 0}
     };
-    while ((c = getopt_long(argc, argv, "vhslm::Map:t:I:P:E:", long_options, &long_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "vhslm::Map:t:I:P:", long_options, &long_index)) != -1) {
         switch (c) {
         case 's':
             from_stdin = 1;
-            break;
-        case 'E':
-            sass_option_push_import_extension(options, optarg);
             break;
         case 'I':
             sass_option_push_include_path(options, optarg);
