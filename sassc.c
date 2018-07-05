@@ -58,7 +58,7 @@ int output(int error_status, const char* error_message, const char* output_strin
         if (error_message) {
             fprintf(stderr, "%s", error_message);
         } else {
-            fprintf(stderr, "An error occured; no error message available.\n");
+            fprintf(stderr, "An error occurred; no error message available.\n");
         }
         return 1;
     } else if (output_string) {
