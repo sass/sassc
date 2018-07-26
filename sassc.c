@@ -250,7 +250,7 @@ int main(int argc, char** argv) {
     bool generate_source_map = false;
     struct Sass_Options* options = sass_make_options();
     sass_option_set_output_style(options, SASS_STYLE_NESTED);
-    sass_option_set_precision(options, 5);
+    sass_option_set_precision(options, 10);
 
     int c;
     size_t i;
@@ -323,7 +323,7 @@ int main(int argc, char** argv) {
             break;
         case 'p':
             sass_option_set_precision(options, atoi(optarg)); // TODO: make this more robust
-            if (sass_option_get_precision(options) < 0) sass_option_set_precision(options, 5);
+            if (sass_option_get_precision(options) < 0) sass_option_set_precision(options, 10);
             break;
         case 'a':
             sass_option_set_is_indented_syntax_src(options, true);
