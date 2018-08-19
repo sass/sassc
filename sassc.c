@@ -88,7 +88,30 @@ int output(int error_status, const char* error_message, const char* output_strin
     }
 }
 
-int compile_stdin(struct Sass_Options* options, char* outfile) {
+int write_depsfile(struct Sass_Context* ctx_out, char* deps_outfile) {
+    size_t i;
+
+    FILE* fp = fopen(deps_outfile, "wb");
+    if(!fp) {
+        perror("Error opening deps output file");
+        return 1;
+    }
+
+    char** included_files = sass_context_get_included_files(ctx_out);
+    size_t num_included_files = sass_context_get_included_files_size(ctx_out);
+    for(i = 0; i < num_included_files; ++i) {
+        if(fprintf(fp, "%s\n", included_files[i]) < 0) {
+            perror("Error writing to deps output file");
+            fclose(fp);
+            return 1;
+        }
+    }
+
+    fclose(fp);
+    return 0;
+}
+
+int compile_stdin(struct Sass_Options* options, char* outfile, char* deps_outfile) {
     int ret;
     struct Sass_Data_Context* ctx;
     char buffer[BUFSIZE];
@@ -142,11 +165,16 @@ int compile_stdin(struct Sass_Options* options, char* outfile) {
         sass_context_get_output_string(ctx_out),
         outfile
     );
+
+    if (ret == 0 && deps_outfile) {
+        ret = write_depsfile(ctx_out, deps_outfile);
+    }
+
     sass_delete_data_context(ctx);
     return ret;
 }
 
-int compile_file(struct Sass_Options* options, char* input_path, char* outfile) {
+int compile_file(struct Sass_Options* options, char* input_path, char* outfile, char* deps_outfile) {
     int ret;
     struct Sass_File_Context* ctx = sass_make_file_context(input_path);
     struct Sass_Context* ctx_out = sass_file_context_get_context(ctx);
@@ -171,6 +199,10 @@ int compile_file(struct Sass_Options* options, char* input_path, char* outfile) 
             sass_context_get_source_map_string(ctx_out),
             srcmap_file
         );
+    }
+
+    if (ret == 0 && deps_outfile) {
+        ret = write_depsfile(ctx_out, deps_outfile);
     }
 
     sass_delete_file_context(ctx);
@@ -208,16 +240,17 @@ void print_usage(char* argv0) {
         printf(" %s", style_option_strings[i].style_string);
         printf(i == 0 ? ".\n" : ",");
     }
-    printf("   -l, --line-numbers      Emit comments showing original line numbers.\n");
+    printf("   -l, --line-numbers         Emit comments showing original line numbers.\n");
     printf("       --line-comments\n");
-    printf("   -I, --load-path PATH    Set Sass import path.\n");
-    printf("   -P, --plugin-path PATH  Set path to autoload plugins.\n");
-    printf("   -m, --sourcemap[=TYPE]  Emit source map (auto or inline).\n");
-    printf("   -M, --omit-map-comment  Omits the source map url comment.\n");
-    printf("   -p, --precision         Set the precision for numbers.\n");
-    printf("   -a, --sass              Treat input as indented syntax.\n");
-    printf("   -v, --version           Display compiled versions.\n");
-    printf("   -h, --help              Display this help message.\n");
+    printf("   -I, --load-path PATH       Set Sass import path.\n");
+    printf("   -D, --write-includes FILE  Write a file containing the dependencies that were imported.\n");
+    printf("   -P, --plugin-path PATH     Set path to autoload plugins.\n");
+    printf("   -m, --sourcemap[=TYPE]     Emit source map (auto or inline).\n");
+    printf("   -M, --omit-map-comment     Omits the source map url comment.\n");
+    printf("   -p, --precision            Set the precision for numbers.\n");
+    printf("   -a, --sass                 Treat input as indented syntax.\n");
+    printf("   -v, --version              Display compiled versions.\n");
+    printf("   -h, --help                 Display this help message.\n");
     printf("\n");
 }
 
@@ -245,6 +278,7 @@ int main(int argc, char** argv) {
     }
 
     char *outfile = 0;
+    char *deps_outfile = 0;
     int from_stdin = 0;
     bool auto_source_map = false;
     bool generate_source_map = false;
@@ -259,6 +293,7 @@ int main(int argc, char** argv) {
     {
         { "stdin",              no_argument,       0, 's' },
         { "load-path",          required_argument, 0, 'I' },
+        { "write-includes",     required_argument, 0, 'D' },
         { "plugin-path",        required_argument, 0, 'P' },
         { "style",              required_argument, 0, 't' },
         { "line-numbers",       no_argument,       0, 'l' },
@@ -271,13 +306,16 @@ int main(int argc, char** argv) {
         { "help",               no_argument,       0, 'h' },
         { NULL,                 0,                 NULL, 0}
     };
-    while ((c = getopt_long(argc, argv, "vhslm::Map:t:I:P:", long_options, &long_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "vhslm::Map:t:I:D:P:", long_options, &long_index)) != -1) {
         switch (c) {
         case 's':
             from_stdin = 1;
             break;
         case 'I':
             sass_option_push_include_path(options, optarg);
+            break;
+        case 'D':
+            deps_outfile = optarg;
             break;
         case 'P':
             sass_option_push_plugin_path(options, optarg);
@@ -367,12 +405,12 @@ int main(int argc, char** argv) {
         } else if (auto_source_map) {
             sass_option_set_source_map_embed(options, true);
         }
-        result = compile_file(options, argv[optind], outfile);
+        result = compile_file(options, argv[optind], outfile, deps_outfile);
     } else {
         if (optind < argc) {
             outfile = argv[optind];
         }
-        result = compile_stdin(options, outfile);
+        result = compile_stdin(options, outfile, deps_outfile);
     }
 
     sass_delete_options(options);
