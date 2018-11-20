@@ -1,5 +1,5 @@
-CC       ?= gcc
-CXX      ?= g++
+CC       ?= cc
+CXX      ?= c++
 RM       ?= rm -f
 CP       ?= cp -a
 CHDIR    ?= chdir
@@ -25,24 +25,18 @@ CAT      ?= $(if $(filter $(OS),Windows_NT),type,cat)
 ifneq (,$(findstring /cygdrive/,$(PATH)))
 	UNAME := Cygwin
 	TARGET := Windows
+else ifneq (,$(findstring Windows_NT,$(OS)))
+	UNAME := Windows
+	TARGET := Windows
+else ifneq (,$(findstring mingw32,$(MAKE)))
+	UNAME := MinGW
+	TARGET := Windows
+else ifneq (,$(findstring MINGW32,$(shell uname -s)))
+	UNAME := MinGW
+	TARGET := Windows
 else
-	ifneq (,$(findstring Windows,$(PATH)))
-		UNAME := Windows
-		TARGET := Windows
-	else
-		ifneq (,$(findstring mingw32,$(MAKE)))
-			UNAME := MinGW
-			TARGET := Windows
-		else
-			ifneq (,$(findstring MINGW32,$(shell uname -s)))
-				UNAME = MinGW
-				TARGET := Windows
-			else
-				UNAME := $(shell uname -s)
-				TARGET := $(shell uname -s)
-			endif
-		endif
-	endif
+	UNAME := $(shell uname -s)
+	TARGET := $(shell uname -s)
 endif
 
 ifeq ($(SASS_SASSC_PATH),)
@@ -76,14 +70,14 @@ ifeq (Windows,$(TARGET))
 	endif
 	STATIC_LIBGCC    ?= 1
 	STATIC_LIBSTDCPP ?= 1
-	CXXFLAGS += -std=gnu++0x
-	LDFLAGS  += -std=gnu++0x
+	CXXFLAGS += -std=c++11
+	LDFLAGS  += -std=c++11
 else
 	STATIC_ALL       ?= 0
 	STATIC_LIBGCC    ?= 0
 	STATIC_LIBSTDCPP ?= 0
-	CXXFLAGS += -std=c++0x
-	LDFLAGS  += -std=c++0x
+	CXXFLAGS += -std=c++11
+	LDFLAGS  += -std=c++11
 endif
 
 ifneq ($(SASS_LIBSASS_PATH),)
