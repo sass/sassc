@@ -151,9 +151,6 @@
     <ClInclude Include="$(LIBSASS_HEADERS_DIR)\file.hpp">
       <Filter>LibSass\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(LIBSASS_HEADERS_DIR)\functions.hpp">
-      <Filter>LibSass\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="$(LIBSASS_HEADERS_DIR)\inspect.hpp">
       <Filter>LibSass\Header Files</Filter>
     </ClInclude>
