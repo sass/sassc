@@ -251,6 +251,7 @@ int main(int argc, char** argv) {
     struct Sass_Options* options = sass_make_options();
     sass_option_set_output_style(options, SASS_STYLE_NESTED);
     sass_option_set_precision(options, 10);
+    sass_option_set_include_path(options, getenv("SASS_PATH"));
 
     int c;
     size_t i;
