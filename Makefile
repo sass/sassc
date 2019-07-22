@@ -156,6 +156,10 @@ LIB_SHARED = $(SASS_LIBSASS_PATH)/lib/libsass.so
 
 RESOURCES =
 SASSC_EXE = bin/sassc
+ifeq ($(UNAME),Darwin)
+	SHAREDLIB = lib/libsass.dylib
+	LIB_SHARED = $(SASS_LIBSASS_PATH)/lib/libsass.dylib
+endif
 ifeq (Windows,$(TARGET))
 	RESOURCES = libsass.res
 	SASSC_EXE = bin/sassc.exe
@@ -206,12 +210,9 @@ build-static: $(RESOURCES) $(OBJECTS) $(LIB_STATIC)
 
 build-shared: $(RESOURCES) $(OBJECTS) $(LIB_SHARED)
 	$(CC) $(LDFLAGS) -o $(SASSC_EXE) $(RESOURCES) $(OBJECTS) \
+		-Wl,-rpath,$(DESTDIR)$(PREFIX)/lib \
+		-Wl,-rpath,$(SASS_LIBSASS_PATH)/lib \
 		$(LDLIBS) -L$(SASS_LIBSASS_PATH)/lib -lsass
-
-build-shared-dev: $(RESOURCES) $(OBJECTS) $(LIB_SHARED)
-	$(CC) $(LDFLAGS) -o $(SASSC_EXE) $^ $(LDLIBS)
-
-build-static-dev: build-static
 
 $(LIB_STATIC): libsass-static
 $(LIB_SHARED): libsass-shared
@@ -261,7 +262,7 @@ endif
 
 clean:
 	rm -f $(OBJECTS) $(SASSC_EXE) \
-	      bin/*.so bin/*.dll libsass.res
+	      bin/*.so bin/*.dll bin/*.dylib libsass.res
 ifdef SASS_LIBSASS_PATH
 	$(MAKE) -C $(SASS_LIBSASS_PATH) clean
 endif
