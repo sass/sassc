@@ -14,6 +14,21 @@
 #include <sass.h>
 #include "sassc_version.h"
 
+#ifdef _MSC_VER
+#include <crtdbg.h>
+/// AvoidMessageBoxHook - Emulates hitting "retry" from an "abort, retry,
+/// ignore" CRT debug report dialog. "retry" raises a regular exception.
+static int AvoidMessageBoxHook(int ReportType, char* Message, int* Return) {
+  // Set *Return to the retry code for the return value of _CrtDbgReport:
+  // http://msdn.microsoft.com/en-us/library/8hyw4sy7(v=vs.71).aspx
+  // This may also trigger just-in-time debugging via DebugBreak().
+  if (Return)
+    * Return = 1;
+  // Don't call _CrtDbgReport.
+  return true;
+}
+#endif
+
 #define BUFSIZE 512
 #ifdef _WIN32
 #define PATH_SEP ';'
@@ -235,6 +250,7 @@ int main(int argc, char** argv) {
 #ifdef _MSC_VER
     _set_error_mode(_OUT_TO_STDERR);
     _set_abort_behavior( 0, _WRITE_ABORT_MSG);
+    _CrtSetReportHook(AvoidMessageBoxHook);
 #endif
 #ifdef _WIN32
     get_argv_utf8(&argc, &argv);
