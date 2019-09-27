@@ -162,7 +162,6 @@ cd ..
 ```bash
 cd sassc
 ./configure \
-  --enable-shared \
   --prefix=/usr
 cd ..
 ```
