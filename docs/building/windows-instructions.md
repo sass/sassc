@@ -26,7 +26,7 @@ git clone https://github.com/sass/sassc
 Otherwise download LibSass and SassC sources from github, unzip and arrange so the structure looks like: `libsass\sassc`. If you want LibSass repo directory to be placed somewhere else, then set the environment variable `LIBSASS_DIR` with relative path based at the location of `sassc.sln`.
 
 ## From Visual Studio:
-Open `projects\libsass\sassc\win\sassc.sln`, and do the finger dance `Ctrl+Shift+B` to build `sassc.exe`.
+Open `projects\libsass\sassc\win\sassc.sln`, and do the finger dance `Ctrl+Shift+B` (or right-click sassc.sln and select Build) to build `sassc.exe`.
 
 Visual Studio will form the filtered source tree as shown below:
 
