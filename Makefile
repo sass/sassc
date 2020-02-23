@@ -43,7 +43,7 @@ ifeq ($(SASS_SASSC_PATH),)
 	SASS_SASSC_PATH = $(abspath $(CURDIR))
 endif
 ifeq ($(SASS_LIBSASS_PATH),)
-	SASS_LIBSASS_PATH = $(abspath $(CURDIR)/..)
+	SASS_LIBSASS_PATH = $(abspath $(CURDIR)/../libsass)
 endif
 
 ifeq ($(SASSC_VERSION),)
