@@ -25,7 +25,7 @@ Sass is a CSS pre-processor language to add on exciting, new,
 awesome features to CSS. Sass was the first language of its kind
 and by far the most mature and up to date codebase.
 
-Sass was originally concieved of by the co-creator of this library,
+Sass was originally conceived of by the co-creator of this library,
 Hampton Catlin ([@hcatlin]). Most of the language has been the result of years
 of work by Natalie Weizenbaum ([@nex3]) and Chris Eppstein ([@chriseppstein]).
 
