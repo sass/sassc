@@ -8,6 +8,12 @@ by Aaron Leung ([@akhleung]), Hampton Catlin ([@hcatlin]), Marcel Greter ([@mgre
 
 http://github.com/sass/sassc
 
+**Warning:** [LibSass and SassC are deprecated](https://sass-lang.com/blog/libsass-is-deprecated).
+While it will continue to receive maintenance releases indefinitely, there are no
+plans to add additional features or compatibility with any new CSS or Sass features.
+Projects that still use it should move onto
+[Dart Sass](https://sass-lang.com/dart-sass).
+
 About SassC
 -----------
 
