@@ -1,6 +1,10 @@
 SassC
 =======
 
+**[LibSass has reached its end of life](https://sass-lang.com/blog/libsass-is-end-of-life).**
+It will no longer receive updates of any kind. Users should migrate to
+[Dart Sass](https://sass-lang.com/dart-sass) at their earliest convenience.
+
 [![Unix CI](https://secure.travis-ci.org/sass/sassc.svg?branch=master)](http://travis-ci.org/sass/sassc)
 [![Windows CI](https://ci.appveyor.com/api/projects/status/github/sass/sassc?svg=true)](https://ci.appveyor.com/project/sass/sassc/branch/master)
 
